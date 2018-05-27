@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WOT Launcher", "WOT Launcher\WOT Launcher.csproj", "{66AC8A8E-0215-4A3A-8D9C-9A1873FC83A0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LZMP 1122 Launcher", "LZMP 1122 Launcher\LZMP 1122 Launcher.csproj", "{66AC8A8E-0215-4A3A-8D9C-9A1873FC83A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

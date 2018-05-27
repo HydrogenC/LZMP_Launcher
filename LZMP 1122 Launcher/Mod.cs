@@ -41,7 +41,7 @@ namespace WOT_Launcher
                 {
                     installed = false;
                 }
-                if (!System.IO.File.Exists(gameType.ResourceDir + i + ".jar"))
+                if (!System.IO.File.Exists(System.IO.Directory.GetCurrentDirectory() + "\\Resources\\" + i + ".jar"))
                 {
                     available = false;
                 }

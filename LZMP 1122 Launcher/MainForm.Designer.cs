@@ -33,15 +33,15 @@
             this.SmallTitle = new System.Windows.Forms.Label();
             this.BigTitle = new System.Windows.Forms.Label();
             this.MainTree = new System.Windows.Forms.TreeView();
-            this.Launch = new System.Windows.Forms.Button();
+            this.LaunchClient = new System.Windows.Forms.Button();
             this.Apply = new System.Windows.Forms.Button();
             this.CheckAll = new System.Windows.Forms.Button();
             this.ExitForm = new System.Windows.Forms.Button();
             this.CancelAll = new System.Windows.Forms.Button();
             this.ReadSet = new System.Windows.Forms.Button();
             this.SaveSet = new System.Windows.Forms.Button();
-            this.Flabel = new System.Windows.Forms.Label();
             this.MainToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.LaunchServer = new System.Windows.Forms.Button();
             this.FileDialog = new System.Windows.Forms.OpenFileDialog();
             this.SaveDialog = new System.Windows.Forms.SaveFileDialog();
             this.PlaceHolder = new System.Windows.Forms.Label();
@@ -66,9 +66,9 @@
             this.BigTitle.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.BigTitle.Location = new System.Drawing.Point(23, 80);
             this.BigTitle.Name = "BigTitle";
-            this.BigTitle.Size = new System.Drawing.Size(416, 72);
+            this.BigTitle.Size = new System.Drawing.Size(529, 72);
             this.BigTitle.TabIndex = 1;
-            this.BigTitle.Text = "LZMC Fianl Pack";
+            this.BigTitle.Text = "LZMC ModPack 2.5.1";
             this.BigTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseDown);
             // 
             // MainTree
@@ -84,28 +84,28 @@
             this.MainTree.TabIndex = 3;
             this.MainTree.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.MainTree_AfterCheck);
             // 
-            // Launch
+            // LaunchClient
             // 
-            this.Launch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Launch.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Launch.ForeColor = System.Drawing.Color.White;
-            this.Launch.Location = new System.Drawing.Point(34, 781);
-            this.Launch.Name = "Launch";
-            this.Launch.Size = new System.Drawing.Size(203, 69);
-            this.Launch.TabIndex = 4;
-            this.Launch.Text = "Start Game";
-            this.MainToolTip.SetToolTip(this.Launch, "This will automaticly apply the current set. ");
-            this.Launch.UseVisualStyleBackColor = true;
-            this.Launch.Click += new System.EventHandler(this.Launch_Click);
+            this.LaunchClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LaunchClient.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LaunchClient.ForeColor = System.Drawing.Color.White;
+            this.LaunchClient.Location = new System.Drawing.Point(34, 781);
+            this.LaunchClient.Name = "LaunchClient";
+            this.LaunchClient.Size = new System.Drawing.Size(168, 69);
+            this.LaunchClient.TabIndex = 4;
+            this.LaunchClient.Text = "Start Client";
+            this.MainToolTip.SetToolTip(this.LaunchClient, "This will automaticly apply the current set. ");
+            this.LaunchClient.UseVisualStyleBackColor = true;
+            this.LaunchClient.Click += new System.EventHandler(this.LaunchClient_Click);
             // 
             // Apply
             // 
             this.Apply.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Apply.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Apply.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Apply.ForeColor = System.Drawing.Color.White;
-            this.Apply.Location = new System.Drawing.Point(355, 781);
+            this.Apply.Location = new System.Drawing.Point(390, 781);
             this.Apply.Name = "Apply";
-            this.Apply.Size = new System.Drawing.Size(203, 69);
+            this.Apply.Size = new System.Drawing.Size(168, 69);
             this.Apply.TabIndex = 5;
             this.Apply.Text = "Apply";
             this.Apply.UseVisualStyleBackColor = true;
@@ -130,7 +130,7 @@
             this.ExitForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ExitForm.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ExitForm.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ExitForm.Location = new System.Drawing.Point(511, 28);
+            this.ExitForm.Location = new System.Drawing.Point(510, 22);
             this.ExitForm.Name = "ExitForm";
             this.ExitForm.Size = new System.Drawing.Size(47, 54);
             this.ExitForm.TabIndex = 7;
@@ -180,18 +180,19 @@
             this.SaveSet.UseVisualStyleBackColor = true;
             this.SaveSet.Click += new System.EventHandler(this.SaveSet_Click);
             // 
-            // Flabel
+            // LaunchServer
             // 
-            this.Flabel.AutoSize = true;
-            this.Flabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.Flabel.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.Flabel.Location = new System.Drawing.Point(30, 859);
-            this.Flabel.Name = "Flabel";
-            this.Flabel.Size = new System.Drawing.Size(149, 28);
-            this.Flabel.TabIndex = 11;
-            this.Flabel.Text = "This is nothing! ";
-            this.MainToolTip.SetToolTip(this.Flabel, "Click to show About and Copyrights. ");
-            this.Flabel.Click += new System.EventHandler(this.Flabel_Click);
+            this.LaunchServer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LaunchServer.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LaunchServer.ForeColor = System.Drawing.Color.White;
+            this.LaunchServer.Location = new System.Drawing.Point(212, 781);
+            this.LaunchServer.Name = "LaunchServer";
+            this.LaunchServer.Size = new System.Drawing.Size(168, 69);
+            this.LaunchServer.TabIndex = 14;
+            this.LaunchServer.Text = "Start Server";
+            this.MainToolTip.SetToolTip(this.LaunchServer, "This will automaticly apply the current set. ");
+            this.LaunchServer.UseVisualStyleBackColor = true;
+            this.LaunchServer.Click += new System.EventHandler(this.LaunchServer_Click);
             // 
             // FileDialog
             // 
@@ -206,7 +207,7 @@
             // 
             this.PlaceHolder.AutoSize = true;
             this.PlaceHolder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.PlaceHolder.Location = new System.Drawing.Point(535, 878);
+            this.PlaceHolder.Location = new System.Drawing.Point(535, 861);
             this.PlaceHolder.Name = "PlaceHolder";
             this.PlaceHolder.Size = new System.Drawing.Size(23, 15);
             this.PlaceHolder.TabIndex = 13;
@@ -218,16 +219,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.ClientSize = new System.Drawing.Size(591, 898);
+            this.ClientSize = new System.Drawing.Size(591, 873);
+            this.Controls.Add(this.LaunchServer);
             this.Controls.Add(this.PlaceHolder);
-            this.Controls.Add(this.Flabel);
             this.Controls.Add(this.ReadSet);
             this.Controls.Add(this.SaveSet);
             this.Controls.Add(this.CancelAll);
             this.Controls.Add(this.ExitForm);
             this.Controls.Add(this.CheckAll);
             this.Controls.Add(this.Apply);
-            this.Controls.Add(this.Launch);
+            this.Controls.Add(this.LaunchClient);
             this.Controls.Add(this.MainTree);
             this.Controls.Add(this.BigTitle);
             this.Controls.Add(this.SmallTitle);
@@ -246,18 +247,18 @@
         private System.Windows.Forms.Label SmallTitle;
         private System.Windows.Forms.Label BigTitle;
         private System.Windows.Forms.TreeView MainTree;
-        private System.Windows.Forms.Button Launch;
+        private System.Windows.Forms.Button LaunchClient;
         private System.Windows.Forms.Button Apply;
         private System.Windows.Forms.Button CheckAll;
         private System.Windows.Forms.Button ExitForm;
         private System.Windows.Forms.Button CancelAll;
         private System.Windows.Forms.Button ReadSet;
         private System.Windows.Forms.Button SaveSet;
-        private System.Windows.Forms.Label Flabel;
         private System.Windows.Forms.ToolTip MainToolTip;
         private System.Windows.Forms.OpenFileDialog FileDialog;
         private System.Windows.Forms.SaveFileDialog SaveDialog;
         private System.Windows.Forms.Label PlaceHolder;
+        private System.Windows.Forms.Button LaunchServer;
     }
 }
 

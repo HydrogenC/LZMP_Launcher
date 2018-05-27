@@ -10,7 +10,6 @@ namespace WOT_Launcher
     public class GameType
     {
         private String typeName;
-        private String resourceDir = System.IO.Directory.GetCurrentDirectory() + "\\Resources\\";
         private String baseDirectory;
         private ProcessStartInfo launcher = new ProcessStartInfo();
 
@@ -38,11 +37,6 @@ namespace WOT_Launcher
             set => launcher = value;
         }
 
-        public String ResourceDir
-        {
-            get => resourceDir;
-        }
-
         public String BaseDirectory
         {
             get => baseDirectory;
@@ -50,12 +44,12 @@ namespace WOT_Launcher
 
         public static GameType Client
         {
-            get => new GameType("Client", ".minecraft\\", "HeyoCraft.exe");
+            get => new GameType("Client", "Client\\.minecraft\\", "MCCL.exe");
         }
 
         public static GameType Server
         {
-            get => new GameType("Server", "server\\", "server\\MCserver_5.4.exe");
+            get => new GameType("Server", "Server\\", "Server\\MCserver_5.4.exe");
         }
     }
 }

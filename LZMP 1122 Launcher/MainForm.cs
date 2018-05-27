@@ -8,10 +8,8 @@ namespace WOT_Launcher
 {
     public partial class MainForm : Form
     {
-        public List<Mod> mods = DefineMods.ReturnMods();
-        public GameType gameType;
-        public String currentVersion = "1.0 RC 1";
-        public String gameVersion = "1.7.10";
+        private List<Mod> mods = DefineMods.ReturnMods();
+        public String ResourceDir = System.IO.Directory.GetCurrentDirectory() + "\\Resources\\";
 
         #region Drag
         [DllImport("user32.dll")]
@@ -32,11 +30,9 @@ namespace WOT_Launcher
         public MainForm()
         {
             InitializeComponent();
-            CheckGameType();
             WriteInNodes();
             CheckIfModsExsist();
             SaveDialog.InitialDirectory = System.IO.Directory.GetCurrentDirectory() + "\\Sets\\";
-            Flabel.Text = currentVersion + " - " + gameVersion + " - " + gameType.TypeName;
         }
 
         private void WriteInNodes()
@@ -44,7 +40,6 @@ namespace WOT_Launcher
             MainTree.Nodes.Clear();
             MainTree.Nodes.Add("Technology Mods");
             MainTree.Nodes.Add("Warfare Mods");
-            MainTree.Nodes.Add("Adventurous Mods");
             MainTree.Nodes.Add("Enhancement Mods");
             MainTree.ExpandAll();
             foreach (var i in mods)
@@ -53,28 +48,11 @@ namespace WOT_Launcher
             }
         }
 
-        private void CheckGameType()
-        {
-            if (System.IO.File.Exists(GameType.Client.Launcher.FileName))
-            {
-                gameType = GameType.Client;
-            }
-            else if (System.IO.File.Exists(GameType.Server.Launcher.FileName))
-            {
-                gameType = GameType.Server;
-            }
-            else
-            {
-                gameType = new GameType("None", "", null);
-                Launch.Enabled = false;
-            }
-        }
-
         private void CheckIfModsExsist()
         {
             foreach (var i in mods)
             {
-                i.Node.Checked = i.CheckInstalled(gameType);
+                i.Node.Checked = i.CheckInstalled(GameType.Client) || i.CheckInstalled(GameType.Server);
             }
         }
 
@@ -86,15 +64,65 @@ namespace WOT_Launcher
                 {
                     foreach (var j in i.Files)
                     {
-                        System.IO.File.Copy(gameType.ResourceDir + j + ".jar", gameType.ModDirectory + j + ".jar");
+                        try
+                        {
+                            System.IO.File.Copy(ResourceDir + j + ".jar", GameType.Client.ModDirectory + j + ".jar");
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine("Exception Caught: " + e);
+                        }
+                        try
+                        {
+                            System.IO.File.Copy(ResourceDir + j + ".jar", GameType.Server.ModDirectory + j + ".jar");
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine("Exception Caught: " + e);
+                        }
                     }
                 }
                 if ((!i.Node.Checked) && i.Installed)
                 {
                     foreach (var j in i.Files)
                     {
-                        System.IO.File.Delete(gameType.ModDirectory + j + ".jar");
+                        try
+                        {
+                            System.IO.File.Delete(GameType.Client.ModDirectory + j + ".jar");
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine("Exception Caught: " + e);
+                        }
+                        try
+                        {
+                            System.IO.File.Delete(GameType.Server.ModDirectory + j + ".jar");
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine("Exception Caught: " + e);
+                        }
+
                     }
+                }
+            }
+            if (!mods[7].Node.Checked)
+            {
+                try
+                {
+                    System.IO.File.Delete(GameType.Client.ModDirectory + "ImmersiveEngineering-0.12-82-core.jar");
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Exception Caught: " + e);
+                }
+                try
+                {
+                    System.IO.File.Delete(GameType.Server.ModDirectory + "ImmersiveEngineering-0.12-82-core.jar");
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Exception Caught: " + e);
                 }
             }
             CheckIfModsExsist();
@@ -168,11 +196,19 @@ namespace WOT_Launcher
             }
         }
 
-        private void Launch_Click(object sender, EventArgs e)
+        private void LaunchClient_Click(object sender, EventArgs e)
         {
             ApplyChanges();
-            System.Diagnostics.Process.Start(gameType.Launcher);
-            Application.Exit();
+            String tmp = System.IO.Directory.GetCurrentDirectory();
+            System.IO.Directory.SetCurrentDirectory(System.IO.Directory.GetCurrentDirectory() + "\\Client");
+            System.Diagnostics.Process.Start(GameType.Client.Launcher);
+            System.IO.Directory.SetCurrentDirectory(tmp);
+        }
+
+        private void LaunchServer_Click(object sender, EventArgs e)
+        {
+            ApplyChanges();
+            System.Diagnostics.Process.Start(GameType.Server.Launcher);
         }
 
         private void SaveSet_Click(object sender, EventArgs e)
@@ -230,11 +266,6 @@ namespace WOT_Launcher
         {
             ApplyChanges();
             MessageBox.Show("Applied successfully! ", "Result");
-        }
-
-        private void Flabel_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("LZMC Final Pack\r\nWork of LZMC® (Subcomany of ExMatics™)\r\n1.0 RC 1 (Core Version 0.10.1)\r\nCopyright @LZMC 2010~2018\r\nCopyright @ExMatics 1984~2018", "About");
         }
         #endregion
     }
