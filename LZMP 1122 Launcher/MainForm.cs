@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 
+using Direct = System.IO.Directory;
+using Files = System.IO.File;
 
 namespace WOT_Launcher
 {
     public partial class MainForm : Form
     {
-        private List<Mod> mods = DefineMods.ReturnMods();
-        public String ResourceDir = System.IO.Directory.GetCurrentDirectory() + "\\Resources\\";
+        private Dictionary<String, Mod> mods = DefineMods.ReturnMods();
+        public String resDir = Direct.GetCurrentDirectory() + "\\Resources\\";
 
         #region Drag
         [DllImport("user32.dll")]
@@ -30,9 +32,39 @@ namespace WOT_Launcher
         public MainForm()
         {
             InitializeComponent();
+            try
+            {
+                String[] version = Files.ReadAllLines(Direct.GetCurrentDirectory() + "\\ModsVer.txt");
+                BigTitle.Text += version[0].Substring(4);
+                String crtKey = "";
+                Int16 ctr = 0;
+                for (Int16 i = 1; i < version.Length; i += 1)
+                {
+                    if (version[i].StartsWith("Key="))
+                    {
+                        crtKey = version[i].Substring(4);
+                        ctr = 0;
+                        continue;
+                    }
+                    mods[crtKey].Files[ctr] = mods[crtKey].Files[ctr].Replace("%v", version[i]);
+                    if (!Files.Exists(resDir + mods[crtKey].Files[ctr] + ".jar"))
+                    {
+                        MessageBox.Show("File not found: " + mods[crtKey].Name + "\r\n" + mods[crtKey].Files[ctr], "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    ctr += 1;
+                }
+            }
+            catch (System.IO.FileNotFoundException e)
+            {
+                MessageBox.Show("Config file not found, mod names are not imported! ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("An internal error occured, mod names are not imported! ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             WriteInNodes();
             CheckIfModsExsist();
-            SaveDialog.InitialDirectory = System.IO.Directory.GetCurrentDirectory() + "\\Sets\\";
+            SaveDialog.InitialDirectory = Direct.GetCurrentDirectory() + "\\Sets\\";
         }
 
         private void WriteInNodes()
@@ -44,7 +76,7 @@ namespace WOT_Launcher
             MainTree.ExpandAll();
             foreach (var i in mods)
             {
-                i.AddNode(MainTree);
+                i.Value.AddNode(MainTree);
             }
         }
 
@@ -52,7 +84,7 @@ namespace WOT_Launcher
         {
             foreach (var i in mods)
             {
-                i.Node.Checked = i.CheckInstalled(GameType.Client) || i.CheckInstalled(GameType.Server);
+                i.Value.Node.Checked = i.Value.CheckInstalled(GameType.Client) || i.Value.CheckInstalled(GameType.Server);
             }
         }
 
@@ -60,72 +92,38 @@ namespace WOT_Launcher
         {
             foreach (var i in mods)
             {
-                if (i.Node.Checked && (!i.Installed) && i.Available)
+                if (i.Value.Node.Checked && (!i.Value.Installed) && i.Value.Available)
                 {
-                    foreach (var j in i.Files)
+                    foreach (var j in i.Value.Files)
                     {
                         try
                         {
-                            System.IO.File.Copy(ResourceDir + j + ".jar", GameType.Client.ModDirectory + j + ".jar");
+                            Files.Copy(resDir + j + ".jar", GameType.Client.ModDirectory + j + ".jar");
+                            Files.Copy(resDir + j + ".jar", GameType.Server.ModDirectory + j + ".jar");
                         }
                         catch (Exception e)
                         {
-                            Console.WriteLine("Exception Caught: " + e);
-                        }
-                        try
-                        {
-                            System.IO.File.Copy(ResourceDir + j + ".jar", GameType.Server.ModDirectory + j + ".jar");
-                        }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine("Exception Caught: " + e);
+                            MessageBox.Show("An internal error occured while copying files. ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
-                if ((!i.Node.Checked) && i.Installed)
+                if ((!i.Value.Node.Checked) && i.Value.Installed)
                 {
-                    foreach (var j in i.Files)
+                    foreach (var j in i.Value.Files)
                     {
                         try
                         {
-                            System.IO.File.Delete(GameType.Client.ModDirectory + j + ".jar");
+                            Files.Delete(GameType.Client.ModDirectory + j + ".jar");
+                            Files.Delete(GameType.Server.ModDirectory + j + ".jar");
                         }
                         catch (Exception e)
                         {
-                            Console.WriteLine("Exception Caught: " + e);
+                            MessageBox.Show("An internal error occured while deleting files. ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-                        try
-                        {
-                            System.IO.File.Delete(GameType.Server.ModDirectory + j + ".jar");
-                        }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine("Exception Caught: " + e);
-                        }
-
                     }
                 }
+                CheckIfModsExsist();
             }
-            if (!mods[7].Node.Checked)
-            {
-                try
-                {
-                    System.IO.File.Delete(GameType.Client.ModDirectory + "ImmersiveEngineering-0.12-82-core.jar");
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine("Exception Caught: " + e);
-                }
-                try
-                {
-                    System.IO.File.Delete(GameType.Server.ModDirectory + "ImmersiveEngineering-0.12-82-core.jar");
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine("Exception Caught: " + e);
-                }
-            }
-            CheckIfModsExsist();
         }
 
         private void MainTree_AfterCheck(object sender, TreeViewEventArgs e)
@@ -174,6 +172,13 @@ namespace WOT_Launcher
                     {
                         MainTree.Nodes[i].Nodes[j].Checked = true;
                     }
+                    for (int k = 0; k < MainTree.Nodes[i].Nodes[j].GetNodeCount(false); k += 1)
+                    {
+                        if (!MainTree.Nodes[i].Nodes[j].Nodes[k].Checked)
+                        {
+                            MainTree.Nodes[i].Nodes[j].Nodes[k].Checked = true;
+                        }
+                    }
                 }
             }
         }
@@ -199,24 +204,27 @@ namespace WOT_Launcher
         private void LaunchClient_Click(object sender, EventArgs e)
         {
             ApplyChanges();
-            String tmp = System.IO.Directory.GetCurrentDirectory();
-            System.IO.Directory.SetCurrentDirectory(System.IO.Directory.GetCurrentDirectory() + "\\Client");
-            System.Diagnostics.Process.Start(GameType.Client.Launcher);
-            System.IO.Directory.SetCurrentDirectory(tmp);
+            String tmp = Direct.GetCurrentDirectory();
+            Direct.SetCurrentDirectory(Direct.GetCurrentDirectory() + "\\Client\\");
+            System.Diagnostics.Process.Start(GameType.Client.LauncherDirectory);
+            Direct.SetCurrentDirectory(tmp);
         }
 
         private void LaunchServer_Click(object sender, EventArgs e)
         {
             ApplyChanges();
-            System.Diagnostics.Process.Start(GameType.Server.Launcher);
+            String tmp = Direct.GetCurrentDirectory();
+            Direct.SetCurrentDirectory(Direct.GetCurrentDirectory() + "\\Server\\");
+            System.Diagnostics.Process.Start(GameType.Server.LauncherDirectory);
+            Direct.SetCurrentDirectory(tmp);
         }
 
         private void SaveSet_Click(object sender, EventArgs e)
         {
             ApplyChanges();
-            if (!System.IO.Directory.Exists(SaveDialog.InitialDirectory))
+            if (!Direct.Exists(SaveDialog.InitialDirectory))
             {
-                System.IO.Directory.CreateDirectory(SaveDialog.InitialDirectory);
+                Direct.CreateDirectory(SaveDialog.InitialDirectory);
             }
             if (SaveDialog.ShowDialog() == DialogResult.OK)
             {
@@ -226,13 +234,12 @@ namespace WOT_Launcher
                     System.IO.StreamWriter streamWriter = new System.IO.StreamWriter(fileStream);
                     foreach (var i in mods)
                     {
-                        streamWriter.WriteLine(i.Installed);
+                        streamWriter.WriteLine(i.Key + "=" + i.Value.Installed);
                     }
                     fileStream.Unlock(0, fileStream.Length);
                     streamWriter.Flush();
                     streamWriter.Close();
                 }
-                MessageBox.Show("Successfully saved! ", "Result");
             }
         }
 
@@ -240,32 +247,28 @@ namespace WOT_Launcher
         {
             if (FileDialog.ShowDialog() == DialogResult.OK)
             {
-                String[] temp = System.IO.File.ReadAllLines(FileDialog.FileName);
-                for (Int32 i = 0; i < mods.Count; i += 1)
+                String[] temp = Files.ReadAllLines(FileDialog.FileName);
+                foreach (var i in temp)
                 {
-                    if (Boolean.Parse(temp[i]))
+                    Int32 index = i.IndexOf('=');
+                    String id = i.Substring(0, index);
+                    Boolean check = Boolean.Parse(i.Substring(index + 1));
+                    if (check && (!mods[id].Node.Checked))
                     {
-                        if (!mods[i].Node.Checked)
-                        {
-                            mods[i].Node.Checked = true;
-                        }
+                        mods[id].Node.Checked = true;
                     }
-                    else
+                    if ((!check) && mods[id].Node.Checked)
                     {
-                        if (mods[i].Node.Checked)
-                        {
-                            mods[i].Node.Checked = false;
-                        }
+                        mods[id].Node.Checked = false;
                     }
                 }
-                MessageBox.Show("Read successfully! ", "Result");
             }
         }
 
         private void Apply_Click(object sender, EventArgs e)
         {
             ApplyChanges();
-            MessageBox.Show("Applied successfully! ", "Result");
+            MessageBox.Show("Applied", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         #endregion
     }

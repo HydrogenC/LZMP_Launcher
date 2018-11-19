@@ -5,19 +5,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 
+using Direct = System.IO.Directory;
+using Files = System.IO.File;
+
 namespace WOT_Launcher
 {
     public class GameType
     {
         private String typeName;
-        private String baseDirectory;
-        private ProcessStartInfo launcher = new ProcessStartInfo();
+        private String modDirectory;
+        private ProcessStartInfo launcherDirectory = new ProcessStartInfo();
 
-        public GameType(String name, String baseDir, String launcherDir)
+        public GameType(String name, String modDir, String launcherDir)
         {
             typeName = name;
-            baseDirectory = System.IO.Directory.GetCurrentDirectory() + "\\" + baseDir;
-            launcher.FileName = System.IO.Directory.GetCurrentDirectory() + "\\" + launcherDir;
+            modDirectory = modDir;
+            launcherDirectory.FileName = launcherDir;
         }
 
         public String TypeName
@@ -28,28 +31,23 @@ namespace WOT_Launcher
 
         public String ModDirectory
         {
-            get => baseDirectory + "mods\\";
+            get => modDirectory;
         }
 
-        public ProcessStartInfo Launcher
+        public ProcessStartInfo LauncherDirectory
         {
-            get => launcher;
-            set => launcher = value;
-        }
-
-        public String BaseDirectory
-        {
-            get => baseDirectory;
+            get => launcherDirectory;
+            set => launcherDirectory = value;
         }
 
         public static GameType Client
         {
-            get => new GameType("Client", "Client\\.minecraft\\", "MCCL.exe");
+            get => new GameType("Client", Direct.GetCurrentDirectory() + "\\Client\\.minecraft\\mods\\", Direct.GetCurrentDirectory() + "\\Client\\NsisoLauncher.exe");
         }
 
         public static GameType Server
         {
-            get => new GameType("Server", "Server\\", "Server\\MCserver_5.4.exe");
+            get => new GameType("Server", Direct.GetCurrentDirectory() + "\\Server\\panel\\server\\mods\\", Direct.GetCurrentDirectory() + "\\Server\\MCim.exe");
         }
     }
 }

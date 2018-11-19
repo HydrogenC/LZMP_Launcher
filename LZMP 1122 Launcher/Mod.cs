@@ -14,7 +14,7 @@ namespace WOT_Launcher
         private Boolean installed;
         private Boolean available;
         private Int16 category;
-        private Mod parentMod=null;
+        private Mod parentMod = null;
         private String name;
 
         public Mod(String name, List<String> files, Mod parentMod)
@@ -24,7 +24,7 @@ namespace WOT_Launcher
             this.parentMod = parentMod;
         }
 
-        public Mod(String name, List<String> files,Int16 category)
+        public Mod(String name, List<String> files, Int16 category)
         {
             this.name = name;
             this.files = files;
@@ -35,17 +35,11 @@ namespace WOT_Launcher
         {
             installed = true;
             available = true;
-            foreach(var i in Files)
+            foreach (var i in Files)
             {
-                if (!System.IO.File.Exists(gameType.ModDirectory + i + ".jar"))
-                {
-                    installed = false;
-                }
-                if (!System.IO.File.Exists(System.IO.Directory.GetCurrentDirectory() + "\\Resources\\" + i + ".jar"))
-                {
-                    available = false;
-                }
-                if ((!available) && (!installed))
+                installed = System.IO.File.Exists(gameType.ModDirectory + i + ".jar");
+                available = System.IO.File.Exists(System.IO.Directory.GetCurrentDirectory() + "\\Resources\\" + i + ".jar");
+                if (!available)
                 {
                     break;
                 }
@@ -92,10 +86,12 @@ namespace WOT_Launcher
             set => files = value;
         }
 
-        public Boolean Installed {
+        public Boolean Installed
+        {
             get => installed;
         }
-        public bool Available {
+        public bool Available
+        {
             get => available;
         }
     }
