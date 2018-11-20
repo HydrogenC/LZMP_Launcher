@@ -42,12 +42,12 @@ namespace WOT_Launcher
 
         public static GameType Client
         {
-            get => new GameType("Client", Direct.GetCurrentDirectory() + "\\Client\\.minecraft\\mods\\", Direct.GetCurrentDirectory() + "\\Client\\NsisoLauncher.exe");
+            get => new GameType("Client", Direct.GetCurrentDirectory() + "\\Client\\.minecraft\\mods\\", Direct.GetCurrentDirectory() + "\\NsisoLauncher.exe");
         }
 
         public static GameType Server
         {
-            get => new GameType("Server", Direct.GetCurrentDirectory() + "\\Server\\panel\\server\\mods\\", Direct.GetCurrentDirectory() + "\\Server\\MCim.exe");
+            get => new GameType("Server", Direct.GetCurrentDirectory() + "\\Server\\panel\\server\\mods\\", Direct.GetCurrentDirectory() + "\\MCim.exe");
         }
     }
 }

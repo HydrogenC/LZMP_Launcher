@@ -11,9 +11,9 @@ namespace WOT_Launcher
     {
         private List<String> files;
         private TreeNode node;
-        private Boolean installed;
-        private Boolean available;
-        private Int16 category;
+        private Boolean installed = true;
+        private Boolean available = true;
+        private Int16 category = 0;
         private Mod parentMod = null;
         private String name;
 
@@ -49,8 +49,7 @@ namespace WOT_Launcher
 
         public void AddNode(TreeView treeView)
         {
-            TreeNode treeNode = new TreeNode();
-            treeNode.Text = name;
+            TreeNode treeNode = new TreeNode(name);
             if (parentMod == null)
             {
                 treeView.Nodes[category].Nodes.Add(treeNode);

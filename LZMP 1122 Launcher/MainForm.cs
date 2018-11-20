@@ -32,6 +32,15 @@ namespace WOT_Launcher
         public MainForm()
         {
             InitializeComponent();
+            ReadModVersions();
+            WriteInNodes();
+            CheckIfModsExsist();
+            SaveDialog.InitialDirectory = Direct.GetCurrentDirectory() + "\\Sets\\";
+        }
+
+        #region Initialize
+        private void ReadModVersions()
+        {
             try
             {
                 String[] version = Files.ReadAllLines(Direct.GetCurrentDirectory() + "\\ModsVer.txt");
@@ -62,9 +71,6 @@ namespace WOT_Launcher
             {
                 MessageBox.Show("An internal error occured, mod names are not imported! ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            WriteInNodes();
-            CheckIfModsExsist();
-            SaveDialog.InitialDirectory = Direct.GetCurrentDirectory() + "\\Sets\\";
         }
 
         private void WriteInNodes()
@@ -87,9 +93,13 @@ namespace WOT_Launcher
                 i.Value.Node.Checked = i.Value.CheckInstalled(GameType.Client) || i.Value.CheckInstalled(GameType.Server);
             }
         }
+        #endregion
 
         private void ApplyChanges()
         {
+            Processing processing = new Processing();
+            processing.Show();
+            Int16 crtIndex = 0;
             foreach (var i in mods)
             {
                 if (i.Value.Node.Checked && (!i.Value.Installed) && i.Value.Available)
@@ -122,8 +132,11 @@ namespace WOT_Launcher
                         }
                     }
                 }
-                CheckIfModsExsist();
+                crtIndex += 1;
+                processing.SetProgress((UInt16)Math.Floor(100.0 * (Double)crtIndex / (Double)mods.Count));
             }
+            CheckIfModsExsist();
+            processing.Close();
         }
 
         private void MainTree_AfterCheck(object sender, TreeViewEventArgs e)
