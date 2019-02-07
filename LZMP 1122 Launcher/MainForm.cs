@@ -49,6 +49,10 @@ namespace WOT_Launcher
                 Int16 ctr = 0;
                 for (Int16 i = 1; i < version.Length; i += 1)
                 {
+                    if (version[i] == "")
+                    {
+                        continue;
+                    }
                     if (version[i].StartsWith("Key="))
                     {
                         crtKey = version[i].Substring(4);

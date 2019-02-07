@@ -21,10 +21,32 @@ namespace WOT_Launcher
                 "AgriCraft-1.12.0-%v"
             };
             AddMod("AgriCraft", "ag", fileTmp, 0);
+            {
+                AddMod("Mutifarm (Req Forestry)", "mtf", "MultifarmCrops-%v", mods["ag"]);
+            }
 
             AddMod("Applied Energetics", "ae", "appliedenergistics2-%v", 0);
-            
+            {
+                AddMod("AE2 Stuff", "stf", "ae2stuff-%v-mc1.12.2", mods["ae"]);
+
+                AddMod("Equivalent Energistics", "ee", "EquivalentEnergistics-1.12.2-%v", mods["ae"]);
+
+                AddMod("Extra Cells 2", "exc", "ExtraCells-1.12.2-%v", mods["ae"]);
+
+                fileTmp = new String[] {
+                "p455w0rdslib-1.12.2-%v",
+                "WirelessCraftingTerminal-1.12.2-%v",
+                "AE2WTLib-1.12.2-%v"
+                };
+                AddMod("Wireless Crafting Terminal", "wct", fileTmp, mods["ae"]);
+            }
+
             AddMod("Buildcraft", "bc", "buildcraft-all-%v", 0);
+            {
+                AddMod("Additional Pipes", "api", "additionalpipes-%v", mods["bc"]);
+
+                AddMod("Iron Tanks", "irt", "irontanks-%v", mods["bc"]);
+            }
 
             fileTmp = new String[]
             {
@@ -48,6 +70,17 @@ namespace WOT_Launcher
                 "jeibees-%v-mc1.12.2"
             };
             AddMod("Forestry", "for", fileTmp, 0);
+            {
+                AddMod("Binne Mods", "bin", "binnie-mods-1.12.2-%v", mods["for"]);
+
+                fileTmp = new String[] {
+                "gendustry-%v-mc1.12.2",
+                "gendustryjei-%v"
+                };
+                AddMod("Gendustry", "gen", fileTmp, mods["for"]);
+
+                AddMod("More Bees", "mob", "morebees-1.12.2-%v", mods["for"]);
+            }
 
             fileTmp = new String[] {
                 "MicdoodleCore-1.12.2-%v",
@@ -55,12 +88,46 @@ namespace WOT_Launcher
                 "Galacticraft-Planets-1.12.2-%v"
             };
             AddMod("Galacticraft", "gc", fileTmp, 0);
+            {
+                fileTmp = new String[] {
+                "MJRLegendsLib-1.12.2-%v",
+                "ExtraPlanets-1.12.2-%v"
+                };
+                AddMod("Extra Planets", "exp", fileTmp, mods["gc"]);
+
+                fileTmp = new String[] {
+                "More-Planets-1.12.2-%v",
+                "MorePlanetsExtras-1.12.2-%v"
+                };
+                AddMod("More Planets", "mop", fileTmp, mods["gc"]);
+            }
 
             AddMod("Guide API", "ga", "Guide-API-1.12-%v", 0);
+            {
+                AddMod("Cyclic", "cyl", "Cyclic-1.12.2-%v", mods["ga"]);
+
+                AddMod("MFFS", "mfs", "MFFS-1.12.2-%v", mods["ga"]);
+
+                AddMod("Woot", "wot", "woot-1.12.2-%v", mods["ga"]);
+            }
 
             AddMod("Immersive Engineering", "ie", "ImmersiveEngineering-%v", 0);
+            {
+                AddMod("Immersive Cables", "imc", "ImmersiveCables-1.12.2-%v", mods["ie"]);
+
+                AddMod("Immersive Petroleum", "imp", "immersivepetroleum-1.12.2-%v", mods["ie"]);
+
+                AddMod("Immersive Tech", "imt", "immersivetech-1.12-%v", mods["ie"]);
+
+                AddMod("Industrial Wires", "iw", "IndustrialWires-%v", mods["ie"]);
+            }
 
             AddMod("Industrialcraft", "ic", "industrialcraft-2-%v-ex112", 0);
+            {
+                AddMod("ASP", "asp", "Advanced+Solar+Panels-%v", mods["ic"]);
+
+                AddMod("Compact Machines", "cpm", "compactmachines3-1.12.2-%v", mods["ic"]);
+            }
 
             fileTmp = new String[] {
                 "Forgelin-%v",
@@ -84,8 +151,6 @@ namespace WOT_Launcher
 
             AddMod("Matter Overdrive", "mo", "MatterOverdrive-1.12.2-%v-universal", 0);
 
-            AddMod("MFFS", "mfs", "MFFS-1.12.2-%v", 0);
-
             AddMod("Modular Powersuits", "mps", "ModularPowersuits-1.12.2-%v", 0);
 
             AddMod("Modular Routers", "mr", "modular-routers-1.12.2-%v", 0);
@@ -93,7 +158,7 @@ namespace WOT_Launcher
             AddMod("Nuclearcraft", "nc", "NuclearCraft-%v--1.12.2", 0);
 
             fileTmp = new String[] {
-                "ProjectE-1.12-%v",
+                "ProjectE-1.12.2-%v",
                 "ViewEMC-1.12.2-%v"
             };
             AddMod("ProjectE", "pe", fileTmp, 0);
@@ -119,23 +184,42 @@ namespace WOT_Launcher
                 "refinedstorageaddons-%v"
             };
             AddMod("Refined Storage", "rs", fileTmp, 0);
-
+            {
+                AddMod("Refined Exchange", "ref", "refinedexchange-%v", mods["rs"]);
+            }
+            
             AddMod("Reborn Core", "rco", "RebornCore-1.12.2-%v-universal", 0);
+            {
+                AddMod("Steve's Carts", "car", "StevesCarts-1.12.2-%v", mods["rco"]);
 
+                AddMod("TechReborn", "tr", "TechReborn-1.12.2-%v-universal", mods["rco"]);
+
+                AddMod("Reborn Storage (Req RefinedStorage)", "reb", "RebornStorage-1.12.2-%v", mods["rco"]);
+            }
+            
             AddMod("RFTools", "rft", "rftools-1.12-%v", 0);
+            {
+                AddMod("RFTools Control", "rfc", "rftoolsctrl-1.12-%v", mods["rft"]);
+
+                AddMod("RFTools Dimension", "rfd", "rftoolsdim-1.12-%v", mods["rft"]);
+
+                AddMod("RFTools Power", "rfp", "rftoolspower-1.12-%v", mods["rft"]);
+            }
 
             AddMod("Sonar Core", "sc", "sonarcore-1.12.2-%v", 0);
+            {
+                AddMod("Calculator", "cal", "calculator-1.12.2-%v", mods["sc"]);
 
-            AddMod("Universal Remote", "ur", "UniversalRemote-1.12-%v", 0);
+                AddMod("Flux Networks", "net", "fluxnetworks-1.12.2-%v", mods["sc"]);
+
+                AddMod("Practical Logistics", "plo", "practicallogistics2-1.12.2-%v", mods["sc"]);
+            }
+
+            AddMod("Wireless Utilities", "wlu", "wirelessutils-1.12.2-%v-universal", 0);
 
             AddMod("World Control", "wc", "WorldControl-1.0.18", 0);
 
-            fileTmp = new String[]
-            {
-                "xnet-1.12-%v",
-                "deepresonance-1.12-%v"
-            };
-            AddMod("XNet & DR", "xn", fileTmp, 0);
+            AddMod("XNet", "xn", "xnet-1.12-%v", 0);
 
             AddMod("Zetta Industries", "zi", "zettaindustries-%v", 0);
 
@@ -143,6 +227,13 @@ namespace WOT_Launcher
             AddMod("Custom NPCs", "npc", "CustomNPCs_1.12.2(%v)", 1);
 
             AddMod("ICBM", "icb", "ICBM-classic-1.12.2-%v", 1);
+
+            fileTmp = new String[]
+            {
+                "TrackAPI-%v_1.12",
+                "ImmersiveRailroading-%v"
+            };
+            AddMod("Immersive Railroading", "ir", fileTmp, 1);
 
             AddMod("Modern Warfare", "mw", "mw-%v_mc1.12.2", 1);
 
@@ -189,86 +280,6 @@ namespace WOT_Launcher
             AddMod("Scaling Health", "sca", fileTmp, 2);
 
             AddMod("Tick Dynamic", "td", "TickDynamic-1.12.2-%v", 2);
-
-            //Additions
-            AddMod("Mutifarm (Req Forestry)", "mtf", "MultifarmCrops-%v", mods["ag"]);
-
-            AddMod("ASP", "asp", "Advanced+Solar+Panels-%v", mods["ic"]);
-
-            AddMod("Compact Machines", "cpm", "compactmachines3-1.12.2-%v", mods["ic"]);
-
-            AddMod("AE2 Stuff", "stf", "ae2stuff-%v-mc1.12.2", mods["ae"]);
-
-            AddMod("Equivalent Energistics", "ee", "EquivalentEnergistics-1.12.2-%v", mods["ae"]);
-
-            AddMod("Extra Cells 2", "exc", "ExtraCells-1.12.2-%v", mods["ae"]);
-
-            fileTmp = new String[] {
-                "p455w0rdslib-1.12.2-%v",
-                "WirelessCraftingTerminal-1.12.2-%v",
-                "AE2WTLib-1.12.2-%v"
-            };
-            AddMod("Wireless Crafting Terminal", "wct", fileTmp, mods["ae"]);
-
-            AddMod("Additional Pipes", "api", "additionalpipes-%v", mods["bc"]);
-
-            AddMod("Iron Tanks", "irt", "irontanks-%v", mods["bc"]);
-
-            fileTmp = new String[] {
-                "MJRLegendsLib-1.12.2-%v",
-                "ExtraPlanets-1.12.2-%v"
-            };
-            AddMod("Extra Planets", "exp", fileTmp, mods["gc"]);
-
-            fileTmp = new String[] {
-                "More-Planets-1.12.2-%v",
-                "MorePlanetsExtras-1.12.2-%v"
-            };
-            AddMod("More Planets", "mop", fileTmp, mods["gc"]);
-
-            AddMod("Cyclic", "cyl", "Cyclic-1.12.2-%v", mods["ga"]);
-
-            AddMod("MFFS", "mfs", "MFFS-1.12.2-%v", mods["ga"]);
-
-            AddMod("Woot", "wot", "woot-1.12.2-", mods["ga"]);
-
-            AddMod("Immersive Cables", "imc", "ImmersiveCables-1.12.2-%v", mods["ie"]);
-
-            AddMod("Immersive Petroleum", "imp", "immersivepetroleum-1.12.2-%v", mods["ie"]);
-
-            AddMod("Immersive Tech", "imt", "immersivetech-1.12-%v", mods["ie"]);
-
-            AddMod("Industrial Wires", "iw", "IndustrialWires-%v", mods["ie"]);
-
-            AddMod("Refined Exchange", "ref", "refinedexchange-%v", mods["rs"]);
-
-            AddMod("Steve's Carts", "car", "StevesCarts-1.12.2-%v", mods["rco"]);
-
-            AddMod("TechReborn", "tr", "TechReborn-1.12.2-%v-universal", mods["rco"]);
-
-            AddMod("Reborn Storage (Req RefinedStorage)", "reb", "RebornStorage-1.12.2-%v", mods["rco"]);
-
-            AddMod("RFTools Control", "rfc", "rftoolsctrl-1.12-%v", mods["rft"]);
-
-            AddMod("RFTools Dimension", "rfd", "rftoolsdim-1.12-%v", mods["rft"]);
-
-            AddMod("RFTools Power", "rfp", "rftoolspower-1.12-%v", mods["rft"]);
-
-            AddMod("Calculator", "cal", "calculator-1.12.2-%v", mods["sc"]);
-
-            AddMod("Flux Networks", "net", "fluxnetworks-1.12.2-%v", mods["sc"]);
-
-            AddMod("Practical Logistics", "plo", "practicallogistics2-1.12.2-%v", mods["sc"]);
-
-            AddMod("Binne Mods", "bin", "binnie-mods-1.12.2-%v", mods["for"]);
-
-            fileTmp = new String[] {
-                "gendustry-%v-mc1.12.2",
-                "gendustryjei-%v"
-            };
-            AddMod("Gendustry", "gen", fileTmp, mods["for"]);
-
-            AddMod("More Bees", "mob", "morebees-1.12.2-%v", mods["for"]);
 
             return mods;
         }
