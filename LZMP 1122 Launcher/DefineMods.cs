@@ -34,12 +34,14 @@ namespace WOT_Launcher
                 AddMod("Extra Cells 2", "exc", "ExtraCells-1.12.2-%v", mods["ae"]);
 
                 fileTmp = new String[] {
-                "p455w0rdslib-1.12.2-%v",
-                "WirelessCraftingTerminal-1.12.2-%v",
-                "AE2WTLib-1.12.2-%v"
+                    "p455w0rdslib-1.12.2-%v",
+                    "WirelessCraftingTerminal-1.12.2-%v",
+                    "AE2WTLib-1.12.2-%v"
                 };
                 AddMod("Wireless Crafting Terminal", "wct", fileTmp, mods["ae"]);
             }
+
+            AddMod("Atomic Science", "atc", "Atomic-Science-1.12.2-%v", 0);
 
             AddMod("Buildcraft", "bc", "buildcraft-all-%v", 0);
             {
@@ -47,6 +49,8 @@ namespace WOT_Launcher
 
                 AddMod("Iron Tanks", "irt", "irontanks-%v", mods["bc"]);
             }
+
+            AddMod("Building Gadgets", "bg", "BuildingGadgets-%v", 0);
 
             fileTmp = new String[]
             {
@@ -74,8 +78,8 @@ namespace WOT_Launcher
                 AddMod("Binne Mods", "bin", "binnie-mods-1.12.2-%v", mods["for"]);
 
                 fileTmp = new String[] {
-                "gendustry-%v-mc1.12.2",
-                "gendustryjei-%v"
+                    "gendustry-%v-mc1.12.2",
+                    "gendustryjei-%v"
                 };
                 AddMod("Gendustry", "gen", fileTmp, mods["for"]);
 
@@ -90,14 +94,14 @@ namespace WOT_Launcher
             AddMod("Galacticraft", "gc", fileTmp, 0);
             {
                 fileTmp = new String[] {
-                "MJRLegendsLib-1.12.2-%v",
-                "ExtraPlanets-1.12.2-%v"
+                    "MJRLegendsLib-1.12.2-%v",
+                    "ExtraPlanets-1.12.2-%v"
                 };
                 AddMod("Extra Planets", "exp", fileTmp, mods["gc"]);
 
                 fileTmp = new String[] {
-                "More-Planets-1.12.2-%v",
-                "MorePlanetsExtras-1.12.2-%v"
+                    "More-Planets-1.12.2-%v",
+                    "MorePlanetsExtras-1.12.2-%v"
                 };
                 AddMod("More Planets", "mop", fileTmp, mods["gc"]);
             }
@@ -105,8 +109,6 @@ namespace WOT_Launcher
             AddMod("Guide API", "ga", "Guide-API-1.12-%v", 0);
             {
                 AddMod("Cyclic", "cyl", "Cyclic-1.12.2-%v", mods["ga"]);
-
-                AddMod("MFFS", "mfs", "MFFS-1.12.2-%v", mods["ga"]);
 
                 AddMod("Woot", "wot", "woot-1.12.2-%v", mods["ga"]);
             }
@@ -127,6 +129,8 @@ namespace WOT_Launcher
                 AddMod("ASP", "asp", "Advanced+Solar+Panels-%v", mods["ic"]);
 
                 AddMod("Compact Machines", "cpm", "compactmachines3-1.12.2-%v", mods["ic"]);
+
+                AddMod("Gravi Suite", "gsi", "Gravitation+Suite-%v", mods["ic"]);
             }
 
             fileTmp = new String[] {
@@ -136,7 +140,7 @@ namespace WOT_Launcher
                 "industrialforegoing-1.12.2-%v",
                 "IntegrationForegoing-1.12.2-%v"
             };
-            AddMod("Industrial Foregoing", "mfr", fileTmp, 0);
+            AddMod("Industrial Foregoing", "idf", fileTmp, 0);
 
             fileTmp = new String[]
             {
@@ -186,8 +190,10 @@ namespace WOT_Launcher
             AddMod("Refined Storage", "rs", fileTmp, 0);
             {
                 AddMod("Refined Exchange", "ref", "refinedexchange-%v", mods["rs"]);
+
+                AddMod("Storage Tech", "str", "StorageTech+%v", mods["rs"]);
             }
-            
+
             AddMod("Reborn Core", "rco", "RebornCore-1.12.2-%v-universal", 0);
             {
                 AddMod("Steve's Carts", "car", "StevesCarts-1.12.2-%v", mods["rco"]);
@@ -196,7 +202,7 @@ namespace WOT_Launcher
 
                 AddMod("Reborn Storage (Req RefinedStorage)", "reb", "RebornStorage-1.12.2-%v", mods["rco"]);
             }
-            
+
             AddMod("RFTools", "rft", "rftools-1.12-%v", 0);
             {
                 AddMod("RFTools Control", "rfc", "rftoolsctrl-1.12-%v", mods["rft"]);
@@ -227,13 +233,6 @@ namespace WOT_Launcher
             AddMod("Custom NPCs", "npc", "CustomNPCs_1.12.2(%v)", 1);
 
             AddMod("ICBM", "icb", "ICBM-classic-1.12.2-%v", 1);
-
-            fileTmp = new String[]
-            {
-                "TrackAPI-%v_1.12",
-                "ImmersiveRailroading-%v"
-            };
-            AddMod("Immersive Railroading", "ir", fileTmp, 1);
 
             AddMod("Modern Warfare", "mw", "mw-%v_mc1.12.2", 1);
 
@@ -279,7 +278,7 @@ namespace WOT_Launcher
             };
             AddMod("Scaling Health", "sca", fileTmp, 2);
 
-            AddMod("Tick Dynamic", "td", "TickDynamic-1.12.2-%v", 2);
+            AddMod("Tiny Mob Farm", "tmf", "TinyMobFarm-1.12.2-%v", 2);
 
             return mods;
         }
