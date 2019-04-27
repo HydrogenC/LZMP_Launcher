@@ -7,13 +7,13 @@ using System.Windows.Forms;
 
 namespace LZMP_Launcher
 {
-    public class Mod : Object
+    public class Mod
     {
         private List<String> files;
         private TreeNode node;
         private Boolean installed = true;
         private Boolean available = true;
-        private Int16 category = 0;
+        private UInt16 category = 0;
         private Mod parentMod = null;
         private String name;
 
@@ -24,7 +24,7 @@ namespace LZMP_Launcher
             this.parentMod = parentMod;
         }
 
-        public Mod(String name, List<String> files, Int16 category)
+        public Mod(String name, List<String> files, UInt16 category)
         {
             this.name = name;
             this.files = files;

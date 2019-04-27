@@ -45,8 +45,6 @@ namespace LZMP_Launcher
 
             AddMod("Buildcraft", "bc", "buildcraft-all-%v", 0);
             {
-                AddMod("Additional Pipes", "api", "additionalpipes-%v", mods["bc"]);
-
                 AddMod("Iron Tanks", "irt", "irontanks-%v", mods["bc"]);
             }
 
@@ -283,7 +281,7 @@ namespace LZMP_Launcher
             return mods;
         }
 
-        private static void AddMod(String name, String modId, String fileFormat, Int16 category)
+        private static void AddMod(String name, String modId, String fileFormat, UInt16 category)
         {
             mods[modId] = new Mod(name, new List<String>() { fileFormat }, category);
         }
@@ -293,7 +291,7 @@ namespace LZMP_Launcher
             mods[modId] = new Mod(name, new List<String>() { fileFormat }, father);
         }
 
-        private static void AddMod(String name, String modId, String[] fileFormats, Int16 category)
+        private static void AddMod(String name, String modId, String[] fileFormats, UInt16 category)
         {
             mods[modId] = new Mod(name, new List<String>(fileFormats), category);
         }

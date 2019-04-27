@@ -10,7 +10,9 @@ namespace LZMP_Launcher
 {
     public partial class MainForm : Form
     {
+        private Boolean processing = false;
         private Dictionary<String, Mod> mods = DefineMods.ReturnMods();
+        private UInt16 crtIndex = 0;
         public String resDir = Direct.GetCurrentDirectory() + "\\Resources\\";
 
         #region Drag
@@ -67,11 +69,11 @@ namespace LZMP_Launcher
                     ctr += 1;
                 }
             }
-            catch (System.IO.FileNotFoundException e)
+            catch (System.IO.FileNotFoundException)
             {
                 MessageBox.Show("Config file not found, mod names are not imported! ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 MessageBox.Show("An internal error occured, mod names are not imported! ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -101,8 +103,6 @@ namespace LZMP_Launcher
 
         private void ApplyChanges()
         {
-            Processing processing = new Processing();
-            processing.Show();
             Int16 crtIndex = 0;
             foreach (var i in mods)
             {
@@ -115,7 +115,7 @@ namespace LZMP_Launcher
                             Files.Copy(resDir + j + ".jar", GameType.Client.ModDirectory + j + ".jar");
                             Files.Copy(resDir + j + ".jar", GameType.Server.ModDirectory + j + ".jar");
                         }
-                        catch (Exception e)
+                        catch (Exception)
                         {
                             MessageBox.Show("An internal error occured while copying files. ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
@@ -130,17 +130,15 @@ namespace LZMP_Launcher
                             Files.Delete(GameType.Client.ModDirectory + j + ".jar");
                             Files.Delete(GameType.Server.ModDirectory + j + ".jar");
                         }
-                        catch (Exception e)
+                        catch (Exception)
                         {
                             MessageBox.Show("An internal error occured while deleting files. ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
                 crtIndex += 1;
-                processing.SetProgress((UInt16)Math.Floor(100.0 * (Double)crtIndex / (Double)mods.Count));
             }
             CheckIfModsExsist();
-            processing.Close();
         }
 
         private void MainTree_AfterCheck(object sender, TreeViewEventArgs e)

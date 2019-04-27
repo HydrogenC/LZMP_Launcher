@@ -55,6 +55,9 @@
   <PropertyGroup>
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>App.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -71,7 +74,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DefineMods.cs" />
-    <Compile Include="ExtendedTreeNode.cs" />
     <Compile Include="GameType.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -80,19 +82,10 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Mod.cs" />
-    <Compile Include="Processing.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Processing.Designer.cs">
-      <DependentUpon>Processing.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Processing.resx">
-      <DependentUpon>Processing.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -104,6 +97,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="App.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
