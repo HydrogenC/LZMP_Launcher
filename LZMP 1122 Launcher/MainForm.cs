@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 using Direct = System.IO.Directory;
 using Files = System.IO.File;
 
-namespace WOT_Launcher
+namespace LZMP_Launcher
 {
     public partial class MainForm : Form
     {

@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{66AC8A8E-0215-4A3A-8D9C-9A1873FC83A0}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>WOT_Launcher</RootNamespace>
-    <AssemblyName>LZMP Launcher</AssemblyName>
+    <RootNamespace>AHSDev</RootNamespace>
+    <AssemblyName>AHSDevAgent</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

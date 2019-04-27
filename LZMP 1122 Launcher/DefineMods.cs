@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WOT_Launcher
+namespace LZMP_Launcher
 {
     public class DefineMods
     {

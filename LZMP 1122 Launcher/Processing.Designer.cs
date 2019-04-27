@@ -1,4 +1,4 @@
-﻿namespace WOT_Launcher
+﻿namespace LZMP_Launcher
 {
     partial class Processing
     {

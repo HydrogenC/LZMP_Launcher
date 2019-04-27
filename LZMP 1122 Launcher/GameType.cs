@@ -8,7 +8,7 @@ using System.Diagnostics;
 using Direct = System.IO.Directory;
 using Files = System.IO.File;
 
-namespace WOT_Launcher
+namespace LZMP_Launcher
 {
     public class GameType
     {

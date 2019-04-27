@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 
-namespace WOT_Launcher
+namespace LZMP_Launcher
 {
     public partial class Processing : Form
     {
