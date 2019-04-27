@@ -45,7 +45,7 @@
             this.FileDialog = new System.Windows.Forms.OpenFileDialog();
             this.SaveDialog = new System.Windows.Forms.SaveFileDialog();
             this.PlaceHolder = new System.Windows.Forms.Label();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.MainProgressBar = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
             // SmallTitle
@@ -223,12 +223,12 @@
             this.PlaceHolder.TabIndex = 13;
             this.PlaceHolder.Text = "PH";
             // 
-            // progressBar1
+            // MainProgressBar
             // 
-            this.progressBar1.Location = new System.Drawing.Point(34, 100);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(524, 47);
-            this.progressBar1.TabIndex = 15;
+            this.MainProgressBar.Location = new System.Drawing.Point(34, 100);
+            this.MainProgressBar.Name = "MainProgressBar";
+            this.MainProgressBar.Size = new System.Drawing.Size(524, 47);
+            this.MainProgressBar.TabIndex = 15;
             // 
             // MainForm
             // 
@@ -237,7 +237,7 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(591, 874);
-            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.MainProgressBar);
             this.Controls.Add(this.LaunchServer);
             this.Controls.Add(this.PlaceHolder);
             this.Controls.Add(this.ReadSet);
@@ -278,7 +278,7 @@
         private System.Windows.Forms.SaveFileDialog SaveDialog;
         private System.Windows.Forms.Label PlaceHolder;
         private System.Windows.Forms.Button LaunchServer;
-        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ProgressBar MainProgressBar;
     }
 }
 

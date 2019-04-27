@@ -22,6 +22,14 @@ namespace LZMP_Launcher
             this.name = name;
             this.files = files;
             this.parentMod = parentMod;
+            foreach (var i in this.files)
+            {
+                available = System.IO.File.Exists(System.IO.Directory.GetCurrentDirectory() + "\\Resources\\" + i + ".jar");
+                if (!available)
+                {
+                    break;
+                }
+            }
         }
 
         public Mod(String name, List<String> files, UInt16 category)
@@ -29,17 +37,23 @@ namespace LZMP_Launcher
             this.name = name;
             this.files = files;
             this.category = category;
+            foreach (var i in this.files)
+            {
+                available = System.IO.File.Exists(MainForm.resDir + i + ".jar");
+                if (!available)
+                {
+                    break;
+                }
+            }
         }
 
         public Boolean CheckInstalled(GameType gameType)
         {
             installed = true;
-            available = true;
             foreach (var i in Files)
             {
                 installed = System.IO.File.Exists(gameType.ModDirectory + i + ".jar");
-                available = System.IO.File.Exists(System.IO.Directory.GetCurrentDirectory() + "\\Resources\\" + i + ".jar");
-                if (!available)
+                if (!installed)
                 {
                     break;
                 }

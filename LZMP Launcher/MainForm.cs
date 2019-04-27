@@ -12,8 +12,8 @@ namespace LZMP_Launcher
     {
         private Boolean processing = false;
         private Dictionary<String, Mod> mods = DefineMods.ReturnMods();
-        private UInt16 crtIndex = 0;
-        public String resDir = Direct.GetCurrentDirectory() + "\\Resources\\";
+        private Dictionary<String, Boolean> installState = new Dictionary<String, Boolean>();
+        public static String resDir = Direct.GetCurrentDirectory() + "\\Resources\\";
 
         #region Drag
         [DllImport("user32.dll")]
@@ -34,6 +34,8 @@ namespace LZMP_Launcher
         public MainForm()
         {
             InitializeComponent();
+            MainProgressBar.Visible = false;
+            BigTitle.Visible = true;
             ReadModVersions();
             WriteInNodes();
             CheckIfModsExsist();
@@ -47,7 +49,7 @@ namespace LZMP_Launcher
             {
                 String[] version = Files.ReadAllLines(Direct.GetCurrentDirectory() + "\\ModsVer.txt");
                 BigTitle.Text += version[0].Substring(4);
-                String crtKey = "";
+                String crtKey = "", fileNotFound = "";
                 Int16 ctr = 0;
                 for (Int16 i = 1; i < version.Length; i += 1)
                 {
@@ -61,12 +63,20 @@ namespace LZMP_Launcher
                         ctr = 0;
                         continue;
                     }
+                    if (!mods.ContainsKey(crtKey))
+                    {
+                        continue;
+                    }
                     mods[crtKey].Files[ctr] = mods[crtKey].Files[ctr].Replace("%v", version[i]);
                     if (!Files.Exists(resDir + mods[crtKey].Files[ctr] + ".jar"))
                     {
-                        MessageBox.Show("File not found: " + mods[crtKey].Name + "\r\n" + mods[crtKey].Files[ctr], "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        fileNotFound += mods[crtKey].Files[ctr] + "\r\n";
                     }
                     ctr += 1;
+                }
+                if (fileNotFound.Length != 0)
+                {
+                    MessageBox.Show("Files not found: \r\n" + fileNotFound, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
                 }
             }
             catch (System.IO.FileNotFoundException)
@@ -94,21 +104,23 @@ namespace LZMP_Launcher
 
         private void CheckIfModsExsist()
         {
+
             foreach (var i in mods)
             {
                 i.Value.Node.Checked = i.Value.CheckInstalled(GameType.Client) || i.Value.CheckInstalled(GameType.Server);
+                installState[i.Key] = i.Value.Node.Checked;
             }
         }
         #endregion
 
-        private void ApplyChanges()
+        private void ApplyChanges(List<Mod> applyList)
         {
             Int16 crtIndex = 0;
-            foreach (var i in mods)
+            foreach (var i in applyList)
             {
-                if (i.Value.Node.Checked && (!i.Value.Installed) && i.Value.Available)
+                if (i.Node.Checked && (!i.Installed))
                 {
-                    foreach (var j in i.Value.Files)
+                    foreach (var j in i.Files)
                     {
                         try
                         {
@@ -121,9 +133,9 @@ namespace LZMP_Launcher
                         }
                     }
                 }
-                if ((!i.Value.Node.Checked) && i.Value.Installed)
+                if ((!i.Node.Checked) && i.Installed)
                 {
-                    foreach (var j in i.Value.Files)
+                    foreach (var j in i.Files)
                     {
                         try
                         {
@@ -137,8 +149,15 @@ namespace LZMP_Launcher
                     }
                 }
                 crtIndex += 1;
+                MainProgressBar.Value = crtIndex / applyList.Count;
+                SmallTitle.Text = "Applying " + crtIndex + "/" + applyList.Count;
             }
             CheckIfModsExsist();
+        }
+
+        private void ApplyCallback(IAsyncResult asyncResult)
+        {
+            processing = false;
         }
 
         private void MainTree_AfterCheck(object sender, TreeViewEventArgs e)
@@ -206,19 +225,12 @@ namespace LZMP_Launcher
                 {
                     MainTree.Nodes[i].Checked = false;
                 }
-                for (int j = 0; j < MainTree.Nodes[i].GetNodeCount(false); j += 1)
-                {
-                    if (MainTree.Nodes[i].Nodes[j].Checked)
-                    {
-                        MainTree.Nodes[i].Nodes[j].Checked = false;
-                    }
-                }
             }
         }
 
         private void LaunchClient_Click(object sender, EventArgs e)
         {
-            ApplyChanges();
+            Apply_Click(null, null);
             String tmp = Direct.GetCurrentDirectory();
             Direct.SetCurrentDirectory(Direct.GetCurrentDirectory() + "\\Client\\");
             System.Diagnostics.Process.Start(GameType.Client.LauncherDirectory);
@@ -227,7 +239,7 @@ namespace LZMP_Launcher
 
         private void LaunchServer_Click(object sender, EventArgs e)
         {
-            ApplyChanges();
+            Apply_Click(null, null);
             String tmp = Direct.GetCurrentDirectory();
             Direct.SetCurrentDirectory(Direct.GetCurrentDirectory() + "\\Server\\");
             System.Diagnostics.Process.Start(GameType.Server.LauncherDirectory);
@@ -236,7 +248,7 @@ namespace LZMP_Launcher
 
         private void SaveSet_Click(object sender, EventArgs e)
         {
-            ApplyChanges();
+            Apply_Click(null, null);
             if (!Direct.Exists(SaveDialog.InitialDirectory))
             {
                 Direct.CreateDirectory(SaveDialog.InitialDirectory);
@@ -282,8 +294,30 @@ namespace LZMP_Launcher
 
         private void Apply_Click(object sender, EventArgs e)
         {
-            ApplyChanges();
+            BigTitle.Visible = false;
+            SmallTitle.Text = "Applying";
+            MainProgressBar.Value = 0;
+            MainProgressBar.Visible = true;
+            List<Mod> applyList = new List<Mod>();
+            foreach (var i in installState)
+            {
+                if (mods[i.Key].Node.Checked != i.Value && mods[i.Key].Available)
+                {
+                    applyList.Add(mods[i.Key]);
+                }
+            }
+            Action<List<Mod>> action = new Action<List<Mod>>(ApplyChanges);
+            action.BeginInvoke(applyList, ApplyCallback, null);
+            processing = true;
+            while (processing)
+            {
+                Application.DoEvents();
+            }
             MessageBox.Show("Applied", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            SmallTitle.Text = "ExMatics";
+            MainProgressBar.Visible = false;
+            MainProgressBar.Value = 0;
+            BigTitle.Visible = true;
         }
         #endregion
     }
