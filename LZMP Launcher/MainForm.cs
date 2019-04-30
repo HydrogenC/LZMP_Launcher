@@ -33,13 +33,20 @@ namespace LZMP_Launcher
 
         public MainForm()
         {
-            Direct.SetCurrentDirectory("D:\\BaiduNetdiskDownload\\LZMP-3.10.1\\");
             InitializeComponent();
             MainProgressBar.Visible = false;
             BigTitle.Visible = true;
+
             ReadModVersions();
             WriteInNodes();
-            CheckIfModsExsist();
+
+            foreach (var i in mods)
+            {
+                i.Value.AddNode(MainTree);
+                i.Value.CheckAvailability();
+            }
+
+            CheckExistence();
             SaveDialog.InitialDirectory = workingDir + "\\Sets\\";
         }
 
@@ -97,13 +104,9 @@ namespace LZMP_Launcher
             MainTree.Nodes.Add("Warfare Mods");
             MainTree.Nodes.Add("Enhancement Mods");
             MainTree.ExpandAll();
-            foreach (var i in mods)
-            {
-                i.Value.AddNode(MainTree);
-            }
         }
 
-        private void CheckIfModsExsist()
+        private void CheckExistence()
         {
             foreach (var i in mods)
             {
@@ -114,25 +117,12 @@ namespace LZMP_Launcher
 
         private void ApplyChanges(List<Mod> applyList)
         {
-            Int16 crtIndex = 0;
+            Int32 crtIndex = 0;
+            MainProgressBar.Step = (Int32)Math.Round(100.0 / (Double)applyList.Count);
             foreach (var i in applyList)
             {
-                if (i.Node.Checked && (!i.Installed))
-                {
-                    foreach (var j in i.Files)
-                    {
-                        try
-                        {
-                            Files.Copy(resDir + j + ".jar", GameType.Client.ModDirectory + j + ".jar");
-                            Files.Copy(resDir + j + ".jar", GameType.Server.ModDirectory + j + ".jar");
-                        }
-                        catch (Exception)
-                        {
-                            MessageBox.Show("An internal error occured while copying files. ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                }
-                if ((!i.Node.Checked) && i.Installed)
+                SmallTitle.Text = "Applying " + (crtIndex + 1) + "/" + applyList.Count;
+                if (i.Installed)
                 {
                     foreach (var j in i.Files)
                     {
@@ -147,11 +137,26 @@ namespace LZMP_Launcher
                         }
                     }
                 }
+                else
+                {
+                    foreach (var j in i.Files)
+                    {
+                        try
+                        {
+                            Files.Copy(resDir + j + ".jar", GameType.Client.ModDirectory + j + ".jar");
+                            Files.Copy(resDir + j + ".jar", GameType.Server.ModDirectory + j + ".jar");
+                        }
+                        catch (Exception)
+                        {
+                            MessageBox.Show("An internal error occured while copying files. ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                MainProgressBar.PerformStep();
                 crtIndex += 1;
-                MainProgressBar.Value = crtIndex / applyList.Count;
-                SmallTitle.Text = "Applying " + crtIndex + "/" + applyList.Count;
             }
-            CheckIfModsExsist();
+            MainProgressBar.Value = 100;
+            CheckExistence();
         }
 
         private void ApplyCallback(IAsyncResult asyncResult)
@@ -300,7 +305,7 @@ namespace LZMP_Launcher
             {
                 if (i.Value.Node.Checked != i.Value.Installed && i.Value.Available)
                 {
-                    applyList.Add(mods[i.Key]);
+                    applyList.Add(i.Value);
                 }
             }
             Action<List<Mod>> action = new Action<List<Mod>>(ApplyChanges);
