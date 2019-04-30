@@ -5,9 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 
-using Direct = System.IO.Directory;
-using Files = System.IO.File;
-
 namespace LZMP_Launcher
 {
     public class GameType
@@ -42,12 +39,12 @@ namespace LZMP_Launcher
 
         public static GameType Client
         {
-            get => new GameType("Client", Direct.GetCurrentDirectory() + "\\Client\\.minecraft\\mods\\", Direct.GetCurrentDirectory() + "\\NsisoLauncher.exe");
+            get => new GameType("Client", MainForm.workingDir + "\\Client\\.minecraft\\mods\\", MainForm.workingDir + "\\NsisoLauncher.exe");
         }
 
         public static GameType Server
         {
-            get => new GameType("Server", Direct.GetCurrentDirectory() + "\\Server\\panel\\server\\mods\\", Direct.GetCurrentDirectory() + "\\MCim.exe");
+            get => new GameType("Server", MainForm.workingDir + "\\Server\\panel\\server\\mods\\", MainForm.workingDir + "\\MCim.exe");
         }
     }
 }

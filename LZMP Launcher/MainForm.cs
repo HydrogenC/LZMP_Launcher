@@ -11,9 +11,9 @@ namespace LZMP_Launcher
     public partial class MainForm : Form
     {
         private Boolean processing = false;
-        private Dictionary<String, Mod> mods = DefineMods.ReturnMods();
-        private Dictionary<String, Boolean> installState = new Dictionary<String, Boolean>();
-        public static String resDir = Direct.GetCurrentDirectory() + "\\Resources\\";
+        private readonly Dictionary<String, Mod> mods = DefineMods.ReturnMods();
+        public static readonly String workingDir = Direct.GetCurrentDirectory();
+        public static String resDir = workingDir + "\\Resources\\";
 
         #region Drag
         [DllImport("user32.dll")]
@@ -33,13 +33,14 @@ namespace LZMP_Launcher
 
         public MainForm()
         {
+            Direct.SetCurrentDirectory("D:\\BaiduNetdiskDownload\\LZMP-3.10.1\\");
             InitializeComponent();
             MainProgressBar.Visible = false;
             BigTitle.Visible = true;
             ReadModVersions();
             WriteInNodes();
             CheckIfModsExsist();
-            SaveDialog.InitialDirectory = Direct.GetCurrentDirectory() + "\\Sets\\";
+            SaveDialog.InitialDirectory = workingDir + "\\Sets\\";
         }
 
         #region Initialize
@@ -47,7 +48,7 @@ namespace LZMP_Launcher
         {
             try
             {
-                String[] version = Files.ReadAllLines(Direct.GetCurrentDirectory() + "\\ModsVer.txt");
+                String[] version = Files.ReadAllLines(workingDir + "\\ModsVer.txt");
                 BigTitle.Text += version[0].Substring(4);
                 String crtKey = "", fileNotFound = "";
                 Int16 ctr = 0;
@@ -104,11 +105,9 @@ namespace LZMP_Launcher
 
         private void CheckIfModsExsist()
         {
-
             foreach (var i in mods)
             {
                 i.Value.Node.Checked = i.Value.CheckInstalled(GameType.Client) || i.Value.CheckInstalled(GameType.Server);
-                installState[i.Key] = i.Value.Node.Checked;
             }
         }
         #endregion
@@ -231,19 +230,17 @@ namespace LZMP_Launcher
         private void LaunchClient_Click(object sender, EventArgs e)
         {
             Apply_Click(null, null);
-            String tmp = Direct.GetCurrentDirectory();
-            Direct.SetCurrentDirectory(Direct.GetCurrentDirectory() + "\\Client\\");
+            Direct.SetCurrentDirectory(workingDir + "\\Client\\");
             System.Diagnostics.Process.Start(GameType.Client.LauncherDirectory);
-            Direct.SetCurrentDirectory(tmp);
+            Direct.SetCurrentDirectory(workingDir);
         }
 
         private void LaunchServer_Click(object sender, EventArgs e)
         {
             Apply_Click(null, null);
-            String tmp = Direct.GetCurrentDirectory();
-            Direct.SetCurrentDirectory(Direct.GetCurrentDirectory() + "\\Server\\");
+            Direct.SetCurrentDirectory(workingDir + "\\Server\\");
             System.Diagnostics.Process.Start(GameType.Server.LauncherDirectory);
-            Direct.SetCurrentDirectory(tmp);
+            Direct.SetCurrentDirectory(workingDir);
         }
 
         private void SaveSet_Click(object sender, EventArgs e)
@@ -299,9 +296,9 @@ namespace LZMP_Launcher
             MainProgressBar.Value = 0;
             MainProgressBar.Visible = true;
             List<Mod> applyList = new List<Mod>();
-            foreach (var i in installState)
+            foreach (var i in mods)
             {
-                if (mods[i.Key].Node.Checked != i.Value && mods[i.Key].Available)
+                if (i.Value.Node.Checked != i.Value.Installed && i.Value.Available)
                 {
                     applyList.Add(mods[i.Key]);
                 }

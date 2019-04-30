@@ -24,7 +24,7 @@ namespace LZMP_Launcher
             this.parentMod = parentMod;
             foreach (var i in this.files)
             {
-                available = System.IO.File.Exists(System.IO.Directory.GetCurrentDirectory() + "\\Resources\\" + i + ".jar");
+                available = System.IO.File.Exists(MainForm.resDir + "\\Resources\\" + i + ".jar");
                 if (!available)
                 {
                     break;
