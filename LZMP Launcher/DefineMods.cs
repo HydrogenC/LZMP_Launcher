@@ -16,15 +16,6 @@ namespace LZMP_Launcher
             //0
             AddMod("Actually Additions", "aa", "ActuallyAdditions-1.12.2-%v", 0);
 
-            fileTmp = new String[] {
-                "infinitylib-%v",
-                "AgriCraft-1.12.0-%v"
-            };
-            AddMod("AgriCraft", "ag", fileTmp, 0);
-            {
-                AddMod("Mutifarm (Req Forestry)", "mtf", "MultifarmCrops-%v", mods["ag"]);
-            }
-
             AddMod("Applied Energetics", "ae", "appliedenergistics2-%v", 0);
             {
                 AddMod("AE2 Stuff", "stf", "ae2stuff-%v-mc1.12.2", mods["ae"]);
@@ -157,7 +148,15 @@ namespace LZMP_Launcher
 
             AddMod("Modular Routers", "mr", "modular-routers-1.12.2-%v", 0);
 
-            AddMod("Nuclearcraft", "nc", "NuclearCraft-%v--1.12.2", 0);
+            fileTmp = new String[]
+            {
+                "Cucumber-1.12.2-%v",
+                "MysticalAgriculture-1.12.2-%v",
+                "MysticalAgradditions-1.12.2-%v"
+            };
+            AddMod("Mystical Agriculture", "ma", fileTmp, 0);
+
+            AddMod("Nuclearcraft", "nc", "NuclearCraft-%v-1.12.2", 0);
 
             fileTmp = new String[] {
                 "ProjectE-1.12.2-%v",
@@ -220,8 +219,6 @@ namespace LZMP_Launcher
             }
 
             AddMod("Wireless Utilities", "wlu", "wirelessutils-1.12.2-%v-universal", 0);
-
-            AddMod("World Control", "wc", "WorldControl-1.0.18", 0);
 
             AddMod("XNet", "xn", "xnet-1.12-%v", 0);
 

@@ -226,6 +226,7 @@
             // MainProgressBar
             // 
             this.MainProgressBar.Location = new System.Drawing.Point(34, 100);
+            this.MainProgressBar.Maximum = 2000;
             this.MainProgressBar.Name = "MainProgressBar";
             this.MainProgressBar.Size = new System.Drawing.Size(524, 47);
             this.MainProgressBar.TabIndex = 15;
