@@ -12,8 +12,6 @@ namespace LZMP_Launcher
     {
         private Boolean processing = false;
         private readonly Dictionary<String, Mod> mods = DefineMods.ReturnMods();
-        public static readonly String workingDir = Direct.GetCurrentDirectory();
-        public static String resDir = workingDir + "\\Resources\\";
 
         #region Drag
         [DllImport("user32.dll")]
@@ -47,7 +45,7 @@ namespace LZMP_Launcher
             }
 
             CheckExistence();
-            SaveDialog.InitialDirectory = workingDir + "\\Sets\\";
+            SaveDialog.InitialDirectory = GlobalResources.workingDir + "\\Sets\\";
         }
 
         #region Initialize
@@ -55,7 +53,7 @@ namespace LZMP_Launcher
         {
             try
             {
-                String[] version = Files.ReadAllLines(workingDir + "\\ModsVer.txt");
+                String[] version = Files.ReadAllLines(GlobalResources.workingDir + "\\ModsVer.txt");
                 BigTitle.Text += version[0].Substring(4);
                 String crtKey = "", fileNotFound = "";
                 Int16 ctr = 0;
@@ -76,7 +74,7 @@ namespace LZMP_Launcher
                         continue;
                     }
                     mods[crtKey].Files[ctr] = mods[crtKey].Files[ctr].Replace("%v", version[i]);
-                    if (!Files.Exists(resDir + mods[crtKey].Files[ctr] + ".jar"))
+                    if (!Files.Exists(GlobalResources.resDir + mods[crtKey].Files[ctr] + ".jar"))
                     {
                         fileNotFound += mods[crtKey].Files[ctr] + "\r\n";
                     }
@@ -110,7 +108,8 @@ namespace LZMP_Launcher
         {
             foreach (var i in mods)
             {
-                i.Value.Node.Checked = i.Value.CheckInstalled(GameType.Client) || i.Value.CheckInstalled(GameType.Server);
+                i.Value.CheckInstalled();
+                i.Value.Node.Checked = i.Value.Installed;
             }
         }
         #endregion
@@ -124,33 +123,11 @@ namespace LZMP_Launcher
                 SmallTitle.Text = "Applying " + (crtIndex + 1) + "/" + applyList.Count;
                 if (i.Installed)
                 {
-                    foreach (var j in i.Files)
-                    {
-                        try
-                        {
-                            Files.Delete(GameType.Client.ModDirectory + j + ".jar");
-                            Files.Delete(GameType.Server.ModDirectory + j + ".jar");
-                        }
-                        catch (Exception)
-                        {
-                            MessageBox.Show("An internal error occured while deleting files. ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
+                    i.Uninstall();
                 }
                 else
                 {
-                    foreach (var j in i.Files)
-                    {
-                        try
-                        {
-                            Files.Copy(resDir + j + ".jar", GameType.Client.ModDirectory + j + ".jar");
-                            Files.Copy(resDir + j + ".jar", GameType.Server.ModDirectory + j + ".jar");
-                        }
-                        catch (Exception)
-                        {
-                            MessageBox.Show("An internal error occured while copying files. ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
+                    i.Install();
                 }
                 MainProgressBar.PerformStep();
                 crtIndex += 1;
@@ -235,17 +212,17 @@ namespace LZMP_Launcher
         private void LaunchClient_Click(object sender, EventArgs e)
         {
             Apply_Click(null, null);
-            Direct.SetCurrentDirectory(workingDir + "\\Client\\");
-            System.Diagnostics.Process.Start(GameType.Client.LauncherDirectory);
-            Direct.SetCurrentDirectory(workingDir);
+            Direct.SetCurrentDirectory(GlobalResources.workingDir + "\\Client\\");
+            System.Diagnostics.Process.Start(GlobalResources.clientLauncher);
+            Direct.SetCurrentDirectory(GlobalResources.workingDir);
         }
 
         private void LaunchServer_Click(object sender, EventArgs e)
         {
             Apply_Click(null, null);
-            Direct.SetCurrentDirectory(workingDir + "\\Server\\");
-            System.Diagnostics.Process.Start(GameType.Server.LauncherDirectory);
-            Direct.SetCurrentDirectory(workingDir);
+            Direct.SetCurrentDirectory(GlobalResources.workingDir + "\\Server\\");
+            System.Diagnostics.Process.Start(GlobalResources.serverLauncher);
+            Direct.SetCurrentDirectory(GlobalResources.workingDir);
         }
 
         private void SaveSet_Click(object sender, EventArgs e)

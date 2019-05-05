@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace LZMP_Launcher
 {
@@ -31,29 +32,62 @@ namespace LZMP_Launcher
             this.category = category;
         }
 
-        public Boolean CheckInstalled(GameType gameType)
+        public void CheckInstalled()
         {
             installed = true;
             foreach (var i in Files)
             {
-                installed = System.IO.File.Exists(gameType.ModDirectory + i + ".jar");
+                installed = System.IO.File.Exists(GlobalResources.clientModDir + i + ".jar") && System.IO.File.Exists(GlobalResources.serverModDir + i + ".jar");
                 if (!installed)
                 {
                     break;
                 }
             }
-            return installed;
         }
 
         public void CheckAvailability()
         {
             available = true;
-            foreach (var i in this.files)
+            foreach (var i in files)
             {
-                available = System.IO.File.Exists(MainForm.resDir + i + ".jar");
+                available = System.IO.File.Exists(GlobalResources.resDir + i + ".jar");
                 if (!available)
                 {
                     break;
+                }
+            }
+        }
+
+        public void Install()
+        {
+            foreach (var i in files)
+            {
+                try
+                {
+                    File.Copy(GlobalResources.resDir + i + ".jar", GlobalResources.clientModDir + i + ".jar");
+                    File.Copy(GlobalResources.resDir + i + ".jar", GlobalResources.serverModDir + i + ".jar");
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("An internal error occured while copying files. ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+        }
+
+        public void Uninstall()
+        {
+            foreach (var i in files)
+            {
+                try
+                {
+                    File.Delete(GlobalResources.clientModDir + i + ".jar");
+                    File.Delete(GlobalResources.serverModDir + i + ".jar");
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("An internal error occured while deleting files. ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
             }
         }

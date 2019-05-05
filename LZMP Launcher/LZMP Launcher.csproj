@@ -74,7 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DefineMods.cs" />
-    <Compile Include="GameType.cs" />
+    <Compile Include="GlobalResources.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
