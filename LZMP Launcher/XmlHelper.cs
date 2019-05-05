@@ -16,6 +16,11 @@ namespace LZMP_Launcher
 
         public static void ReadDefinitions(String xmlFile, ref Dictionary<String, Mod> dict)
         {
+            if (!System.IO.File.Exists(xmlFile))
+            {
+                System.Windows.Forms.MessageBox.Show("Settings file not found! ", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                return;
+            }
             XmlDocument xml = new XmlDocument();
             xml.Load(xmlFile);
             GlobalResources.clientLauncher = GlobalResources.workingDir + "\\Client\\" + GetSingleElement(xml.GetElementsByTagName("client")).GetAttribute("file");

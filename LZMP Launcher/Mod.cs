@@ -10,7 +10,7 @@ namespace LZMP_Launcher
 {
     public class Mod
     {
-        private List<String> files=new List<String>();
+        private List<String> files = new List<String>();
         private TreeNode node;
         private Boolean installed = true;
         private Boolean available = true;
@@ -32,7 +32,7 @@ namespace LZMP_Launcher
             }
         }
 
-        public Mod(String name, List<String> files=null)
+        public Mod(String name, List<String> files = null)
         {
             this.name = name;
             if (files != null)

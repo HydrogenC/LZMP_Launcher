@@ -35,7 +35,7 @@ namespace LZMP_Launcher
             MainProgressBar.Visible = false;
             BigTitle.Visible = true;
 
-            XmlHelper.ReadDefinitions(@"C:\Users\Ailian Du\Source\Repos\LZMP_Launcher\LZMP Launcher\BasicSettings.xml", ref mods);
+            XmlHelper.ReadDefinitions(GlobalResources.workingDir + "\\BasicSettings.xml", ref mods);
             BigTitle.Text += GlobalResources.version;
 
             WriteInNodes();
@@ -240,7 +240,7 @@ namespace LZMP_Launcher
                 if (i.Value.Node.Checked != i.Value.Installed && i.Value.Available)
                 {
                     applyList.Add(i.Value);
-                    foreach(var j in i.Value.Addons)
+                    foreach (var j in i.Value.Addons)
                     {
                         if (j.Value.Node.Checked != j.Value.Installed && j.Value.Available)
                         {

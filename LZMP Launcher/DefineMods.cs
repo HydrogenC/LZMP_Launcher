@@ -14,68 +14,6 @@ namespace LZMP_Launcher
         static Dictionary<String, Mod> mods = new Dictionary<String, Mod>();
         public static Dictionary<String, Mod> ReturnMods()
         {
-            AddMod("Immersive Engineering", "ie", "ImmersiveEngineering-%v", 0);
-            {
-                AddMod("Immersive Cables", "imc", "ImmersiveCables-1.12.2-%v", mods["ie"]);
-
-                AddMod("Immersive Petroleum", "imp", "immersivepetroleum-1.12.2-%v", mods["ie"]);
-
-                AddMod("Immersive Tech", "imt", "immersivetech-1.12-%v", mods["ie"]);
-
-                AddMod("Industrial Wires", "iw", "IndustrialWires-%v", mods["ie"]);
-            }
-
-            AddMod("Industrialcraft", "ic", "industrialcraft-2-%v-ex112", 0);
-            {
-                AddMod("ASP", "asp", "Advanced+Solar+Panels-%v", mods["ic"]);
-
-                AddMod("Compact Machines", "cpm", "compactmachines3-1.12.2-%v", mods["ic"]);
-
-                AddMod("Gravi Suite", "gsi", "Gravitation+Suite-%v", mods["ic"]);
-            }
-
-            fileTmp = new String[] {
-                "Forgelin-%v",
-                "Tesla-1.12.2-%v",
-                "tesla-core-lib-1.12.2-%v",
-                "industrialforegoing-1.12.2-%v",
-                "IntegrationForegoing-1.12.2-%v"
-            };
-            AddMod("Industrial Foregoing", "idf", fileTmp, 0);
-
-            fileTmp = new String[]
-            {
-                "CyclopsCore-1.12.2-%v",
-                "CommonCapabilities-1.12.2-%v",
-                "IntegratedDynamics-1.12.2-%v",
-                "IntegratedTunnels-1.12.2-%v",
-                "IntegratedCrafting-1.12.2-%v",
-                "IntegratedTerminals-1.12.2-%v"
-            };
-            AddMod("Integrated Dynamics", "itd", fileTmp, 0);
-
-            AddMod("Matter Overdrive", "mo", "MatterOverdrive-1.12.2-%v-universal", 0);
-
-            AddMod("Modular Powersuits", "mps", "ModularPowersuits-1.12.2-%v", 0);
-
-            AddMod("Modular Routers", "mr", "modular-routers-1.12.2-%v", 0);
-
-            fileTmp = new String[]
-            {
-                "Cucumber-1.12.2-%v",
-                "MysticalAgriculture-1.12.2-%v",
-                "MysticalAgradditions-1.12.2-%v"
-            };
-            AddMod("Mystical Agriculture", "ma", fileTmp, 0);
-
-            AddMod("Nuclearcraft", "nc", "NuclearCraft-%v-1.12.2", 0);
-
-            fileTmp = new String[] {
-                "ProjectE-1.12.2-%v",
-                "ViewEMC-1.12.2-%v"
-            };
-            AddMod("ProjectE", "pe", fileTmp, 0);
-
             fileTmp = new String[]
             {
                 "ProjectRed-1.12.2-%v-Base",
@@ -109,7 +47,7 @@ namespace LZMP_Launcher
 
                 AddMod("TechReborn", "tr", "TechReborn-1.12.2-%v-universal", mods["rco"]);
 
-                AddMod("Reborn Storage (Req RefinedStorage)", "reb", "RebornStorage-1.12.2-%v", mods["rco"]);
+                AddMod(" (Req RefinedStorage)", "reb", "RebornStorage-1.12.2-%v", mods["rco"]);
             }
 
             AddMod("RFTools", "rft", "rftools-1.12-%v", 0);
