@@ -15,21 +15,21 @@ namespace LZMP_Launcher
         private Boolean installed = true;
         private Boolean available = true;
         private UInt16 category = 0;
-        private Mod parentMod = null;
+        private Dictionary<String, Mod> addons = new Dictionary<String, Mod>();
         private String name;
 
-        public Mod(String name, List<String> files, Mod parentMod)
+        public Mod(String name, List<String> files, Dictionary<String, Mod> addons, UInt16 category)
         {
             this.name = name;
             this.files = files;
-            this.parentMod = parentMod;
+            this.addons = addons;
+            this.category = category;
         }
 
-        public Mod(String name, List<String> files, UInt16 category)
+        public Mod(String name, List<String> files)
         {
             this.name = name;
             this.files = files;
-            this.category = category;
         }
 
         public void CheckInstalled()
@@ -92,18 +92,14 @@ namespace LZMP_Launcher
             }
         }
 
-        public void AddNode(TreeView treeView)
+        public void AddNode(TreeNodeCollection nodes)
         {
-            TreeNode treeNode = new TreeNode(name);
-            if (parentMod == null)
+            node = new TreeNode(name);
+            nodes.Add(node);
+            foreach (var i in addons)
             {
-                treeView.Nodes[category].Nodes.Add(treeNode);
+                i.Value.AddNode(node.Nodes);
             }
-            else
-            {
-                parentMod.Node.Nodes.Add(treeNode);
-            }
-            node = treeNode;
         }
 
         public TreeNode Node
@@ -112,10 +108,10 @@ namespace LZMP_Launcher
             set => node = value;
         }
 
-        public Mod ParentMod
+        public Dictionary<String, Mod> Addons
         {
-            get => parentMod;
-            set => parentMod = value;
+            get => addons;
+            set => addons = value;
         }
 
         public String Name

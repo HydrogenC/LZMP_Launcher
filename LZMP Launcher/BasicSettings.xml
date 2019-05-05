@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<settings>
+  <data id="version" value="3.11.1" />
+  <data id="client" file="NsisoLauncher.exe" />
+  <data id="server" file="MCim.exe" />
+  <list category="0">
+    <mod key="aa" name="Actually Additions" >
+      <file file="ActuallyAdditions-1.12.2-r147" />
+      <addons></addons>
+    </mod>
+    <mod key="ae" name="Applied Energetics" >
+      <file file="appliedenergistics2-rv6-stable-6" />
+      <addons>
+        <mod key="sft" name="AE2 Stuff" >
+          <file file="ae2stuff-0.7.0.4-mc1.12.2" />
+        </mod>
+        <mod key="ee" name="Equivalent Energistics" >
+          <file file="EquivalentEnergistics-1.12.2-PE_1.3.1B-AE2_RV6-0.8.3" />
+        </mod>
+        <mod key="exc" name="Extra Cells 2" >
+          <file file="ExtraCells-1.12.2-2.6.2a" />
+        </mod>
+        <mod key="wct" name="Wireless Crafting Terminal" >
+          <file file="p455w0rdslib-1.12.2-2.0.36" />
+          <file file="WirelessCraftingTerminal-1.12.2-3.11.88" />
+          <file file="AE2WTLib-1.12.2-1.0.6" />
+        </mod>
+      </addons>
+    </mod>
+  </list>
+</settings>

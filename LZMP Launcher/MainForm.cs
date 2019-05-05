@@ -36,11 +36,13 @@ namespace LZMP_Launcher
             BigTitle.Visible = true;
 
             ReadModVersions();
+            BigTitle.Text += GlobalResources.version;
+
             WriteInNodes();
 
             foreach (var i in mods)
             {
-                i.Value.AddNode(MainTree);
+                i.Value.AddNode(MainTree.Nodes);
                 i.Value.CheckAvailability();
             }
 
@@ -114,13 +116,13 @@ namespace LZMP_Launcher
         }
         #endregion
 
-        private void ApplyChanges(List<Mod> applyList)
+        private void ApplyChanges(Mod[] applyList)
         {
             Int32 crtIndex = 0;
-            MainProgressBar.Step = (Int32)Math.Round((Double)MainProgressBar.Maximum / (Double)applyList.Count);
+            MainProgressBar.Step = (Int32)Math.Round((Double)MainProgressBar.Maximum / (Double)applyList.Length);
             foreach (var i in applyList)
             {
-                SmallTitle.Text = "Applying " + (crtIndex + 1) + "/" + applyList.Count;
+                SmallTitle.Text = "Applying " + (crtIndex + 1) + "/" + applyList.Length;
                 if (i.Installed)
                 {
                     i.Uninstall();
@@ -283,16 +285,22 @@ namespace LZMP_Launcher
                 if (i.Value.Node.Checked != i.Value.Installed && i.Value.Available)
                 {
                     applyList.Add(i.Value);
+                    foreach(var j in i.Value.Addons)
+                    {
+                        if (j.Value.Node.Checked != j.Value.Installed && j.Value.Available)
+                        {
+                            applyList.Add(j.Value);
+                        }
+                    }
                 }
             }
-            Action<List<Mod>> action = new Action<List<Mod>>(ApplyChanges);
-            action.BeginInvoke(applyList, ApplyCallback, null);
+            Action<Mod[]> action = new Action<Mod[]>(ApplyChanges);
+            action.BeginInvoke(applyList.ToArray(), ApplyCallback, null);
             processing = true;
             while (processing)
             {
                 Application.DoEvents();
             }
-            MessageBox.Show("Applied", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             SmallTitle.Text = "ExMatics";
             MainProgressBar.Visible = false;
             MainProgressBar.Value = 0;

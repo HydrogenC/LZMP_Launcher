@@ -15,6 +15,6 @@ namespace LZMP_Launcher
         public static readonly String resDir = workingDir + "\\Resources\\";
         public static readonly String clientModDir = workingDir + "\\Client\\.minecraft\\mods\\";
         public static readonly String serverModDir = workingDir + "\\Server\\panel\\server\\mods\\";
-        public static String clientLauncher, serverLauncher;
+        public static String clientLauncher, serverLauncher, version;
     }
 }

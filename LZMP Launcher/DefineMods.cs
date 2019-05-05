@@ -14,23 +14,6 @@ namespace LZMP_Launcher
             String[] fileTmp;
 
             //0
-            AddMod("Actually Additions", "aa", "ActuallyAdditions-1.12.2-%v", 0);
-
-            AddMod("Applied Energetics", "ae", "appliedenergistics2-%v", 0);
-            {
-                AddMod("AE2 Stuff", "stf", "ae2stuff-%v-mc1.12.2", mods["ae"]);
-
-                AddMod("Equivalent Energistics", "ee", "EquivalentEnergistics-1.12.2-%v", mods["ae"]);
-
-                AddMod("Extra Cells 2", "exc", "ExtraCells-1.12.2-%v", mods["ae"]);
-
-                fileTmp = new String[] {
-                    "p455w0rdslib-1.12.2-%v",
-                    "WirelessCraftingTerminal-1.12.2-%v",
-                    "AE2WTLib-1.12.2-%v"
-                };
-                AddMod("Wireless Crafting Terminal", "wct", fileTmp, mods["ae"]);
-            }
 
             AddMod("Atomic Science", "atc", "Atomic-Science-1.12.2-%v", 0);
 
