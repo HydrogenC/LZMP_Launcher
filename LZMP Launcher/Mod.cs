@@ -10,7 +10,7 @@ namespace LZMP_Launcher
 {
     public class Mod
     {
-        private List<String> files;
+        private List<String> files=new List<String>();
         private TreeNode node;
         private Boolean installed = true;
         private Boolean available = true;
@@ -18,18 +18,27 @@ namespace LZMP_Launcher
         private Dictionary<String, Mod> addons = new Dictionary<String, Mod>();
         private String name;
 
-        public Mod(String name, List<String> files, Dictionary<String, Mod> addons, UInt16 category)
+        public Mod(String name, UInt16 category, List<String> files, Dictionary<String, Mod> addons)
         {
             this.name = name;
-            this.files = files;
-            this.addons = addons;
             this.category = category;
+            if (files != null)
+            {
+                this.files = files;
+            }
+            if (addons != null)
+            {
+                this.addons = addons;
+            }
         }
 
-        public Mod(String name, List<String> files)
+        public Mod(String name, List<String> files=null)
         {
             this.name = name;
-            this.files = files;
+            if (files != null)
+            {
+                this.files = files;
+            }
         }
 
         public void CheckInstalled()

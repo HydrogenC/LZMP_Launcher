@@ -11,7 +11,7 @@ namespace LZMP_Launcher
     public partial class MainForm : Form
     {
         private Boolean processing = false;
-        private readonly Dictionary<String, Mod> mods = DefineMods.ReturnMods();
+        private readonly Dictionary<String, Mod> mods = new Dictionary<String, Mod>();
 
         #region Drag
         [DllImport("user32.dll")]
@@ -35,7 +35,7 @@ namespace LZMP_Launcher
             MainProgressBar.Visible = false;
             BigTitle.Visible = true;
 
-            ReadModVersions();
+            XmlHelper.ReadDefinitions(@"C:\Users\Ailian Du\Source\Repos\LZMP_Launcher\LZMP Launcher\BasicSettings.xml", ref mods);
             BigTitle.Text += GlobalResources.version;
 
             WriteInNodes();
@@ -51,51 +51,6 @@ namespace LZMP_Launcher
         }
 
         #region Initialize
-        private void ReadModVersions()
-        {
-            try
-            {
-                String[] version = Files.ReadAllLines(GlobalResources.workingDir + "\\ModsVer.txt");
-                BigTitle.Text += version[0].Substring(4);
-                String crtKey = "", fileNotFound = "";
-                Int16 ctr = 0;
-                for (Int16 i = 1; i < version.Length; i += 1)
-                {
-                    if (version[i] == "")
-                    {
-                        continue;
-                    }
-                    if (version[i].StartsWith("Key="))
-                    {
-                        crtKey = version[i].Substring(4);
-                        ctr = 0;
-                        continue;
-                    }
-                    if (!mods.ContainsKey(crtKey))
-                    {
-                        continue;
-                    }
-                    mods[crtKey].Files[ctr] = mods[crtKey].Files[ctr].Replace("%v", version[i]);
-                    if (!Files.Exists(GlobalResources.resDir + mods[crtKey].Files[ctr] + ".jar"))
-                    {
-                        fileNotFound += mods[crtKey].Files[ctr] + "\r\n";
-                    }
-                    ctr += 1;
-                }
-                if (fileNotFound.Length != 0)
-                {
-                    MessageBox.Show("Files not found: \r\n" + fileNotFound, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
-                }
-            }
-            catch (System.IO.FileNotFoundException)
-            {
-                MessageBox.Show("Config file not found, mod names are not imported! ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("An internal error occured, mod names are not imported! ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
 
         private void WriteInNodes()
         {

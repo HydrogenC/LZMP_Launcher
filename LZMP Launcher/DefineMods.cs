@@ -6,85 +6,14 @@ using System.Threading.Tasks;
 
 namespace LZMP_Launcher
 {
+    /* This file is deprecated and its data will be move to the xml */
+    
+    /*
     public class DefineMods
     {
         static Dictionary<String, Mod> mods = new Dictionary<String, Mod>();
         public static Dictionary<String, Mod> ReturnMods()
         {
-            String[] fileTmp;
-
-            //0
-
-            AddMod("Atomic Science", "atc", "Atomic-Science-1.12.2-%v", 0);
-
-            AddMod("Buildcraft", "bc", "buildcraft-all-%v", 0);
-            {
-                AddMod("Iron Tanks", "irt", "irontanks-%v", mods["bc"]);
-            }
-
-            AddMod("Building Gadgets", "bg", "BuildingGadgets-%v", 0);
-
-            fileTmp = new String[]
-            {
-                "BrandonsCore-1.12.2-%v-universal",
-                "Draconic-Evolution-1.12.2-%v-universal"
-            };
-            AddMod("Draconic Evolution", "de", fileTmp, 0);
-
-            fileTmp = new String[] {
-                "valkyrielib-1.12.2-%v",
-                "environmentaltech-1.12.2-%v",
-                "environmentalmaterials-1.12.2-%v"
-            };
-            AddMod("Environmental Tech", "evt", fileTmp, 0);
-
-            AddMod("Extra Utilities", "exu", "extrautils2-1.12-%v", 0);
-
-            fileTmp = new String[]
-            {
-                "forestry_1.12.2-%v",
-                "jeibees-%v-mc1.12.2"
-            };
-            AddMod("Forestry", "for", fileTmp, 0);
-            {
-                AddMod("Binne Mods", "bin", "binnie-mods-1.12.2-%v", mods["for"]);
-
-                fileTmp = new String[] {
-                    "gendustry-%v-mc1.12.2",
-                    "gendustryjei-%v"
-                };
-                AddMod("Gendustry", "gen", fileTmp, mods["for"]);
-
-                AddMod("More Bees", "mob", "morebees-1.12.2-%v", mods["for"]);
-            }
-
-            fileTmp = new String[] {
-                "MicdoodleCore-1.12.2-%v",
-                "GalacticraftCore-1.12.2-%v",
-                "Galacticraft-Planets-1.12.2-%v"
-            };
-            AddMod("Galacticraft", "gc", fileTmp, 0);
-            {
-                fileTmp = new String[] {
-                    "MJRLegendsLib-1.12.2-%v",
-                    "ExtraPlanets-1.12.2-%v"
-                };
-                AddMod("Extra Planets", "exp", fileTmp, mods["gc"]);
-
-                fileTmp = new String[] {
-                    "More-Planets-1.12.2-%v",
-                    "MorePlanetsExtras-1.12.2-%v"
-                };
-                AddMod("More Planets", "mop", fileTmp, mods["gc"]);
-            }
-
-            AddMod("Guide API", "ga", "Guide-API-1.12-%v", 0);
-            {
-                AddMod("Cyclic", "cyl", "Cyclic-1.12.2-%v", mods["ga"]);
-
-                AddMod("Woot", "wot", "woot-1.12.2-%v", mods["ga"]);
-            }
-
             AddMod("Immersive Engineering", "ie", "ImmersiveEngineering-%v", 0);
             {
                 AddMod("Immersive Cables", "imc", "ImmersiveCables-1.12.2-%v", mods["ie"]);
@@ -260,25 +189,6 @@ namespace LZMP_Launcher
 
             return mods;
         }
-
-        private static void AddMod(String name, String modId, String fileFormat, UInt16 category)
-        {
-            mods[modId] = new Mod(name, new List<String>() { fileFormat }, category);
-        }
-
-        private static void AddMod(String name, String modId, String fileFormat, Mod father)
-        {
-            mods[modId] = new Mod(name, new List<String>() { fileFormat }, father);
-        }
-
-        private static void AddMod(String name, String modId, String[] fileFormats, UInt16 category)
-        {
-            mods[modId] = new Mod(name, new List<String>(fileFormats), category);
-        }
-
-        private static void AddMod(String name, String modId, String[] fileFormats, Mod father)
-        {
-            mods[modId] = new Mod(name, new List<String>(fileFormats), father);
-        }
     }
+    */
 }

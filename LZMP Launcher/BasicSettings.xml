@@ -1,31 +1,94 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings>
-  <data id="version" value="3.11.1" />
-  <data id="client" file="NsisoLauncher.exe" />
-  <data id="server" file="MCim.exe" />
-  <list category="0">
+  <version value="3.11.1" />
+  <client file="NsisoLauncher.exe" />
+  <server file="MCim.exe" />
+  <category-0>
     <mod key="aa" name="Actually Additions" >
       <file file="ActuallyAdditions-1.12.2-r147" />
-      <addons></addons>
     </mod>
+
     <mod key="ae" name="Applied Energetics" >
       <file file="appliedenergistics2-rv6-stable-6" />
-      <addons>
-        <mod key="sft" name="AE2 Stuff" >
+        <addon key="sft" name="AE2 Stuff" >
           <file file="ae2stuff-0.7.0.4-mc1.12.2" />
-        </mod>
-        <mod key="ee" name="Equivalent Energistics" >
+        </addon>
+        <addon key="ee" name="Equivalent Energistics" >
           <file file="EquivalentEnergistics-1.12.2-PE_1.3.1B-AE2_RV6-0.8.3" />
-        </mod>
-        <mod key="exc" name="Extra Cells 2" >
+        </addon>
+        <addon key="exc" name="Extra Cells 2" >
           <file file="ExtraCells-1.12.2-2.6.2a" />
-        </mod>
-        <mod key="wct" name="Wireless Crafting Terminal" >
+        </addon>
+        <addon key="wct" name="Wireless Crafting Terminal" >
           <file file="p455w0rdslib-1.12.2-2.0.36" />
           <file file="WirelessCraftingTerminal-1.12.2-3.11.88" />
           <file file="AE2WTLib-1.12.2-1.0.6" />
-        </mod>
-      </addons>
+        </addon>
     </mod>
-  </list>
+
+    <mod key="atc" name="Atomic Science" >
+      <file file="Atomic-Science-1.12.2-3.0.6b19" />
+    </mod>
+
+    <mod key="bc" name="Buildcraft" >
+      <file file="buildcraft-all-7.99.24.1" />
+        <addon key="irt" name="Iron Tanks">
+          <file file="irontanks-2.1.0-beta.5" />
+        </addon>
+    </mod>
+
+    <mod key="bg" name="Building Gadgets" >
+      <file file="BuildingGadgets-2.6.8" />
+    </mod>
+
+    <mod key="de" name="Draconic Evolution" >
+      <file file="BrandonsCore-1.12.2-2.4.10.198-universal" />
+      <file file="Draconic-Evolution-1.12.2-2.3.21.342-universal" />
+    </mod>
+
+    <mod key="evt" name="Environmental Tech" >
+      <file file="valkyrielib-1.12.2-2.0.20.1" />
+      <file file="environmentaltech-1.12.2-2.0.20.1" />
+      <file file="environmentalmaterials-1.12.2-1.0.20.1" />
+    </mod>
+
+    <mod key="exu" name="Extra Utilities" >
+      <file file="extrautils2-1.12-1.9.9" />
+    </mod>
+
+    <mod key="for" name="Forestry">
+      <file file="forestry_1.12.2-5.8.2.387" />
+      <file file="jeibees-0.9.0.5-mc1.12.2" />
+        <addon key="bin" name="Binne's Mods">
+          <file file="binnie-mods-1.12.2-2.5.1.188" />
+        </addon>
+        <addon key="gen" name="Gendustry">
+          <file file="gendustry-1.6.5.8-mc1.12.2" />
+          <file file="gendustryjei-1.0.2" />
+        </addon>
+        <addon key="mob" name="More Bees">
+          <file file="morebees-1.12.2-2.0.1" />
+        </addon>
+    </mod>
+
+    <mod key="gc" name="Galacticraft" >
+      <file file="MicdoodleCore-1.12.2-4.0.2.210" />
+      <file file="GalacticraftCore-1.12.2-4.0.2.210" />
+      <file file="Galacticraft-Planets-1.12.2-4.0.2.210" />
+        <addon key="exp" name="Extra Planets">
+          <file file="MJRLegendsLib-1.12.2-1.1.8" />
+          <file file="ExtraPlanets-1.12.2-0.5.2" />
+        </addon>
+    </mod>
+
+    <mod key="ga" name="Guide API" >
+      <file file="Guide-API-1.12-2.1.8-63" />
+      <addon key="cyl" name="Cyclic" >
+        <file file="Cyclic-1.12.2-1.19.8" />
+      </addon>
+      <addon key="wot" name="Woot" >
+        <file file="woot-1.12.2-1.4.10" />
+      </addon>
+    </mod>
+  </category-0>
 </settings>
