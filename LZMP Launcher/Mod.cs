@@ -102,10 +102,9 @@ namespace LZMP_Launcher
             }
         }
 
-        public TreeNode Node
+        public ref TreeNode Node
         {
-            get => node;
-            set => node = value;
+            get => ref node;
         }
 
         public ref Dictionary<String, Mod> Addons
@@ -128,10 +127,12 @@ namespace LZMP_Launcher
         {
             get => installed;
         }
+
         public Boolean Available
         {
             get => available;
         }
+
         public UInt16 Category {
             get => category;
             set => category = value;

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.IO;
 
 namespace LZMP_Launcher
 {
@@ -69,7 +70,18 @@ namespace LZMP_Launcher
 
         public static void WriteXmlSet(String xmlFile, ref Dictionary<String, Mod> dict)
         {
-
+            XmlDocument document = new XmlDocument();
+            document.CreateXmlDeclaration("1.0", "utf-8", null);
+            XmlElement root = document.CreateElement("settings");
+            document.AppendChild(root);
+            foreach (var i in dict)
+            {
+                XmlElement element = document.CreateElement("mod");
+                root.AppendChild(element);
+                element.SetAttribute("key", i.Key);
+                element.SetAttribute("checked", i.Value.Node.Checked.ToString());
+            }
+            document.Save(xmlFile);
         }
     }
 }
