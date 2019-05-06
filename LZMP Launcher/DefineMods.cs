@@ -14,65 +14,6 @@ namespace LZMP_Launcher
         static Dictionary<String, Mod> mods = new Dictionary<String, Mod>();
         public static Dictionary<String, Mod> ReturnMods()
         {
-            fileTmp = new String[]
-            {
-                "ProjectRed-1.12.2-%v-Base",
-                "ProjectRed-1.12.2-%v-compat",
-                "ProjectRed-1.12.2-%v-fabrication",
-                "ProjectRed-1.12.2-%v-integration",
-                "ProjectRed-1.12.2-%v-lighting",
-                "ProjectRed-1.12.2-%v-mechanical",
-                "ProjectRed-1.12.2-%v-world"
-            };
-            AddMod("ProjectRed", "prd", fileTmp, 0);
-
-            AddMod("Railcraft", "rc", "railcraft-%v", 0);
-
-            AddMod("Refined Relocation", "rel", "RefinedRelocation_1.12.2-%v", 0);
-
-            fileTmp = new String[] {
-                "refinedstorage-%v",
-                "refinedstorageaddons-%v"
-            };
-            AddMod("Refined Storage", "rs", fileTmp, 0);
-            {
-                AddMod("Refined Exchange", "ref", "refinedexchange-%v", mods["rs"]);
-
-                AddMod("Storage Tech", "str", "StorageTech+%v", mods["rs"]);
-            }
-
-            AddMod("Reborn Core", "rco", "RebornCore-1.12.2-%v-universal", 0);
-            {
-                AddMod("Steve's Carts", "car", "StevesCarts-1.12.2-%v", mods["rco"]);
-
-                AddMod("TechReborn", "tr", "TechReborn-1.12.2-%v-universal", mods["rco"]);
-
-                AddMod(" (Req RefinedStorage)", "reb", "RebornStorage-1.12.2-%v", mods["rco"]);
-            }
-
-            AddMod("RFTools", "rft", "rftools-1.12-%v", 0);
-            {
-                AddMod("RFTools Control", "rfc", "rftoolsctrl-1.12-%v", mods["rft"]);
-
-                AddMod("RFTools Dimension", "rfd", "rftoolsdim-1.12-%v", mods["rft"]);
-
-                AddMod("RFTools Power", "rfp", "rftoolspower-1.12-%v", mods["rft"]);
-            }
-
-            AddMod("Sonar Core", "sc", "sonarcore-1.12.2-%v", 0);
-            {
-                AddMod("Calculator", "cal", "calculator-1.12.2-%v", mods["sc"]);
-
-                AddMod("Flux Networks", "net", "fluxnetworks-1.12.2-%v", mods["sc"]);
-
-                AddMod("Practical Logistics", "plo", "practicallogistics2-1.12.2-%v", mods["sc"]);
-            }
-
-            AddMod("Wireless Utilities", "wlu", "wirelessutils-1.12.2-%v-universal", 0);
-
-            AddMod("XNet", "xn", "xnet-1.12-%v", 0);
-
-            AddMod("Zetta Industries", "zi", "zettaindustries-%v", 0);
 
             //1
             AddMod("Custom NPCs", "npc", "CustomNPCs_1.12.2(%v)", 1);

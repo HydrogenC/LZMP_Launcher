@@ -1,247 +1,247 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings>
   <version value="3.11.1" />
-  <client file="NsisoLauncher.exe" />
-  <server file="MCim.exe" />
+  <client value="NsisoLauncher.exe" />
+  <server value="MCim.exe" />
   <category-0>
     <mod key="aa" name="Actually Additions" >
-      <file file="ActuallyAdditions-1.12.2-r147" />
+      <file value="ActuallyAdditions-1.12.2-r147" />
     </mod>
 
     <mod key="ae" name="Applied Energetics" >
-      <file file="appliedenergistics2-rv6-stable-6" />
-        <addon key="sft" name="AE2 Stuff" >
-          <file file="ae2stuff-0.7.0.4-mc1.12.2" />
-        </addon>
-        <addon key="ee" name="Equivalent Energistics" >
-          <file file="EquivalentEnergistics-1.12.2-PE_1.3.1B-AE2_RV6-0.8.3" />
-        </addon>
-        <addon key="exc" name="Extra Cells 2" >
-          <file file="ExtraCells-1.12.2-2.6.2a" />
-        </addon>
-        <addon key="wct" name="Wireless Crafting Terminal" >
-          <file file="p455w0rdslib-1.12.2-2.0.36" />
-          <file file="WirelessCraftingTerminal-1.12.2-3.11.88" />
-          <file file="AE2WTLib-1.12.2-1.0.6" />
-        </addon>
+      <file value="appliedenergistics2-rv6-stable-6" />
+      <mod key="sft" name="AE2 Stuff" >
+        <file value="ae2stuff-0.7.0.4-mc1.12.2" />
+      </mod>
+      <mod key="ee" name="Equivalent Energistics" >
+        <file value="EquivalentEnergistics-1.12.2-PE_1.3.1B-AE2_RV6-0.8.3" />
+      </mod>
+      <mod key="exc" name="Extra Cells 2" >
+        <file value="ExtraCells-1.12.2-2.6.2a" />
+      </mod>
+      <mod key="wct" name="Wireless Crafting Terminal" >
+        <file value="p455w0rdslib-1.12.2-2.0.36" />
+        <file value="WirelessCraftingTerminal-1.12.2-3.11.88" />
+        <file value="AE2WTLib-1.12.2-1.0.6" />
+      </mod>
     </mod>
 
     <mod key="atc" name="Atomic Science" >
-      <file file="Atomic-Science-1.12.2-3.0.6b19" />
+      <file value="Atomic-Science-1.12.2-3.0.6b19" />
     </mod>
 
     <mod key="bc" name="Buildcraft" >
-      <file file="buildcraft-all-7.99.24.1" />
-        <addon key="irt" name="Iron Tanks">
-          <file file="irontanks-2.1.0-beta.5" />
-        </addon>
+      <file value="buildcraft-all-7.99.24.1" />
+      <mod key="irt" name="Iron Tanks">
+        <file value="irontanks-2.1.0-beta.5" />
+      </mod>
     </mod>
 
     <mod key="bg" name="Building Gadgets" >
-      <file file="BuildingGadgets-2.6.8" />
+      <file value="BuildingGadgets-2.6.8" />
     </mod>
 
     <mod key="de" name="Draconic Evolution" >
-      <file file="BrandonsCore-1.12.2-2.4.10.198-universal" />
-      <file file="Draconic-Evolution-1.12.2-2.3.21.342-universal" />
+      <file value="BrandonsCore-1.12.2-2.4.10.198-universal" />
+      <file value="Draconic-Evolution-1.12.2-2.3.21.342-universal" />
     </mod>
 
     <mod key="evt" name="Environmental Tech" >
-      <file file="valkyrielib-1.12.2-2.0.20.1" />
-      <file file="environmentaltech-1.12.2-2.0.20.1" />
-      <file file="environmentalmaterials-1.12.2-1.0.20.1" />
+      <file value="valkyrielib-1.12.2-2.0.20.1" />
+      <file value="environmentaltech-1.12.2-2.0.20.1" />
+      <file value="environmentalmaterials-1.12.2-1.0.20.1" />
     </mod>
 
     <mod key="exu" name="Extra Utilities" >
-      <file file="extrautils2-1.12-1.9.9" />
+      <file value="extrautils2-1.12-1.9.9" />
     </mod>
 
     <mod key="for" name="Forestry">
-      <file file="forestry_1.12.2-5.8.2.387" />
-      <file file="jeibees-0.9.0.5-mc1.12.2" />
-        <addon key="bin" name="Binne's Mods">
-          <file file="binnie-mods-1.12.2-2.5.1.188" />
-        </addon>
-        <addon key="gen" name="Gendustry">
-          <file file="gendustry-1.6.5.8-mc1.12.2" />
-          <file file="gendustryjei-1.0.2" />
-        </addon>
-        <addon key="mob" name="More Bees">
-          <file file="morebees-1.12.2-2.0.1" />
-        </addon>
+      <file value="forestry_1.12.2-5.8.2.387" />
+      <file value="jeibees-0.9.0.5-mc1.12.2" />
+      <mod key="bin" name="Binne's Mods">
+        <file value="binnie-mods-1.12.2-2.5.1.188" />
+      </mod>
+      <mod key="gen" name="Gendustry">
+        <file value="gendustry-1.6.5.8-mc1.12.2" />
+        <file value="gendustryjei-1.0.2" />
+      </mod>
+      <mod key="mob" name="More Bees">
+        <file value="morebees-1.12.2-2.0.1" />
+      </mod>
     </mod>
 
     <mod key="gc" name="Galacticraft" >
-      <file file="MicdoodleCore-1.12.2-4.0.2.210" />
-      <file file="GalacticraftCore-1.12.2-4.0.2.210" />
-      <file file="Galacticraft-Planets-1.12.2-4.0.2.210" />
-        <addon key="exp" name="Extra Planets">
-          <file file="MJRLegendsLib-1.12.2-1.1.8" />
-          <file file="ExtraPlanets-1.12.2-0.5.2" />
-        </addon>
+      <file value="MicdoodleCore-1.12.2-4.0.2.210" />
+      <file value="GalacticraftCore-1.12.2-4.0.2.210" />
+      <file value="Galacticraft-Planets-1.12.2-4.0.2.210" />
+      <mod key="exp" name="Extra Planets">
+        <file value="MJRLegendsLib-1.12.2-1.1.8" />
+        <file value="ExtraPlanets-1.12.2-0.5.2" />
+      </mod>
     </mod>
 
     <mod key="ga" name="Guide API" >
-      <file file="Guide-API-1.12-2.1.8-63" />
-      <addon key="cyl" name="Cyclic" >
-        <file file="Cyclic-1.12.2-1.19.8" />
-      </addon>
-      <addon key="wot" name="Woot" >
-        <file file="woot-1.12.2-1.4.10" />
-      </addon>
+      <file value="Guide-API-1.12-2.1.8-63" />
+      <mod key="cyl" name="Cyclic" >
+        <file value="Cyclic-1.12.2-1.19.8" />
+      </mod>
+      <mod key="wot" name="Woot" >
+        <file value="woot-1.12.2-1.4.10" />
+      </mod>
     </mod>
 
     <mod key="ie" name="Immersive Engineering" >
-      <file file="ImmersiveEngineering-0.12-89" />
-      <addon key="imc" name="Immersive Cables" >
-        <file file="ImmersiveCables-1.12.2-1.3.2" />
-      </addon>
-      <addon key="imp" name="Immersive Petroleum" >
-        <file file="immersivepetroleum-1.12.2-1.1.9" />
-      </addon>
-      <addon key="imt" name="Immersive Tech" >
-        <file file="immersivetech-1.12-1.3.10" />
-      </addon>
-      <addon key="iw" name="Industrial Wires" >
-        <file file="IndustrialWires-1.7-36" />
-      </addon>
+      <file value="ImmersiveEngineering-0.12-89" />
+      <mod key="imc" name="Immersive Cables" >
+        <file value="ImmersiveCables-1.12.2-1.3.2" />
+      </mod>
+      <mod key="imp" name="Immersive Petroleum" >
+        <file value="immersivepetroleum-1.12.2-1.1.9" />
+      </mod>
+      <mod key="imt" name="Immersive Tech" >
+        <file value="immersivetech-1.12-1.3.10" />
+      </mod>
+      <mod key="iw" name="Industrial Wires" >
+        <file value="IndustrialWires-1.7-36" />
+      </mod>
     </mod>
 
     <mod key="ic" name="IndustrialCraft" >
-      <file file="industrialcraft-2-2.8.133-ex112" />
-      <addon key="asp" name="Advanced Solar Panels" >
-        <file file="Advanced+Solar+Panels-4.3.0" />
-      </addon>
-      <addon key="cpm" name="Compact Machines" >
-        <file file="compactmachines3-1.12.2-3.0.17-b267" />
-      </addon>
-      <addon key="gsi" name="Gravi Suite" >
-        <file file="Gravitation+Suite-3.1.1" />
-      </addon>
+      <file value="industrialcraft-2-2.8.133-ex112" />
+      <mod key="asp" name="Advanced Solar Panels" >
+        <file value="Advanced+Solar+Panels-4.3.0" />
+      </mod>
+      <mod key="cpm" name="Compact Machines" >
+        <file value="compactmachines3-1.12.2-3.0.17-b267" />
+      </mod>
+      <mod key="gsi" name="Gravi Suite" >
+        <file value="Gravitation+Suite-3.1.1" />
+      </mod>
     </mod>
-    
+
     <mod key="idf" name="Industrial Foregoing" >
-      <file file="Forgelin-1.8.2" />
-      <file file="Tesla-1.12.2-1.0.63" />
-      <file file="tesla-core-lib-1.12.2-1.0.15" />
-      <file file="industrialforegoing-1.12.2-1.12.11-235" />
-      <file file="IntegrationForegoing-1.12.2-1.9" />
+      <file value="Forgelin-1.8.2" />
+      <file value="Tesla-1.12.2-1.0.63" />
+      <file value="tesla-core-lib-1.12.2-1.0.15" />
+      <file value="industrialforegoing-1.12.2-1.12.11-235" />
+      <file value="IntegrationForegoing-1.12.2-1.9" />
     </mod>
 
     <mod key="itd" name="Integrated Dynamics" >
-      <file file="CyclopsCore-1.12.2-1.2.0" />
-      <file file="CommonCapabilities-1.12.2-2.2.1" />
-      <file file="IntegratedDynamics-1.12.2-1.0.11" />
-      <file file="IntegratedTunnels-1.12.2-1.6.8" />
-      <file file="IntegratedCrafting-1.12.2-1.0.6" />
-      <file file="IntegratedTerminals-1.12.2-1.0.6" />
+      <file value="CyclopsCore-1.12.2-1.2.0" />
+      <file value="CommonCapabilities-1.12.2-2.2.1" />
+      <file value="IntegratedDynamics-1.12.2-1.0.11" />
+      <file value="IntegratedTunnels-1.12.2-1.6.8" />
+      <file value="IntegratedCrafting-1.12.2-1.0.6" />
+      <file value="IntegratedTerminals-1.12.2-1.0.6" />
     </mod>
 
     <mod key="mo" name="Matter Overdrive" >
-      <file file="MatterOverdrive-1.12.2-0.7.1.0-universal" />
+      <file value="MatterOverdrive-1.12.2-0.7.1.0-universal" />
     </mod>
 
     <mod key="mps" name="Modular Powersuits" >
-      <file file="ModularPowersuits-1.12.2-1.0.40" />
+      <file value="ModularPowersuits-1.12.2-1.0.40" />
     </mod>
 
     <mod key="mr" name="Modular Routers" >
-      <file file="modular-routers-1.12.2-3.2.1" />
+      <file value="modular-routers-1.12.2-3.2.1" />
     </mod>
 
     <mod key="ma" name="Mystical Agriculture" >
-      <file file="Cucumber-1.12.2-1.1.3" />
-      <file file="MysticalAgriculture-1.12.2-1.7.5" />
-      <file file="MysticalAgradditions-1.12.2-1.3.2" />
+      <file value="Cucumber-1.12.2-1.1.3" />
+      <file value="MysticalAgriculture-1.12.2-1.7.5" />
+      <file value="MysticalAgradditions-1.12.2-1.3.2" />
     </mod>
 
     <mod key="nc" name="NuclearCraft" >
-      <file file="NuclearCraft-2.16e-1.12.2" />
+      <file value="NuclearCraft-2.16e-1.12.2" />
     </mod>
 
     <mod key="pe" name="ProjectE" >
-      <file file="ProjectE-1.12.2-PE1.4.1" />
-      <file file="ViewEMC-1.12.2-v8" />
+      <file value="ProjectE-1.12.2-PE1.4.1" />
+      <file value="ViewEMC-1.12.2-v8" />
     </mod>
 
     <mod key="prd" name="ProjectRed" >
-      <file file="ProjectRed-1.12.2-4.9.1.92-Base" />
-      <file file="ProjectRed-1.12.2-4.9.1.92-compat" />
-      <file file="ProjectRed-1.12.2-4.9.1.92-fabrication" />
-      <file file="ProjectRed-1.12.2-4.9.1.92-integration" />
-      <file file="ProjectRed-1.12.2-4.9.1.92-lighting" />
-      <file file="ProjectRed-1.12.2-4.9.1.92-mechanical" />
-      <file file="ProjectRed-1.12.2-4.9.1.92-world" />
+      <file value="ProjectRed-1.12.2-4.9.1.92-Base" />
+      <file value="ProjectRed-1.12.2-4.9.1.92-compat" />
+      <file value="ProjectRed-1.12.2-4.9.1.92-fabrication" />
+      <file value="ProjectRed-1.12.2-4.9.1.92-integration" />
+      <file value="ProjectRed-1.12.2-4.9.1.92-lighting" />
+      <file value="ProjectRed-1.12.2-4.9.1.92-mechanical" />
+      <file value="ProjectRed-1.12.2-4.9.1.92-world" />
     </mod>
 
     <mod key="rc" name="Railcraft" >
-      <file file="railcraft-12.0.0" />
+      <file value="railcraft-12.0.0" />
     </mod>
 
     <mod key="rel" name="Refined Relocation" >
-      <file file="RefinedRelocation_1.12.2-4.2.35" />
+      <file value="RefinedRelocation_1.12.2-4.2.35" />
     </mod>
 
     <mod key="rs" name="Refined Storage" >
-      <file file="refinedstorage-1.6.14" />
-      <file file="refinedstorageaddons-0.4.4" />
-      <addon key="ref" name="Refined Exchange" >
-        <file file="refinedexchange-2.1.1" />
-      </addon>
-      <addon key="str" name="Storage Tech" >
-        <file file="StorageTech+R6.0" />
-      </addon>
+      <file value="refinedstorage-1.6.14" />
+      <file value="refinedstoragemods-0.4.4" />
+      <mod key="ref" name="Refined Exchange" >
+        <file value="refinedexchange-2.1.1" />
+      </mod>
+      <mod key="str" name="Storage Tech" >
+        <file value="StorageTech+R6.0" />
+      </mod>
     </mod>
 
     <mod key="rco" name="Reborn Core" >
-      <file file="RebornCore-1.12.2-3.13.12.447-universal" />
-      <addon key="car" name="Steve's Carts" >
-        <file file="StevesCarts-1.12.2-2.4.30.134" />
-      </addon>
-      <addon key="tr" name="Tech Reborn" >
-        <file file="TechReborn-1.12.2-2.22.1.979-universal" />
-      </addon>
-      <addon key="reb" name="Reborn Storage" >
-        <file file="RebornStorage-1.12.2-3.3.2.79" />
-      </addon>
+      <file value="RebornCore-1.12.2-3.13.12.447-universal" />
+      <mod key="car" name="Steve's Carts" >
+        <file value="StevesCarts-1.12.2-2.4.30.134" />
+      </mod>
+      <mod key="tr" name="Tech Reborn" >
+        <file value="TechReborn-1.12.2-2.22.1.979-universal" />
+      </mod>
+      <mod key="reb" name="Reborn Storage" >
+        <file value="RebornStorage-1.12.2-3.3.2.79" />
+      </mod>
     </mod>
 
     <mod key="rft" name="RFTools" >
-      <file file="rftools-1.12-7.70" />
-      <addon key="rfc" name="RFTools Control" >
-        <file file="rftoolsctrl-1.12-2.0.1" />
-      </addon>
-      <addon key="rfd" name="RFTools Dimension" >
-        <file file="rftoolsdim-1.12-5.70" />
-      </addon>
-      <addon key="rfp" name="RFTools Power" >
-        <file file="rftoolspower-1.12-1.2.0" />
-      </addon>
+      <file value="rftools-1.12-7.70" />
+      <mod key="rfc" name="RFTools Control" >
+        <file value="rftoolsctrl-1.12-2.0.1" />
+      </mod>
+      <mod key="rfd" name="RFTools Dimension" >
+        <file value="rftoolsdim-1.12-5.70" />
+      </mod>
+      <mod key="rfp" name="RFTools Power" >
+        <file value="rftoolspower-1.12-1.2.0" />
+      </mod>
     </mod>
 
     <mod key="sc" name="Sonar Core" >
-      <file file="sonarcore-1.12.2-5.0.19-20" />
-      <addon key="cal" name="Calculator" >
-        <file file="calculator-1.12.2-5.0.11-12" />
-      </addon>
-      <addon key="net" name="Flux Networks" >
-        <file file="fluxnetworks-1.12.2-3.0.19-21" />
-      </addon>
-      <addon key="plo" name="Practical Logistics" >
-        <file file="practicallogistics2-1.12.2-3.0.8-11" />
-      </addon>
+      <file value="sonarcore-1.12.2-5.0.19-20" />
+      <mod key="cal" name="Calculator" >
+        <file value="calculator-1.12.2-5.0.11-12" />
+      </mod>
+      <mod key="net" name="Flux Networks" >
+        <file value="fluxnetworks-1.12.2-3.0.19-21" />
+      </mod>
+      <mod key="plo" name="Practical Logistics" >
+        <file value="practicallogistics2-1.12.2-3.0.8-11" />
+      </mod>
     </mod>
 
     <mod key="wlu" name="Wireless Utilities" >
-      <file file="wirelessutils-1.12.2-1.6.51-universal" />
+      <file value="wirelessutils-1.12.2-1.6.51-universal" />
     </mod>
 
     <mod key="xn" name="XNet" >
-      <file file="xnet-1.12-1.8.0" />
+      <file value="xnet-1.12-1.8.0" />
     </mod>
-    
+
     <mod key="zi" name="Zetta Industries" >
-      <file file="zettaindustries-1.3-1.12.2-161" />
+      <file value="zettaindustries-1.3-1.12.2-161" />
     </mod>
   </category-0>
 </settings>

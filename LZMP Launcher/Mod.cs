@@ -18,7 +18,7 @@ namespace LZMP_Launcher
         private Dictionary<String, Mod> addons = new Dictionary<String, Mod>();
         private String name;
 
-        public Mod(String name, UInt16 category, List<String> files, Dictionary<String, Mod> addons)
+        public Mod(String name, UInt16 category = 0, List<String> files = null, Dictionary<String, Mod> addons = null)
         {
             this.name = name;
             this.category = category;
@@ -29,15 +29,6 @@ namespace LZMP_Launcher
             if (addons != null)
             {
                 this.addons = addons;
-            }
-        }
-
-        public Mod(String name, List<String> files = null)
-        {
-            this.name = name;
-            if (files != null)
-            {
-                this.files = files;
             }
         }
 
