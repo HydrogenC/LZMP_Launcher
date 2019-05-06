@@ -108,10 +108,14 @@ namespace LZMP_Launcher
             set => node = value;
         }
 
-        public Dictionary<String, Mod> Addons
+        public ref Dictionary<String, Mod> Addons
         {
-            get => addons;
-            set => addons = value;
+            get => ref addons;
+        }
+
+        public ref List<String> Files
+        {
+            get => ref files;
         }
 
         public String Name
@@ -120,17 +124,11 @@ namespace LZMP_Launcher
             set => name = value;
         }
 
-        public List<String> Files
-        {
-            get => files;
-            set => files = value;
-        }
-
         public Boolean Installed
         {
             get => installed;
         }
-        public bool Available
+        public Boolean Available
         {
             get => available;
         }

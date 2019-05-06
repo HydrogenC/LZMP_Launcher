@@ -14,7 +14,7 @@ namespace LZMP_Launcher
             return (XmlElement)list[0];
         }
 
-        private static void GetModFromElement(XmlElement xml, Dictionary<String, Mod> dict, UInt16 category = 0)
+        private static void GetModFromElement(XmlElement xml, ref Dictionary<String, Mod> dict, UInt16 category = 0)
         {
             if (xml.Name != "mod")
             {
@@ -28,7 +28,7 @@ namespace LZMP_Launcher
             }
             foreach (XmlElement i in xml.GetElementsByTagName("mod"))
             {
-                GetModFromElement(i, dict[key].Addons);
+                GetModFromElement(i, ref dict[key].Addons);
             }
         }
 
@@ -50,7 +50,7 @@ namespace LZMP_Launcher
                 XmlElement node = GetSingleElement(xml.GetElementsByTagName("category-" + ct.ToString()));
                 foreach (XmlElement i in node.ChildNodes)
                 {
-                    GetModFromElement(i, dict, ct);
+                    GetModFromElement(i, ref dict, ct);
                 }
             }
         }
