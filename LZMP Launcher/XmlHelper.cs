@@ -9,9 +9,14 @@ namespace LZMP_Launcher
 {
     class XmlHelper
     {
-        private static XmlElement GetSingleElement(XmlNodeList list)
+        private static XmlElement GetElementByTagName(ref XmlElement element, String tagName)
         {
-            return (XmlElement)list[0];
+            return (XmlElement)(element.GetElementsByTagName(tagName)[0]);
+        }
+
+        private static XmlElement GetElementByTagName(ref XmlDocument element, String tagName)
+        {
+            return (XmlElement)(element.GetElementsByTagName(tagName)[0]);
         }
 
         private static void GetModFromElement(XmlElement xml, ref Dictionary<String, Mod> dict, UInt16 category = 0)
@@ -28,6 +33,7 @@ namespace LZMP_Launcher
             }
             foreach (XmlElement i in xml.GetElementsByTagName("mod"))
             {
+                Console.WriteLine(i.ToString());
                 GetModFromElement(i, ref dict[key].Addons);
             }
         }
@@ -39,15 +45,16 @@ namespace LZMP_Launcher
                 System.Windows.Forms.MessageBox.Show("Settings file not found! ", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 return;
             }
+
             XmlDocument xml = new XmlDocument();
             xml.Load(xmlFile);
-            GlobalResources.clientLauncher = GlobalResources.workingDir + "\\Client\\" + GetSingleElement(xml.GetElementsByTagName("client")).GetAttribute("value");
-            GlobalResources.serverLauncher = GlobalResources.workingDir + "\\Server\\" + GetSingleElement(xml.GetElementsByTagName("server")).GetAttribute("value");
-            GlobalResources.version = ((XmlElement)xml.GetElementsByTagName("version")[0]).GetAttribute("value");
+            GlobalResources.clientLauncher = GlobalResources.workingDir + "\\Client\\" + GetElementByTagName(ref xml, "client").GetAttribute("value");
+            GlobalResources.serverLauncher = GlobalResources.workingDir + "\\Server\\" + GetElementByTagName(ref xml, "server").GetAttribute("value");
+            GlobalResources.version = GetElementByTagName(ref xml, "version").GetAttribute("value");
 
             for (UInt16 ct = 0; ct < 3; ct += 1)
             {
-                XmlElement node = GetSingleElement(xml.GetElementsByTagName("category-" + ct.ToString()));
+                XmlElement node = GetElementByTagName(ref xml, "category-" + ct.ToString());
                 foreach (XmlElement i in node.ChildNodes)
                 {
                     GetModFromElement(i, ref dict, ct);

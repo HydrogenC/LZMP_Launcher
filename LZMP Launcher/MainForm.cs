@@ -35,14 +35,15 @@ namespace LZMP_Launcher
             MainProgressBar.Visible = false;
             BigTitle.Visible = true;
 
-            XmlHelper.ReadDefinitions(GlobalResources.workingDir + "\\BasicSettings.xml", ref mods);
+            //XmlHelper.ReadDefinitions(GlobalResources.workingDir + "\\BasicSettings.xml", ref mods);
+            XmlHelper.ReadDefinitions(@"C:\Users\Ailian Du\source\repos\LZMP_Launcher\LZMP Launcher\BasicSettings.xml", ref mods);
             BigTitle.Text += GlobalResources.version;
 
             WriteInNodes();
 
             foreach (var i in mods)
             {
-                i.Value.AddNode(MainTree.Nodes);
+                i.Value.AddNode(MainTree.Nodes[i.Value.Category].Nodes);
                 i.Value.CheckAvailability();
             }
 

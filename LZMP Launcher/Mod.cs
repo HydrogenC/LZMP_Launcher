@@ -132,5 +132,9 @@ namespace LZMP_Launcher
         {
             get => available;
         }
+        public UInt16 Category {
+            get => category;
+            set => category = value;
+        }
     }
 }
