@@ -65,7 +65,14 @@ namespace LZMP_Launcher
 
         public static void ReadXmlSet(String xmlFile, ref Dictionary<String, Mod> dict)
         {
-
+            XmlDocument document = new XmlDocument();
+            document.Load(xmlFile);
+            XmlElement root = GetElementByTagName(ref document, "settings");
+            foreach (XmlElement i in root.ChildNodes)
+            {
+                String key = i.GetAttribute("key");
+                dict[key].Node.Checked = Boolean.Parse(i.GetAttribute("checked"));
+            }
         }
 
         public static void WriteXmlSet(String xmlFile, ref Dictionary<String, Mod> dict)

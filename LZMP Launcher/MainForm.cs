@@ -11,7 +11,7 @@ namespace LZMP_Launcher
     public partial class MainForm : Form
     {
         private Boolean processing = false;
-        private readonly Dictionary<String, Mod> mods = new Dictionary<String, Mod>();
+        private Dictionary<String, Mod> mods = new Dictionary<String, Mod>();
 
         #region Drag
         [DllImport("user32.dll")]
@@ -192,18 +192,7 @@ namespace LZMP_Launcher
             }
             if (SaveDialog.ShowDialog() == DialogResult.OK)
             {
-                using (System.IO.FileStream fileStream = new System.IO.FileStream(SaveDialog.FileName, System.IO.FileMode.Create, System.IO.FileAccess.Write, System.IO.FileShare.Read))
-                {
-                    fileStream.Lock(0, fileStream.Length);
-                    System.IO.StreamWriter streamWriter = new System.IO.StreamWriter(fileStream);
-                    foreach (var i in mods)
-                    {
-                        streamWriter.WriteLine(i.Key + "=" + i.Value.Installed);
-                    }
-                    fileStream.Unlock(0, fileStream.Length);
-                    streamWriter.Flush();
-                    streamWriter.Close();
-                }
+                XmlHelper.WriteXmlSet(SaveDialog.FileName, ref mods);
             }
         }
 
@@ -211,21 +200,7 @@ namespace LZMP_Launcher
         {
             if (FileDialog.ShowDialog() == DialogResult.OK)
             {
-                String[] temp = Files.ReadAllLines(FileDialog.FileName);
-                foreach (var i in temp)
-                {
-                    Int32 index = i.IndexOf('=');
-                    String id = i.Substring(0, index);
-                    Boolean check = Boolean.Parse(i.Substring(index + 1));
-                    if (check && (!mods[id].Node.Checked))
-                    {
-                        mods[id].Node.Checked = true;
-                    }
-                    if ((!check) && mods[id].Node.Checked)
-                    {
-                        mods[id].Node.Checked = false;
-                    }
-                }
+                XmlHelper.ReadXmlSet(FileDialog.FileName, ref mods);
             }
         }
 
