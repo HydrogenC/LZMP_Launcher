@@ -44,7 +44,6 @@
             this.LaunchServer = new System.Windows.Forms.Button();
             this.FileDialog = new System.Windows.Forms.OpenFileDialog();
             this.SaveDialog = new System.Windows.Forms.SaveFileDialog();
-            this.PlaceHolder = new System.Windows.Forms.Label();
             this.MainProgressBar = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
@@ -214,17 +213,6 @@
             // 
             this.SaveDialog.Filter = "Xml File（*.xml）|*.xml";
             // 
-            // PlaceHolder
-            // 
-            this.PlaceHolder.AutoSize = true;
-            this.PlaceHolder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.PlaceHolder.Location = new System.Drawing.Point(802, 1378);
-            this.PlaceHolder.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.PlaceHolder.Name = "PlaceHolder";
-            this.PlaceHolder.Size = new System.Drawing.Size(34, 24);
-            this.PlaceHolder.TabIndex = 13;
-            this.PlaceHolder.Text = "PH";
-            // 
             // MainProgressBar
             // 
             this.MainProgressBar.Location = new System.Drawing.Point(51, 160);
@@ -236,14 +224,12 @@
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(886, 1398);
             this.Controls.Add(this.MainProgressBar);
             this.Controls.Add(this.LaunchServer);
-            this.Controls.Add(this.PlaceHolder);
             this.Controls.Add(this.ReadSet);
             this.Controls.Add(this.SaveSet);
             this.Controls.Add(this.CancelAll);
@@ -280,7 +266,6 @@
         private System.Windows.Forms.ToolTip MainToolTip;
         private System.Windows.Forms.OpenFileDialog FileDialog;
         private System.Windows.Forms.SaveFileDialog SaveDialog;
-        private System.Windows.Forms.Label PlaceHolder;
         private System.Windows.Forms.Button LaunchServer;
         private System.Windows.Forms.ProgressBar MainProgressBar;
     }
