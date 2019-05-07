@@ -4,7 +4,6 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 
 using Direct = System.IO.Directory;
-using Files = System.IO.File;
 
 namespace LZMP_Launcher
 {
@@ -32,11 +31,11 @@ namespace LZMP_Launcher
         public MainForm()
         {
             InitializeComponent();
+            Control.CheckForIllegalCrossThreadCalls = false;
             MainProgressBar.Visible = false;
             BigTitle.Visible = true;
 
-            //XmlHelper.ReadDefinitions(GlobalResources.workingDir + "\\BasicSettings.xml", ref mods);
-            XmlHelper.ReadDefinitions(@"C:\Users\Ailian Du\source\repos\LZMP_Launcher\LZMP Launcher\BasicSettings.xml", ref mods);
+            XmlHelper.ReadDefinitions(GlobalResources.workingDir + "\\BasicSettings.xml", ref mods);
             BigTitle.Text += GlobalResources.version;
 
             WriteInNodes();
