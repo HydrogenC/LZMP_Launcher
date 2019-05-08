@@ -50,7 +50,7 @@ namespace LZMP_Launcher
             available = true;
             foreach (var i in files)
             {
-                available = System.IO.File.Exists(GlobalResources.resDir + i + ".jar");
+                available = System.IO.File.Exists(GlobalResources.resourceDir + i + ".jar");
                 if (!available)
                 {
                     break;
@@ -64,8 +64,8 @@ namespace LZMP_Launcher
             {
                 try
                 {
-                    File.Copy(GlobalResources.resDir + i + ".jar", GlobalResources.clientModDir + i + ".jar");
-                    File.Copy(GlobalResources.resDir + i + ".jar", GlobalResources.serverModDir + i + ".jar");
+                    File.Copy(GlobalResources.resourceDir + i + ".jar", GlobalResources.clientModDir + i + ".jar");
+                    File.Copy(GlobalResources.resourceDir + i + ".jar", GlobalResources.serverModDir + i + ".jar");
                 }
                 catch (Exception)
                 {

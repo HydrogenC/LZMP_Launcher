@@ -11,7 +11,7 @@ namespace LZMP_Launcher
     {
         public static void CleanUp(ref Dictionary<String, Mod> dict)
         {
-            String[] files = Directory.GetFiles(Directory.GetCurrentDirectory());
+            String[] files = Directory.GetFiles(GlobalResources.resourceDir);
             foreach (var i in files)
             {
                 Boolean used = false;
@@ -23,6 +23,7 @@ namespace LZMP_Launcher
                         break;
                     }
                 }
+
                 if (!used)
                 {
                     File.Delete(i);
