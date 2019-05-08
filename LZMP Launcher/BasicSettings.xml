@@ -288,6 +288,10 @@
       <file value="furniture-6.2.0-1.12.2" />
     </mod>
 
+    <mod key="hot" name="Horse Tweaker" >
+      <file value="HorseTweaks_1.12.2-1.0.5" />
+    </mod>
+      
     <mod key="ob" name="OpenBlocks" >
       <file value="OpenModsLib-1.12.2-0.12.2" />
       <file value="OpenBlocks-1.12.2-1.8.1" />
