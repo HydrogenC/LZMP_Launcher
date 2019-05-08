@@ -26,7 +26,14 @@ namespace LZMP_Launcher
 
                 if (!used)
                 {
-                    File.Delete(i);
+                    try
+                    {
+                        File.Delete(i);
+                    }
+                    catch (Exception)
+                    {
+
+                    }
                 }
             }
         }

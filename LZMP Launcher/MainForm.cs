@@ -31,6 +31,7 @@ namespace LZMP_Launcher
         public MainForm()
         {
             InitializeComponent();
+
             Control.CheckForIllegalCrossThreadCalls = false;
             MainProgressBar.Visible = false;
             BigTitle.Visible = true;

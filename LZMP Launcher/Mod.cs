@@ -53,6 +53,7 @@ namespace LZMP_Launcher
                 available = System.IO.File.Exists(GlobalResources.resourceDir + i + ".jar");
                 if (!available)
                 {
+                    MessageBox.Show("File not found: \n" + i, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     break;
                 }
             }
@@ -133,7 +134,8 @@ namespace LZMP_Launcher
             get => available;
         }
 
-        public UInt16 Category {
+        public UInt16 Category
+        {
             get => category;
             set => category = value;
         }
