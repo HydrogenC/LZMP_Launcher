@@ -84,7 +84,7 @@
     <mod key="ga" name="Guide API" >
       <file value="Guide-API-1.12-2.1.8-63" />
       <mod key="cyl" name="Cyclic" >
-        <file value="Cyclic-1.12.2-1.19.8" />
+        <file value="Cyclic-1.12.2-1.19.9" />
       </mod>
       <mod key="wot" name="Woot" >
         <file value="woot-1.12.2-1.4.10" />
@@ -275,7 +275,7 @@
 
     <mod key="fq" name="FTB Quests" >
       <file value="ItemFilters-1.0.3.12" />
-      <file value="FTBQuests-1.5.2.150" />
+      <file value="FTBQuests-1.5.2.151" />
     </mod>
 
     <mod key="mdb" name="Malisis Doors / Blocks" >

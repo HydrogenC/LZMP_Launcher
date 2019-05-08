@@ -32,7 +32,7 @@ namespace LZMP_Launcher
                     }
                     catch (Exception)
                     {
-
+                        System.Windows.Forms.MessageBox.Show("An error occured while cleaning! ", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error); ;
                     }
                 }
             }
