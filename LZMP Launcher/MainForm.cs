@@ -38,6 +38,7 @@ namespace LZMP_Launcher
             XmlHelper.ReadDefinitions(GlobalResources.workingDir + "\\BasicSettings.xml", ref mods);
             BigTitle.Text += GlobalResources.version;
 
+            Cleaner.CleanUp(ref mods);
             WriteInNodes();
 
             foreach (var i in mods)
