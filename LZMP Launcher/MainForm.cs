@@ -9,7 +9,6 @@ namespace LZMP_Launcher
     public partial class MainForm : Form
     {
         private Boolean processing = false;
-        private Dictionary<String, Mod> mods = new Dictionary<String, Mod>();
 
         #region Drag
         [DllImport("user32.dll")]
@@ -35,11 +34,11 @@ namespace LZMP_Launcher
             MainProgressBar.Visible = false;
             BigTitle.Visible = true;
 
-            XmlHelper.ReadDefinitions(GlobalResources.workingDir + "\\BasicSettings.xml", ref mods);
-            BigTitle.Text += GlobalResources.version;
+            XmlHelper.ReadDefinitions(Shared.workingDir + "\\BasicSettings.xml");
+            BigTitle.Text += Shared.version;
             WriteInNodes();
 
-            foreach (var i in mods)
+            foreach (var i in Shared.mods)
             {
                 switch (i.Value.Category)
                 {
@@ -59,7 +58,7 @@ namespace LZMP_Launcher
             }
 
             CheckInstallation();
-            SaveDialog.InitialDirectory = GlobalResources.workingDir + "\\Sets\\";
+            SaveDialog.InitialDirectory = Shared.workingDir + "\\Sets\\";
         }
 
         #region Initialize
@@ -75,7 +74,7 @@ namespace LZMP_Launcher
 
         private void CheckInstallation()
         {
-            foreach (var i in mods)
+            foreach (var i in Shared.mods)
             {
                 i.Value.CheckInstalled();
                 i.Value.Node.Checked = i.Value.Installed;
@@ -181,17 +180,17 @@ namespace LZMP_Launcher
         private void LaunchClient_Click(object sender, EventArgs e)
         {
             Apply_Click(null, null);
-            Direct.SetCurrentDirectory(GlobalResources.workingDir + "\\Client\\");
-            System.Diagnostics.Process.Start(GlobalResources.clientLauncher);
-            Direct.SetCurrentDirectory(GlobalResources.workingDir);
+            Direct.SetCurrentDirectory(Shared.workingDir + "\\Client\\");
+            System.Diagnostics.Process.Start(Shared.clientLauncher);
+            Direct.SetCurrentDirectory(Shared.workingDir);
         }
 
         private void LaunchServer_Click(object sender, EventArgs e)
         {
             Apply_Click(null, null);
-            Direct.SetCurrentDirectory(GlobalResources.workingDir + "\\Server\\");
-            System.Diagnostics.Process.Start(GlobalResources.serverLauncher);
-            Direct.SetCurrentDirectory(GlobalResources.workingDir);
+            Direct.SetCurrentDirectory(Shared.workingDir + "\\Server\\");
+            System.Diagnostics.Process.Start(Shared.serverLauncher);
+            Direct.SetCurrentDirectory(Shared.workingDir);
         }
 
         private void SaveSet_Click(object sender, EventArgs e)
@@ -203,7 +202,7 @@ namespace LZMP_Launcher
             }
             if (SaveDialog.ShowDialog() == DialogResult.OK)
             {
-                XmlHelper.WriteXmlSet(SaveDialog.FileName, ref mods);
+                XmlHelper.WriteXmlSet(SaveDialog.FileName);
             }
         }
 
@@ -211,7 +210,7 @@ namespace LZMP_Launcher
         {
             if (FileDialog.ShowDialog() == DialogResult.OK)
             {
-                XmlHelper.ReadXmlSet(FileDialog.FileName, ref mods);
+                XmlHelper.ReadXmlSet(FileDialog.FileName);
             }
         }
 
@@ -222,7 +221,7 @@ namespace LZMP_Launcher
             MainProgressBar.Value = 0;
             MainProgressBar.Visible = true;
             List<Mod> applyList = new List<Mod>();
-            foreach (var i in mods)
+            foreach (var i in Shared.mods)
             {
                 if (i.Value.Node.Checked != i.Value.Installed && i.Value.Available)
                 {
@@ -250,11 +249,11 @@ namespace LZMP_Launcher
         }
         #endregion
 
-        private void UpdateButton_Click(object sender, EventArgs e)
+        private void CleanUpButton_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("This is a internal function only for modpack developers. This button is used for updating the XML file. Put the content for update in 'Update' folder, then load the XML file. Are you sure to continue? ", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("Clean up: This button would delete all unused files in the 'Resources' path. Are you sure to continue? ", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-
+                Cleaner.CleanUp();
             }
         }
     }

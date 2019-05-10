@@ -1,12 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings>
-  <version value="3.12.0" />
+  <version value="3.12.1" />
   <client value="NsisoLauncher.exe" />
   <server value="MCim.exe" />
-
-  <category name="BuiltIn" >
-    
-  </category>
   
   <category name="Technology" >
     <mod key="aa" name="Actually Additions" >

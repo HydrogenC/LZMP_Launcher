@@ -41,12 +41,12 @@
             this.SaveSet = new System.Windows.Forms.Button();
             this.MainToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.LaunchServer = new System.Windows.Forms.Button();
+            this.ExitForm = new System.Windows.Forms.Button();
+            this.CleanUpButton = new System.Windows.Forms.Button();
             this.FileDialog = new System.Windows.Forms.OpenFileDialog();
             this.SaveDialog = new System.Windows.Forms.SaveFileDialog();
             this.PlaceHolder = new System.Windows.Forms.Label();
             this.MainProgressBar = new System.Windows.Forms.ProgressBar();
-            this.UpdateButton = new System.Windows.Forms.Button();
-            this.ExitForm = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // SmallTitle
@@ -191,6 +191,37 @@
             this.LaunchServer.UseVisualStyleBackColor = true;
             this.LaunchServer.Click += new System.EventHandler(this.LaunchServer_Click);
             // 
+            // ExitForm
+            // 
+            this.ExitForm.FlatAppearance.BorderSize = 0;
+            this.ExitForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ExitForm.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExitForm.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ExitForm.Location = new System.Drawing.Point(765, 35);
+            this.ExitForm.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.ExitForm.Name = "ExitForm";
+            this.ExitForm.Size = new System.Drawing.Size(70, 86);
+            this.ExitForm.TabIndex = 7;
+            this.ExitForm.Text = "X";
+            this.MainToolTip.SetToolTip(this.ExitForm, "Closing the form won\'t apply the sets. ");
+            this.ExitForm.UseVisualStyleBackColor = true;
+            this.ExitForm.Click += new System.EventHandler(this.ExitForm_Click);
+            // 
+            // CleanUpButton
+            // 
+            this.CleanUpButton.FlatAppearance.BorderSize = 0;
+            this.CleanUpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CleanUpButton.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CleanUpButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.CleanUpButton.Location = new System.Drawing.Point(687, 35);
+            this.CleanUpButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.CleanUpButton.Name = "CleanUpButton";
+            this.CleanUpButton.Size = new System.Drawing.Size(70, 86);
+            this.CleanUpButton.TabIndex = 16;
+            this.CleanUpButton.Text = "C";
+            this.CleanUpButton.UseVisualStyleBackColor = true;
+            this.CleanUpButton.Click += new System.EventHandler(this.CleanUpButton_Click);
+            // 
             // FileDialog
             // 
             this.FileDialog.Filter = "Xml File（*.xml）|*.xml";
@@ -219,38 +250,6 @@
             this.MainProgressBar.Size = new System.Drawing.Size(786, 75);
             this.MainProgressBar.TabIndex = 15;
             // 
-            // UpdateButton
-            // 
-            this.UpdateButton.FlatAppearance.BorderSize = 0;
-            this.UpdateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.UpdateButton.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UpdateButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.UpdateButton.Location = new System.Drawing.Point(687, 35);
-            this.UpdateButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.UpdateButton.Name = "UpdateButton";
-            this.UpdateButton.Size = new System.Drawing.Size(70, 86);
-            this.UpdateButton.TabIndex = 16;
-            this.UpdateButton.Text = "U";
-            this.MainToolTip.SetToolTip(this.UpdateButton, "Closing the form won\'t apply the sets. ");
-            this.UpdateButton.UseVisualStyleBackColor = true;
-            this.UpdateButton.Click += new System.EventHandler(this.UpdateButton_Click);
-            // 
-            // ExitForm
-            // 
-            this.ExitForm.FlatAppearance.BorderSize = 0;
-            this.ExitForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ExitForm.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ExitForm.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ExitForm.Location = new System.Drawing.Point(765, 35);
-            this.ExitForm.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.ExitForm.Name = "ExitForm";
-            this.ExitForm.Size = new System.Drawing.Size(70, 86);
-            this.ExitForm.TabIndex = 7;
-            this.ExitForm.Text = "X";
-            this.MainToolTip.SetToolTip(this.ExitForm, "Closing the form won\'t apply the sets. ");
-            this.ExitForm.UseVisualStyleBackColor = true;
-            this.ExitForm.Click += new System.EventHandler(this.ExitForm_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
@@ -258,7 +257,7 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(886, 1398);
-            this.Controls.Add(this.UpdateButton);
+            this.Controls.Add(this.CleanUpButton);
             this.Controls.Add(this.MainProgressBar);
             this.Controls.Add(this.LaunchServer);
             this.Controls.Add(this.PlaceHolder);
@@ -300,7 +299,7 @@
         private System.Windows.Forms.Label PlaceHolder;
         private System.Windows.Forms.Button LaunchServer;
         private System.Windows.Forms.ProgressBar MainProgressBar;
-        private System.Windows.Forms.Button UpdateButton;
+        private System.Windows.Forms.Button CleanUpButton;
         private System.Windows.Forms.Button ExitForm;
     }
 }

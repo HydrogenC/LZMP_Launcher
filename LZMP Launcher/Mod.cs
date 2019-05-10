@@ -9,7 +9,7 @@ namespace LZMP_Launcher
     {
         private List<String> files = new List<String>();
         private TreeNode node;
-        private Boolean installed, available, coreMod;
+        private Boolean installed, available;
         private ModCategory category;
         private Dictionary<String, Mod> addons = new Dictionary<String, Mod>();
         private String name;
@@ -17,24 +17,6 @@ namespace LZMP_Launcher
         public Mod(String name, ModCategory category = ModCategory.Addon, List<String> files = null, Dictionary<String, Mod> addons = null)
         {
             this.name = name;
-            this.coreMod = false;
-            this.category = category;
-
-            if (files != null)
-            {
-                this.files = files;
-            }
-
-            if (addons != null)
-            {
-                this.addons = addons;
-            }
-        }
-
-        public Mod(String name, Boolean coreMod, ModCategory category, List<String> files = null, Dictionary<String, Mod> addons = null)
-        {
-            this.name = name;
-            this.coreMod = coreMod;
             this.category = category;
 
             if (files != null)
@@ -52,14 +34,9 @@ namespace LZMP_Launcher
         {
             installed = true;
 
-            if (category == ModCategory.BuiltIn)
-            {
-                return;
-            }
-
             foreach (var i in Files)
             {
-                installed = System.IO.File.Exists(GlobalResources.clientModDir + i + ".jar") && System.IO.File.Exists(GlobalResources.serverModDir + i + ".jar");
+                installed = File.Exists(Shared.clientModDir + i + ".jar") && System.IO.File.Exists(Shared.serverModDir + i + ".jar");
                 if (!installed)
                 {
                     break;
@@ -71,14 +48,9 @@ namespace LZMP_Launcher
         {
             available = true;
 
-            if (category == ModCategory.BuiltIn)
-            {
-                return;
-            }
-
             foreach (var i in files)
             {
-                available = System.IO.File.Exists(GlobalResources.resourceDir + i + ".jar");
+                available = File.Exists(Shared.resourceDir + i + ".jar");
                 if (!available)
                 {
                     MessageBox.Show("File not found: \n" + i, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -89,15 +61,12 @@ namespace LZMP_Launcher
 
         public void Install()
         {
-            String client, server;
-            (client, server) = GetInstallDir();
-
             foreach (var i in files)
             {
                 try
                 {
-                    File.Copy(GlobalResources.resourceDir + i + ".jar", client + i + ".jar");
-                    File.Copy(GlobalResources.resourceDir + i + ".jar", server + i + ".jar");
+                    File.Copy(Shared.resourceDir + i + ".jar", Shared.clientModDir + i + ".jar");
+                    File.Copy(Shared.resourceDir + i + ".jar", Shared.serverModDir + i + ".jar");
                 }
                 catch (Exception)
                 {
@@ -109,15 +78,12 @@ namespace LZMP_Launcher
 
         public void Uninstall()
         {
-            String client, server;
-            (client, server) = GetInstallDir();
-
             foreach (var i in files)
             {
                 try
                 {
-                    File.Delete(client + i + ".jar");
-                    File.Delete(server + i + ".jar");
+                    File.Delete(Shared.clientModDir + i + ".jar");
+                    File.Delete(Shared.serverModDir + i + ".jar");
                 }
                 catch (Exception)
                 {
@@ -135,24 +101,6 @@ namespace LZMP_Launcher
             {
                 i.Value.AddNode(node.Nodes);
             }
-        }
-
-        private (String, String) GetInstallDir()
-        {
-            String client, server;
-
-            if (coreMod)
-            {
-                client = GlobalResources.clientCoreModDir;
-                server = GlobalResources.serverCoreModDir;
-            }
-            else
-            {
-                client = GlobalResources.clientModDir;
-                server = GlobalResources.serverModDir;
-            }
-
-            return (client, server);
         }
 
         public ref TreeNode Node
@@ -190,12 +138,6 @@ namespace LZMP_Launcher
         {
             get => category;
             set => category = value;
-        }
-
-        public Boolean CoreMod
-        {
-            get => coreMod;
-            set => coreMod = value;
         }
     }
 }

@@ -73,7 +73,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cleaner.cs" />
     <Compile Include="GlobalResources.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>

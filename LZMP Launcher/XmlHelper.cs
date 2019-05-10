@@ -35,7 +35,7 @@ namespace LZMP_Launcher
             }
         }
 
-        public static void ReadDefinitions(String xmlFile, ref Dictionary<String, Mod> dict)
+        public static void ReadDefinitions(String xmlFile)
         {
             if (!System.IO.File.Exists(xmlFile))
             {
@@ -45,18 +45,15 @@ namespace LZMP_Launcher
 
             XmlDocument xml = new XmlDocument();
             xml.Load(xmlFile);
-            GlobalResources.clientLauncher = GlobalResources.workingDir + "\\Client\\" + GetElementByTagName(ref xml, "client").GetAttribute("value");
-            GlobalResources.serverLauncher = GlobalResources.workingDir + "\\Server\\" + GetElementByTagName(ref xml, "server").GetAttribute("value");
-            GlobalResources.version = GetElementByTagName(ref xml, "version").GetAttribute("value");
+            Shared.clientLauncher = Shared.workingDir + "\\Client\\" + GetElementByTagName(ref xml, "client").GetAttribute("value");
+            Shared.serverLauncher = Shared.workingDir + "\\Server\\" + GetElementByTagName(ref xml, "server").GetAttribute("value");
+            Shared.version = GetElementByTagName(ref xml, "version").GetAttribute("value");
 
             foreach (XmlElement element in xml.GetElementsByTagName("category"))
             {
                 ModCategory currentCategory;
                 switch (element.GetAttribute("name"))
                 {
-                    case "BuiltIn":
-                        currentCategory = ModCategory.BuiltIn;
-                        break;
                     case "Technology":
                         currentCategory = ModCategory.Technology;
                         break;
@@ -72,12 +69,12 @@ namespace LZMP_Launcher
                 }
                 foreach (XmlElement i in element.ChildNodes)
                 {
-                    GetModFromElement(i, ref dict, currentCategory);
+                    GetModFromElement(i, ref Shared.mods, currentCategory);
                 }
             }
         }
 
-        public static void ReadXmlSet(String xmlFile, ref Dictionary<String, Mod> dict)
+        public static void ReadXmlSet(String xmlFile)
         {
             XmlDocument document = new XmlDocument();
             document.Load(xmlFile);
@@ -85,17 +82,17 @@ namespace LZMP_Launcher
             foreach (XmlElement i in root.ChildNodes)
             {
                 String key = i.GetAttribute("key");
-                dict[key].Node.Checked = Boolean.Parse(i.GetAttribute("checked"));
+                Shared.mods[key].Node.Checked = Boolean.Parse(i.GetAttribute("checked"));
             }
         }
 
-        public static void WriteXmlSet(String xmlFile, ref Dictionary<String, Mod> dict)
+        public static void WriteXmlSet(String xmlFile)
         {
             XmlDocument document = new XmlDocument();
             document.CreateXmlDeclaration("1.0", "utf-8", null);
             XmlElement root = document.CreateElement("settings");
             document.AppendChild(root);
-            foreach (var i in dict)
+            foreach (var i in Shared.mods)
             {
                 XmlElement element = document.CreateElement("mod");
                 root.AppendChild(element);
