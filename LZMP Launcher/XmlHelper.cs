@@ -16,7 +16,7 @@ namespace LZMP_Launcher
             return (XmlElement)(element.GetElementsByTagName(tagName)[0]);
         }
 
-        private static void GetModFromElement(XmlElement xml, ref Dictionary<String, Mod> dict, UInt16 category = 0)
+        private static void GetModFromElement(XmlElement xml, ref Dictionary<String, Mod> dict, ModCategory category = ModCategory.Addon)
         {
             if (xml.Name != "mod")
             {
@@ -49,12 +49,30 @@ namespace LZMP_Launcher
             GlobalResources.serverLauncher = GlobalResources.workingDir + "\\Server\\" + GetElementByTagName(ref xml, "server").GetAttribute("value");
             GlobalResources.version = GetElementByTagName(ref xml, "version").GetAttribute("value");
 
-            for (UInt16 ct = 0; ct < 3; ct += 1)
+            foreach (XmlElement element in xml.GetElementsByTagName("category"))
             {
-                XmlElement node = GetElementByTagName(ref xml, "category-" + ct.ToString());
-                foreach (XmlElement i in node.ChildNodes)
+                ModCategory currentCategory;
+                switch (element.GetAttribute("name"))
                 {
-                    GetModFromElement(i, ref dict, ct);
+                    case "BuiltIn":
+                        currentCategory = ModCategory.BuiltIn;
+                        break;
+                    case "Technology":
+                        currentCategory = ModCategory.Technology;
+                        break;
+                    case "Warfare":
+                        currentCategory = ModCategory.Warfare;
+                        break;
+                    case "Enhancement":
+                        currentCategory = ModCategory.Enhancement;
+                        break;
+                    default:
+                        currentCategory = ModCategory.Addon;
+                        break;
+                }
+                foreach (XmlElement i in element.ChildNodes)
+                {
+                    GetModFromElement(i, ref dict, currentCategory);
                 }
             }
         }

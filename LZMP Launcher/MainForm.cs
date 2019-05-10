@@ -41,11 +41,24 @@ namespace LZMP_Launcher
 
             foreach (var i in mods)
             {
-                i.Value.AddNode(MainTree.Nodes[i.Value.Category].Nodes);
+                switch (i.Value.Category)
+                {
+                    case ModCategory.Technology:
+                        i.Value.AddNode(MainTree.Nodes[0].Nodes);
+                        break;
+                    case ModCategory.Warfare:
+                        i.Value.AddNode(MainTree.Nodes[1].Nodes);
+                        break;
+                    case ModCategory.Enhancement:
+                        i.Value.AddNode(MainTree.Nodes[2].Nodes);
+                        break;
+                    default:
+                        break;
+                }
                 i.Value.CheckAvailability();
             }
 
-            CheckExistence();
+            CheckInstallation();
             SaveDialog.InitialDirectory = GlobalResources.workingDir + "\\Sets\\";
         }
 
@@ -60,7 +73,7 @@ namespace LZMP_Launcher
             MainTree.ExpandAll();
         }
 
-        private void CheckExistence()
+        private void CheckInstallation()
         {
             foreach (var i in mods)
             {
@@ -89,7 +102,7 @@ namespace LZMP_Launcher
                 crtIndex += 1;
             }
             MainProgressBar.Value = MainProgressBar.Maximum;
-            CheckExistence();
+            CheckInstallation();
         }
 
         private void ApplyCallback(IAsyncResult asyncResult)

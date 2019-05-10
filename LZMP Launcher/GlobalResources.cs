@@ -14,4 +14,13 @@ namespace LZMP_Launcher
         public static readonly String serverCoreModDir = workingDir + "\\Server\\panel\\server\\mods\\1.12.2\\";
         public static String clientLauncher, serverLauncher, version;
     }
+
+    public enum ModCategory
+    {
+        BuiltIn,
+        Addon,
+        Technology,
+        Warfare,
+        Enhancement
+    }
 }

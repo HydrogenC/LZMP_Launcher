@@ -3,7 +3,12 @@
   <version value="3.12.0" />
   <client value="NsisoLauncher.exe" />
   <server value="MCim.exe" />
-  <category-0>
+
+  <category name="BuiltIn" >
+    
+  </category>
+  
+  <category name="Technology" >
     <mod key="aa" name="Actually Additions" >
       <file value="ActuallyAdditions-1.12.2-r147" />
     </mod>
@@ -243,9 +248,9 @@
     <mod key="zi" name="Zetta Industries" >
       <file value="zettaindustries-1.3-1.12.2-161" />
     </mod>
-  </category-0>
+  </category>
 
-  <category-1>
+  <category name="Warfare">
     <mod key="npc" name="Custom NPCs" >
       <file value="CustomNPCs_1.12.2(30Jan19)" />
     </mod>
@@ -266,9 +271,9 @@
     <mod key="tg" name="Techguns" >
       <file value="techguns-1.12.2-2.0.2.0_pre3.1" />
     </mod>
-  </category-1>
+  </category>
 
-  <category-2>
+  <category name="Enhancement" >
     <mod key="bop" name="Biomes O Plenty" >
       <file value="BiomesOPlenty-1.12.2-7.0.1.2427-universal" />
     </mod>
@@ -305,5 +310,5 @@
     <mod key="tmf" name="Tiny Mob Farm" >
       <file value="TinyMobFarm-1.12.2-1.0.5" />
     </mod>
-  </category-2>
+  </category>
 </settings>
