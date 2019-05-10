@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
 using System.Runtime.InteropServices;
-
+using System.Windows.Forms;
 using Direct = System.IO.Directory;
 
 namespace LZMP_Launcher
@@ -237,5 +236,13 @@ namespace LZMP_Launcher
             BigTitle.Visible = true;
         }
         #endregion
+
+        private void UpdateButton_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("This is a internal function only for modpack developers. This button is used for updating the XML file. Put the content for update in 'Update' folder, then load the XML file. Are you sure to continue? ", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+
+            }
+        }
     }
 }

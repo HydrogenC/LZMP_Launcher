@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 
 namespace LZMP_Launcher
 {
     class Cleaner
     {
+        private static String GetFileName(String fullPath)
+        {
+            return fullPath.Substring(fullPath.LastIndexOf('\\') + 1).Replace(".jar", "");
+        }
+
         public static void CleanUp(ref Dictionary<String, Mod> dict)
         {
             String[] files = Directory.GetFiles(GlobalResources.resourceDir);
@@ -17,7 +19,7 @@ namespace LZMP_Launcher
                 Boolean used = false;
                 foreach (var j in dict)
                 {
-                    if (j.Value.Files.Contains(i.Substring(i.LastIndexOf('\\') + 1).Replace(".jar", "")))
+                    if (j.Value.Files.Contains(GetFileName(i)))
                     {
                         used = true;
                         break;
@@ -32,7 +34,7 @@ namespace LZMP_Launcher
                     }
                     catch (Exception)
                     {
-                        System.Windows.Forms.MessageBox.Show("An error occured while cleaning! ", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error); ;
+                        System.Windows.Forms.MessageBox.Show("An error occured while cleaning! ", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                     }
                 }
             }

@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.IO;
+using System.Windows.Forms;
 
 namespace LZMP_Launcher
 {
@@ -12,8 +9,7 @@ namespace LZMP_Launcher
     {
         private List<String> files = new List<String>();
         private TreeNode node;
-        private Boolean installed = true;
-        private Boolean available = true;
+        private Boolean installed, available, coreMod;
         private UInt16 category = 0;
         private Dictionary<String, Mod> addons = new Dictionary<String, Mod>();
         private String name;
@@ -21,7 +17,25 @@ namespace LZMP_Launcher
         public Mod(String name, UInt16 category = 0, List<String> files = null, Dictionary<String, Mod> addons = null)
         {
             this.name = name;
+            this.coreMod = false;
             this.category = category;
+
+            if (files != null)
+            {
+                this.files = files;
+            }
+            if (addons != null)
+            {
+                this.addons = addons;
+            }
+        }
+
+        public Mod(String name, Boolean coreMod, UInt16 category = 0, List<String> files = null, Dictionary<String, Mod> addons = null)
+        {
+            this.name = name;
+            this.coreMod = coreMod;
+            this.category = category;
+
             if (files != null)
             {
                 this.files = files;
@@ -61,12 +75,25 @@ namespace LZMP_Launcher
 
         public void Install()
         {
+            String client, server;
+
+            if (coreMod)
+            {
+                client = GlobalResources.clientCoreModDir;
+                server = GlobalResources.serverCoreModDir;
+            }
+            else
+            {
+                client = GlobalResources.clientModDir;
+                server = GlobalResources.serverModDir;
+            }
+
             foreach (var i in files)
             {
                 try
                 {
-                    File.Copy(GlobalResources.resourceDir + i + ".jar", GlobalResources.clientModDir + i + ".jar");
-                    File.Copy(GlobalResources.resourceDir + i + ".jar", GlobalResources.serverModDir + i + ".jar");
+                    File.Copy(GlobalResources.resourceDir + i + ".jar", client + i + ".jar");
+                    File.Copy(GlobalResources.resourceDir + i + ".jar", server + i + ".jar");
                 }
                 catch (Exception)
                 {
@@ -78,12 +105,25 @@ namespace LZMP_Launcher
 
         public void Uninstall()
         {
+            String client, server;
+
+            if (coreMod)
+            {
+                client = GlobalResources.clientCoreModDir;
+                server = GlobalResources.serverCoreModDir;
+            }
+            else
+            {
+                client = GlobalResources.clientModDir;
+                server = GlobalResources.serverModDir;
+            }
+
             foreach (var i in files)
             {
                 try
                 {
-                    File.Delete(GlobalResources.clientModDir + i + ".jar");
-                    File.Delete(GlobalResources.serverModDir + i + ".jar");
+                    File.Delete(client + i + ".jar");
+                    File.Delete(server + i + ".jar");
                 }
                 catch (Exception)
                 {
@@ -138,6 +178,12 @@ namespace LZMP_Launcher
         {
             get => category;
             set => category = value;
+        }
+
+        public Boolean CoreMod
+        {
+            get => coreMod;
+            set => coreMod = value;
         }
     }
 }
