@@ -100,16 +100,17 @@ namespace LZMP_Launcher
             foreach (var i in Shared.mods)
             {
                 XmlElement element = document.CreateElement("mod");
-                root.AppendChild(element);
+                element.IsEmpty = false;
                 element.SetAttribute("key", i.Key);
                 element.SetAttribute("checked", i.Value.Node.Checked.ToString());
                 foreach (var j in i.Value.Addons)
                 {
                     XmlElement xmlElement = document.CreateElement("mod");
+                    xmlElement.SetAttribute("key", j.Key);
+                    xmlElement.SetAttribute("checked", j.Value.Node.Checked.ToString());
                     element.AppendChild(xmlElement);
-                    element.SetAttribute("key", j.Key);
-                    element.SetAttribute("checked", j.Value.Node.Checked.ToString());
                 }
+                root.AppendChild(element);
             }
             document.Save(xmlFile);
         }
