@@ -106,6 +106,7 @@ namespace LZMP_Launcher
                 foreach (var j in i.Value.Addons)
                 {
                     XmlElement xmlElement = document.CreateElement("mod");
+                    xmlElement.IsEmpty = false;
                     xmlElement.SetAttribute("key", j.Key);
                     xmlElement.SetAttribute("checked", j.Value.Node.Checked.ToString());
                     element.AppendChild(xmlElement);
