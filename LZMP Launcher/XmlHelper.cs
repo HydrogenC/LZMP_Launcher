@@ -83,6 +83,11 @@ namespace LZMP_Launcher
             {
                 String key = i.GetAttribute("key");
                 Shared.mods[key].Node.Checked = Boolean.Parse(i.GetAttribute("checked"));
+                foreach (XmlElement j in i.ChildNodes)
+                {
+                    String elementKey = j.GetAttribute("key");
+                    Shared.mods[key].Addons[elementKey].Node.Checked = Boolean.Parse(j.GetAttribute("checked"));
+                }
             }
         }
 
@@ -98,6 +103,13 @@ namespace LZMP_Launcher
                 root.AppendChild(element);
                 element.SetAttribute("key", i.Key);
                 element.SetAttribute("checked", i.Value.Node.Checked.ToString());
+                foreach (var j in i.Value.Addons)
+                {
+                    XmlElement xmlElement = document.CreateElement("mod");
+                    element.AppendChild(xmlElement);
+                    element.SetAttribute("key", j.Key);
+                    element.SetAttribute("checked", j.Value.Node.Checked.ToString());
+                }
             }
             document.Save(xmlFile);
         }
