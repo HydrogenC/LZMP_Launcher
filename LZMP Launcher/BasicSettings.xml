@@ -143,6 +143,7 @@
     </mod>
 
     <mod key="mps" name="Modular Powersuits" >
+      <file value="Numina-1.12.2-1.0.37" />
       <file value="ModularPowersuits-1.12.2-1.0.40" />
     </mod>
 
