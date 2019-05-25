@@ -85,7 +85,9 @@ namespace LZMP_Launcher
         private void ApplyChanges(Mod[] applyList)
         {
             Int32 crtIndex = 0;
-            MainProgressBar.Step = (Int32)Math.Round((Double)MainProgressBar.Maximum / (Double)applyList.Length);
+            MainProgressBar.Value = 0;
+            MainProgressBar.Step = 1;
+            MainProgressBar.Maximum = applyList.Length;
             foreach (var i in applyList)
             {
                 SmallTitle.Text = "Applying " + (crtIndex + 1) + "/" + applyList.Length;
