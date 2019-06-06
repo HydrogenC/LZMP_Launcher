@@ -104,10 +104,6 @@ namespace LZMP_Launcher
             }
             MainProgressBar.Value = MainProgressBar.Maximum;
             CheckInstallation();
-        }
-
-        private void ApplyCallback(IAsyncResult asyncResult)
-        {
             processing = false;
         }
 
@@ -237,8 +233,12 @@ namespace LZMP_Launcher
                     }
                 }
             }
+            if (applyList.Count == 0)
+            {
+                return;
+            }
             Action<Mod[]> action = new Action<Mod[]>(ApplyChanges);
-            action.BeginInvoke(applyList.ToArray(), ApplyCallback, null);
+            action.BeginInvoke(applyList.ToArray(), null, null);
             processing = true;
             while (processing)
             {

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings>
-  <version value="3.12.3" />
+  <version value="3.13.0" />
   <client value="NsisoLauncher.exe" />
   <server value="MCim.exe" />
   
@@ -259,8 +259,6 @@
     <mod key="iv" name="Immersive Vehicles" >
       <file value="Immersive+Vehicles-1.12.2-14.2.0" />
       <file value="MTS_Official_Pack_V10" />
-      <file value="DWTPack_V0.8" />
-      <file value="MTS_Heavy_Industrial_by_AdamRK_1.9.0" />
     </mod>
     
     <mod key="mw" name="Modern Warfare" >
