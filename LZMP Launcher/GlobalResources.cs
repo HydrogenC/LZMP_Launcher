@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-
-using Direct = System.IO.Directory;
+using System.IO;
 
 namespace LZMP_Launcher
 {
     public struct Shared
     {
-        public static readonly String workingDir = Direct.GetCurrentDirectory();
+        public static readonly String workingDir = Directory.GetCurrentDirectory();
         public static readonly String resourceDir = workingDir + "\\Resources\\";
         public static readonly String clientModDir = workingDir + "\\Client\\.minecraft\\mods\\";
         public static readonly String serverModDir = workingDir + "\\Server\\panel\\server\\mods\\";
@@ -32,7 +31,7 @@ namespace LZMP_Launcher
 
         public static void CleanUp()
         {
-            String[] files = Direct.GetFiles(Shared.resourceDir);
+            String[] files = Directory.GetFiles(Shared.resourceDir);
             foreach (var i in files)
             {
                 Boolean used = false;

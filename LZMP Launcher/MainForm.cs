@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using Direct = System.IO.Directory;
 
 namespace LZMP_Launcher
 {
@@ -30,7 +30,7 @@ namespace LZMP_Launcher
         {
             InitializeComponent();
 
-            Control.CheckForIllegalCrossThreadCalls = false;
+            CheckForIllegalCrossThreadCalls = false;
             MainProgressBar.Visible = false;
             BigTitle.Visible = true;
 
@@ -56,7 +56,7 @@ namespace LZMP_Launcher
                 }
 
                 i.Value.CheckAvailability();
-                foreach(var j in i.Value.Addons)
+                foreach (var j in i.Value.Addons)
                 {
                     j.Value.CheckAvailability();
                 }
@@ -191,25 +191,25 @@ namespace LZMP_Launcher
         private void LaunchClient_Click(object sender, EventArgs e)
         {
             Apply_Click(null, null);
-            Direct.SetCurrentDirectory(Shared.workingDir + "\\Client\\");
+            Directory.SetCurrentDirectory(Shared.workingDir + "\\Client\\");
             System.Diagnostics.Process.Start(Shared.clientLauncher);
-            Direct.SetCurrentDirectory(Shared.workingDir);
+            Directory.SetCurrentDirectory(Shared.workingDir);
         }
 
         private void LaunchServer_Click(object sender, EventArgs e)
         {
             Apply_Click(null, null);
-            Direct.SetCurrentDirectory(Shared.workingDir + "\\Server\\");
+            Directory.SetCurrentDirectory(Shared.workingDir + "\\Server\\");
             System.Diagnostics.Process.Start(Shared.serverLauncher);
-            Direct.SetCurrentDirectory(Shared.workingDir);
+            Directory.SetCurrentDirectory(Shared.workingDir);
         }
 
         private void SaveSet_Click(object sender, EventArgs e)
         {
             Apply_Click(null, null);
-            if (!Direct.Exists(SaveDialog.InitialDirectory))
+            if (!Directory.Exists(SaveDialog.InitialDirectory))
             {
-                Direct.CreateDirectory(SaveDialog.InitialDirectory);
+                Directory.CreateDirectory(SaveDialog.InitialDirectory);
             }
             if (SaveDialog.ShowDialog() == DialogResult.OK)
             {
