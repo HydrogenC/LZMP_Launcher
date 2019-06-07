@@ -6,11 +6,6 @@ namespace LZMP_Launcher
 {
     class XmlHelper
     {
-        private static XmlElement GetElementByTagName(ref XmlElement element, String tagName)
-        {
-            return (XmlElement)(element.GetElementsByTagName(tagName)[0]);
-        }
-
         private static XmlElement GetElementByTagName(ref XmlDocument element, String tagName)
         {
             return (XmlElement)(element.GetElementsByTagName(tagName)[0]);
@@ -24,13 +19,15 @@ namespace LZMP_Launcher
             }
             String key = xml.GetAttribute("key");
             dict[key] = new Mod(xml.GetAttribute("name"), category);
-            foreach (XmlElement i in xml.GetElementsByTagName("file"))
+            foreach (XmlElement i in xml.ChildNodes)
             {
-                dict[key].Files.Add(i.GetAttribute("value"));
+                if (i.Name == "file")
+                {
+                    dict[key].Files.Add(i.GetAttribute("value"));
+                }
             }
             foreach (XmlElement i in xml.GetElementsByTagName("mod"))
             {
-                Console.WriteLine(i.ToString());
                 GetModFromElement(i, ref dict[key].Addons);
             }
         }
