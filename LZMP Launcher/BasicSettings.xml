@@ -6,7 +6,7 @@
   
   <category name="Technology" >
     <mod key="aa" name="Actually Additions" >
-      <file value="ActuallyAdditions-1.12.2-r147" />
+      <file value="ActuallyAdditions-1.12.2-r148" />
     </mod>
 
     <mod key="ae" name="Applied Energetics" >
@@ -34,7 +34,7 @@
     <mod key="bc" name="Buildcraft" >
       <file value="buildcraft-all-7.99.24.1" />
       <mod key="irt" name="Iron Tanks">
-        <file value="irontanks-2.1.0-beta.5" />
+        <file value="irontanks-1.12.2-2.1.0-beta.14" />
       </mod>
     </mod>
 
@@ -43,8 +43,8 @@
     </mod>
 
     <mod key="de" name="Draconic Evolution" >
-      <file value="BrandonsCore-1.12.2-2.4.10.198-universal" />
-      <file value="Draconic-Evolution-1.12.2-2.3.21.342-universal" />
+      <file value="BrandonsCore-1.12.2-2.4.12.205-universal" />
+      <file value="Draconic-Evolution-1.12.2-2.3.22.343-universal" />
     </mod>
 
     <mod key="evt" name="Environmental Tech" >
@@ -85,10 +85,10 @@
     <mod key="ga" name="Guide API" >
       <file value="Guide-API-1.12-2.1.8-63" />
       <mod key="cyl" name="Cyclic" >
-        <file value="Cyclic-1.12.2-1.19.9" />
+        <file value="Cyclic-1.12.2-1.19.11" />
       </mod>
       <mod key="wot" name="Woot" >
-        <file value="woot-1.12.2-1.4.10" />
+        <file value="woot-1.12.2-1.4.11" />
       </mod>
     </mod>
 
@@ -109,12 +109,12 @@
     </mod>
 
     <mod key="ic" name="IndustrialCraft" >
-      <file value="industrialcraft-2-2.8.149-ex112" />
+      <file value="industrialcraft-2-2.8.158-ex112" />
       <mod key="asp" name="Advanced Solar Panels" >
         <file value="Advanced+Solar+Panels-4.3.0" />
       </mod>
       <mod key="cpm" name="Compact Machines" >
-        <file value="compactmachines3-1.12.2-3.0.17-b267" />
+        <file value="compactmachines3-1.12.2-3.0.18-b278" />
       </mod>
       <mod key="gsi" name="Gravi Suite" >
         <file value="Gravitation+Suite-3.1.1" />
@@ -130,12 +130,12 @@
     </mod>
 
     <mod key="itd" name="Integrated Dynamics" >
-      <file value="CyclopsCore-1.12.2-1.2.0" />
-      <file value="CommonCapabilities-1.12.2-2.2.1" />
-      <file value="IntegratedDynamics-1.12.2-1.0.11" />
-      <file value="IntegratedTunnels-1.12.2-1.6.8" />
-      <file value="IntegratedCrafting-1.12.2-1.0.6" />
-      <file value="IntegratedTerminals-1.12.2-1.0.6" />
+      <file value="CyclopsCore-1.12.2-1.3.0" />
+      <file value="CommonCapabilities-1.12.2-2.4.1" />
+      <file value="IntegratedDynamics-1.12.2-1.0.14" />
+      <file value="IntegratedTunnels-1.12.2-1.6.9" />
+      <file value="IntegratedCrafting-1.12.2-1.0.7" />
+      <file value="IntegratedTerminals-1.12.2-1.0.8" />
     </mod>
 
     <mod key="mo" name="Matter Overdrive" >
@@ -143,8 +143,8 @@
     </mod>
 
     <mod key="mps" name="Modular Powersuits" >
-      <file value="Numina-1.12.2-1.0.37" />
-      <file value="ModularPowersuits-1.12.2-1.0.40" />
+      <file value="Numina-1.12.2-1.0.38" />
+      <file value="ModularPowersuits-1.12.2-1.0.41" />
     </mod>
 
     <mod key="mr" name="Modular Routers" >
@@ -158,7 +158,7 @@
     </mod>
 
     <mod key="nc" name="NuclearCraft" >
-      <file value="NuclearCraft-2.16e-1.12.2" />
+      <file value="NuclearCraft-2.17a-1.12.2" />
     </mod>
 
     <mod key="pe" name="ProjectE" >
@@ -204,17 +204,17 @@
         <file value="TechReborn-1.12.2-2.22.1.979-universal" />
       </mod>
       <mod key="reb" name="Reborn Storage" >
-        <file value="RebornStorage-1.12.2-3.3.2.79" />
+        <file value="RebornStorage-1.12.2-3.3.4.85" />
       </mod>
     </mod>
 
     <mod key="rft" name="RFTools" >
-      <file value="rftools-1.12-7.70" />
+      <file value="rftools-1.12-7.71" />
       <mod key="rfc" name="RFTools Control" >
-        <file value="rftoolsctrl-1.12-2.0.1" />
+        <file value="rftoolsctrl-1.12-2.0.2" />
       </mod>
       <mod key="rfd" name="RFTools Dimension" >
-        <file value="rftoolsdim-1.12-5.70" />
+        <file value="rftoolsdim-1.12-5.71" />
       </mod>
       <mod key="rfp" name="RFTools Power" >
         <file value="rftoolspower-1.12-1.2.0" />
@@ -235,11 +235,11 @@
     </mod>
 
     <mod key="wlu" name="Wireless Utilities" >
-      <file value="wirelessutils-1.12.2-1.6.51-universal" />
+      <file value="wirelessutils-1.12.2-1.7.76-universal" />
     </mod>
 
     <mod key="xn" name="XNet" >
-      <file value="xnet-1.12-1.8.0" />
+      <file value="xnet-1.12-1.8.1" />
     </mod>
 
     <mod key="zi" name="Zetta Industries" >
@@ -257,8 +257,8 @@
     </mod>
 
     <mod key="iv" name="Immersive Vehicles" >
-      <file value="Immersive+Vehicles-1.12.2-14.2.0" />
-      <file value="MTS_Official_Pack_V10" />
+      <file value="Immersive+Vehicles-1.12.2-14.3.0" />
+      <file value="MTS_Official_Pack_V11" />
     </mod>
     
     <mod key="mw" name="Modern Warfare" >
@@ -266,8 +266,8 @@
     </mod>
 
     <mod key="omt" name="Open Modular Turrents" >
-      <file value="omlib-1.12.2-3.1.0-229" />
-      <file value="openmodularturrets-1.12.2-3.1.0-332" />
+      <file value="omlib-1.12.2-3.1.2-240" />
+      <file value="openmodularturrets-1.12.2-3.1.2-350" />
     </mod>
 
     <mod key="tg" name="Techguns" >
@@ -277,12 +277,12 @@
 
   <category name="Enhancement" >
     <mod key="bop" name="Biomes O Plenty" >
-      <file value="BiomesOPlenty-1.12.2-7.0.1.2427-universal" />
+      <file value="BiomesOPlenty-1.12.2-7.0.1.2439-universal" />
     </mod>
 
     <mod key="fq" name="FTB Quests" >
       <file value="ItemFilters-1.0.3.12" />
-      <file value="FTBQuests-1.5.2.151" />
+      <file value="FTBQuests-1.6.0.156" />
     </mod>
 
     <mod key="mdb" name="Malisis Doors / Blocks" >
@@ -292,7 +292,7 @@
     </mod>
 
     <mod key="fur" name="MrCrayfish's Furniture" >
-      <file value="furniture-6.2.0-1.12.2" />
+      <file value="furniture-6.3.0-1.12.2" />
     </mod>
 
     <mod key="hot" name="Horse Tweaker" >
@@ -306,9 +306,13 @@
 
     <mod key="sca" name="Scaling Health" >
       <file value="SilentLib-1.12.2-3.0.13+167" />
-      <file value="ScalingHealth-1.12.2-1.3.34+135" />
+      <file value="ScalingHealth-1.12.2-1.3.37+142" />
     </mod>
 
+    <mod key="td" name="Tick Dynamic">
+      <file value="TickDynamic-1.12.2-1.0.1" />
+    </mod>
+    
     <mod key="tmf" name="Tiny Mob Farm" >
       <file value="TinyMobFarm-1.12.2-1.0.5" />
     </mod>
