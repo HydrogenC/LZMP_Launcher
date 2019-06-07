@@ -54,7 +54,12 @@ namespace LZMP_Launcher
                     default:
                         break;
                 }
+
                 i.Value.CheckAvailability();
+                foreach(var j in i.Value.Addons)
+                {
+                    j.Value.CheckAvailability();
+                }
             }
 
             CheckInstallation();
@@ -78,6 +83,12 @@ namespace LZMP_Launcher
             {
                 i.Value.CheckInstalled();
                 i.Value.Node.Checked = i.Value.Installed;
+
+                foreach (var j in i.Value.Addons)
+                {
+                    j.Value.CheckInstalled();
+                    j.Value.Node.Checked = j.Value.Installed;
+                }
             }
         }
         #endregion
@@ -88,6 +99,7 @@ namespace LZMP_Launcher
             MainProgressBar.Value = 0;
             MainProgressBar.Step = 1;
             MainProgressBar.Maximum = applyList.Length;
+
             foreach (var i in applyList)
             {
                 SmallTitle.Text = "Applying " + (crtIndex + 1) + "/" + applyList.Length;
@@ -102,6 +114,7 @@ namespace LZMP_Launcher
                 MainProgressBar.PerformStep();
                 crtIndex += 1;
             }
+
             MainProgressBar.Value = MainProgressBar.Maximum;
             CheckInstallation();
             processing = false;
@@ -214,29 +227,32 @@ namespace LZMP_Launcher
 
         private void Apply_Click(object sender, EventArgs e)
         {
-            BigTitle.Visible = false;
-            SmallTitle.Text = "Applying";
-            MainProgressBar.Value = 0;
-            MainProgressBar.Visible = true;
             List<Mod> applyList = new List<Mod>();
             foreach (var i in Shared.mods)
             {
-                if (i.Value.Node.Checked != i.Value.Installed && i.Value.Available)
+                if ((i.Value.Node.Checked != i.Value.Installed) && i.Value.Available)
                 {
                     applyList.Add(i.Value);
                     foreach (var j in i.Value.Addons)
                     {
-                        if (j.Value.Node.Checked != j.Value.Installed && j.Value.Available)
+                        if ((j.Value.Node.Checked != j.Value.Installed) && j.Value.Available)
                         {
                             applyList.Add(j.Value);
                         }
                     }
                 }
             }
+
             if (applyList.Count == 0)
             {
                 return;
             }
+
+            BigTitle.Visible = false;
+            SmallTitle.Text = "Applying";
+            MainProgressBar.Value = 0;
+            MainProgressBar.Visible = true;
+
             Action<Mod[]> action = new Action<Mod[]>(ApplyChanges);
             action.BeginInvoke(applyList.ToArray(), null, null);
             processing = true;
@@ -244,6 +260,7 @@ namespace LZMP_Launcher
             {
                 Application.DoEvents();
             }
+
             SmallTitle.Text = "ExMatics";
             MainProgressBar.Visible = false;
             MainProgressBar.Value = 0;
