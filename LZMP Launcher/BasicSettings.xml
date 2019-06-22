@@ -125,6 +125,13 @@
       </mod>
     </mod>
 
+    <mod key="idf" name="Industrial Foregoing" >
+      <file value="Tesla-1.12.2-1.0.63" />
+      <file value="tesla-core-lib-1.12.2-1.0.15" />
+      <file value="industrialforegoing-1.12.2-1.12.12-236" />
+      <file value="IntegrationForegoing-1.12.2-1.9" />
+    </mod>
+
     <mod key="itd" name="Integrated Dynamics" >
       <file value="CyclopsCore-1.12.2-1.3.0" />
       <file value="CommonCapabilities-1.12.2-2.4.1" />
@@ -199,6 +206,7 @@
       <file value="refinedstorageaddons-0.4.4" />
       <file value="rsinfinitewireless-1.2" />
       <mod key="mrf" name="More Refined Storage" >
+        <file value="nevoka-core-1.0.2"  />
         <file value="morerefinedstorage-1.1.6" />
       </mod>
       <mod key="ref" name="Refined Exchange" >
