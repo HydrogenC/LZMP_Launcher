@@ -48,7 +48,7 @@ namespace LZMP_Launcher
                 {
                     try
                     {
-                        System.IO.File.Delete(i);
+                        File.Delete(i);
                     }
                     catch (Exception)
                     {
