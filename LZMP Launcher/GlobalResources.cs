@@ -37,9 +37,21 @@ namespace LZMP_Launcher
                 Boolean used = false;
                 foreach (var j in Shared.mods)
                 {
+                    foreach (var k in j.Value.Addons)
+                    {
+                        if (k.Value.Files.Contains(GetFileName(i)))
+                        {
+                            used = true;
+                            break;
+                        }
+                    }
                     if (j.Value.Files.Contains(GetFileName(i)))
                     {
                         used = true;
+                        break;
+                    }
+                    if (used)
+                    {
                         break;
                     }
                 }
