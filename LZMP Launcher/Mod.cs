@@ -53,7 +53,7 @@ namespace LZMP_Launcher
                 available = File.Exists(Shared.resourceDir + i + ".jar");
                 if (!available)
                 {
-                    MessageBox.Show("File not found: \n" + i, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("File not found: \n" + name, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     break;
                 }
             }
