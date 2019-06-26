@@ -233,6 +233,10 @@ namespace LZMP_Launcher
                 if ((i.Value.Node.Checked != i.Value.Installed) && i.Value.Available)
                 {
                     applyList.Add(i.Value);
+                }
+
+                if (i.Value.Node.Checked)
+                {
                     foreach (var j in i.Value.Addons)
                     {
                         if ((j.Value.Node.Checked != j.Value.Installed) && j.Value.Available)

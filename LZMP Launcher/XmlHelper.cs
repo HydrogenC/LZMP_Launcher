@@ -85,7 +85,7 @@ namespace LZMP_Launcher
                 }
                 catch (Exception)
                 {
-                    System.Windows.Forms.MessageBox.Show("Failed to read a setting: key not found! ", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error); ;
+                    System.Windows.Forms.MessageBox.Show("Failed to read a setting: key not found! ", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 }
                 foreach (XmlElement j in i.ChildNodes)
                 {
@@ -96,7 +96,7 @@ namespace LZMP_Launcher
                     }
                     catch (Exception)
                     {
-                        System.Windows.Forms.MessageBox.Show("Failed to read a setting: key not found! ", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error); ;
+                        System.Windows.Forms.MessageBox.Show("Failed to read a setting: key not found! ", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                     }
                 }
             }
