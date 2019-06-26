@@ -235,14 +235,11 @@ namespace LZMP_Launcher
                     applyList.Add(i.Value);
                 }
 
-                if (i.Value.Node.Checked)
+                foreach (var j in i.Value.Addons)
                 {
-                    foreach (var j in i.Value.Addons)
+                    if ((j.Value.Node.Checked != j.Value.Installed) && j.Value.Available)
                     {
-                        if ((j.Value.Node.Checked != j.Value.Installed) && j.Value.Available)
-                        {
-                            applyList.Add(j.Value);
-                        }
+                        applyList.Add(j.Value);
                     }
                 }
             }
