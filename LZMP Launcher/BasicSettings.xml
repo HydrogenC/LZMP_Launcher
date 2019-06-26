@@ -1,12 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings>
-  <version value="4.0.0" />
+  <version value="4.0.2" />
   <client value="NsisoLauncher.exe" />
   <server value="MCim.exe" />
 
   <category name="Technology" >
     <mod key="aa" name="Actually Additions" >
       <file value="ActuallyAdditions-1.12.2-r148" />
+    </mod>
+
+    <mod key="alc" name="Alchemistry" >
+      <file value="alib-1.0.10" />
+      <file value="alchemistry-1.0.27" />
     </mod>
 
     <mod key="ae" name="Applied Energetics" >
@@ -28,7 +33,7 @@
     </mod>
 
     <mod key="atc" name="Atomic Science" >
-      <file value="Atomic-Science-1.12.2-3.0.6b19" />
+      <file value="Atomic-Science-1.12.2-3.2.0b108" />
     </mod>
 
     <mod key="bc" name="Buildcraft" >
@@ -37,7 +42,7 @@
         <file value="irontanks-1.12.2-2.1.0-beta.14" />
       </mod>
       <mod key="lgs" name="Logistics Pipes">
-        <file value="logisticspipes-0.10.2.162" />
+        <file value="logisticspipes-0.10.2.173" />
       </mod>
     </mod>
 
@@ -92,7 +97,7 @@
     <mod key="ga" name="Guide API" >
       <file value="Guide-API-1.12-2.1.8-63" />
       <mod key="cyl" name="Cyclic" >
-        <file value="Cyclic-1.12.2-1.19.11" />
+        <file value="Cyclic-1.12.2-1.19.12" />
       </mod>
       <mod key="wot" name="Woot" >
         <file value="woot-1.12.2-1.4.11" />
@@ -116,20 +121,13 @@
     </mod>
 
     <mod key="ic" name="IndustrialCraft" >
-      <file value="industrialcraft-2-2.8.163-ex112" />
+      <file value="industrialcraft-2-2.8.164-ex112" />
       <mod key="asp" name="Advanced Solar Panels" >
         <file value="Advanced+Solar+Panels-4.3.0" />
       </mod>
       <mod key="cpm" name="Compact Machines" >
         <file value="compactmachines3-1.12.2-3.0.18-b278" />
       </mod>
-    </mod>
-
-    <mod key="idf" name="Industrial Foregoing" >
-      <file value="Tesla-1.12.2-1.0.63" />
-      <file value="tesla-core-lib-1.12.2-1.0.15" />
-      <file value="industrialforegoing-1.12.2-1.12.12-236" />
-      <file value="IntegrationForegoing-1.12.2-1.9" />
     </mod>
 
     <mod key="itd" name="Integrated Dynamics" >
@@ -147,11 +145,11 @@
 
     <mod key="mps" name="Modular Powersuits" >
       <file value="Numina-1.12.2-1.0.38" />
-      <file value="ModularPowersuits-1.12.2-1.0.41" />
+      <file value="ModularPowersuits-1.12.2-1.0.43" />
     </mod>
 
     <mod key="mr" name="Modular Routers" >
-      <file value="modular-routers-1.12.2-3.2.1" />
+      <file value="modular-routers-1.12.2-3.2.2" />
     </mod>
 
     <mod key="ma" name="Mystical Agriculture" >
@@ -274,10 +272,6 @@
       <file value="CustomNPCs_1.12.2(30Jan19)" />
     </mod>
 
-    <mod key="icb" name="ICBM" >
-      <file value="ICBM-classic-1.12.2-3.3.0b63" />
-    </mod>
-
     <mod key="iv" name="Immersive Vehicles" >
       <file value="Immersive+Vehicles-1.12.2-14.3.1" />
       <file value="MTS_Official_Pack_V11" />
@@ -290,7 +284,6 @@
     <mod key="omt" name="Open Modular Turrents" >
       <file value="omlib-1.12.2-3.1.3-246" />
       <file value="openmodularturrets-1.12.2-3.1.3-355" />
-      <file value="ompd-1.12.2-3.1.0-61" />
     </mod>
 
     <mod key="tg" name="Techguns" >
@@ -305,7 +298,7 @@
 
     <mod key="fq" name="FTB Quests" >
       <file value="ItemFilters-1.0.3.12" />
-      <file value="FTBQuests-1.6.1.161" />
+      <file value="FTBQuests-1.7.1.166" />
     </mod>
 
     <mod key="mdb" name="Malisis Doors / Blocks" >
@@ -325,6 +318,10 @@
     <mod key="ob" name="OpenBlocks" >
       <file value="OpenModsLib-1.12.2-0.12.2" />
       <file value="OpenBlocks-1.12.2-1.8.1" />
+    </mod>
+
+    <mod key="pto" name="Patchouli" >
+      <file value="Patchouli-1.0-19" />
     </mod>
 
     <mod key="sca" name="Scaling Health" >

@@ -79,11 +79,25 @@ namespace LZMP_Launcher
             foreach (XmlElement i in root.ChildNodes)
             {
                 String key = i.GetAttribute("key");
-                Shared.mods[key].Node.Checked = Boolean.Parse(i.GetAttribute("checked"));
+                try
+                {
+                    Shared.mods[key].Node.Checked = Boolean.Parse(i.GetAttribute("checked"));
+                }
+                catch (Exception)
+                {
+                    System.Windows.Forms.MessageBox.Show("Failed to read a setting: key not found! ", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error); ;
+                }
                 foreach (XmlElement j in i.ChildNodes)
                 {
                     String elementKey = j.GetAttribute("key");
-                    Shared.mods[key].Addons[elementKey].Node.Checked = Boolean.Parse(j.GetAttribute("checked"));
+                    try
+                    {
+                        Shared.mods[key].Addons[elementKey].Node.Checked = Boolean.Parse(j.GetAttribute("checked"));
+                    }
+                    catch (Exception)
+                    {
+                        System.Windows.Forms.MessageBox.Show("Failed to read a setting: key not found! ", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error); ;
+                    }
                 }
             }
         }
