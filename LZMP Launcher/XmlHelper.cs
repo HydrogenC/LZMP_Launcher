@@ -42,7 +42,7 @@ namespace LZMP_Launcher
 
             XmlDocument xml = new XmlDocument();
             xml.Load(xmlFile);
-            Shared.launcher = Shared.workingDir + "\\Client\\" + GetElementByTagName(ref xml, "launcher").GetAttribute("value");
+            Shared.launcher = Shared.workingDir + "\\Game\\" + GetElementByTagName(ref xml, "launcher").GetAttribute("value");
             Shared.version = GetElementByTagName(ref xml, "version").GetAttribute("value");
 
             foreach (XmlElement element in xml.GetElementsByTagName("category"))

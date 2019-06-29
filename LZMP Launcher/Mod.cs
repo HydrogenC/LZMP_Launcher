@@ -69,7 +69,7 @@ namespace LZMP_Launcher
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("An error occured while installing: \n"+name, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("An error occured while installing: \n" + name, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }

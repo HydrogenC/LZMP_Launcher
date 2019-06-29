@@ -97,8 +97,8 @@ namespace LZMP_Launcher
         {
             Int32 crtIndex = 0;
             MainProgressBar.Value = 0;
-            MainProgressBar.Step = 1;
-            MainProgressBar.Maximum = applyList.Length;
+            MainProgressBar.Maximum = 1000;
+            MainProgressBar.Step = MainProgressBar.Maximum / applyList.Length;
 
             foreach (var i in applyList)
             {
