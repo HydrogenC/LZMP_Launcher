@@ -70,7 +70,7 @@ namespace LZMP_Launcher
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("An internal error occured while copying files. ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("An error occured while installing: \n"+name, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
@@ -87,7 +87,7 @@ namespace LZMP_Launcher
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("An internal error occured while deleting files. ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("An error occured while uninstalling: \n" + name, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }

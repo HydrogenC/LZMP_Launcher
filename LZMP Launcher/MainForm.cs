@@ -266,6 +266,8 @@ namespace LZMP_Launcher
             MainProgressBar.Visible = false;
             MainProgressBar.Value = 0;
             BigTitle.Visible = true;
+
+            MessageBox.Show("Finished! ", "Information", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
         }
         #endregion
 
