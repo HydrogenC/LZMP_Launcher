@@ -191,7 +191,7 @@ namespace LZMP_Launcher
         private void LaunchButton_Click(object sender, EventArgs e)
         {
             Apply_Click(null, null);
-            Directory.SetCurrentDirectory(Shared.workingDir + "\\Client\\");
+            Directory.SetCurrentDirectory(Shared.workingDir + "\\Game\\");
             System.Diagnostics.Process.Start(Shared.launcher);
             Directory.SetCurrentDirectory(Shared.workingDir);
         }
