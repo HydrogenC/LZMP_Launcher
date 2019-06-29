@@ -311,7 +311,7 @@
 
     <mod key="fq" name="FTB Quests" >
       <file value="ItemFilters-1.0.3.12" />
-      <file value="FTBQuests-1.7.2.172" />
+      <file value="FTBQuests-1.7.2.174" />
     </mod>
 
     <mod key="mdb" name="Malisis Doors / Blocks" >
