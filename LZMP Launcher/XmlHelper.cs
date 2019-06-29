@@ -79,6 +79,11 @@ namespace LZMP_Launcher
             UInt16 skip = 0;
             foreach (XmlElement i in root.ChildNodes)
             {
+                if (i.Name != "mod")
+                {
+                    continue;
+                }
+
                 String key = i.GetAttribute("key");
 
                 if (Shared.mods.ContainsKey(key))
@@ -101,6 +106,7 @@ namespace LZMP_Launcher
                             }
                             else
                             {
+                                System.Windows.Forms.MessageBox.Show(key);
                                 skip += 1;
                             }
                         }
@@ -114,6 +120,7 @@ namespace LZMP_Launcher
                     }
                     else
                     {
+                        System.Windows.Forms.MessageBox.Show(key);
                         skip += 1;
                     }
                 }
