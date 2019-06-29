@@ -1,8 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings>
-  <version value="4.1.0" />
-  <client value="NsisoLauncher.exe" />
-  <server value="MCim.exe" />
+  <version value="4.2.0" />
+  <launcher value="NsisoLauncher.exe" />
 
   <category name="Technology" >
     <mod key="aa" name="Actually Additions" >
@@ -179,9 +178,6 @@
         <file value="MikesModsLib-1.0.2" />
         <file value="EquivalentIntegrations-0.4.6" />
       </mod>
-      <mod key="pex" name="Project EX" >
-        <file value="ProjectEX-1.2.0.36" />
-      </mod>
     </mod>
 
     <mod key="prd" name="ProjectRed" >
@@ -231,6 +227,11 @@
       </mod>
     </mod>
 
+    <mod key="rfr" name="Refraction" >
+      <file value="librarianlib-1.12.2-4.19.2-release" />
+      <file value="refraction-1.12.2-1.9.11" />
+    </mod>
+    
     <mod key="rft" name="RFTools" >
       <file value="rftools-1.12-7.71" />
       <mod key="rfc" name="RFTools Control" >
@@ -244,6 +245,10 @@
       </mod>
     </mod>
 
+    <mod key="skr" name="Sky Resources" >
+      <file value="skyresources-2.3.8" />
+    </mod>
+    
     <mod key="sc" name="Sonar Core" >
       <file value="sonarcore-1.12.2-5.0.19-20" />
       <mod key="cal" name="Calculator" >
@@ -299,6 +304,11 @@
       <file value="BiomesOPlenty-1.12.2-7.0.1.2439-universal" />
     </mod>
 
+    <mod key="dys" name="Dynamic Surroundings" >
+      <file value="OreLib-1.12.2-3.5.2.2" />
+      <file value="DynamicSurroundings-1.12.2-3.5.4.3" />
+    </mod>
+    
     <mod key="fq" name="FTB Quests" >
       <file value="ItemFilters-1.0.3.12" />
       <file value="FTBQuests-1.7.2.172" />
@@ -308,10 +318,6 @@
       <file value="malisiscore-1.12.2-6.4.0" />
       <file value="malisisblocks-1.12.2-6.1.0" />
       <file value="malisisdoors-1.12.2-7.3.0" />
-    </mod>
-
-    <mod key="fur" name="MrCrayfish's Furniture" >
-      <file value="furniture-6.3.0-1.12.2" />
     </mod>
 
     <mod key="hot" name="Horse Tweaker" >
@@ -338,6 +344,10 @@
 
     <mod key="tmf" name="Tiny Mob Farm" >
       <file value="TinyMobFarm-1.12.2-1.0.5" />
+    </mod>
+
+    <mod key="usi" name="Useful Interior" >
+      <file value="Useful-Interior-0.13+[1.12.2]" />
     </mod>
   </category>
 </settings>

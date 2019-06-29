@@ -36,7 +36,7 @@ namespace LZMP_Launcher
 
             foreach (var i in Files)
             {
-                installed = File.Exists(Shared.clientModDir + i + ".jar") && System.IO.File.Exists(Shared.serverModDir + i + ".jar");
+                installed = File.Exists(Shared.modDir + i + ".jar");
                 if (!installed)
                 {
                     break;
@@ -65,8 +65,7 @@ namespace LZMP_Launcher
             {
                 try
                 {
-                    File.Copy(Shared.resourceDir + i + ".jar", Shared.clientModDir + i + ".jar");
-                    File.Copy(Shared.resourceDir + i + ".jar", Shared.serverModDir + i + ".jar");
+                    File.Copy(Shared.resourceDir + i + ".jar", Shared.modDir + i + ".jar");
                 }
                 catch (Exception)
                 {
@@ -82,8 +81,7 @@ namespace LZMP_Launcher
             {
                 try
                 {
-                    File.Delete(Shared.clientModDir + i + ".jar");
-                    File.Delete(Shared.serverModDir + i + ".jar");
+                    File.Delete(Shared.modDir + i + ".jar");
                 }
                 catch (Exception)
                 {

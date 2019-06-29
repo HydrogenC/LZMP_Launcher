@@ -188,19 +188,11 @@ namespace LZMP_Launcher
             }
         }
 
-        private void LaunchClient_Click(object sender, EventArgs e)
+        private void LaunchButton_Click(object sender, EventArgs e)
         {
             Apply_Click(null, null);
             Directory.SetCurrentDirectory(Shared.workingDir + "\\Client\\");
-            System.Diagnostics.Process.Start(Shared.clientLauncher);
-            Directory.SetCurrentDirectory(Shared.workingDir);
-        }
-
-        private void LaunchServer_Click(object sender, EventArgs e)
-        {
-            Apply_Click(null, null);
-            Directory.SetCurrentDirectory(Shared.workingDir + "\\Server\\");
-            System.Diagnostics.Process.Start(Shared.serverLauncher);
+            System.Diagnostics.Process.Start(Shared.launcher);
             Directory.SetCurrentDirectory(Shared.workingDir);
         }
 
