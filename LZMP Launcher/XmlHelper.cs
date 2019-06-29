@@ -106,7 +106,6 @@ namespace LZMP_Launcher
                             }
                             else
                             {
-                                System.Windows.Forms.MessageBox.Show(key);
                                 skip += 1;
                             }
                         }
@@ -120,7 +119,6 @@ namespace LZMP_Launcher
                     }
                     else
                     {
-                        System.Windows.Forms.MessageBox.Show(key);
                         skip += 1;
                     }
                 }
