@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings>
-  <version value="4.2.1" />
+  <version value="4.2.2" />
   <launcher value="NsisoLauncher.exe" />
 
   <category name="Technology" >
@@ -309,6 +309,10 @@
       <file value="DynamicSurroundings-1.12.2-3.5.4.3" />
     </mod>
 
+    <mod key="edu" name="Ender Utilities" >
+      <file value="enderutilities-1.12.2-0.7.12" />
+    </mod>
+    
     <mod key="fq" name="FTB Quests" >
       <file value="ItemFilters-1.0.3.12" />
       <file value="FTBQuests-1.7.2.174" />
