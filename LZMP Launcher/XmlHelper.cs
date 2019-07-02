@@ -42,8 +42,7 @@ namespace LZMP_Launcher
 
             XmlDocument xml = new XmlDocument();
             xml.Load(xmlFile);
-            Shared.clientLauncher = Shared.workingDir + "\\Client\\" + GetElementByTagName(ref xml, "client").GetAttribute("value");
-            Shared.serverLauncher = Shared.workingDir + "\\Server\\" + GetElementByTagName(ref xml, "server").GetAttribute("value");
+            Shared.launcher = Shared.workingDir + "\\Game\\" + GetElementByTagName(ref xml, "launcher").GetAttribute("value");
             Shared.version = GetElementByTagName(ref xml, "version").GetAttribute("value");
 
             foreach (XmlElement element in xml.GetElementsByTagName("category"))
@@ -76,29 +75,62 @@ namespace LZMP_Launcher
             XmlDocument document = new XmlDocument();
             document.Load(xmlFile);
             XmlElement root = GetElementByTagName(ref document, "settings");
+            Boolean versionConforms = GetElementByTagName(ref document, "version").GetAttribute("value") == Shared.version;
+            UInt16 skip = 0;
             foreach (XmlElement i in root.ChildNodes)
             {
+                if (i.Name != "mod")
+                {
+                    continue;
+                }
+
                 String key = i.GetAttribute("key");
-                try
+
+                if (Shared.mods.ContainsKey(key))
                 {
                     Shared.mods[key].Node.Checked = Boolean.Parse(i.GetAttribute("checked"));
-                }
-                catch (Exception)
-                {
-                    System.Windows.Forms.MessageBox.Show("Failed to read a setting: key not found! ", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                }
-                foreach (XmlElement j in i.ChildNodes)
-                {
-                    String elementKey = j.GetAttribute("key");
-                    try
+
+                    foreach (XmlElement j in i.ChildNodes)
                     {
-                        Shared.mods[key].Addons[elementKey].Node.Checked = Boolean.Parse(j.GetAttribute("checked"));
-                    }
-                    catch (Exception)
-                    {
-                        System.Windows.Forms.MessageBox.Show("Failed to read a setting: key not found! ", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                        String addonKey = j.GetAttribute("key");
+
+                        if (Shared.mods[key].Addons.ContainsKey(addonKey))
+                        {
+                            Shared.mods[key].Addons[addonKey].Node.Checked = Boolean.Parse(j.GetAttribute("checked"));
+                        }
+                        else
+                        {
+                            if (versionConforms)
+                            {
+                                System.Windows.Forms.MessageBox.Show("Key not found: " + addonKey + " \nSetting file might be broken! ", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                            }
+                            else
+                            {
+                                skip += 1;
+                            }
+                        }
                     }
                 }
+                else
+                {
+                    if (versionConforms)
+                    {
+                        System.Windows.Forms.MessageBox.Show("Key not found: " + key + " \nSetting file might be broken! ", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        skip += 1;
+                    }
+                }
+            }
+
+            if (versionConforms)
+            {
+                System.Windows.Forms.MessageBox.Show("Finished! ", "Information", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+            }
+            else
+            {
+                System.Windows.Forms.MessageBox.Show("Finished! \nSkipped " + skip + " unidentified keys. ", "Information", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
             }
         }
 
@@ -108,6 +140,9 @@ namespace LZMP_Launcher
             document.CreateXmlDeclaration("1.0", "utf-8", null);
             XmlElement root = document.CreateElement("settings");
             document.AppendChild(root);
+            XmlElement ver = document.CreateElement("version");
+            ver.SetAttribute("value", Shared.version);
+            root.AppendChild(ver);
             foreach (var i in Shared.mods)
             {
                 XmlElement element = document.CreateElement("mod");
@@ -125,6 +160,8 @@ namespace LZMP_Launcher
                 root.AppendChild(element);
             }
             document.Save(xmlFile);
+
+            System.Windows.Forms.MessageBox.Show("Finished! ", "Information", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
         }
     }
 }

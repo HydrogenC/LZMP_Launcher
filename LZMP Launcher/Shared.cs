@@ -8,9 +8,8 @@ namespace LZMP_Launcher
     {
         public static readonly String workingDir = Directory.GetCurrentDirectory();
         public static readonly String resourceDir = workingDir + "\\Resources\\";
-        public static readonly String clientModDir = workingDir + "\\Client\\.minecraft\\mods\\";
-        public static readonly String serverModDir = workingDir + "\\Server\\panel\\server\\mods\\";
-        public static String clientLauncher, serverLauncher, version;
+        public static readonly String modDir = workingDir + "\\Game\\.minecraft\\mods\\";
+        public static String launcher, version;
         public static Dictionary<String, Mod> mods = new Dictionary<String, Mod>();
     }
 

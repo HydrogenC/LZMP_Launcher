@@ -97,8 +97,8 @@ namespace LZMP_Launcher
         {
             Int32 crtIndex = 0;
             MainProgressBar.Value = 0;
-            MainProgressBar.Step = 1;
-            MainProgressBar.Maximum = applyList.Length;
+            MainProgressBar.Maximum = 1000;
+            MainProgressBar.Step = MainProgressBar.Maximum / applyList.Length;
 
             foreach (var i in applyList)
             {
@@ -188,19 +188,11 @@ namespace LZMP_Launcher
             }
         }
 
-        private void LaunchClient_Click(object sender, EventArgs e)
+        private void LaunchButton_Click(object sender, EventArgs e)
         {
             Apply_Click(null, null);
-            Directory.SetCurrentDirectory(Shared.workingDir + "\\Client\\");
-            System.Diagnostics.Process.Start(Shared.clientLauncher);
-            Directory.SetCurrentDirectory(Shared.workingDir);
-        }
-
-        private void LaunchServer_Click(object sender, EventArgs e)
-        {
-            Apply_Click(null, null);
-            Directory.SetCurrentDirectory(Shared.workingDir + "\\Server\\");
-            System.Diagnostics.Process.Start(Shared.serverLauncher);
+            Directory.SetCurrentDirectory(Shared.workingDir + "\\Game\\");
+            System.Diagnostics.Process.Start(Shared.launcher);
             Directory.SetCurrentDirectory(Shared.workingDir);
         }
 
@@ -266,6 +258,8 @@ namespace LZMP_Launcher
             MainProgressBar.Visible = false;
             MainProgressBar.Value = 0;
             BigTitle.Visible = true;
+
+            MessageBox.Show("Finished! ", "Information", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
         }
         #endregion
 

@@ -9,12 +9,15 @@ namespace LZMP_Launcher
     {
         private List<String> files = new List<String>();
         private TreeNode node;
+        private Boolean installed, available;
+        private ModCategory category;
         private Dictionary<String, Mod> addons = new Dictionary<String, Mod>();
+        private String name;
 
         public Mod(String name, ModCategory category = ModCategory.Addon, List<String> files = null, Dictionary<String, Mod> addons = null)
         {
-            this.Name = name;
-            this.Category = category;
+            this.name = name;
+            this.category = category;
 
             if (files != null)
             {
@@ -29,12 +32,12 @@ namespace LZMP_Launcher
 
         public void CheckInstalled()
         {
-            Installed = true;
+            installed = true;
 
             foreach (var i in Files)
             {
-                Installed = File.Exists(Shared.clientModDir + i + ".jar") && System.IO.File.Exists(Shared.serverModDir + i + ".jar");
-                if (!Installed)
+                installed = File.Exists(Shared.modDir + i + ".jar");
+                if (!installed)
                 {
                     break;
                 }
@@ -43,14 +46,14 @@ namespace LZMP_Launcher
 
         public void CheckAvailability()
         {
-            Available = true;
+            available = true;
 
             foreach (var i in files)
             {
-                Available = File.Exists(Shared.resourceDir + i + ".jar");
-                if (!Available)
+                available = File.Exists(Shared.resourceDir + i + ".jar");
+                if (!available)
                 {
-                    MessageBox.Show("File not found: \n" + Name, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("File not found: \n" + name, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     break;
                 }
             }
@@ -62,12 +65,11 @@ namespace LZMP_Launcher
             {
                 try
                 {
-                    File.Copy(Shared.resourceDir + i + ".jar", Shared.clientModDir + i + ".jar");
-                    File.Copy(Shared.resourceDir + i + ".jar", Shared.serverModDir + i + ".jar");
+                    File.Copy(Shared.resourceDir + i + ".jar", Shared.modDir + i + ".jar");
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("An internal error occured while copying files. ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("An error occured while installing: \n" + name, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
@@ -79,12 +81,11 @@ namespace LZMP_Launcher
             {
                 try
                 {
-                    File.Delete(Shared.clientModDir + i + ".jar");
-                    File.Delete(Shared.serverModDir + i + ".jar");
+                    File.Delete(Shared.modDir + i + ".jar");
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("An internal error occured while deleting files. ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("An error occured while uninstalling: \n" + name, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
@@ -92,7 +93,7 @@ namespace LZMP_Launcher
 
         public void AddNode(TreeNodeCollection nodes)
         {
-            node = new TreeNode(Name);
+            node = new TreeNode(name);
             nodes.Add(node);
             foreach (var i in addons)
             {
@@ -117,26 +118,24 @@ namespace LZMP_Launcher
 
         public String Name
         {
-            get;
-            set;
+            get => name;
+            set => name = value;
         }
 
         public Boolean Installed
         {
-            get;
-            private set;
+            get => installed;
         }
 
         public Boolean Available
         {
-            get;
-            private set;
+            get => available;
         }
 
         public ModCategory Category
         {
-            get;
-            set;
+            get => category;
+            set => category = value;
         }
     }
 }

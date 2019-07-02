@@ -1,8 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings>
-  <version value="4.1.0" />
-  <client value="NsisoLauncher.exe" />
-  <server value="MCim.exe" />
+  <version value="4.2.4" />
+  <launcher value="NsisoLauncher.exe" />
 
   <category name="Technology" >
     <mod key="aa" name="Actually Additions" >
@@ -10,7 +9,7 @@
     </mod>
 
     <mod key="alc" name="Alchemistry" >
-      <file value="alib-1.0.10" />
+      <file value="alib-1.0.11" />
       <file value="alchemistry-1.0.27" />
     </mod>
 
@@ -42,7 +41,7 @@
         <file value="irontanks-1.12.2-2.1.0-beta.14" />
       </mod>
       <mod key="lgs" name="Logistics Pipes">
-        <file value="logisticspipes-0.10.2.180" />
+        <file value="logisticspipes-0.10.2.184" />
       </mod>
     </mod>
 
@@ -130,16 +129,16 @@
     </mod>
 
     <mod key="inl" name="Industrial Renewal" >
-      <file value="IndustrialRenewal_1.12.2-0.10.0" />
+      <file value="IndustrialRenewal_1.12.2-0.11.0" />
     </mod>
-    
+
     <mod key="itd" name="Integrated Dynamics" >
-      <file value="CyclopsCore-1.12.2-1.3.0" />
-      <file value="CommonCapabilities-1.12.2-2.4.1" />
-      <file value="IntegratedDynamics-1.12.2-1.0.14" />
-      <file value="IntegratedTunnels-1.12.2-1.6.9" />
-      <file value="IntegratedCrafting-1.12.2-1.0.7" />
-      <file value="IntegratedTerminals-1.12.2-1.0.8" />
+      <file value="CyclopsCore-1.12.2-1.4.0" />
+      <file value="CommonCapabilities-1.12.2-2.4.3" />
+      <file value="IntegratedDynamics-1.12.2-1.0.16" />
+      <file value="IntegratedTunnels-1.12.2-1.6.10" />
+      <file value="IntegratedCrafting-1.12.2-1.0.8" />
+      <file value="IntegratedTerminals-1.12.2-1.0.9" />
     </mod>
 
     <mod key="mo" name="Matter Overdrive" >
@@ -148,7 +147,7 @@
 
     <mod key="mps" name="Modular Powersuits" >
       <file value="Numina-1.12.2-1.0.38" />
-      <file value="ModularPowersuits-1.12.2-1.0.43" />
+      <file value="ModularPowersuits-1.12.2-1.0.44" />
     </mod>
 
     <mod key="mr" name="Modular Routers" >
@@ -179,9 +178,6 @@
         <file value="MikesModsLib-1.0.2" />
         <file value="EquivalentIntegrations-0.4.6" />
       </mod>
-      <mod key="pex" name="Project EX" >
-        <file value="ProjectEX-1.2.0.36" />
-      </mod>
     </mod>
 
     <mod key="prd" name="ProjectRed" >
@@ -199,7 +195,7 @@
     </mod>
 
     <mod key="rel" name="Refined Relocation" >
-      <file value="RefinedRelocation_1.12.2-4.2.35" />
+      <file value="RefinedRelocation_1.12.2-4.2.36" />
     </mod>
 
     <mod key="rs" name="Refined Storage" >
@@ -208,7 +204,7 @@
       <file value="rsinfinitewireless-1.2" />
       <mod key="mrf" name="More Refined Storage" >
         <file value="nevoka-core-1.0.2"  />
-        <file value="morerefinedstorage-1.1.6" />
+        <file value="morerefinedstorage-1.1.7" />
       </mod>
       <mod key="ref" name="Refined Exchange" >
         <file value="refinedexchange-2.1.1" />
@@ -231,6 +227,11 @@
       </mod>
     </mod>
 
+    <mod key="rfr" name="Refraction" >
+      <file value="librarianlib-1.12.2-4.19.2-release" />
+      <file value="refraction-1.12.2-1.9.11" />
+    </mod>
+
     <mod key="rft" name="RFTools" >
       <file value="rftools-1.12-7.71" />
       <mod key="rfc" name="RFTools Control" >
@@ -242,6 +243,10 @@
       <mod key="rfp" name="RFTools Power" >
         <file value="rftoolspower-1.12-1.2.0" />
       </mod>
+    </mod>
+
+    <mod key="skr" name="Sky Resources" >
+      <file value="skyresources-2.3.8" />
     </mod>
 
     <mod key="sc" name="Sonar Core" >
@@ -296,12 +301,21 @@
 
   <category name="Enhancement" >
     <mod key="bop" name="Biomes O Plenty" >
-      <file value="BiomesOPlenty-1.12.2-7.0.1.2439-universal" />
+      <file value="BiomesOPlenty-1.12.2-7.0.1.2441-universal" />
     </mod>
 
+    <mod key="dys" name="Dynamic Surroundings" >
+      <file value="OreLib-1.12.2-3.5.2.2" />
+      <file value="DynamicSurroundings-1.12.2-3.5.4.3" />
+    </mod>
+
+    <mod key="edu" name="Ender Utilities" >
+      <file value="enderutilities-1.12.2-0.7.12" />
+    </mod>
+    
     <mod key="fq" name="FTB Quests" >
       <file value="ItemFilters-1.0.3.12" />
-      <file value="FTBQuests-1.7.2.172" />
+      <file value="FTBQuests-1.7.2.179" />
     </mod>
 
     <mod key="mdb" name="Malisis Doors / Blocks" >
@@ -309,7 +323,7 @@
       <file value="malisisblocks-1.12.2-6.1.0" />
       <file value="malisisdoors-1.12.2-7.3.0" />
     </mod>
-
+    
     <mod key="fur" name="MrCrayfish's Furniture" >
       <file value="furniture-6.3.0-1.12.2" />
     </mod>
@@ -324,7 +338,7 @@
     </mod>
 
     <mod key="pto" name="Patchouli" >
-      <file value="Patchouli-1.0-19" />
+      <file value="Patchouli-1.0-20" />
     </mod>
 
     <mod key="sca" name="Scaling Health" >
@@ -335,7 +349,7 @@
     <mod key="td" name="Tick Dynamic">
       <file value="TickDynamic-1.12.2-1.0.1" />
     </mod>
-
+    
     <mod key="tmf" name="Tiny Mob Farm" >
       <file value="TinyMobFarm-1.12.2-1.0.5" />
     </mod>
