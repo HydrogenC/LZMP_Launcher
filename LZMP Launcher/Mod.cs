@@ -9,15 +9,12 @@ namespace LZMP_Launcher
     {
         private List<String> files = new List<String>();
         private TreeNode node;
-        private Boolean installed, available;
-        private ModCategory category;
         private Dictionary<String, Mod> addons = new Dictionary<String, Mod>();
-        private String name;
 
         public Mod(String name, ModCategory category = ModCategory.Addon, List<String> files = null, Dictionary<String, Mod> addons = null)
         {
-            this.name = name;
-            this.category = category;
+            this.Name = name;
+            this.Category = category;
 
             if (files != null)
             {
@@ -32,12 +29,12 @@ namespace LZMP_Launcher
 
         public void CheckInstalled()
         {
-            installed = true;
+            Installed = true;
 
             foreach (var i in Files)
             {
-                installed = File.Exists(Shared.modDir + i + ".jar");
-                if (!installed)
+                Installed = File.Exists(Shared.modDir + i + ".jar");
+                if (!Installed)
                 {
                     break;
                 }
@@ -46,14 +43,14 @@ namespace LZMP_Launcher
 
         public void CheckAvailability()
         {
-            available = true;
+            Available = true;
 
             foreach (var i in files)
             {
-                available = File.Exists(Shared.resourceDir + i + ".jar");
-                if (!available)
+                Available = File.Exists(Shared.resourceDir + i + ".jar");
+                if (!Available)
                 {
-                    MessageBox.Show("File not found: \n" + name, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("File not found: \n" + Name, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     break;
                 }
             }
@@ -69,7 +66,7 @@ namespace LZMP_Launcher
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("An error occured while installing: \n" + name, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("An error occured while installing: \n" + Name, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
@@ -85,7 +82,7 @@ namespace LZMP_Launcher
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("An error occured while uninstalling: \n" + name, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("An error occured while uninstalling: \n" + Name, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
@@ -93,7 +90,7 @@ namespace LZMP_Launcher
 
         public void AddNode(TreeNodeCollection nodes)
         {
-            node = new TreeNode(name);
+            node = new TreeNode(Name);
             nodes.Add(node);
             foreach (var i in addons)
             {
@@ -118,24 +115,26 @@ namespace LZMP_Launcher
 
         public String Name
         {
-            get => name;
-            set => name = value;
+            get;
+            set;
         }
 
         public Boolean Installed
         {
-            get => installed;
+            get;
+            private set;
         }
 
         public Boolean Available
         {
-            get => available;
+            get;
+            private set;
         }
 
         public ModCategory Category
         {
-            get => category;
-            set => category = value;
+            get;
+            set;
         }
     }
 }
