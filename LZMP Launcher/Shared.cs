@@ -13,14 +13,6 @@ namespace LZMP_Launcher
         public static Dictionary<String, Mod> mods = new Dictionary<String, Mod>();
     }
 
-    public enum ModCategory
-    {
-        Addon,
-        Technology,
-        Warfare,
-        Enhancement
-    }
-
     class Cleaner
     {
         private static String GetFileName(String fullPath)

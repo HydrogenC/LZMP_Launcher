@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Windows.Forms;
 using System.Xml;
 
 namespace LZMP_Launcher
@@ -11,32 +11,24 @@ namespace LZMP_Launcher
             return (XmlElement)(element.GetElementsByTagName(tagName)[0]);
         }
 
-        private static void GetModFromElement(XmlElement xml, ref Dictionary<String, Mod> dict, ModCategory category = ModCategory.Addon)
+        private static Mod ReadMod(XmlElement element)
         {
-            if (xml.Name != "mod")
-            {
-                throw new ArgumentException("Tag name of XmlElement must be 'mod'! ");
-            }
-            String key = xml.GetAttribute("key");
-            dict[key] = new Mod(xml.GetAttribute("name"), category);
-            foreach (XmlElement i in xml.ChildNodes)
+            Mod mod = new Mod(element.GetAttribute("name"));
+            foreach (XmlElement i in element.ChildNodes)
             {
                 if (i.Name == "file")
                 {
-                    dict[key].Files.Add(i.GetAttribute("value"));
+                    mod.Files.Add(i.GetAttribute("value"));
                 }
             }
-            foreach (XmlElement i in xml.GetElementsByTagName("mod"))
-            {
-                GetModFromElement(i, ref dict[key].Addons);
-            }
+            return mod;
         }
 
-        public static void ReadDefinitions(String xmlFile)
+        public static void ReadDefinitions(String xmlFile, ref TreeView view)
         {
             if (!System.IO.File.Exists(xmlFile))
             {
-                System.Windows.Forms.MessageBox.Show("Settings file not found! ", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                MessageBox.Show("Settings file not found! ", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                 return;
             }
 
@@ -47,26 +39,23 @@ namespace LZMP_Launcher
 
             foreach (XmlElement element in xml.GetElementsByTagName("category"))
             {
-                ModCategory currentCategory;
-                switch (element.GetAttribute("name"))
+                TreeNode node = new TreeNode(element.GetAttribute("name") + " Mods");
+                foreach (XmlElement mod in element.ChildNodes)
                 {
-                    case "Technology":
-                        currentCategory = ModCategory.Technology;
-                        break;
-                    case "Warfare":
-                        currentCategory = ModCategory.Warfare;
-                        break;
-                    case "Enhancement":
-                        currentCategory = ModCategory.Enhancement;
-                        break;
-                    default:
-                        currentCategory = ModCategory.Addon;
-                        break;
+                    String key = element.GetAttribute("key");
+                    Shared.mods[key] = ReadMod(mod);
+                    foreach (XmlElement addon in mod.ChildNodes)
+                    {
+                        if (addon.Name == "mod")
+                        {
+                            String aKey = addon.GetAttribute("key");
+                            Shared.mods[key].Addons[aKey] = ReadMod(addon);
+                        }
+                    }
+                    Shared.mods[key].CreateNode();
+                    node.Nodes.Add(Shared.mods[key].Node);
                 }
-                foreach (XmlElement i in element.ChildNodes)
-                {
-                    GetModFromElement(i, ref Shared.mods, currentCategory);
-                }
+                view.Nodes.Add(node);
             }
         }
 
@@ -102,7 +91,7 @@ namespace LZMP_Launcher
                         {
                             if (versionConforms)
                             {
-                                System.Windows.Forms.MessageBox.Show("Key not found: " + addonKey + " \nSetting file might be broken! ", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                                MessageBox.Show("Key not found: " + addonKey + " \nSetting file might be broken! ", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                             }
                             else
                             {
@@ -115,7 +104,7 @@ namespace LZMP_Launcher
                 {
                     if (versionConforms)
                     {
-                        System.Windows.Forms.MessageBox.Show("Key not found: " + key + " \nSetting file might be broken! ", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                        MessageBox.Show("Key not found: " + key + " \nSetting file might be broken! ", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                     }
                     else
                     {
@@ -126,11 +115,11 @@ namespace LZMP_Launcher
 
             if (versionConforms)
             {
-                System.Windows.Forms.MessageBox.Show("Finished! ", "Information", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+                MessageBox.Show("Finished! ", "Information", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
             }
             else
             {
-                System.Windows.Forms.MessageBox.Show("Finished! \nSkipped " + skip + " unidentified keys. ", "Information", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+                MessageBox.Show("Finished! \nSkipped " + skip + " unidentified keys. ", "Information", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
             }
         }
 
@@ -161,7 +150,7 @@ namespace LZMP_Launcher
             }
             document.Save(xmlFile);
 
-            System.Windows.Forms.MessageBox.Show("Finished! ", "Information", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+            MessageBox.Show("Finished! ", "Information", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
         }
     }
 }

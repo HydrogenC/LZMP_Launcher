@@ -34,27 +34,12 @@ namespace LZMP_Launcher
             MainProgressBar.Visible = false;
             BigTitle.Visible = true;
 
-            XmlHelper.ReadDefinitions(Shared.workingDir + "\\BasicSettings.xml");
+            XmlHelper.ReadDefinitions(Shared.workingDir + "\\BasicSettings.xml", ref MainTree);
             BigTitle.Text += Shared.version;
-            WriteInNodes();
+            MainTree.ExpandAll();
 
             foreach (var i in Shared.mods)
             {
-                switch (i.Value.Category)
-                {
-                    case ModCategory.Technology:
-                        i.Value.AddNode(MainTree.Nodes[0].Nodes);
-                        break;
-                    case ModCategory.Warfare:
-                        i.Value.AddNode(MainTree.Nodes[1].Nodes);
-                        break;
-                    case ModCategory.Enhancement:
-                        i.Value.AddNode(MainTree.Nodes[2].Nodes);
-                        break;
-                    default:
-                        break;
-                }
-
                 i.Value.CheckAvailability();
                 foreach (var j in i.Value.Addons)
                 {
@@ -67,15 +52,6 @@ namespace LZMP_Launcher
         }
 
         #region Initialize
-
-        private void WriteInNodes()
-        {
-            MainTree.Nodes.Clear();
-            MainTree.Nodes.Add("Technology Mods");
-            MainTree.Nodes.Add("Warfare Mods");
-            MainTree.Nodes.Add("Enhancement Mods");
-            MainTree.ExpandAll();
-        }
 
         private void CheckInstallation()
         {

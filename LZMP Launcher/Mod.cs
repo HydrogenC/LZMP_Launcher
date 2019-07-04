@@ -11,10 +11,9 @@ namespace LZMP_Launcher
         private TreeNode node;
         private Dictionary<String, Mod> addons = new Dictionary<String, Mod>();
 
-        public Mod(String name, ModCategory category = ModCategory.Addon, List<String> files = null, Dictionary<String, Mod> addons = null)
+        public Mod(String name, List<String> files = null, Dictionary<String, Mod> addons = null)
         {
             this.Name = name;
-            this.Category = category;
 
             if (files != null)
             {
@@ -88,13 +87,13 @@ namespace LZMP_Launcher
             }
         }
 
-        public void AddNode(TreeNodeCollection nodes)
+        public void CreateNode()
         {
             node = new TreeNode(Name);
-            nodes.Add(node);
             foreach (var i in addons)
             {
-                i.Value.AddNode(node.Nodes);
+                i.Value.CreateNode();
+                node.Nodes.Add(i.Value.Node);
             }
         }
 
@@ -129,12 +128,6 @@ namespace LZMP_Launcher
         {
             get;
             private set;
-        }
-
-        public ModCategory Category
-        {
-            get;
-            set;
         }
     }
 }
