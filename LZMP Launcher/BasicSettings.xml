@@ -343,7 +343,7 @@
 
   <category name="Optimization" >
     <mod key="atf" name="Attribute Fix" >
-      <file value="" />
+      <file value="AttributeFix-1.12.2-1.0.4" />
     </mod>
       
     <mod key="psp" name="Phosphor" >
