@@ -42,7 +42,7 @@ namespace LZMP_Launcher
                 TreeNode node = new TreeNode(element.GetAttribute("name") + " Mods");
                 foreach (XmlElement mod in element.ChildNodes)
                 {
-                    String key = element.GetAttribute("key");
+                    String key = mod.GetAttribute("key");
                     Shared.mods[key] = ReadMod(mod);
                     foreach (XmlElement addon in mod.ChildNodes)
                     {
