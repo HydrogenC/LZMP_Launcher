@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings>
-  <version value="4.3.1" />
+  <version value="4.3.2" />
   <launcher value="NsisoLauncher.exe" />
 
   <category name="Technology" >
@@ -155,9 +155,6 @@
 
     <mod key="nc" name="NuclearCraft" >
       <file value="NuclearCraft-2.17a-1.12.2" />
-      <mod key="ner" name="Not Enough RTGs">
-        <file value="notenoughrtgs-1.2a" />
-      </mod>
     </mod>
 
     <mod key="omt" name="Open Modular Turrents" >
@@ -335,20 +332,26 @@
       <file value="Patchouli-1.0-20" />
     </mod>
 
-    <mod key="psp" name="Phosphor" >
-      <file value="phosphor-1.12.2-0.2.4+build46-universal" />
-    </mod>
-
     <mod key="rel" name="Refined Relocation" >
       <file value="RefinedRelocation_1.12.2-4.2.36" />
     </mod>
 
-    <mod key="td" name="Tick Dynamic">
-      <file value="TickDynamic-1.12.2-1.0.1" />
-    </mod>
-
     <mod key="tmf" name="Tiny Mob Farm" >
       <file value="TinyMobFarm-1.12.2-1.0.5" />
+    </mod>
+  </category>
+
+  <category name="Optimization" >
+    <mod key="atf" name="Attribute Fix" >
+      <file value="" />
+    </mod>
+      
+    <mod key="psp" name="Phosphor" >
+      <file value="phosphor-1.12.2-0.2.4+build46-universal" />
+    </mod>
+      
+    <mod key="td" name="Tick Dynamic">
+      <file value="TickDynamic-1.12.2-1.0.1" />
     </mod>
   </category>
 </settings>
