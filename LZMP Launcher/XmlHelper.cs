@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
 using System.Xml;
 
@@ -26,7 +27,7 @@ namespace LZMP_Launcher
 
         public static void ReadDefinitions(String xmlFile, ref TreeView view)
         {
-            if (!System.IO.File.Exists(xmlFile))
+            if (!File.Exists(xmlFile))
             {
                 MessageBox.Show("Settings file not found! ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
