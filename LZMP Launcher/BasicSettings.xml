@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings>
-  <version value="4.3.5" />
+  <version value="4.4.0" />
   <launcher value="NsisoLauncher.exe" />
 
   <category name="Technology" >
@@ -19,7 +19,7 @@
         <file value="ae2stuff-0.7.0.4-mc1.12.2" />
       </mod>
       <mod key="ait" name="Applied Integrations" >
-        <file value="AppliedIntegrations-1.12.2-f1ee012e" />
+        <file value="AppliedIntegrations-1.12.2-8.0.15" />
       </mod>
       <mod key="wct" name="Wireless Terminals" >
         <file value="p455w0rdslib-1.12.2-2.2.151" />
@@ -32,7 +32,7 @@
     </mod>
 
     <mod key="atc" name="Atomic Science" >
-      <file value="Atomic-Science-1.12.2-3.2.0b108" />
+      <file value="Atomic-Science-1.12.2-3.2.0b109" />
     </mod>
 
     <mod key="bc" name="Buildcraft" >
@@ -41,13 +41,13 @@
         <file value="irontanks-1.12.2-2.1.0-beta.14" />
       </mod>
       <mod key="lgs" name="Logistics Pipes">
-        <file value="logisticspipes-0.10.2.185" />
+        <file value="logisticspipes-0.10.2.189" />
       </mod>
     </mod>
 
     <mod key="de" name="Draconic Evolution" >
-      <file value="BrandonsCore-1.12.2-2.4.12.205-universal" />
-      <file value="Draconic-Evolution-1.12.2-2.3.22.343-universal" />
+      <file value="BrandonsCore-1.12.2-2.4.16.207-universal" />
+      <file value="Draconic-Evolution-1.12.2-2.3.23.345-universal" />
     </mod>
 
     <mod key="evt" name="Environmental Tech" >
@@ -122,10 +122,6 @@
       </mod>
     </mod>
 
-    <mod key="inl" name="Industrial Renewal" >
-      <file value="IndustrialRenewal_1.12.2-0.11.0" />
-    </mod>
-
     <mod key="itd" name="Integrated Dynamics" >
       <file value="CyclopsCore-1.12.2-1.4.0" />
       <file value="CommonCapabilities-1.12.2-2.4.3" />
@@ -173,13 +169,13 @@
     </mod>
 
     <mod key="prd" name="ProjectRed" >
-      <file value="ProjectRed-1.12.2-4.9.1.92-Base" />
-      <file value="ProjectRed-1.12.2-4.9.1.92-compat" />
-      <file value="ProjectRed-1.12.2-4.9.1.92-fabrication" />
-      <file value="ProjectRed-1.12.2-4.9.1.92-integration" />
-      <file value="ProjectRed-1.12.2-4.9.1.92-lighting" />
-      <file value="ProjectRed-1.12.2-4.9.1.92-mechanical" />
-      <file value="ProjectRed-1.12.2-4.9.1.92-world" />
+      <file value="ProjectRed-1.12.2-4.9.3.116-Base" />
+      <file value="ProjectRed-1.12.2-4.9.3.116-compat" />
+      <file value="ProjectRed-1.12.2-4.9.3.116-fabrication" />
+      <file value="ProjectRed-1.12.2-4.9.3.116-integration" />
+      <file value="ProjectRed-1.12.2-4.9.3.116-lighting" />
+      <file value="ProjectRed-1.12.2-4.9.3.116-mechanical" />
+      <file value="ProjectRed-1.12.2-4.9.3.116-world" />
     </mod>
 
     <mod key="rc" name="Railcraft" >
@@ -192,7 +188,7 @@
       <file value="rsinfinitewireless-1.2" />
       <mod key="mrf" name="More Refined Storage" >
         <file value="nevoka-core-1.0.2"  />
-        <file value="morerefinedstorage-1.1.7" />
+        <file value="morerefinedstorage-1.1.8" />
       </mod>
       <mod key="ref" name="Refined Exchange" >
         <file value="refinedexchange-2.1.1" />
@@ -233,8 +229,6 @@
       </mod>
     </mod>
 
-
-
     <mod key="sc" name="Sonar Core" >
       <file value="sonarcore-1.12.2-5.0.19-20" />
       <mod key="cal" name="Calculator" >
@@ -265,11 +259,27 @@
     </mod>
   </category>
 
-  <category name="Miscellaneous" >
+  <category name="Decoration" >
     <mod key="bop" name="Biomes O Plenty" >
       <file value="BiomesOPlenty-1.12.2-7.0.1.2441-universal" />
     </mod>
+    
+    <mod key="ctw" name="Catwalks" >
+      <file value="catwalks-1.12.2-4.0.44" />
+    </mod>
 
+    <mod key="mdb" name="Malisis Doors / Blocks" >
+      <file value="malisiscore-1.12.2-6.4.0" />
+      <file value="malisisblocks-1.12.2-6.1.0" />
+      <file value="malisisdoors-1.12.2-7.3.0" />
+    </mod>
+
+    <mod key="fur" name="MrCrayfish's Furniture" >
+      <file value="furniture-6.3.0-1.12.2" />
+    </mod>
+  </category>
+
+  <category name="Miscellaneous" >
     <mod key="npc" name="Custom NPCs" >
       <file value="CustomNPCs_1.12.2(30Jan19)" />
     </mod>
@@ -285,7 +295,7 @@
 
     <mod key="fq" name="FTB Quests" >
       <file value="ItemFilters-1.0.3.12" />
-      <file value="FTBQuests-1.7.2.179" />
+      <file value="FTBQuests-1.7.2.186" />
     </mod>
 
     <mod key="hot" name="Horse Tweaks" >
@@ -297,22 +307,12 @@
       <file value="MTS_Official_Pack_V11" />
     </mod>
 
-    <mod key="mdb" name="Malisis Doors / Blocks" >
-      <file value="malisiscore-1.12.2-6.4.0" />
-      <file value="malisisblocks-1.12.2-6.1.0" />
-      <file value="malisisdoors-1.12.2-7.3.0" />
-    </mod>
-
     <mod key="mw" name="Modern Warfare" >
       <file value="mw-1.11.7.7_mc1.12.2" />
     </mod>
 
     <mod key="mr" name="Modular Routers" >
       <file value="modular-routers-1.12.2-3.2.2" />
-    </mod>
-
-    <mod key="fur" name="MrCrayfish's Furniture" >
-      <file value="furniture-6.3.0-1.12.2" />
     </mod>
 
     <mod key="ob" name="OpenBlocks" >
