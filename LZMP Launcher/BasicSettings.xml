@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings>
-  <version value="4.4.0" />
+  <version value="4.4.1" />
   <launcher value="NsisoLauncher.exe" />
 
   <category name="Technology" >
     <mod key="aa" name="Actually Additions" >
-      <file value="ActuallyAdditions-1.12.2-r148" />
+      <file value="ActuallyAdditions-1.12.2-r149" />
     </mod>
 
     <mod key="alc" name="Alchemistry" >
@@ -246,6 +246,10 @@
       <file value="techguns-1.12.2-2.0.2.0_pre3.1" />
     </mod>
 
+    <mod key="tso" name="Thermal Solars" >
+      <file value="thermalsolars-1.12.2-1.9.5" />
+    </mod>
+
     <mod key="wlu" name="Wireless Utilities" >
       <file value="wirelessutils-1.12.2-1.7.76-universal" />
     </mod>
@@ -263,11 +267,12 @@
     <mod key="bop" name="Biomes O Plenty" >
       <file value="BiomesOPlenty-1.12.2-7.0.1.2441-universal" />
     </mod>
-    
-    <mod key="ctw" name="Catwalks" >
-      <file value="catwalks-1.12.2-4.0.44" />
-    </mod>
 
+    <mod key="dys" name="Dynamic Surroundings" >
+      <file value="OreLib-1.12.2-3.5.2.2" />
+      <file value="DynamicSurroundings-1.12.2-3.5.4.3" />
+    </mod>
+    
     <mod key="mdb" name="Malisis Doors / Blocks" >
       <file value="malisiscore-1.12.2-6.4.0" />
       <file value="malisisblocks-1.12.2-6.1.0" />
@@ -282,11 +287,6 @@
   <category name="Miscellaneous" >
     <mod key="npc" name="Custom NPCs" >
       <file value="CustomNPCs_1.12.2(30Jan19)" />
-    </mod>
-
-    <mod key="dys" name="Dynamic Surroundings" >
-      <file value="OreLib-1.12.2-3.5.2.2" />
-      <file value="DynamicSurroundings-1.12.2-3.5.4.3" />
     </mod>
 
     <mod key="edu" name="Ender Utilities" >
