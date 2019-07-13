@@ -122,15 +122,6 @@
       </mod>
     </mod>
 
-    <mod key="tsl" name="Tesla" >
-      <file value="Tesla-1.12.2-1.0.63" />
-      <mod key="idf" name="Industrial Foregoing">
-        <file value="tesla-core-lib-1.12.2-1.0.15" />
-        <file value="industrialforegoing-1.12.2-1.12.12-236" />
-        <file value="IntegrationForegoing-1.12.2-1.9" />
-      </mod>
-    </mod>
-
     <mod key="itd" name="Integrated Dynamics" >
       <file value="CyclopsCore-1.12.2-1.4.0" />
       <file value="CommonCapabilities-1.12.2-2.4.4" />
@@ -255,6 +246,15 @@
       <file value="techguns-1.12.2-2.0.2.0_pre3.1" />
     </mod>
 
+    <mod key="tsl" name="Tesla" >
+      <file value="Tesla-1.12.2-1.0.63" />
+      <mod key="idf" name="Industrial Foregoing">
+        <file value="tesla-core-lib-1.12.2-1.0.15" />
+        <file value="industrialforegoing-1.12.2-1.12.12-236" />
+        <file value="IntegrationForegoing-1.12.2-1.9" />
+      </mod>
+    </mod>
+
     <mod key="tso" name="Thermal Solars" >
       <file value="thermalsolars-1.12.2-1.9.5" />
     </mod>
@@ -333,7 +333,7 @@
     <mod key="mmg" name="Mapmaker's Gadgets" >
       <file value="Mapmaker's+Gadgets-1.2" />
     </mod>
-      
+
     <mod key="mw" name="Modern Warfare" >
       <file value="mw-1.11.7.7_mc1.12.2" />
     </mod>
