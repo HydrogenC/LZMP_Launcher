@@ -41,10 +41,12 @@ namespace LZMP_Launcher
             foreach (XmlElement element in xml.GetElementsByTagName("category"))
             {
                 TreeNode node = new TreeNode(element.GetAttribute("name") + " Mods");
+
                 foreach (XmlElement mod in element.ChildNodes)
                 {
                     String key = mod.GetAttribute("key");
                     Shared.mods[key] = ReadMod(mod);
+
                     foreach (XmlElement addon in mod.ChildNodes)
                     {
                         if (addon.Name == "mod")
@@ -53,9 +55,12 @@ namespace LZMP_Launcher
                             Shared.mods[key].Addons[aKey] = ReadMod(addon);
                         }
                     }
+
                     Shared.mods[key].CreateNode();
                     node.Nodes.Add(Shared.mods[key].Node);
                 }
+
+                node.Expand();
                 view.Nodes.Add(node);
             }
         }
@@ -67,6 +72,7 @@ namespace LZMP_Launcher
             XmlElement root = GetElementByTagName(ref document, "settings");
             Boolean versionConforms = GetElementByTagName(ref document, "version").GetAttribute("value") == Shared.version;
             UInt16 skip = 0;
+
             foreach (XmlElement i in root.ChildNodes)
             {
                 if (i.Name != "mod")

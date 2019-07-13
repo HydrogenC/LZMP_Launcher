@@ -36,7 +36,6 @@ namespace LZMP_Launcher
 
             XmlHelper.ReadDefinitions(Shared.workingDir + "\\BasicSettings.xml", ref MainTree);
             BigTitle.Text += Shared.version;
-            MainTree.ExpandAll();
 
             foreach (var i in Shared.mods)
             {
@@ -50,8 +49,6 @@ namespace LZMP_Launcher
             CheckInstallation();
             SaveDialog.InitialDirectory = Shared.workingDir + "\\Sets\\";
         }
-
-        #region Initialize
 
         private void CheckInstallation()
         {
@@ -67,7 +64,6 @@ namespace LZMP_Launcher
                 }
             }
         }
-        #endregion
 
         private void ApplyChanges(Mod[] applyList)
         {
