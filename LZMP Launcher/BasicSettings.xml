@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings>
-  <version value="4.4.2" />
+  <version value="4.5.0" />
   <launcher value="NsisoLauncher.exe" />
 
   <category name="Technology" >
@@ -119,6 +119,15 @@
       </mod>
       <mod key="gra" name="Gravitation Suite" >
         <file value="Gravitation+Suite-3.1.1" />
+      </mod>
+    </mod>
+
+    <mod key="tsl" name="Tesla" >
+      <file value="Tesla-1.12.2-1.0.63" />
+      <mod key="idf" name="Industrial Foregoing">
+        <file value="tesla-core-lib-1.12.2-1.0.15" />
+        <file value="industrialforegoing-1.12.2-1.12.12-236" />
+        <file value="IntegrationForegoing-1.12.2-1.9" />
       </mod>
     </mod>
 
@@ -321,6 +330,10 @@
       <file value="MTS_Official_Pack_V11" />
     </mod>
 
+    <mod key="mmg" name="Mapmaker's Gadgets" >
+      <file value="Mapmaker's+Gadgets-1.2" />
+    </mod>
+      
     <mod key="mw" name="Modern Warfare" >
       <file value="mw-1.11.7.7_mc1.12.2" />
     </mod>
