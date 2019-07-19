@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings>
-  <version value="4.5.0" />
+  <version value="4.5.1" />
   <launcher value="NsisoLauncher.exe" />
 
   <category name="Technology" >
@@ -10,7 +10,7 @@
 
     <mod key="alc" name="Alchemistry" >
       <file value="alib-1.0.11" />
-      <file value="alchemistry-1.0.27" />
+      <file value="alchemistry-1.0.29" />
     </mod>
 
     <mod key="ae" name="Applied Energetics" >
@@ -41,7 +41,7 @@
         <file value="irontanks-1.12.2-2.1.0-beta.14" />
       </mod>
       <mod key="lgs" name="Logistics Pipes">
-        <file value="logisticspipes-0.10.2.191" />
+        <file value="logisticspipes-0.10.2.195" />
       </mod>
     </mod>
 
@@ -110,7 +110,7 @@
     </mod>
 
     <mod key="ic" name="IndustrialCraft" >
-      <file value="industrialcraft-2-2.8.164-ex112" />
+      <file value="industrialcraft-2-2.8.169-ex112" />
       <mod key="asp" name="Advanced Solar Panels" >
         <file value="Advanced+Solar+Panels-4.3.0" />
       </mod>
@@ -137,7 +137,7 @@
 
     <mod key="mps" name="Modular Powersuits" >
       <file value="Numina-1.12.2-1.0.38" />
-      <file value="ModularPowersuits-1.12.2-1.0.44" />
+      <file value="ModularPowersuits-1.12.2-1.0.46" />
     </mod>
 
     <mod key="ma" name="Mystical Agriculture" >
@@ -147,7 +147,7 @@
     </mod>
 
     <mod key="nc" name="NuclearCraft" >
-      <file value="NuclearCraft-2.17a-1.12.2" />
+      <file value="NuclearCraft-2.17b-1.12.2" />
     </mod>
 
     <mod key="omt" name="Open Modular Turrents" >
