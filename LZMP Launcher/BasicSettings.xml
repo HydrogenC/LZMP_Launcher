@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings>
-  <version value="4.5.1" />
+  <version value="4.5.2" />
   <launcher value="NsisoLauncher.exe" />
 
   <category name="Technology" >
@@ -10,7 +10,7 @@
 
     <mod key="alc" name="Alchemistry" >
       <file value="alib-1.0.11" />
-      <file value="alchemistry-1.0.29" />
+      <file value="alchemistry-1.0.31" />
     </mod>
 
     <mod key="ae" name="Applied Energetics" >
@@ -19,10 +19,10 @@
         <file value="ae2stuff-0.7.0.4-mc1.12.2" />
       </mod>
       <mod key="ait" name="Applied Integrations" >
-        <file value="AppliedIntegrations-1.12.2-8.0.15" />
+        <file value="AppliedIntegrations-1.12.2-eea02101" />
       </mod>
       <mod key="wct" name="Wireless Terminals" >
-        <file value="p455w0rdslib-1.12.2-2.2.151" />
+        <file value="p455w0rdslib-1.12.2-2.2.156" />
         <file value="AE2WTLib-1.12.2-1.0.30" />
         <file value="WirelessCraftingTerminal-1.12.2-3.12.93" />
         <file value="WirelessFluidTerminal-1.12.2-1.0.1" />
@@ -32,7 +32,7 @@
     </mod>
 
     <mod key="atc" name="Atomic Science" >
-      <file value="Atomic-Science-1.12.2-3.2.0b2" />
+      <file value="Atomic-Science-1.12.2-3.2.0b3" />
     </mod>
 
     <mod key="bc" name="Buildcraft" >
@@ -41,12 +41,12 @@
         <file value="irontanks-1.12.2-2.1.0-beta.14" />
       </mod>
       <mod key="lgs" name="Logistics Pipes">
-        <file value="logisticspipes-0.10.2.195" />
+        <file value="logisticspipes-0.10.2.203" />
       </mod>
     </mod>
 
     <mod key="de" name="Draconic Evolution" >
-      <file value="BrandonsCore-1.12.2-2.4.16.207-universal" />
+      <file value="BrandonsCore-1.12.2-2.4.17.208-universal" />
       <file value="Draconic-Evolution-1.12.2-2.3.23.345-universal" />
     </mod>
 
@@ -74,19 +74,19 @@
     </mod>
 
     <mod key="gc" name="Galacticraft" >
-      <file value="MicdoodleCore-1.12.2-4.0.2.211" />
-      <file value="GalacticraftCore-1.12.2-4.0.2.211" />
-      <file value="Galacticraft-Planets-1.12.2-4.0.2.211" />
+      <file value="MicdoodleCore-1.12.2-4.0.2.224" />
+      <file value="GalacticraftCore-1.12.2-4.0.2.224" />
+      <file value="Galacticraft-Planets-1.12.2-4.0.2.224" />
       <mod key="exp" name="Extra Planets">
         <file value="MJRLegendsLib-1.12.2-1.1.8" />
-        <file value="ExtraPlanets-1.12.2-0.5.3" />
+        <file value="ExtraPlanets-1.12.2-0.5.4" />
       </mod>
     </mod>
 
     <mod key="ga" name="Guide API" >
       <file value="Guide-API-1.12-2.1.8-63" />
       <mod key="cyl" name="Cyclic" >
-        <file value="Cyclic-1.12.2-1.19.12" />
+        <file value="Cyclic-1.12.2-1.19.13" />
       </mod>
       <mod key="wot" name="Woot" >
         <file value="woot-1.12.2-1.4.11" />
@@ -110,7 +110,7 @@
     </mod>
 
     <mod key="ic" name="IndustrialCraft" >
-      <file value="industrialcraft-2-2.8.169-ex112" />
+      <file value="industrialcraft-2-2.8.171-ex112" />
       <mod key="asp" name="Advanced Solar Panels" >
         <file value="Advanced+Solar+Panels-4.3.0" />
       </mod>
@@ -147,7 +147,7 @@
     </mod>
 
     <mod key="nc" name="NuclearCraft" >
-      <file value="NuclearCraft-2.17b-1.12.2" />
+      <file value="NuclearCraft-2.17c-1.12.2" />
     </mod>
 
     <mod key="omt" name="Open Modular Turrents" >
@@ -183,7 +183,7 @@
     </mod>
 
     <mod key="rs" name="Refined Storage" >
-      <file value="refinedstorage-1.6.14" />
+      <file value="refinedstorage-1.6.15" />
       <file value="refinedstorageaddons-0.4.4" />
       <file value="rsinfinitewireless-1.2" />
       <mod key="mrf" name="More Refined Storage" >
@@ -199,12 +199,12 @@
     </mod>
 
     <mod key="rco" name="Reborn Core" >
-      <file value="RebornCore-1.12.2-3.13.12.447-universal" />
+      <file value="RebornCore-1.11.2-2.16.1.115-universal" />
       <mod key="car" name="Steve's Carts" >
         <file value="StevesCarts-1.12.2-2.4.31.135" />
       </mod>
       <mod key="tr" name="Tech Reborn" >
-        <file value="TechReborn-1.12.2-2.22.1.979-universal" />
+        <file value="TechReborn-1.12.2-2.23.2.1007-universal" />
       </mod>
       <mod key="reb" name="Reborn Storage" >
         <file value="RebornStorage-1.12.2-3.3.4.85" />
@@ -217,7 +217,7 @@
     </mod>
 
     <mod key="rft" name="RFTools" >
-      <file value="rftools-1.12-7.71" />
+      <file value="rftools-1.12-7.72" />
       <mod key="rfc" name="RFTools Control" >
         <file value="rftoolsctrl-1.12-2.0.2" />
       </mod>
@@ -250,7 +250,7 @@
       <file value="Tesla-1.12.2-1.0.63" />
       <mod key="idf" name="Industrial Foregoing">
         <file value="tesla-core-lib-1.12.2-1.0.15" />
-        <file value="industrialforegoing-1.12.2-1.12.12-236" />
+        <file value="industrialforegoing-1.12.2-1.12.13-237" />
         <file value="IntegrationForegoing-1.12.2-1.9" />
       </mod>
     </mod>
@@ -264,7 +264,7 @@
     </mod>
 
     <mod key="xn" name="XNet" >
-      <file value="xnet-1.12-1.8.1" />
+      <file value="xnet-1.12-1.8.2" />
     </mod>
 
     <mod key="zi" name="Zetta Industries" >
@@ -299,11 +299,11 @@
     </mod>
 
     <mod key="psp" name="Phosphor" >
-      <file value="phosphor-1.12.2-0.2.4+build46-universal" />
+      <file value="phosphor-1.12.2-0.2.6+build50-universal" />
     </mod>
 
     <mod key="td" name="Tick Dynamic">
-      <file value="TickDynamic-1.12.2-1.0.1" />
+      <file value="TickDynamic-1.12.2-1.0.2" />
     </mod>
   </category>
 
@@ -313,12 +313,12 @@
     </mod>
 
     <mod key="edu" name="Ender Utilities" >
-      <file value="enderutilities-1.12.2-0.7.12" />
+      <file value="enderutilities-1.12.2-0.7.13" />
     </mod>
 
     <mod key="fq" name="FTB Quests" >
       <file value="ItemFilters-1.0.3.12" />
-      <file value="FTBQuests-1.7.2.187" />
+      <file value="FTBQuests-1.7.2.188" />
     </mod>
 
     <mod key="hot" name="Horse Tweaks" >
