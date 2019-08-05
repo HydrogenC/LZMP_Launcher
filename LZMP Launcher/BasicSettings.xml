@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings>
-  <version value="4.5.2" />
+  <version value="4.5.4" />
   <launcher value="NsisoLauncher.exe" />
 
   <category name="Technology" >
@@ -47,7 +47,7 @@
 
     <mod key="de" name="Draconic Evolution" >
       <file value="BrandonsCore-1.12.2-2.4.17.208-universal" />
-      <file value="Draconic-Evolution-1.12.2-2.3.23.345-universal" />
+      <file value="Draconic-Evolution-1.12.2-2.3.24.349-universal" />
     </mod>
 
     <mod key="evt" name="Environmental Tech" >
@@ -62,7 +62,7 @@
     </mod>
 
     <mod key="for" name="Forestry">
-      <file value="forestry_1.12.2-5.8.2.387" />
+      <file value="forestry_1.12.2-5.8.2.392" />
       <file value="jeibees-0.9.0.5-mc1.12.2" />
       <mod key="bin" name="Binne's Mods">
         <file value="binnie-mods-1.12.2-2.5.1.188" />
@@ -79,7 +79,7 @@
       <file value="Galacticraft-Planets-1.12.2-4.0.2.224" />
       <mod key="exp" name="Extra Planets">
         <file value="MJRLegendsLib-1.12.2-1.1.8" />
-        <file value="ExtraPlanets-1.12.2-0.5.4" />
+        <file value="ExtraPlanets-1.12.2-0.5.5" />
       </mod>
     </mod>
 
@@ -110,7 +110,7 @@
     </mod>
 
     <mod key="ic" name="IndustrialCraft" >
-      <file value="industrialcraft-2-2.8.171-ex112" />
+      <file value="industrialcraft-2-2.8.175-ex112" />
       <mod key="asp" name="Advanced Solar Panels" >
         <file value="Advanced+Solar+Panels-4.3.0" />
       </mod>
@@ -123,9 +123,9 @@
     </mod>
 
     <mod key="itd" name="Integrated Dynamics" >
-      <file value="CyclopsCore-1.12.2-1.4.0" />
+      <file value="CyclopsCore-1.12.2-1.5.0" />
       <file value="CommonCapabilities-1.12.2-2.4.4" />
-      <file value="IntegratedDynamics-1.12.2-1.0.17" />
+      <file value="IntegratedDynamics-1.12.2-1.0.18" />
       <file value="IntegratedTunnels-1.12.2-1.6.10" />
       <file value="IntegratedCrafting-1.12.2-1.0.8" />
       <file value="IntegratedTerminals-1.12.2-1.0.9" />
@@ -199,12 +199,12 @@
     </mod>
 
     <mod key="rco" name="Reborn Core" >
-      <file value="RebornCore-1.11.2-2.16.1.115-universal" />
+      <file value="RebornCore-1.12.2-3.15.5.467-universal" />
       <mod key="car" name="Steve's Carts" >
         <file value="StevesCarts-1.12.2-2.4.31.135" />
       </mod>
       <mod key="tr" name="Tech Reborn" >
-        <file value="TechReborn-1.12.2-2.23.2.1007-universal" />
+        <file value="TechReborn-1.12.2-2.24.1.1017-universal" />
       </mod>
       <mod key="reb" name="Reborn Storage" >
         <file value="RebornStorage-1.12.2-3.3.4.85" />
@@ -289,7 +289,7 @@
     </mod>
 
     <mod key="fur" name="MrCrayfish's Furniture" >
-      <file value="furniture-6.3.0-1.12.2" />
+      <file value="furniture-6.3.1-1.12.2" />
     </mod>
   </category>
 
@@ -318,7 +318,7 @@
 
     <mod key="fq" name="FTB Quests" >
       <file value="ItemFilters-1.0.3.12" />
-      <file value="FTBQuests-1.7.2.188" />
+      <file value="FTBQuests-1.7.2.189" />
     </mod>
 
     <mod key="hot" name="Horse Tweaks" >
@@ -357,7 +357,7 @@
 
     <mod key="sca" name="Scaling Health" >
       <file value="SilentLib-1.12.2-3.0.13+167" />
-      <file value="ScalingHealth-1.12.2-1.3.38+143" />
+      <file value="ScalingHealth-1.12.2-1.3.39+144" />
     </mod>
 
     <mod key="tmf" name="Tiny Mob Farm" >
