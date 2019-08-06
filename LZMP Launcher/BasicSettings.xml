@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings>
-  <version value="4.5.4" />
+  <version value="4.5.5" />
   <launcher value="NsisoLauncher.exe" />
 
   <category name="Technology" >
@@ -86,7 +86,7 @@
     <mod key="ga" name="Guide API" >
       <file value="Guide-API-1.12-2.1.8-63" />
       <mod key="cyl" name="Cyclic" >
-        <file value="Cyclic-1.12.2-1.19.13" />
+        <file value="Cyclic-1.12.2-1.19.14" />
       </mod>
       <mod key="wot" name="Woot" >
         <file value="woot-1.12.2-1.4.11" />
