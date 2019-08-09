@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings>
-  <version value="4.5.5" />
+  <version value="4.6.0" />
   <launcher value="NsisoLauncher.exe" />
 
   <category name="Technology" >
@@ -36,7 +36,7 @@
     </mod>
 
     <mod key="bc" name="Buildcraft" >
-      <file value="buildcraft-all-7.99.24.1" />
+      <file value="buildcraft-all-7.99.24.2" />
       <mod key="irt" name="Iron Tanks">
         <file value="irontanks-1.12.2-2.1.0-beta.14" />
       </mod>
@@ -110,7 +110,7 @@
     </mod>
 
     <mod key="ic" name="IndustrialCraft" >
-      <file value="industrialcraft-2-2.8.175-ex112" />
+      <file value="industrialcraft-2-2.8.179-ex112" />
       <mod key="asp" name="Advanced Solar Panels" >
         <file value="Advanced+Solar+Panels-4.3.0" />
       </mod>
@@ -229,6 +229,11 @@
       </mod>
     </mod>
 
+    <mod key="sof" name="Solar Flux" >
+      <file value="SolarFluxReborn_1.12.2-4.32r" />
+      <file value="SolarFluxAdditions-1.12.2-17r" />
+    </mod>
+
     <mod key="sc" name="Sonar Core" >
       <file value="sonarcore-1.12.2-5.0.19-20" />
       <mod key="cal" name="Calculator" >
@@ -253,10 +258,6 @@
         <file value="industrialforegoing-1.12.2-1.12.13-237" />
         <file value="IntegrationForegoing-1.12.2-1.9" />
       </mod>
-    </mod>
-
-    <mod key="tso" name="Thermal Solars" >
-      <file value="thermalsolars-1.12.2-1.9.5" />
     </mod>
 
     <mod key="wlu" name="Wireless Utilities" >
@@ -298,6 +299,10 @@
       <file value="foamfix-0.10.5-1.12.2" />
     </mod>
 
+    <mod key="lgg" name="Lag Goggles" >
+      <file value="LagGoggles-FAT-1.12.2-4.8" />
+    </mod>
+
     <mod key="psp" name="Phosphor" >
       <file value="phosphor-1.12.2-0.2.6+build50-universal" />
     </mod>
@@ -335,7 +340,7 @@
     </mod>
 
     <mod key="mw" name="Modern Warfare" >
-      <file value="mw-1.11.7.7_mc1.12.2" />
+      <file value="mw_2.0-0.4.1_mc1.12.2" />
     </mod>
 
     <mod key="mr" name="Modular Routers" >
