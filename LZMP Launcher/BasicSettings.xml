@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings>
-  <version value="4.6.0" />
+  <version value="4.8.0" />
   <launcher value="NsisoLauncher.exe" />
 
   <category name="Technology" >
@@ -313,6 +313,21 @@
   </category>
 
   <category name="Miscellaneous" >
+    <mod key="ctk" name="CraftTweaker" >
+      <file value="CraftTweaker2-1.12-4.1.19" />
+      <file value="modtweaker-4.0.17" />
+      <file value="EnderTweaker-1.12.2-1.1.7" />
+      <mod key="ext" name="External Tweaker" >
+        <file value="externaltweaker-1.12-0.3" />
+      </mod>
+      <mod key="gct" name="Galacticraft Tweaker" >
+        <file value="GalacticraftTweaker-1.12.2-1.0.3" />
+      </mod>
+      <mod key="ict" name="IC2 Tweaker" >
+        <file value="ic2-tweaker-0.2.0" />
+      </mod>
+    </mod>
+
     <mod key="npc" name="Custom NPCs" >
       <file value="CustomNPCs_1.12.2(30Jan19)" />
     </mod>
