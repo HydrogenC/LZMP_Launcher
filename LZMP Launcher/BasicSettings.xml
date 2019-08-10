@@ -315,6 +315,7 @@
   <category name="Miscellaneous" >
     <mod key="ctk" name="CraftTweaker" >
       <file value="CraftTweaker2-1.12-4.1.19" />
+      <file value="MTLib-3.0.6" />
       <file value="modtweaker-4.0.17" />
       <file value="EnderTweaker-1.12.2-1.1.7" />
       <mod key="ext" name="External Tweaker" >
