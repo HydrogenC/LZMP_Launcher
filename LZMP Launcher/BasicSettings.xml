@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings>
-  <version value="4.8.0" />
+  <version value="4.8.1" />
   <launcher value="NsisoLauncher.exe" />
 
   <category name="Technology" >
@@ -10,7 +10,7 @@
 
     <mod key="alc" name="Alchemistry" >
       <file value="alib-1.0.11" />
-      <file value="alchemistry-1.0.31" />
+      <file value="alchemistry-1.0.32" />
     </mod>
 
     <mod key="ae" name="Applied Energetics" >
@@ -110,7 +110,7 @@
     </mod>
 
     <mod key="ic" name="IndustrialCraft" >
-      <file value="industrialcraft-2-2.8.179-ex112" />
+      <file value="industrialcraft-2-2.8.180-ex112" />
       <mod key="asp" name="Advanced Solar Panels" >
         <file value="Advanced+Solar+Panels-4.3.0" />
       </mod>
@@ -147,7 +147,7 @@
     </mod>
 
     <mod key="nc" name="NuclearCraft" >
-      <file value="NuclearCraft-2.17c-1.12.2" />
+      <file value="NuclearCraft-2.18a-1.12.2" />
     </mod>
 
     <mod key="omt" name="Open Modular Turrents" >
@@ -199,7 +199,7 @@
     </mod>
 
     <mod key="rco" name="Reborn Core" >
-      <file value="RebornCore-1.12.2-3.15.5.467-universal" />
+      <file value="RebornCore-1.12.2-3.16.0.469-universal" />
       <mod key="car" name="Steve's Carts" >
         <file value="StevesCarts-1.12.2-2.4.31.135" />
       </mod>
@@ -313,6 +313,10 @@
   </category>
 
   <category name="Miscellaneous" >
+    <mod key="apm" name="Airplanes Mod" >
+      <file value="airplanes_a0.8" />
+    </mod>
+    
     <mod key="ctk" name="CraftTweaker" >
       <file value="CraftTweaker2-1.12-4.1.19" />
       <file value="MTLib-3.0.6" />
@@ -344,11 +348,6 @@
 
     <mod key="hot" name="Horse Tweaks" >
       <file value="HorseTweaks_1.12.2-1.0.5" />
-    </mod>
-
-    <mod key="iv" name="Immersive Vehicles" >
-      <file value="Immersive+Vehicles-1.12.2-14.3.1" />
-      <file value="MTS_Official_Pack_V11" />
     </mod>
 
     <mod key="mmg" name="Mapmaker's Gadgets" >
