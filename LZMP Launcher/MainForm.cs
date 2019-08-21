@@ -203,11 +203,6 @@ namespace LZMP_Launcher
             }
         }
 
-        private void CancelAll_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void LaunchButton_Click(object sender, EventArgs e)
         {
             Apply_Click(null, null);
@@ -289,6 +284,12 @@ namespace LZMP_Launcher
             {
                 Cleaner.CleanUp();
             }
+        }
+
+        private void ManageSaves_Click(object sender, EventArgs e)
+        {
+            SavesManager manager = new SavesManager();
+            manager.ShowDialog();
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)

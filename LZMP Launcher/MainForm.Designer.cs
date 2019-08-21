@@ -232,6 +232,7 @@
             this.ManageSaves.TabIndex = 8;
             this.ManageSaves.Text = "Manage Saves";
             this.ManageSaves.UseVisualStyleBackColor = true;
+            this.ManageSaves.Click += new System.EventHandler(this.ManageSaves_Click);
             // 
             // MainForm
             // 

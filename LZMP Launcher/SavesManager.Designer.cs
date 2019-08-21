@@ -45,6 +45,7 @@
             this.label1.Size = new System.Drawing.Size(614, 113);
             this.label1.TabIndex = 0;
             this.label1.Text = "Saves Manager";
+            this.label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SavesManager_MouseDown);
             // 
             // ExitForm
             // 
