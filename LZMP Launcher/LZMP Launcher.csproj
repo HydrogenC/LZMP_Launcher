@@ -73,6 +73,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SavesManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SavesManager.Designer.cs">
+      <DependentUpon>SavesManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="Shared.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -97,6 +103,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SavesManager.resx">
+      <DependentUpon>SavesManager.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="App.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
