@@ -8,7 +8,7 @@ namespace LZMP_Launcher
 {
     public partial class MainForm : Form
     {
-        private Boolean processing = false;
+        private Boolean processing = false, allChecked = false;
 
         #region Drag
         [DllImport("user32.dll")]
@@ -47,6 +47,7 @@ namespace LZMP_Launcher
             }
 
             CheckInstallation();
+            CheckIfAllChecked();
             SaveDialog.InitialDirectory = Shared.workingDir + "\\Sets\\";
         }
 
@@ -92,6 +93,41 @@ namespace LZMP_Launcher
             processing = false;
         }
 
+        private void CheckIfAllChecked()
+        {
+            allChecked = true;
+            foreach (var i in Shared.mods)
+            {
+                if (!i.Value.Node.Checked)
+                {
+                    allChecked = false;
+                }
+
+                foreach (var j in i.Value.Addons)
+                {
+                    if (!j.Value.Node.Checked)
+                    {
+                        allChecked = false;
+                        break;
+                    }
+                }
+
+                if (!allChecked)
+                {
+                    break;
+                }
+            }
+
+            if (allChecked)
+            {
+                ToggleCheck.Text = "Cancel All";
+            }
+            else
+            {
+                ToggleCheck.Text = "Check All";
+            }
+        }
+
         private void MainTree_AfterCheck(object sender, TreeViewEventArgs e)
         {
             TreeNode i = e.Node;
@@ -116,6 +152,11 @@ namespace LZMP_Launcher
                     }
                 }
             }
+
+            if (i.Checked)
+            {
+                CheckIfAllChecked();
+            }
         }
 
         #region Buttons
@@ -124,26 +165,39 @@ namespace LZMP_Launcher
             Application.Exit();
         }
 
-        private void CheckAll_Click(object sender, EventArgs e)
+        private void ToggleCheck_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < MainTree.GetNodeCount(false); i += 1)
+            if (!allChecked)
             {
-                if (!MainTree.Nodes[i].Checked)
+                for (int i = 0; i < MainTree.GetNodeCount(false); i += 1)
                 {
-                    MainTree.Nodes[i].Checked = true;
-                }
-                for (int j = 0; j < MainTree.Nodes[i].GetNodeCount(false); j += 1)
-                {
-                    if (!MainTree.Nodes[i].Nodes[j].Checked)
+                    if (!MainTree.Nodes[i].Checked)
                     {
-                        MainTree.Nodes[i].Nodes[j].Checked = true;
+                        MainTree.Nodes[i].Checked = true;
                     }
-                    for (int k = 0; k < MainTree.Nodes[i].Nodes[j].GetNodeCount(false); k += 1)
+                    for (int j = 0; j < MainTree.Nodes[i].GetNodeCount(false); j += 1)
                     {
-                        if (!MainTree.Nodes[i].Nodes[j].Nodes[k].Checked)
+                        if (!MainTree.Nodes[i].Nodes[j].Checked)
                         {
-                            MainTree.Nodes[i].Nodes[j].Nodes[k].Checked = true;
+                            MainTree.Nodes[i].Nodes[j].Checked = true;
                         }
+                        for (int k = 0; k < MainTree.Nodes[i].Nodes[j].GetNodeCount(false); k += 1)
+                        {
+                            if (!MainTree.Nodes[i].Nodes[j].Nodes[k].Checked)
+                            {
+                                MainTree.Nodes[i].Nodes[j].Nodes[k].Checked = true;
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < MainTree.GetNodeCount(false); i += 1)
+                {
+                    if (MainTree.Nodes[i].Checked)
+                    {
+                        MainTree.Nodes[i].Checked = false;
                     }
                 }
             }
@@ -151,13 +205,7 @@ namespace LZMP_Launcher
 
         private void CancelAll_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < MainTree.GetNodeCount(false); i += 1)
-            {
-                if (MainTree.Nodes[i].Checked)
-                {
-                    MainTree.Nodes[i].Checked = false;
-                }
-            }
+
         }
 
         private void LaunchButton_Click(object sender, EventArgs e)
@@ -240,6 +288,27 @@ namespace LZMP_Launcher
             if (MessageBox.Show("Clean up: This button would delete all unused files in the 'Resources' path. Are you sure to continue? ", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 Cleaner.CleanUp();
+            }
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure to discard the unapplied changes? ", "Prompt", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+            switch (result)
+            {
+                case DialogResult.Yes:
+                    e.Cancel = false;
+                    break;
+                case DialogResult.No:
+                    Apply_Click(null, null);
+                    e.Cancel = false;
+                    break;
+                case DialogResult.Cancel:
+                    e.Cancel = true;
+                    break;
+                default:
+                    e.Cancel = false;
+                    break;
             }
         }
     }

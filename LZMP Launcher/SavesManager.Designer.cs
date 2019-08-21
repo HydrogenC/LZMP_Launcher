@@ -116,6 +116,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SavesManager";
             this.Text = "SavesManager";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SavesManager_MouseDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

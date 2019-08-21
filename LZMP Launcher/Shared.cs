@@ -10,6 +10,7 @@ namespace LZMP_Launcher
         public static readonly String workingDir = Directory.GetCurrentDirectory();
         public static readonly String resourceDir = workingDir + "\\Resources\\";
         public static readonly String modDir = workingDir + "\\Game\\.minecraft\\mods\\";
+        public static readonly String savesDir = workingDir + "\\Game\\.minecraft\\saves\\";
         public static String launcher, version;
         public static Dictionary<String, Mod> mods = new Dictionary<String, Mod>();
     }

@@ -35,8 +35,7 @@
             this.MainTree = new System.Windows.Forms.TreeView();
             this.LaunchButton = new System.Windows.Forms.Button();
             this.Apply = new System.Windows.Forms.Button();
-            this.CheckAll = new System.Windows.Forms.Button();
-            this.CancelAll = new System.Windows.Forms.Button();
+            this.ToggleCheck = new System.Windows.Forms.Button();
             this.ReadSet = new System.Windows.Forms.Button();
             this.SaveSet = new System.Windows.Forms.Button();
             this.MainToolTip = new System.Windows.Forms.ToolTip(this.components);
@@ -46,6 +45,7 @@
             this.SaveDialog = new System.Windows.Forms.SaveFileDialog();
             this.PlaceHolder = new System.Windows.Forms.Label();
             this.MainProgressBar = new System.Windows.Forms.ProgressBar();
+            this.ManageSaves = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // SmallTitle
@@ -117,33 +117,19 @@
             this.Apply.UseVisualStyleBackColor = true;
             this.Apply.Click += new System.EventHandler(this.Apply_Click);
             // 
-            // CheckAll
+            // ToggleCheck
             // 
-            this.CheckAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CheckAll.Font = new System.Drawing.Font("Segoe UI", 16F);
-            this.CheckAll.ForeColor = System.Drawing.Color.White;
-            this.CheckAll.Location = new System.Drawing.Point(51, 402);
-            this.CheckAll.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.CheckAll.Name = "CheckAll";
-            this.CheckAll.Size = new System.Drawing.Size(368, 110);
-            this.CheckAll.TabIndex = 6;
-            this.CheckAll.Text = "Check All";
-            this.CheckAll.UseVisualStyleBackColor = true;
-            this.CheckAll.Click += new System.EventHandler(this.CheckAll_Click);
-            // 
-            // CancelAll
-            // 
-            this.CancelAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CancelAll.Font = new System.Drawing.Font("Segoe UI", 16F);
-            this.CancelAll.ForeColor = System.Drawing.Color.White;
-            this.CancelAll.Location = new System.Drawing.Point(470, 402);
-            this.CancelAll.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.CancelAll.Name = "CancelAll";
-            this.CancelAll.Size = new System.Drawing.Size(368, 110);
-            this.CancelAll.TabIndex = 8;
-            this.CancelAll.Text = "Cancel All";
-            this.CancelAll.UseVisualStyleBackColor = true;
-            this.CancelAll.Click += new System.EventHandler(this.CancelAll_Click);
+            this.ToggleCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ToggleCheck.Font = new System.Drawing.Font("Segoe UI", 16F);
+            this.ToggleCheck.ForeColor = System.Drawing.Color.White;
+            this.ToggleCheck.Location = new System.Drawing.Point(51, 402);
+            this.ToggleCheck.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.ToggleCheck.Name = "ToggleCheck";
+            this.ToggleCheck.Size = new System.Drawing.Size(368, 110);
+            this.ToggleCheck.TabIndex = 6;
+            this.ToggleCheck.Text = "Check All";
+            this.ToggleCheck.UseVisualStyleBackColor = true;
+            this.ToggleCheck.Click += new System.EventHandler(this.ToggleCheck_Click);
             // 
             // ReadSet
             // 
@@ -234,6 +220,19 @@
             this.MainProgressBar.Size = new System.Drawing.Size(786, 75);
             this.MainProgressBar.TabIndex = 15;
             // 
+            // ManageSaves
+            // 
+            this.ManageSaves.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ManageSaves.Font = new System.Drawing.Font("Segoe UI", 16F);
+            this.ManageSaves.ForeColor = System.Drawing.Color.White;
+            this.ManageSaves.Location = new System.Drawing.Point(470, 402);
+            this.ManageSaves.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.ManageSaves.Name = "ManageSaves";
+            this.ManageSaves.Size = new System.Drawing.Size(368, 110);
+            this.ManageSaves.TabIndex = 8;
+            this.ManageSaves.Text = "Manage Saves";
+            this.ManageSaves.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
@@ -246,9 +245,9 @@
             this.Controls.Add(this.PlaceHolder);
             this.Controls.Add(this.ReadSet);
             this.Controls.Add(this.SaveSet);
-            this.Controls.Add(this.CancelAll);
+            this.Controls.Add(this.ManageSaves);
             this.Controls.Add(this.ExitForm);
-            this.Controls.Add(this.CheckAll);
+            this.Controls.Add(this.ToggleCheck);
             this.Controls.Add(this.Apply);
             this.Controls.Add(this.LaunchButton);
             this.Controls.Add(this.MainTree);
@@ -259,6 +258,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.Name = "MainForm";
             this.Text = "MainForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseDown);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -272,8 +272,7 @@
         private System.Windows.Forms.TreeView MainTree;
         private System.Windows.Forms.Button LaunchButton;
         private System.Windows.Forms.Button Apply;
-        private System.Windows.Forms.Button CheckAll;
-        private System.Windows.Forms.Button CancelAll;
+        private System.Windows.Forms.Button ToggleCheck;
         private System.Windows.Forms.Button ReadSet;
         private System.Windows.Forms.Button SaveSet;
         private System.Windows.Forms.ToolTip MainToolTip;
@@ -283,5 +282,6 @@
         private System.Windows.Forms.ProgressBar MainProgressBar;
         private System.Windows.Forms.Button CleanUpButton;
         private System.Windows.Forms.Button ExitForm;
+        private System.Windows.Forms.Button ManageSaves;
     }
 }

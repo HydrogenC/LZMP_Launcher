@@ -73,6 +73,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Save.cs" />
     <Compile Include="SavesManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +124,12 @@
   <ItemGroup>
     <Content Include="BasicSettings.xml" />
     <Content Include="Icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LibNBT\LibNBT.csproj">
+      <Project>{14287ad3-9576-46e6-9de3-b7731a496da3}</Project>
+      <Name>LibNBT</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
