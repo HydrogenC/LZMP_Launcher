@@ -74,7 +74,7 @@
             this.SavesList.Location = new System.Drawing.Point(41, 186);
             this.SavesList.Name = "SavesList";
             this.SavesList.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.SavesList.Size = new System.Drawing.Size(377, 319);
+            this.SavesList.Size = new System.Drawing.Size(405, 319);
             this.SavesList.Sorted = true;
             this.SavesList.TabIndex = 9;
             // 

@@ -37,7 +37,7 @@ namespace LZMP_Launcher
 
         public override String ToString()
         {
-            return LevelName + " (" + FolderName + ")";
+            return " " + LevelName + " (" + FolderName + ")";
         }
     }
 }
