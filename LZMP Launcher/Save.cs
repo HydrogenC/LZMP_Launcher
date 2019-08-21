@@ -30,9 +30,14 @@ namespace LZMP_Launcher
                 dir = dir.Substring(0, dir.Length - 1);
             }
             FolderName = dir.Substring(dir.LastIndexOf('\\') + 1);
-            Dir = dir+"\\";
+            Dir = dir + "\\";
             TagCompound tag = AbstractTag.ReadFromFile(Dir + "level.dat") as TagCompound;
             LevelName = tag.GetCompound("Data").GetString("LevelName").Value;
+        }
+
+        public override String ToString()
+        {
+            return LevelName + " (" + FolderName + ")";
         }
     }
 }

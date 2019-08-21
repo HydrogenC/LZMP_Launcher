@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using System.IO;
 
 namespace LZMP_Launcher
 {
@@ -26,6 +27,17 @@ namespace LZMP_Launcher
         public SavesManager()
         {
             InitializeComponent();
+
+            Save[] saves = GetSaves();
+            if (saves.Length > 0)
+            {
+                SavesList.Items.Clear();
+
+                foreach (var i in saves)
+                {
+                    SavesList.Items.Add(i);
+                }
+            }
         }
 
         private void ExitForm_Click(object sender, EventArgs e)
@@ -40,8 +52,15 @@ namespace LZMP_Launcher
 
         private Save[] GetSaves()
         {
-            List<String> saves = new List<String>();
-            return new Save[1];
+            List<Save> saves = new List<Save>();
+            foreach(String i in Directory.EnumerateDirectories(Shared.savesDir))
+            {
+                if (File.Exists(i + "\\level.dat"))
+                {
+                    saves.Add(new Save(i));
+                }
+            }
+            return saves.ToArray();
         }
     }
 }

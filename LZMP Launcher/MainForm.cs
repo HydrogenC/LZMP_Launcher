@@ -288,6 +288,11 @@ namespace LZMP_Launcher
 
         private void ManageSaves_Click(object sender, EventArgs e)
         {
+            if (!Directory.Exists(Shared.savesDir))
+            {
+                Directory.CreateDirectory(Shared.savesDir);
+            }
+
             SavesManager manager = new SavesManager();
             manager.ShowDialog();
         }
