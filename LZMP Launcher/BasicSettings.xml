@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings>
-  <version value="4.8.1" />
+  <version value="4.9.0" />
   <launcher value="NsisoLauncher.exe" />
 
   <category name="Technology" >
@@ -9,8 +9,8 @@
     </mod>
 
     <mod key="alc" name="Alchemistry" >
-      <file value="alib-1.0.11" />
-      <file value="alchemistry-1.0.32" />
+      <file value="alib-1.0.12" />
+      <file value="alchemistry-1.0.33" />
     </mod>
 
     <mod key="ae" name="Applied Energetics" >
@@ -62,7 +62,7 @@
     </mod>
 
     <mod key="for" name="Forestry">
-      <file value="forestry_1.12.2-5.8.2.392" />
+      <file value="forestry_1.12.2-5.8.2.394" />
       <file value="jeibees-0.9.0.5-mc1.12.2" />
       <mod key="bin" name="Binne's Mods">
         <file value="binnie-mods-1.12.2-2.5.1.188" />
@@ -74,12 +74,12 @@
     </mod>
 
     <mod key="gc" name="Galacticraft" >
-      <file value="MicdoodleCore-1.12.2-4.0.2.224" />
-      <file value="GalacticraftCore-1.12.2-4.0.2.224" />
-      <file value="Galacticraft-Planets-1.12.2-4.0.2.224" />
+      <file value="MicdoodleCore-1.12.2-4.0.2.231" />
+      <file value="GalacticraftCore-1.12.2-4.0.2.231" />
+      <file value="Galacticraft-Planets-1.12.2-4.0.2.231" />
       <mod key="exp" name="Extra Planets">
         <file value="MJRLegendsLib-1.12.2-1.1.8" />
-        <file value="ExtraPlanets-1.12.2-0.5.5" />
+        <file value="ExtraPlanets-1.12.2-0.5.6" />
       </mod>
     </mod>
 
@@ -98,6 +98,9 @@
       <mod key="imc" name="Immersive Cables" >
         <file value="ImmersiveCables-1.12.2-1.3.2" />
       </mod>
+      <mod key="ime" name="Immersive Energy" >
+        <file value="Immersive+Energy-0.2.1" />
+      </mod>
       <mod key="imp" name="Immersive Petroleum" >
         <file value="immersivepetroleum-1.12.2-1.1.9" />
       </mod>
@@ -110,7 +113,7 @@
     </mod>
 
     <mod key="ic" name="IndustrialCraft" >
-      <file value="industrialcraft-2-2.8.180-ex112" />
+      <file value="industrialcraft-2-2.8.187-ex112" />
       <mod key="asp" name="Advanced Solar Panels" >
         <file value="Advanced+Solar+Panels-4.3.0" />
       </mod>
@@ -147,7 +150,7 @@
     </mod>
 
     <mod key="nc" name="NuclearCraft" >
-      <file value="NuclearCraft-2.18a-1.12.2" />
+      <file value="NuclearCraft-2.18c-1.12.2" />
     </mod>
 
     <mod key="omt" name="Open Modular Turrents" >
@@ -159,7 +162,7 @@
       <file value="ProjectE-1.12.2-PE1.4.1" />
       <file value="ViewEMC-1.12.2-v8" />
       <mod key="eqa" name="Equivalent Additions">
-        <file value="HammerCore-1.12.2-2.0.4.7" />
+        <file value="HammerCore-1.12.2-2.0.4.8" />
         <file value="EquivalentAdditions-1.12.2-7r" />
       </mod>
       <mod key="eqi" name="Equivalent Integration" >
@@ -230,7 +233,7 @@
     </mod>
 
     <mod key="sof" name="Solar Flux" >
-      <file value="SolarFluxReborn_1.12.2-4.32r" />
+      <file value="SolarFluxReborn_1.12.2-4.34r" />
       <file value="SolarFluxAdditions-1.12.2-17r" />
     </mod>
 
@@ -338,7 +341,7 @@
     </mod>
 
     <mod key="edu" name="Ender Utilities" >
-      <file value="enderutilities-1.12.2-0.7.13" />
+      <file value="enderutilities-1.12.2-0.7.14" />
     </mod>
 
     <mod key="fq" name="FTB Quests" >
@@ -377,7 +380,7 @@
 
     <mod key="sca" name="Scaling Health" >
       <file value="SilentLib-1.12.2-3.0.13+167" />
-      <file value="ScalingHealth-1.12.2-1.3.39+144" />
+      <file value="ScalingHealth-1.12.2-1.3.40+145" />
     </mod>
 
     <mod key="tmf" name="Tiny Mob Farm" >
