@@ -71,12 +71,13 @@ namespace LZMP_Launcher
             {
                 aimPath += '\\';
             }
+
             if (!Directory.Exists(aimPath))
             {
                 Directory.CreateDirectory(aimPath);
             }
-            String[] fileList = Directory.GetFileSystemEntries(srcPath);
-            foreach (string file in fileList)
+
+            foreach (String file in Directory.GetFileSystemEntries(srcPath))
             {
                 if (Directory.Exists(file))
                 {

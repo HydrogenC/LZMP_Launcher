@@ -156,7 +156,7 @@ namespace LZMP_Launcher
             BigTitle.Text = "Importing Map...";
 
             Save save = new Save(tmpDir + "save");
-            Directory.Move(tmpDir + "save", Shared.saveDir + zipName);
+            Helper.CopyDirectory(tmpDir + "save", Shared.saveDir + zipName);
 
             if (MessageBox.Show("Override the current modset with the map's? If you choose No, you can select where to save the map's modset later. ", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
@@ -178,18 +178,18 @@ namespace LZMP_Launcher
             {
                 if (XmlDialog.ShowDialog() == DialogResult.OK)
                 {
-                    File.Move(tmpDir + "Set.xml", XmlDialog.FileName);
+                    File.Copy(tmpDir + "Set.xml", XmlDialog.FileName, true);
                 }
             }
 
             if (Directory.Exists(tmpDir + "scripts\\"))
             {
-                Directory.Move(tmpDir + "scripts\\", Shared.scriptDir);
+                Helper.CopyDirectory(tmpDir + "scripts\\", Shared.scriptDir);
             }
 
             if (Directory.Exists(tmpDir + "jm\\"))
             {
-                Directory.Move(tmpDir + "jm\\", Shared.jmDataDir + save.LevelName);
+                Helper.CopyDirectory(tmpDir + "jm\\", Shared.jmDataDir + save.LevelName);
             }
 
             BigTitle.Text = "Cleaning up...";
