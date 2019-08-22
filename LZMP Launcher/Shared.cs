@@ -12,12 +12,12 @@ namespace LZMP_Launcher
         public static readonly String modDir = workingDir + "\\Game\\.minecraft\\mods\\";
         public static readonly String saveDir = workingDir + "\\Game\\.minecraft\\saves\\";
         public static readonly String scriptDir = workingDir + "\\Game\\.minecraft\\scripts\\";
-        public static readonly String jmDataDir = workingDir + "\\Game\\.minecraft\\journeymap\\sp\\";
+        public static readonly String jmDataDir = workingDir + "\\Game\\.minecraft\\journeymap\\data\\sp\\";
         public static String launcher, version;
         public static Dictionary<String, Mod> mods = new Dictionary<String, Mod>();
     }
 
-    class HelpFunctions
+    class Helper
     {
         private static String GetFileName(String fullPath)
         {
@@ -87,6 +87,27 @@ namespace LZMP_Launcher
                     File.Copy(file, aimPath + Path.GetFileName(file), true);
                 }
             }
+        }
+
+        public static Mod[] GenerateApplyList()
+        {
+            List<Mod> applyList = new List<Mod>();
+            foreach (var i in Shared.mods)
+            {
+                if ((i.Value.Node.Checked != i.Value.Installed) && i.Value.Available)
+                {
+                    applyList.Add(i.Value);
+                }
+
+                foreach (var j in i.Value.Addons)
+                {
+                    if ((j.Value.Node.Checked != j.Value.Installed) && j.Value.Available)
+                    {
+                        applyList.Add(j.Value);
+                    }
+                }
+            }
+            return applyList.ToArray();
         }
     }
 }

@@ -238,30 +238,9 @@ namespace LZMP_Launcher
             }
         }
 
-        public static Mod[] GenerateApplyList()
-        {
-            List<Mod> applyList = new List<Mod>();
-            foreach (var i in Shared.mods)
-            {
-                if ((i.Value.Node.Checked != i.Value.Installed) && i.Value.Available)
-                {
-                    applyList.Add(i.Value);
-                }
-
-                foreach (var j in i.Value.Addons)
-                {
-                    if ((j.Value.Node.Checked != j.Value.Installed) && j.Value.Available)
-                    {
-                        applyList.Add(j.Value);
-                    }
-                }
-            }
-            return applyList.ToArray();
-        }
-
         private void Apply_Click(object sender, EventArgs e)
         {
-            Mod[] applyList = GenerateApplyList();
+            Mod[] applyList = Shared.GenerateApplyList();
 
             if (applyList.Length == 0)
             {
@@ -295,7 +274,7 @@ namespace LZMP_Launcher
         {
             if (MessageBox.Show("Clean up: This button would delete all unused files in the 'Resources' path. Are you sure to continue? ", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                HelpFunctions.CleanUp();
+                Helper.CleanUp();
             }
         }
 

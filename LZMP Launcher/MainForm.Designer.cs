@@ -230,7 +230,7 @@
             this.ManageSaves.Name = "ManageSaves";
             this.ManageSaves.Size = new System.Drawing.Size(368, 110);
             this.ManageSaves.TabIndex = 8;
-            this.ManageSaves.Text = "Manage Saves";
+            this.ManageSaves.Text = "Manage Maps";
             this.ManageSaves.UseVisualStyleBackColor = true;
             this.ManageSaves.Click += new System.EventHandler(this.ManageSaves_Click);
             // 

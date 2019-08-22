@@ -105,7 +105,7 @@
             this.ImportButton.Name = "ImportButton";
             this.ImportButton.Size = new System.Drawing.Size(368, 110);
             this.ImportButton.TabIndex = 11;
-            this.ImportButton.Text = "Import";
+            this.ImportButton.Text = "Import From Zip";
             this.ImportButton.UseVisualStyleBackColor = true;
             this.ImportButton.Click += new System.EventHandler(this.ImportButton_Click);
             // 
@@ -131,7 +131,7 @@
             // XmlDialog
             // 
             this.XmlDialog.Filter = "Xml File（*.xml）|*.xml";
-            this.XmlDialog.Title = "Save the save\'s modset to";
+            this.XmlDialog.Title = "Save the map\'s modset to";
             // 
             // SavesManager
             // 

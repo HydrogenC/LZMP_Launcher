@@ -85,17 +85,17 @@ namespace LZMP_Launcher
 
             String tmpDir = Shared.workingDir + "\\Tmp\\";
             Directory.CreateDirectory(tmpDir);
-            HelpFunctions.CopyDirectory(save.Dir, tmpDir + "save\\");
+            Helper.CopyDirectory(save.Dir, tmpDir + "save\\");
             XmlHelper.WriteXmlSet(tmpDir + "Set.xml", false);
 
             if (Shared.mods["ctk"].Node.Checked && Directory.Exists(Shared.scriptDir))
             {
-                HelpFunctions.CopyDirectory(Shared.scriptDir, tmpDir + "scripts\\");
+                Helper.CopyDirectory(Shared.scriptDir, tmpDir + "scripts\\");
             }
 
-            if (Directory.Exists(Shared.jmDataDir))
+            if (Directory.Exists(Shared.jmDataDir + save.LevelName))
             {
-                HelpFunctions.CopyDirectory(Shared.jmDataDir + save.LevelName, tmpDir + "jm\\");
+                Helper.CopyDirectory(Shared.jmDataDir + save.LevelName, tmpDir + "jm\\");
             }
 
             BigTitle.Text = "Compressing...";
@@ -143,6 +143,8 @@ namespace LZMP_Launcher
 
         private void ImportSave(String zipFile)
         {
+            BigTitle.Text = "Decompressing...";
+
             String tmpDir = Shared.workingDir + "\\Tmp\\";
             Directory.CreateDirectory(tmpDir);
 
@@ -151,13 +153,15 @@ namespace LZMP_Launcher
             FastZip zip = new FastZip();
             zip.ExtractZip(zipFile, tmpDir, null);
 
-            Directory.CreateDirectory(Shared.saveDir + zipName);
-            HelpFunctions.CopyDirectory(tmpDir + "save", Shared.saveDir + zipName);
+            BigTitle.Text = "Importing Map...";
 
-            if (MessageBox.Show("Override the current modset with the save's? ", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            Save save = new Save(tmpDir + "save");
+            Directory.Move(tmpDir + "save", Shared.saveDir + zipName);
+
+            if (MessageBox.Show("Override the current modset with the map's? If you choose No, you can select where to save the map's modset later. ", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 XmlHelper.ReadXmlSet(tmpDir + "Set.xml", false);
-                Mod[] applyList = MainForm.GenerateApplyList();
+                Mod[] applyList = Helper.GenerateApplyList();
                 foreach (var i in applyList)
                 {
                     if (i.Installed)
@@ -174,20 +178,23 @@ namespace LZMP_Launcher
             {
                 if (XmlDialog.ShowDialog() == DialogResult.OK)
                 {
-                    File.Copy(tmpDir + "Set.xml", XmlDialog.FileName);
+                    File.Move(tmpDir + "Set.xml", XmlDialog.FileName);
                 }
             }
 
             if (Directory.Exists(tmpDir + "scripts\\"))
             {
-                HelpFunctions.CopyDirectory(tmpDir + "scripts\\", Shared.scriptDir);
+                Directory.Move(tmpDir + "scripts\\", Shared.scriptDir);
             }
 
             if (Directory.Exists(tmpDir + "jm\\"))
             {
-                // Directory.CreateDirectory(Shared.jmDataDir);
+                Directory.Move(tmpDir + "jm\\", Shared.jmDataDir + save.LevelName);
             }
 
+            BigTitle.Text = "Cleaning up...";
+
+            Directory.Delete(tmpDir, true);
             processing = false;
         }
 
