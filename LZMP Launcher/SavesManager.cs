@@ -1,13 +1,16 @@
-﻿using System;
+﻿using ICSharpCode.SharpZipLib.Zip;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using System.IO;
 
 namespace LZMP_Launcher
 {
     public partial class SavesManager : Form
     {
+        private Boolean processing = false;
+
         #region Drag
         [DllImport("user32.dll")]
         public static extern bool ReleaseCapture();
@@ -27,6 +30,7 @@ namespace LZMP_Launcher
         public SavesManager()
         {
             InitializeComponent();
+            CheckForIllegalCrossThreadCalls = false;
 
             Save[] saves = GetSaves();
             if (saves.Length > 0)
@@ -42,18 +46,65 @@ namespace LZMP_Launcher
 
         private void ExitForm_Click(object sender, EventArgs e)
         {
-            Close();
+            if (!processing)
+            {
+                Close();
+            }
         }
 
         private void ExportButton_Click(object sender, EventArgs e)
         {
+            if (ExportDialog.ShowDialog() == DialogResult.OK)
+            {
+                Save selection = SavesList.SelectedItem as Save;
+                Action<Save> action = new Action<Save>(ExportSave);
+                action.BeginInvoke(selection, null, null);
+                processing = true;
 
+                while (processing)
+                {
+                    Application.DoEvents();
+                }
+
+                BigTitle.Text = "Saves Manager";
+                MessageBox.Show("Finished! ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void ExportSave(Save save)
+        {
+            BigTitle.Text = "Preparing...";
+
+            String tmpDir = Shared.workingDir + "\\Tmp\\";
+            Directory.CreateDirectory(tmpDir);
+            HelpFunctions.CopyDirectory(save.Dir, tmpDir + "\\save\\");
+            XmlHelper.WriteXmlSet(tmpDir + "\\Set.xml", false);
+
+            if (Shared.mods["ctk"].Node.Checked && Directory.Exists(Shared.scriptDir))
+            {
+                HelpFunctions.CopyDirectory(Shared.scriptDir, tmpDir + "\\scripts\\");
+            }
+
+            if (Directory.Exists(Shared.jmDataDir))
+            {
+                HelpFunctions.CopyDirectory(Shared.jmDataDir + save.LevelName, tmpDir + "\\jm\\");
+            }
+
+            BigTitle.Text = "Compressing...";
+
+            FastZip zip = new FastZip();
+            zip.CreateZip(ExportDialog.FileName, tmpDir, true, null);
+
+            BigTitle.Text = "Cleaning up...";
+
+            Directory.Delete(tmpDir, true);
+            processing = false;
         }
 
         private Save[] GetSaves()
         {
             List<Save> saves = new List<Save>();
-            foreach(String i in Directory.EnumerateDirectories(Shared.savesDir))
+            foreach (String i in Directory.GetDirectories(Shared.saveDir))
             {
                 if (File.Exists(i + "\\level.dat"))
                 {

@@ -65,7 +65,7 @@ namespace LZMP_Launcher
             }
         }
 
-        public static void ReadXmlSet(String xmlFile)
+        public static void ReadXmlSet(String xmlFile, Boolean showInfo = true)
         {
             XmlDocument document = new XmlDocument();
             document.Load(xmlFile);
@@ -120,17 +120,20 @@ namespace LZMP_Launcher
                 }
             }
 
-            if (versionConforms)
+            if (showInfo)
             {
-                MessageBox.Show("Finished! ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show("Finished! \nSkipped " + skip + " unidentified keys. ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (versionConforms)
+                {
+                    MessageBox.Show("Finished! ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Finished! \nSkipped " + skip + " unidentified keys. ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
 
-        public static void WriteXmlSet(String xmlFile)
+        public static void WriteXmlSet(String xmlFile, Boolean showInfo = true)
         {
             XmlDocument document = new XmlDocument();
             document.CreateXmlDeclaration("1.0", "utf-8", null);
@@ -157,7 +160,10 @@ namespace LZMP_Launcher
             }
             document.Save(xmlFile);
 
-            MessageBox.Show("Finished! ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (showInfo)
+            {
+                MessageBox.Show("Finished! ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

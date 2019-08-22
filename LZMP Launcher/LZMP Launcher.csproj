@@ -130,6 +130,10 @@
       <Project>{14287ad3-9576-46e6-9de3-b7731a496da3}</Project>
       <Name>LibNBT</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SharpZipLib\SharpZipLib.csproj">
+      <Project>{4345374e-ebd4-48dd-b875-62700fbcc60c}</Project>
+      <Name>SharpZipLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

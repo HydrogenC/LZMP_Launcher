@@ -8,7 +8,7 @@ namespace LZMP_Launcher
 {
     public partial class MainForm : Form
     {
-        private Boolean processing = false, allChecked = false;
+        private Boolean processing = false, allChecked = false, promptOnExit = false;
 
         #region Drag
         [DllImport("user32.dll")]
@@ -131,6 +131,7 @@ namespace LZMP_Launcher
         private void MainTree_AfterCheck(object sender, TreeViewEventArgs e)
         {
             TreeNode i = e.Node;
+            promptOnExit = true;
 
             if (!i.Checked)
             {
@@ -162,7 +163,10 @@ namespace LZMP_Launcher
         #region Buttons
         private void ExitForm_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            if (!processing)
+            {
+                Application.Exit();
+            }
         }
 
         private void ToggleCheck_Click(object sender, EventArgs e)
@@ -229,6 +233,7 @@ namespace LZMP_Launcher
             if (FileDialog.ShowDialog() == DialogResult.OK)
             {
                 XmlHelper.ReadXmlSet(FileDialog.FileName);
+                promptOnExit = true;
             }
         }
 
@@ -273,8 +278,9 @@ namespace LZMP_Launcher
             MainProgressBar.Visible = false;
             MainProgressBar.Value = 0;
             BigTitle.Visible = true;
+            promptOnExit = false;
 
-            MessageBox.Show("Finished! ", "Information", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+            MessageBox.Show("Finished! ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         #endregion
 
@@ -282,15 +288,15 @@ namespace LZMP_Launcher
         {
             if (MessageBox.Show("Clean up: This button would delete all unused files in the 'Resources' path. Are you sure to continue? ", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                Cleaner.CleanUp();
+                HelpFunctions.CleanUp();
             }
         }
 
         private void ManageSaves_Click(object sender, EventArgs e)
         {
-            if (!Directory.Exists(Shared.savesDir))
+            if (!Directory.Exists(Shared.saveDir))
             {
-                Directory.CreateDirectory(Shared.savesDir);
+                Directory.CreateDirectory(Shared.saveDir);
             }
 
             SavesManager manager = new SavesManager();
@@ -299,22 +305,25 @@ namespace LZMP_Launcher
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult result = MessageBox.Show("Are you sure to discard the unapplied changes? ", "Prompt", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-            switch (result)
+            if (promptOnExit)
             {
-                case DialogResult.Yes:
-                    e.Cancel = false;
-                    break;
-                case DialogResult.No:
-                    Apply_Click(null, null);
-                    e.Cancel = false;
-                    break;
-                case DialogResult.Cancel:
-                    e.Cancel = true;
-                    break;
-                default:
-                    e.Cancel = false;
-                    break;
+                DialogResult result = MessageBox.Show("Are you sure to discard the unapplied changes? ", "Prompt", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                switch (result)
+                {
+                    case DialogResult.Yes:
+                        e.Cancel = false;
+                        break;
+                    case DialogResult.No:
+                        Apply_Click(null, null);
+                        e.Cancel = false;
+                        break;
+                    case DialogResult.Cancel:
+                        e.Cancel = true;
+                        break;
+                    default:
+                        e.Cancel = false;
+                        break;
+                }
             }
         }
     }

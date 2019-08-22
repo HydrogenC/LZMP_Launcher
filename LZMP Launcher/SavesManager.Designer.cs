@@ -33,6 +33,7 @@
             this.SavesList = new System.Windows.Forms.ListBox();
             this.ExportButton = new System.Windows.Forms.Button();
             this.ImportButton = new System.Windows.Forms.Button();
+            this.ExportDialog = new System.Windows.Forms.SaveFileDialog();
             this.SuspendLayout();
             // 
             // BigTitle
@@ -105,6 +106,10 @@
             this.ImportButton.Text = "Import";
             this.ImportButton.UseVisualStyleBackColor = true;
             // 
+            // ExportDialog
+            // 
+            this.ExportDialog.Filter = "Zip File（*.zip）|*.zip";
+            // 
             // SavesManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
@@ -132,5 +137,6 @@
         private System.Windows.Forms.ListBox SavesList;
         private System.Windows.Forms.Button ExportButton;
         private System.Windows.Forms.Button ImportButton;
+        private System.Windows.Forms.SaveFileDialog ExportDialog;
     }
 }
