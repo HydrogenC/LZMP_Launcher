@@ -36,7 +36,15 @@ namespace LZMP_Launcher
 
         private void RefreshList()
         {
-            Save[] saves = GetSaves();
+            List<Save> saves = new List<Save>();
+            foreach (String i in Directory.GetDirectories(Shared.saveDir))
+            {
+                if (File.Exists(i + "\\level.dat"))
+                {
+                    saves.Add(new Save(i));
+                }
+            }
+
             SavesList.Items.Clear();
             foreach (var i in saves)
             {
@@ -100,19 +108,6 @@ namespace LZMP_Launcher
 
             Directory.Delete(tmpDir, true);
             processing = false;
-        }
-
-        private Save[] GetSaves()
-        {
-            List<Save> saves = new List<Save>();
-            foreach (String i in Directory.GetDirectories(Shared.saveDir))
-            {
-                if (File.Exists(i + "\\level.dat"))
-                {
-                    saves.Add(new Save(i));
-                }
-            }
-            return saves.ToArray();
         }
 
         private void ImportButton_Click(object sender, EventArgs e)
