@@ -63,6 +63,10 @@ namespace LZMP_Launcher
         private void ExportButton_Click(object sender, EventArgs e)
         {
             Save selection = SavesList.SelectedItem as Save;
+            if(selection == null){
+                MessageBox.Show("Please select a map in the list to export. ", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
             ExportDialog.FileName = selection.LevelName + ".zip";
             if (ExportDialog.ShowDialog() == DialogResult.OK)
             {
