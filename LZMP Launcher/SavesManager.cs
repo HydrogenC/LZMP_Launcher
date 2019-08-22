@@ -38,16 +38,9 @@ namespace LZMP_Launcher
         {
             Save[] saves = GetSaves();
             SavesList.Items.Clear();
-            if (saves.Length > 0)
+            foreach (var i in saves)
             {
-                foreach (var i in saves)
-                {
-                    SavesList.Items.Add(i);
-                }
-            }
-            else
-            {
-                SavesList.Items.Add(" Empty");
+                SavesList.Items.Add(i);
             }
         }
 
