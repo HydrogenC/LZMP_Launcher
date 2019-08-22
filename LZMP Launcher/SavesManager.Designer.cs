@@ -28,12 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SavesManager));
             this.BigTitle = new System.Windows.Forms.Label();
             this.ExitForm = new System.Windows.Forms.Button();
             this.SavesList = new System.Windows.Forms.ListBox();
             this.ExportButton = new System.Windows.Forms.Button();
             this.ImportButton = new System.Windows.Forms.Button();
             this.ExportDialog = new System.Windows.Forms.SaveFileDialog();
+            this.OpenDialog = new System.Windows.Forms.OpenFileDialog();
+            this.RefreshButton = new System.Windows.Forms.Button();
+            this.XmlDialog = new System.Windows.Forms.SaveFileDialog();
             this.SuspendLayout();
             // 
             // BigTitle
@@ -70,8 +74,6 @@
             this.SavesList.ForeColor = System.Drawing.Color.White;
             this.SavesList.FormattingEnabled = true;
             this.SavesList.ItemHeight = 45;
-            this.SavesList.Items.AddRange(new object[] {
-            "Empty"});
             this.SavesList.Location = new System.Drawing.Point(41, 186);
             this.SavesList.Name = "SavesList";
             this.SavesList.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -105,23 +107,46 @@
             this.ImportButton.TabIndex = 11;
             this.ImportButton.Text = "Import";
             this.ImportButton.UseVisualStyleBackColor = true;
+            this.ImportButton.Click += new System.EventHandler(this.ImportButton_Click);
             // 
             // ExportDialog
             // 
             this.ExportDialog.Filter = "Zip File（*.zip）|*.zip";
+            // 
+            // RefreshButton
+            // 
+            this.RefreshButton.FlatAppearance.BorderSize = 0;
+            this.RefreshButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RefreshButton.Font = new System.Drawing.Font("Segoe UI", 20F);
+            this.RefreshButton.ForeColor = System.Drawing.Color.White;
+            this.RefreshButton.Location = new System.Drawing.Point(706, 30);
+            this.RefreshButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.RefreshButton.Name = "RefreshButton";
+            this.RefreshButton.Size = new System.Drawing.Size(70, 86);
+            this.RefreshButton.TabIndex = 12;
+            this.RefreshButton.Text = "R";
+            this.RefreshButton.UseVisualStyleBackColor = true;
+            this.RefreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
+            // 
+            // XmlDialog
+            // 
+            this.XmlDialog.Filter = "Xml File（*.xml）|*.xml";
+            this.XmlDialog.Title = "Save the save\'s modset to";
             // 
             // SavesManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.ClientSize = new System.Drawing.Size(894, 560);
+            this.ClientSize = new System.Drawing.Size(886, 560);
+            this.Controls.Add(this.RefreshButton);
             this.Controls.Add(this.ImportButton);
             this.Controls.Add(this.ExportButton);
             this.Controls.Add(this.SavesList);
             this.Controls.Add(this.ExitForm);
             this.Controls.Add(this.BigTitle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SavesManager";
             this.Text = "SavesManager";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SavesManager_MouseDown);
@@ -138,5 +163,8 @@
         private System.Windows.Forms.Button ExportButton;
         private System.Windows.Forms.Button ImportButton;
         private System.Windows.Forms.SaveFileDialog ExportDialog;
+        private System.Windows.Forms.OpenFileDialog OpenDialog;
+        private System.Windows.Forms.Button RefreshButton;
+        private System.Windows.Forms.SaveFileDialog XmlDialog;
     }
 }

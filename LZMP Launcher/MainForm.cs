@@ -48,6 +48,7 @@ namespace LZMP_Launcher
 
             CheckInstallation();
             CheckIfAllChecked();
+            promptOnExit = false;
             SaveDialog.InitialDirectory = Shared.workingDir + "\\Sets\\";
         }
 
@@ -237,7 +238,7 @@ namespace LZMP_Launcher
             }
         }
 
-        private void Apply_Click(object sender, EventArgs e)
+        public static Mod[] GenerateApplyList()
         {
             List<Mod> applyList = new List<Mod>();
             foreach (var i in Shared.mods)
@@ -255,8 +256,14 @@ namespace LZMP_Launcher
                     }
                 }
             }
+            return applyList.ToArray();
+        }
 
-            if (applyList.Count == 0)
+        private void Apply_Click(object sender, EventArgs e)
+        {
+            Mod[] applyList = GenerateApplyList();
+
+            if (applyList.Length == 0)
             {
                 return;
             }
@@ -267,7 +274,7 @@ namespace LZMP_Launcher
             MainProgressBar.Visible = true;
 
             Action<Mod[]> action = new Action<Mod[]>(ApplyChanges);
-            action.BeginInvoke(applyList.ToArray(), null, null);
+            action.BeginInvoke(applyList, null, null);
             processing = true;
             while (processing)
             {

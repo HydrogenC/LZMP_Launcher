@@ -31,16 +31,23 @@ namespace LZMP_Launcher
         {
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false;
+            RefreshList();
+        }
 
+        private void RefreshList()
+        {
             Save[] saves = GetSaves();
+            SavesList.Items.Clear();
             if (saves.Length > 0)
             {
-                SavesList.Items.Clear();
-
                 foreach (var i in saves)
                 {
                     SavesList.Items.Add(i);
                 }
+            }
+            else
+            {
+                SavesList.Items.Add(" Empty");
             }
         }
 
@@ -54,9 +61,10 @@ namespace LZMP_Launcher
 
         private void ExportButton_Click(object sender, EventArgs e)
         {
+            Save selection = SavesList.SelectedItem as Save;
+            ExportDialog.FileName = selection.LevelName + ".zip";
             if (ExportDialog.ShowDialog() == DialogResult.OK)
             {
-                Save selection = SavesList.SelectedItem as Save;
                 Action<Save> action = new Action<Save>(ExportSave);
                 action.BeginInvoke(selection, null, null);
                 processing = true;
@@ -77,17 +85,17 @@ namespace LZMP_Launcher
 
             String tmpDir = Shared.workingDir + "\\Tmp\\";
             Directory.CreateDirectory(tmpDir);
-            HelpFunctions.CopyDirectory(save.Dir, tmpDir + "\\save\\");
-            XmlHelper.WriteXmlSet(tmpDir + "\\Set.xml", false);
+            HelpFunctions.CopyDirectory(save.Dir, tmpDir + "save\\");
+            XmlHelper.WriteXmlSet(tmpDir + "Set.xml", false);
 
             if (Shared.mods["ctk"].Node.Checked && Directory.Exists(Shared.scriptDir))
             {
-                HelpFunctions.CopyDirectory(Shared.scriptDir, tmpDir + "\\scripts\\");
+                HelpFunctions.CopyDirectory(Shared.scriptDir, tmpDir + "scripts\\");
             }
 
             if (Directory.Exists(Shared.jmDataDir))
             {
-                HelpFunctions.CopyDirectory(Shared.jmDataDir + save.LevelName, tmpDir + "\\jm\\");
+                HelpFunctions.CopyDirectory(Shared.jmDataDir + save.LevelName, tmpDir + "jm\\");
             }
 
             BigTitle.Text = "Compressing...";
@@ -112,6 +120,80 @@ namespace LZMP_Launcher
                 }
             }
             return saves.ToArray();
+        }
+
+        private void ImportButton_Click(object sender, EventArgs e)
+        {
+            if (OpenDialog.ShowDialog() == DialogResult.OK)
+            {
+                Action<String> action = new Action<String>(ImportSave);
+                action.BeginInvoke(OpenDialog.FileName, null, null);
+                processing = true;
+
+                while (processing)
+                {
+                    Application.DoEvents();
+                }
+
+                BigTitle.Text = "Saves Manager";
+                RefreshList();
+                MessageBox.Show("Finished! ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void ImportSave(String zipFile)
+        {
+            String tmpDir = Shared.workingDir + "\\Tmp\\";
+            Directory.CreateDirectory(tmpDir);
+
+            String zipName = zipFile.Substring(zipFile.LastIndexOf('\\') + 1);
+            zipName = zipName.Substring(0, zipName.Length - 4);
+            FastZip zip = new FastZip();
+            zip.ExtractZip(zipFile, tmpDir, null);
+
+            Directory.CreateDirectory(Shared.saveDir + zipName);
+            HelpFunctions.CopyDirectory(tmpDir + "save", Shared.saveDir + zipName);
+
+            if (MessageBox.Show("Override the current modset with the save's? ", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                XmlHelper.ReadXmlSet(tmpDir + "Set.xml", false);
+                Mod[] applyList = MainForm.GenerateApplyList();
+                foreach (var i in applyList)
+                {
+                    if (i.Installed)
+                    {
+                        i.Uninstall();
+                    }
+                    else
+                    {
+                        i.Install();
+                    }
+                }
+            }
+            else
+            {
+                if (XmlDialog.ShowDialog() == DialogResult.OK)
+                {
+                    File.Copy(tmpDir + "Set.xml", XmlDialog.FileName);
+                }
+            }
+
+            if (Directory.Exists(tmpDir + "scripts\\"))
+            {
+                HelpFunctions.CopyDirectory(tmpDir + "scripts\\", Shared.scriptDir);
+            }
+
+            if (Directory.Exists(tmpDir + "jm\\"))
+            {
+                // Directory.CreateDirectory(Shared.jmDataDir);
+            }
+
+            processing = false;
+        }
+
+        private void RefreshButton_Click(object sender, EventArgs e)
+        {
+            RefreshList();
         }
     }
 }
