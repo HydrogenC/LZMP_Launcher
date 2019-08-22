@@ -118,6 +118,10 @@
             // 
             this.ExportDialog.Filter = "Zip File（*.zip）|*.zip";
             // 
+            // OpenDialog
+            // 
+            this.OpenDialog.Filter = "Zip File（*.zip）|*.zip";
+            // 
             // RefreshButton
             // 
             this.RefreshButton.FlatAppearance.BorderSize = 0;
