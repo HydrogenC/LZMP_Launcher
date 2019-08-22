@@ -65,6 +65,7 @@ namespace LZMP_Launcher
             Save selection = SavesList.SelectedItem as Save;
             if(selection == null){
                 MessageBox.Show("Please select a map in the list to export. ", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
             }
 
             ExportDialog.FileName = selection.LevelName + ".zip";
