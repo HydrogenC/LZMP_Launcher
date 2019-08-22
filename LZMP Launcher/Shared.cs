@@ -110,5 +110,20 @@ namespace LZMP_Launcher
             }
             return applyList.ToArray();
         }
+
+        public static void CheckInstallation()
+        {
+            foreach (var i in Shared.mods)
+            {
+                i.Value.CheckInstalled();
+                i.Value.Node.Checked = i.Value.Installed;
+
+                foreach (var j in i.Value.Addons)
+                {
+                    j.Value.CheckInstalled();
+                    j.Value.Node.Checked = j.Value.Installed;
+                }
+            }
+        }
     }
 }

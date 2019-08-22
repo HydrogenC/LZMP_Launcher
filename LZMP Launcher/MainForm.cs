@@ -46,25 +46,10 @@ namespace LZMP_Launcher
                 }
             }
 
-            CheckInstallation();
+            Helper.CheckInstallation();
             CheckIfAllChecked();
             promptOnExit = false;
             SaveDialog.InitialDirectory = Shared.workingDir + "\\Sets\\";
-        }
-
-        private void CheckInstallation()
-        {
-            foreach (var i in Shared.mods)
-            {
-                i.Value.CheckInstalled();
-                i.Value.Node.Checked = i.Value.Installed;
-
-                foreach (var j in i.Value.Addons)
-                {
-                    j.Value.CheckInstalled();
-                    j.Value.Node.Checked = j.Value.Installed;
-                }
-            }
         }
 
         private void ApplyChanges(Mod[] applyList)
@@ -90,7 +75,7 @@ namespace LZMP_Launcher
             }
 
             MainProgressBar.Value = MainProgressBar.Maximum;
-            CheckInstallation();
+            Helper.CheckInstallation();
             processing = false;
         }
 

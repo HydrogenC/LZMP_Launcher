@@ -166,6 +166,7 @@ namespace LZMP_Launcher
                         i.Install();
                     }
                 }
+                Helper.CheckInstallation();
             }
             else
             {
