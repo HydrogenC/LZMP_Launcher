@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SavesManager));
             this.BigTitle = new System.Windows.Forms.Label();
             this.ExitForm = new System.Windows.Forms.Button();
@@ -38,6 +39,7 @@
             this.OpenDialog = new System.Windows.Forms.OpenFileDialog();
             this.RefreshButton = new System.Windows.Forms.Button();
             this.XmlDialog = new System.Windows.Forms.SaveFileDialog();
+            this.MainToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // BigTitle
@@ -64,6 +66,7 @@
             this.ExitForm.Size = new System.Drawing.Size(70, 86);
             this.ExitForm.TabIndex = 8;
             this.ExitForm.Text = "X";
+            this.MainToolTip.SetToolTip(this.ExitForm, "Close the current form");
             this.ExitForm.UseVisualStyleBackColor = true;
             this.ExitForm.Click += new System.EventHandler(this.ExitForm_Click);
             // 
@@ -92,6 +95,7 @@
             this.ExportButton.Size = new System.Drawing.Size(368, 110);
             this.ExportButton.TabIndex = 10;
             this.ExportButton.Text = "Export Selected";
+            this.MainToolTip.SetToolTip(this.ExportButton, "Export the selected map to a zip file");
             this.ExportButton.UseVisualStyleBackColor = true;
             this.ExportButton.Click += new System.EventHandler(this.ExportButton_Click);
             // 
@@ -106,6 +110,7 @@
             this.ImportButton.Size = new System.Drawing.Size(368, 110);
             this.ImportButton.TabIndex = 11;
             this.ImportButton.Text = "Import From Zip";
+            this.MainToolTip.SetToolTip(this.ImportButton, "Import a zip-format map into the current LZMP copy");
             this.ImportButton.UseVisualStyleBackColor = true;
             this.ImportButton.Click += new System.EventHandler(this.ImportButton_Click);
             // 
@@ -125,6 +130,7 @@
             this.RefreshButton.Size = new System.Drawing.Size(70, 86);
             this.RefreshButton.TabIndex = 12;
             this.RefreshButton.Text = "R";
+            this.MainToolTip.SetToolTip(this.RefreshButton, "Refreshs the map list");
             this.RefreshButton.UseVisualStyleBackColor = true;
             this.RefreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
             // 
@@ -166,5 +172,6 @@
         private System.Windows.Forms.OpenFileDialog OpenDialog;
         private System.Windows.Forms.Button RefreshButton;
         private System.Windows.Forms.SaveFileDialog XmlDialog;
+        private System.Windows.Forms.ToolTip MainToolTip;
     }
 }

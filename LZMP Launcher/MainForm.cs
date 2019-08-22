@@ -240,7 +240,7 @@ namespace LZMP_Launcher
 
         private void Apply_Click(object sender, EventArgs e)
         {
-            Mod[] applyList = Shared.GenerateApplyList();
+            Mod[] applyList = Helper.GenerateApplyList();
 
             if (applyList.Length == 0)
             {
