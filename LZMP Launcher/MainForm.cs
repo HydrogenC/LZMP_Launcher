@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace LZMP_Launcher
 {
@@ -46,37 +47,25 @@ namespace LZMP_Launcher
                 }
             }
 
-            Helper.CheckInstallation();
+            LCore.CheckInstallation();
             CheckIfAllChecked();
             promptOnExit = false;
             SaveDialog.InitialDirectory = Shared.WorkingDir + "\\Sets\\";
         }
 
-        private void ApplyChanges(Mod[] applyList)
+        private void WriteNodes()
         {
-            Int32 crtIndex = 0;
-            MainProgressBar.Value = 0;
-            MainProgressBar.Maximum = 1000;
-            MainProgressBar.Step = MainProgressBar.Maximum / applyList.Length;
-
-            foreach (var i in applyList)
+            Dictionary<String, TreeNode> dict = new Dictionary<String, TreeNode>();
+            foreach(var i in Shared.Mods)
             {
-                SmallTitle.Text = "Applying " + (crtIndex + 1) + "/" + applyList.Length;
-                if (i.Installed)
+                if (!dict.ContainsKey(i.Value.Category))
                 {
-                    i.Uninstall();
+                    dict[i.Value.Category] = new TreeNode(i.Value.Category + " Mods");
+                    
                 }
-                else
-                {
-                    i.Install();
-                }
-                MainProgressBar.PerformStep();
-                crtIndex += 1;
-            }
 
-            MainProgressBar.Value = MainProgressBar.Maximum;
-            Helper.CheckInstallation();
-            processing = false;
+                dict[i.Value.Category].Nodes.Add();
+            }
         }
 
         private void CheckIfAllChecked()
@@ -84,14 +73,14 @@ namespace LZMP_Launcher
             allChecked = true;
             foreach (var i in Shared.Mods)
             {
-                if (!i.Value.Node.Checked)
+                if (!i.Value.ToInstall)
                 {
                     allChecked = false;
                 }
 
                 foreach (var j in i.Value.Addons)
                 {
-                    if (!j.Value.Node.Checked)
+                    if (!j.Value.ToInstall)
                     {
                         allChecked = false;
                         break;
@@ -157,46 +146,13 @@ namespace LZMP_Launcher
 
         private void ToggleCheck_Click(object sender, EventArgs e)
         {
-            if (!allChecked)
-            {
-                for (int i = 0; i < MainTree.GetNodeCount(false); i += 1)
-                {
-                    if (!MainTree.Nodes[i].Checked)
-                    {
-                        MainTree.Nodes[i].Checked = true;
-                    }
-                    for (int j = 0; j < MainTree.Nodes[i].GetNodeCount(false); j += 1)
-                    {
-                        if (!MainTree.Nodes[i].Nodes[j].Checked)
-                        {
-                            MainTree.Nodes[i].Nodes[j].Checked = true;
-                        }
-                        for (int k = 0; k < MainTree.Nodes[i].Nodes[j].GetNodeCount(false); k += 1)
-                        {
-                            if (!MainTree.Nodes[i].Nodes[j].Nodes[k].Checked)
-                            {
-                                MainTree.Nodes[i].Nodes[j].Nodes[k].Checked = true;
-                            }
-                        }
-                    }
-                }
-            }
-            else
-            {
-                for (int i = 0; i < MainTree.GetNodeCount(false); i += 1)
-                {
-                    if (MainTree.Nodes[i].Checked)
-                    {
-                        MainTree.Nodes[i].Checked = false;
-                    }
-                }
-            }
+            LCore.CheckAll(!allChecked);
         }
 
         private void LaunchButton_Click(object sender, EventArgs e)
         {
             Apply_Click(null, null);
-            Helper.LaunchGame();
+            LCore.LaunchGame();
         }
 
         private void SaveSet_Click(object sender, EventArgs e)
@@ -221,28 +177,28 @@ namespace LZMP_Launcher
             }
         }
 
+        private delegate void ApplyAction(ref Int32 total, ref Int32 current);
         private void Apply_Click(object sender, EventArgs e)
         {
-            Mod[] applyList = Helper.GenerateApplyList();
-
-            if (applyList.Length == 0)
-            {
-                return;
-            }
-
             BigTitle.Visible = false;
             SmallTitle.Text = "Applying";
+            MainProgressBar.Maximum = 1000;
             MainProgressBar.Value = 0;
             MainProgressBar.Visible = true;
 
-            Action<Mod[]> action = new Action<Mod[]>(ApplyChanges);
-            action.BeginInvoke(applyList, null, null);
+            Int32 current = 0, total = 0;
+            ApplyAction action = new ApplyAction(LCore.ApplyChanges);
             processing = true;
+            action.BeginInvoke(ref total, ref current, UniversalAsyncCallback, null);
+
             while (processing)
             {
+                SmallTitle.Text = "Applying " + current + "/" + total;
+                MainProgressBar.Value = MainProgressBar.Minimum * current / total;
                 Application.DoEvents();
             }
 
+            MainProgressBar.Value = MainProgressBar.Maximum;
             SmallTitle.Text = "ExMatics";
             MainProgressBar.Visible = false;
             MainProgressBar.Value = 0;
@@ -253,11 +209,16 @@ namespace LZMP_Launcher
         }
         #endregion
 
+        private void UniversalAsyncCallback(IAsyncResult ar)
+        {
+            processing = false;
+        }
+
         private void CleanUpButton_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Clean up: This button would delete all unused files in the 'Resources' path. Are you sure to continue? ", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                Helper.CleanUp();
+                LCore.CleanUp();
             }
         }
 

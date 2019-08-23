@@ -38,8 +38,75 @@ namespace LauncherCore
         public static Dictionary<String, Mod> Mods = new Dictionary<String, Mod>();
     }
 
-    public class Helper
+    public class LCore
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="check">If true, then check all mods. If false, cancel all mods. </param>
+        public static void CheckAll(Boolean check = true)
+        {
+            foreach (var i in Shared.Mods)
+            {
+                if (i.Value.ToInstall != check)
+                {
+                    i.Value.ToInstall = check;
+                }
+
+                foreach (var j in i.Value.Addons)
+                {
+                    if (j.Value.ToInstall != check)
+                    {
+                        i.Value.ToInstall = check;
+                    }
+                }
+            }
+        }
+
+        public static void ApplyChanges(ref Int32 total, ref Int32 current)
+        {
+            List<Mod> applyList = new List<Mod>();
+            foreach (var i in Shared.Mods)
+            {
+                if ((i.Value.ToInstall != i.Value.Installed) && i.Value.Available)
+                {
+                    applyList.Add(i.Value);
+                }
+
+                foreach (var j in i.Value.Addons)
+                {
+                    if ((j.Value.ToInstall != j.Value.Installed) && j.Value.Available)
+                    {
+                        applyList.Add(j.Value);
+                    }
+                }
+            }
+
+            if (applyList.Count == 0)
+            {
+                return;
+            }
+
+            total = applyList.Count;
+            current = 1;
+
+            foreach (var i in applyList)
+            {
+
+                if (i.Installed)
+                {
+                    i.Uninstall();
+                }
+                else
+                {
+                    i.Install();
+                }
+                current += 1;
+            }
+
+            LCore.CheckInstallation();
+        }
+
         private static String GetFileName(String fullPath)
         {
             return fullPath.Substring(fullPath.LastIndexOf('\\') + 1).Replace(".jar", "");
@@ -111,38 +178,17 @@ namespace LauncherCore
             }
         }
 
-        public static Mod[] GenerateApplyList()
-        {
-            List<Mod> applyList = new List<Mod>();
-            foreach (var i in Shared.Mods)
-            {
-                if ((i.Value.Node.Checked != i.Value.Installed) && i.Value.Available)
-                {
-                    applyList.Add(i.Value);
-                }
-
-                foreach (var j in i.Value.Addons)
-                {
-                    if ((j.Value.Node.Checked != j.Value.Installed) && j.Value.Available)
-                    {
-                        applyList.Add(j.Value);
-                    }
-                }
-            }
-            return applyList.ToArray();
-        }
-
         public static void CheckInstallation()
         {
             foreach (var i in Shared.Mods)
             {
                 i.Value.CheckInstalled();
-                i.Value.Node.Checked = i.Value.Installed;
+                i.Value.ToInstall = i.Value.Installed;
 
                 foreach (var j in i.Value.Addons)
                 {
                     j.Value.CheckInstalled();
-                    j.Value.Node.Checked = j.Value.Installed;
+                    j.Value.ToInstall = j.Value.Installed;
                 }
             }
         }

@@ -40,12 +40,13 @@ namespace LauncherCore
 
             foreach (XmlElement element in xml.GetElementsByTagName("category"))
             {
-                TreeNode node = new TreeNode(element.GetAttribute("name") + " Mods");
+                String ct = element.GetAttribute("name");
 
                 foreach (XmlElement mod in element.ChildNodes)
                 {
                     String key = mod.GetAttribute("key");
                     Shared.Mods[key] = ReadMod(mod);
+                    Shared.Mods[key].Category = ct;
 
                     foreach (XmlElement addon in mod.ChildNodes)
                     {
@@ -55,13 +56,7 @@ namespace LauncherCore
                             Shared.Mods[key].Addons[aKey] = ReadMod(addon);
                         }
                     }
-
-                    Shared.Mods[key].CreateNode();
-                    node.Nodes.Add(Shared.Mods[key].Node);
                 }
-
-                node.Expand();
-                view.Nodes.Add(node);
             }
         }
 
@@ -84,7 +79,7 @@ namespace LauncherCore
 
                 if (Shared.Mods.ContainsKey(key))
                 {
-                    Shared.Mods[key].Node.Checked = Boolean.Parse(i.GetAttribute("checked"));
+                    Shared.Mods[key].ToInstall = Boolean.Parse(i.GetAttribute("checked"));
 
                     foreach (XmlElement j in i.ChildNodes)
                     {
@@ -92,7 +87,7 @@ namespace LauncherCore
 
                         if (Shared.Mods[key].Addons.ContainsKey(addonKey))
                         {
-                            Shared.Mods[key].Addons[addonKey].Node.Checked = Boolean.Parse(j.GetAttribute("checked"));
+                            Shared.Mods[key].Addons[addonKey].ToInstall = Boolean.Parse(j.GetAttribute("checked"));
                         }
                         else
                         {
@@ -147,13 +142,13 @@ namespace LauncherCore
                 XmlElement element = document.CreateElement("mod");
                 element.IsEmpty = false;
                 element.SetAttribute("key", i.Key);
-                element.SetAttribute("checked", i.Value.Node.Checked.ToString());
+                element.SetAttribute("checked", i.Value.ToInstall.ToString());
                 foreach (var j in i.Value.Addons)
                 {
                     XmlElement xmlElement = document.CreateElement("mod");
                     xmlElement.IsEmpty = false;
                     xmlElement.SetAttribute("key", j.Key);
-                    xmlElement.SetAttribute("checked", j.Value.Node.Checked.ToString());
+                    xmlElement.SetAttribute("checked", j.Value.ToInstall.ToString());
                     element.AppendChild(xmlElement);
                 }
                 root.AppendChild(element);

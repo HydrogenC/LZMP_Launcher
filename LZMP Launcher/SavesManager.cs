@@ -68,9 +68,9 @@ namespace LZMP_Launcher
             {
                 String status = "";
                 ExportAction action = new ExportAction(SavesHelper.ExportSave);
-                action.BeginInvoke(selection, ExportDialog.FileName, ref status, UniversalAsyncCallback, null); ;
                 processing = true;
-
+                action.BeginInvoke(selection, ExportDialog.FileName, ref status, UniversalAsyncCallback, null); ;
+                
                 String prevText = "";
                 while (processing)
                 {
@@ -100,11 +100,18 @@ namespace LZMP_Launcher
             {
                 String status = "";
                 ImportAction action = new ImportAction(SavesHelper.ImportSave);
-                action.BeginInvoke(OpenDialog.FileName, ref status, UniversalAsyncCallback, null);
                 processing = true;
-
+                action.BeginInvoke(OpenDialog.FileName, ref status, UniversalAsyncCallback, null);
+                
+                String prevText = "";
                 while (processing)
                 {
+                    if (status != prevText)
+                    {
+                        BigTitle.Text = status + "...";
+                        prevText = status;
+                    }
+
                     Application.DoEvents();
                 }
 

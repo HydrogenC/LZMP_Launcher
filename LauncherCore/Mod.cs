@@ -86,21 +86,6 @@ namespace LauncherCore
             }
         }
 
-        public void CreateNode()
-        {
-            node = new TreeNode(Name);
-            foreach (var i in addons)
-            {
-                i.Value.CreateNode();
-                node.Nodes.Add(i.Value.Node);
-            }
-        }
-
-        public ref TreeNode Node
-        {
-            get => ref node;
-        }
-
         public ref Dictionary<String, Mod> Addons
         {
             get => ref addons;
@@ -129,19 +114,25 @@ namespace LauncherCore
             private set;
         }
 
-        public Boolean ToInstall
+        public String Category
         {
-            get => GetToInstallState();
-            set => SetToInstallState(value);
+            get;
+            set;
         }
 
-        public static Action<Boolean> SetToInstallState
+        public Boolean ToInstall
+        {
+            get => GetToInstallState(this);
+            set => SetToInstallState(this, value);
+        }
+
+        public static Action<Mod, Boolean> SetToInstallState
         {
             private get;
             set;
         }
 
-        public static Func<Boolean> GetToInstallState
+        public static Func<Mod, Boolean> GetToInstallState
         {
             private get;
             set;
