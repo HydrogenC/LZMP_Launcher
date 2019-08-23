@@ -126,13 +126,9 @@
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LibNBT\LibNBT.csproj">
-      <Project>{14287ad3-9576-46e6-9de3-b7731a496da3}</Project>
-      <Name>LibNBT</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SharpZipLib\SharpZipLib.csproj">
-      <Project>{4345374e-ebd4-48dd-b875-62700fbcc60c}</Project>
-      <Name>SharpZipLib</Name>
+    <ProjectReference Include="..\LauncherCore\LauncherCore.csproj">
+      <Project>{9163e24d-ed11-4328-8e7e-a40322492968}</Project>
+      <Name>LauncherCore</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
