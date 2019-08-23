@@ -3,9 +3,9 @@ using System.IO;
 using System.Windows.Forms;
 using System.Xml;
 
-namespace LZMP_Launcher
+namespace LauncherCore
 {
-    class XmlHelper
+    public class XmlHelper
     {
         private static XmlElement GetElementByTagName(ref XmlDocument element, String tagName)
         {
@@ -35,8 +35,8 @@ namespace LZMP_Launcher
 
             XmlDocument xml = new XmlDocument();
             xml.Load(xmlFile);
-            Shared.launcher = Shared.workingDir + "\\Game\\" + GetElementByTagName(ref xml, "launcher").GetAttribute("value");
-            Shared.version = GetElementByTagName(ref xml, "version").GetAttribute("value");
+            Shared.LauncherPath = Shared.WorkingDir + "\\Game\\" + GetElementByTagName(ref xml, "launcher").GetAttribute("value");
+            Shared.Version = GetElementByTagName(ref xml, "version").GetAttribute("value");
 
             foreach (XmlElement element in xml.GetElementsByTagName("category"))
             {
@@ -45,19 +45,19 @@ namespace LZMP_Launcher
                 foreach (XmlElement mod in element.ChildNodes)
                 {
                     String key = mod.GetAttribute("key");
-                    Shared.mods[key] = ReadMod(mod);
+                    Shared.Mods[key] = ReadMod(mod);
 
                     foreach (XmlElement addon in mod.ChildNodes)
                     {
                         if (addon.Name == "mod")
                         {
                             String aKey = addon.GetAttribute("key");
-                            Shared.mods[key].Addons[aKey] = ReadMod(addon);
+                            Shared.Mods[key].Addons[aKey] = ReadMod(addon);
                         }
                     }
 
-                    Shared.mods[key].CreateNode();
-                    node.Nodes.Add(Shared.mods[key].Node);
+                    Shared.Mods[key].CreateNode();
+                    node.Nodes.Add(Shared.Mods[key].Node);
                 }
 
                 node.Expand();
@@ -70,7 +70,7 @@ namespace LZMP_Launcher
             XmlDocument document = new XmlDocument();
             document.Load(xmlFile);
             XmlElement root = GetElementByTagName(ref document, "settings");
-            Boolean versionConforms = GetElementByTagName(ref document, "version").GetAttribute("value") == Shared.version;
+            Boolean versionConforms = GetElementByTagName(ref document, "version").GetAttribute("value") == Shared.Version;
             UInt16 skip = 0;
 
             foreach (XmlElement i in root.ChildNodes)
@@ -82,17 +82,17 @@ namespace LZMP_Launcher
 
                 String key = i.GetAttribute("key");
 
-                if (Shared.mods.ContainsKey(key))
+                if (Shared.Mods.ContainsKey(key))
                 {
-                    Shared.mods[key].Node.Checked = Boolean.Parse(i.GetAttribute("checked"));
+                    Shared.Mods[key].Node.Checked = Boolean.Parse(i.GetAttribute("checked"));
 
                     foreach (XmlElement j in i.ChildNodes)
                     {
                         String addonKey = j.GetAttribute("key");
 
-                        if (Shared.mods[key].Addons.ContainsKey(addonKey))
+                        if (Shared.Mods[key].Addons.ContainsKey(addonKey))
                         {
-                            Shared.mods[key].Addons[addonKey].Node.Checked = Boolean.Parse(j.GetAttribute("checked"));
+                            Shared.Mods[key].Addons[addonKey].Node.Checked = Boolean.Parse(j.GetAttribute("checked"));
                         }
                         else
                         {
@@ -140,9 +140,9 @@ namespace LZMP_Launcher
             XmlElement root = document.CreateElement("settings");
             document.AppendChild(root);
             XmlElement ver = document.CreateElement("version");
-            ver.SetAttribute("value", Shared.version);
+            ver.SetAttribute("value", Shared.Version);
             root.AppendChild(ver);
-            foreach (var i in Shared.mods)
+            foreach (var i in Shared.Mods)
             {
                 XmlElement element = document.CreateElement("mod");
                 element.IsEmpty = false;

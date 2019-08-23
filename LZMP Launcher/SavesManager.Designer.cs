@@ -38,7 +38,6 @@
             this.ExportDialog = new System.Windows.Forms.SaveFileDialog();
             this.OpenDialog = new System.Windows.Forms.OpenFileDialog();
             this.RefreshButton = new System.Windows.Forms.Button();
-            this.XmlDialog = new System.Windows.Forms.SaveFileDialog();
             this.MainToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
@@ -138,11 +137,6 @@
             this.RefreshButton.UseVisualStyleBackColor = true;
             this.RefreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
             // 
-            // XmlDialog
-            // 
-            this.XmlDialog.Filter = "Xml File（*.xml）|*.xml";
-            this.XmlDialog.Title = "Save the map\'s modset to";
-            // 
             // SavesManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
@@ -175,7 +169,6 @@
         private System.Windows.Forms.SaveFileDialog ExportDialog;
         private System.Windows.Forms.OpenFileDialog OpenDialog;
         private System.Windows.Forms.Button RefreshButton;
-        private System.Windows.Forms.SaveFileDialog XmlDialog;
         private System.Windows.Forms.ToolTip MainToolTip;
     }
 }

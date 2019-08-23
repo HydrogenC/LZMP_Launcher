@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using LauncherCore;
+using System;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -34,10 +34,10 @@ namespace LZMP_Launcher
             MainProgressBar.Visible = false;
             BigTitle.Visible = true;
 
-            XmlHelper.ReadDefinitions(Shared.workingDir + "\\BasicSettings.xml", ref MainTree);
-            BigTitle.Text += Shared.version;
+            XmlHelper.ReadDefinitions(Shared.WorkingDir + "\\BasicSettings.xml", ref MainTree);
+            BigTitle.Text += Shared.Version;
 
-            foreach (var i in Shared.mods)
+            foreach (var i in Shared.Mods)
             {
                 i.Value.CheckAvailability();
                 foreach (var j in i.Value.Addons)
@@ -49,7 +49,7 @@ namespace LZMP_Launcher
             Helper.CheckInstallation();
             CheckIfAllChecked();
             promptOnExit = false;
-            SaveDialog.InitialDirectory = Shared.workingDir + "\\Sets\\";
+            SaveDialog.InitialDirectory = Shared.WorkingDir + "\\Sets\\";
         }
 
         private void ApplyChanges(Mod[] applyList)
@@ -82,7 +82,7 @@ namespace LZMP_Launcher
         private void CheckIfAllChecked()
         {
             allChecked = true;
-            foreach (var i in Shared.mods)
+            foreach (var i in Shared.Mods)
             {
                 if (!i.Value.Node.Checked)
                 {
@@ -196,9 +196,7 @@ namespace LZMP_Launcher
         private void LaunchButton_Click(object sender, EventArgs e)
         {
             Apply_Click(null, null);
-            Directory.SetCurrentDirectory(Shared.workingDir + "\\Game\\");
-            System.Diagnostics.Process.Start(Shared.launcher);
-            Directory.SetCurrentDirectory(Shared.workingDir);
+            Helper.LaunchGame();
         }
 
         private void SaveSet_Click(object sender, EventArgs e)
@@ -265,9 +263,9 @@ namespace LZMP_Launcher
 
         private void ManageSaves_Click(object sender, EventArgs e)
         {
-            if (!Directory.Exists(Shared.saveDir))
+            if (!Directory.Exists(Shared.SaveDir))
             {
-                Directory.CreateDirectory(Shared.saveDir);
+                Directory.CreateDirectory(Shared.SaveDir);
             }
 
             SavesManager manager = new SavesManager();

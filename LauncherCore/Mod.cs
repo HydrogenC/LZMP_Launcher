@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 
-namespace LZMP_Launcher
+namespace LauncherCore
 {
     public class Mod
     {
         private List<String> files = new List<String>();
-        private TreeNode node;
         private Dictionary<String, Mod> addons = new Dictionary<String, Mod>();
 
         public Mod(String name, List<String> files = null, Dictionary<String, Mod> addons = null)
@@ -32,7 +31,7 @@ namespace LZMP_Launcher
 
             foreach (var i in Files)
             {
-                Installed = File.Exists(Shared.modDir + i + ".jar");
+                Installed = File.Exists(Shared.ModDir + i + ".jar");
                 if (!Installed)
                 {
                     break;
@@ -46,7 +45,7 @@ namespace LZMP_Launcher
 
             foreach (var i in files)
             {
-                Available = File.Exists(Shared.resourceDir + i + ".jar");
+                Available = File.Exists(Shared.ResourceDir + i + ".jar");
                 if (!Available)
                 {
                     MessageBox.Show("File not found: \n" + Name, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -61,7 +60,7 @@ namespace LZMP_Launcher
             {
                 try
                 {
-                    File.Copy(Shared.resourceDir + i + ".jar", Shared.modDir + i + ".jar");
+                    File.Copy(Shared.ResourceDir + i + ".jar", Shared.ModDir + i + ".jar");
                 }
                 catch (Exception)
                 {
@@ -77,7 +76,7 @@ namespace LZMP_Launcher
             {
                 try
                 {
-                    File.Delete(Shared.modDir + i + ".jar");
+                    File.Delete(Shared.ModDir + i + ".jar");
                 }
                 catch (Exception)
                 {
@@ -128,6 +127,24 @@ namespace LZMP_Launcher
         {
             get;
             private set;
+        }
+
+        public Boolean ToInstall
+        {
+            get => GetToInstallState();
+            set => SetToInstallState(value);
+        }
+
+        public static Action<Boolean> SetToInstallState
+        {
+            private get;
+            set;
+        }
+
+        public static Func<Boolean> GetToInstallState
+        {
+            private get;
+            set;
         }
     }
 }

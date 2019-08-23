@@ -3,21 +3,42 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 
-namespace LZMP_Launcher
+namespace LauncherCore
 {
     public struct Shared
     {
-        public static readonly String workingDir = Directory.GetCurrentDirectory();
-        public static readonly String resourceDir = workingDir + "\\Resources\\";
-        public static readonly String modDir = workingDir + "\\Game\\.minecraft\\mods\\";
-        public static readonly String saveDir = workingDir + "\\Game\\.minecraft\\saves\\";
-        public static readonly String scriptDir = workingDir + "\\Game\\.minecraft\\scripts\\";
-        public static readonly String jmDataDir = workingDir + "\\Game\\.minecraft\\journeymap\\data\\sp\\";
-        public static String launcher, version;
-        public static Dictionary<String, Mod> mods = new Dictionary<String, Mod>();
+        public static String WorkingDir = Directory.GetCurrentDirectory();
+
+        public static String ResourceDir
+        {
+            get => WorkingDir + "\\Resources\\";
+        }
+
+        public static String ModDir
+        {
+            get => WorkingDir + "\\Game\\.minecraft\\mods\\";
+        }
+
+        public static String SaveDir
+        {
+            get => WorkingDir + "\\Game\\.minecraft\\saves\\";
+        }
+
+        public static String ScriptDir
+        {
+            get => WorkingDir + "\\Game\\.minecraft\\scripts\\";
+        }
+
+        public static String JMDataDir
+        {
+            get => WorkingDir + "\\Game\\.minecraft\\journeymap\\data\\sp\\";
+        }
+
+        public static String LauncherPath, Version;
+        public static Dictionary<String, Mod> Mods = new Dictionary<String, Mod>();
     }
 
-    class Helper
+    public class Helper
     {
         private static String GetFileName(String fullPath)
         {
@@ -26,11 +47,11 @@ namespace LZMP_Launcher
 
         public static void CleanUp()
         {
-            String[] files = Directory.GetFiles(Shared.resourceDir);
+            String[] files = Directory.GetFiles(Shared.ResourceDir);
             foreach (var i in files)
             {
                 Boolean used = false;
-                foreach (var j in Shared.mods)
+                foreach (var j in Shared.Mods)
                 {
                     foreach (var k in j.Value.Addons)
                     {
@@ -93,7 +114,7 @@ namespace LZMP_Launcher
         public static Mod[] GenerateApplyList()
         {
             List<Mod> applyList = new List<Mod>();
-            foreach (var i in Shared.mods)
+            foreach (var i in Shared.Mods)
             {
                 if ((i.Value.Node.Checked != i.Value.Installed) && i.Value.Available)
                 {
@@ -113,7 +134,7 @@ namespace LZMP_Launcher
 
         public static void CheckInstallation()
         {
-            foreach (var i in Shared.mods)
+            foreach (var i in Shared.Mods)
             {
                 i.Value.CheckInstalled();
                 i.Value.Node.Checked = i.Value.Installed;
@@ -124,6 +145,13 @@ namespace LZMP_Launcher
                     j.Value.Node.Checked = j.Value.Installed;
                 }
             }
+        }
+
+        public static void LaunchGame()
+        {
+            Directory.SetCurrentDirectory(Shared.WorkingDir + "\\Game\\");
+            System.Diagnostics.Process.Start(Shared.LauncherPath);
+            Directory.SetCurrentDirectory(Shared.WorkingDir);
         }
     }
 }

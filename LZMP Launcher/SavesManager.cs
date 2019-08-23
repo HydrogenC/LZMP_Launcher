@@ -1,4 +1,4 @@
-﻿using ICSharpCode.SharpZipLib.Zip;
+﻿using LauncherCore;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -36,14 +36,7 @@ namespace LZMP_Launcher
 
         private void RefreshList()
         {
-            List<Save> saves = new List<Save>();
-            foreach (String i in Directory.GetDirectories(Shared.saveDir))
-            {
-                if (File.Exists(i + "\\level.dat"))
-                {
-                    saves.Add(new Save(i));
-                }
-            }
+            Save[] saves = SavesHelper.GetSaves();
 
             SavesList.Items.Clear();
             foreach (var i in saves)
@@ -60,10 +53,12 @@ namespace LZMP_Launcher
             }
         }
 
+        private delegate void ExportAction(Save save, String zipFile, ref String status);
         private void ExportButton_Click(object sender, EventArgs e)
         {
             Save selection = SavesList.SelectedItem as Save;
-            if(selection == null){
+            if (selection == null)
+            {
                 MessageBox.Show("Please select a map in the list to export. ", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
@@ -71,12 +66,20 @@ namespace LZMP_Launcher
             ExportDialog.FileName = selection.LevelName + ".zip";
             if (ExportDialog.ShowDialog() == DialogResult.OK)
             {
-                Action<Save> action = new Action<Save>(ExportSave);
-                action.BeginInvoke(selection, null, null);
+                String status = "";
+                ExportAction action = new ExportAction(SavesHelper.ExportSave);
+                action.BeginInvoke(selection, ExportDialog.FileName, ref status, UniversalAsyncCallback, null); ;
                 processing = true;
 
+                String prevText = "";
                 while (processing)
                 {
+                    if (status != prevText)
+                    {
+                        BigTitle.Text = status + "...";
+                        prevText = status;
+                    }
+
                     Application.DoEvents();
                 }
 
@@ -85,42 +88,19 @@ namespace LZMP_Launcher
             }
         }
 
-        private void ExportSave(Save save)
+        private void UniversalAsyncCallback(IAsyncResult ar)
         {
-            BigTitle.Text = "Preparing...";
-
-            String tmpDir = Shared.workingDir + "\\Tmp\\";
-            Directory.CreateDirectory(tmpDir);
-            Helper.CopyDirectory(save.Dir, tmpDir + "save\\");
-            XmlHelper.WriteXmlSet(tmpDir + "Set.xml", false);
-
-            if (Shared.mods["ctk"].Node.Checked && Directory.Exists(Shared.scriptDir))
-            {
-                Helper.CopyDirectory(Shared.scriptDir, tmpDir + "scripts\\");
-            }
-
-            if (Directory.Exists(Shared.jmDataDir + save.LevelName))
-            {
-                Helper.CopyDirectory(Shared.jmDataDir + save.LevelName, tmpDir + "jm\\");
-            }
-
-            BigTitle.Text = "Compressing...";
-
-            FastZip zip = new FastZip();
-            zip.CreateZip(ExportDialog.FileName, tmpDir, true, null);
-
-            BigTitle.Text = "Cleaning up...";
-
-            Directory.Delete(tmpDir, true);
             processing = false;
         }
 
+        private delegate void ImportAction(String zipFile, ref String status);
         private void ImportButton_Click(object sender, EventArgs e)
         {
             if (OpenDialog.ShowDialog() == DialogResult.OK)
             {
-                Action<String> action = new Action<String>(ImportSave);
-                action.BeginInvoke(OpenDialog.FileName, null, null);
+                String status = "";
+                ImportAction action = new ImportAction(SavesHelper.ImportSave);
+                action.BeginInvoke(OpenDialog.FileName, ref status, UniversalAsyncCallback, null);
                 processing = true;
 
                 while (processing)
@@ -132,64 +112,6 @@ namespace LZMP_Launcher
                 RefreshList();
                 MessageBox.Show("Finished! ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-        }
-
-        private void ImportSave(String zipFile)
-        {
-            BigTitle.Text = "Decompressing...";
-
-            String tmpDir = Shared.workingDir + "\\Tmp\\";
-            Directory.CreateDirectory(tmpDir);
-
-            String zipName = zipFile.Substring(zipFile.LastIndexOf('\\') + 1);
-            zipName = zipName.Substring(0, zipName.Length - 4);
-            FastZip zip = new FastZip();
-            zip.ExtractZip(zipFile, tmpDir, null);
-
-            BigTitle.Text = "Importing Map...";
-
-            Save save = new Save(tmpDir + "save");
-            Helper.CopyDirectory(tmpDir + "save", Shared.saveDir + zipName);
-
-            if (MessageBox.Show("Override the current modset with the map's? If you choose No, you can select where to save the map's modset later. ", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                XmlHelper.ReadXmlSet(tmpDir + "Set.xml", false);
-                Mod[] applyList = Helper.GenerateApplyList();
-                foreach (var i in applyList)
-                {
-                    if (i.Installed)
-                    {
-                        i.Uninstall();
-                    }
-                    else
-                    {
-                        i.Install();
-                    }
-                }
-                Helper.CheckInstallation();
-            }
-            else
-            {
-                if (XmlDialog.ShowDialog() == DialogResult.OK)
-                {
-                    File.Copy(tmpDir + "Set.xml", XmlDialog.FileName, true);
-                }
-            }
-
-            if (Directory.Exists(tmpDir + "scripts\\"))
-            {
-                Helper.CopyDirectory(tmpDir + "scripts\\", Shared.scriptDir);
-            }
-
-            if (Directory.Exists(tmpDir + "jm\\"))
-            {
-                Helper.CopyDirectory(tmpDir + "jm\\", Shared.jmDataDir + save.LevelName);
-            }
-
-            BigTitle.Text = "Cleaning up...";
-
-            Directory.Delete(tmpDir, true);
-            processing = false;
         }
 
         private void RefreshButton_Click(object sender, EventArgs e)
