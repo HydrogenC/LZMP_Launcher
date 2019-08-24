@@ -25,7 +25,7 @@ namespace LauncherCore
             return mod;
         }
 
-        public static void ReadDefinitions(String xmlFile, ref TreeView view)
+        public static void ReadDefinitions(String xmlFile)
         {
             if (!File.Exists(xmlFile))
             {
@@ -55,6 +55,7 @@ namespace LauncherCore
                         {
                             String aKey = addon.GetAttribute("key");
                             Shared.Mods[key].Addons[aKey] = ReadMod(addon);
+                            Shared.Mods[key].Addons[aKey].Key = aKey;
                         }
                     }
                 }

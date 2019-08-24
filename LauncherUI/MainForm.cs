@@ -1,16 +1,17 @@
 ﻿using LauncherCore;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using System.Collections.Generic;
 
-namespace LZMP_Launcher
+namespace LauncherUI
 {
     public partial class MainForm : Form
     {
         private Boolean processing = false, allChecked = false, promptOnExit = false;
         private static Dictionary<String, TreeNode> nodeDict = new Dictionary<String, TreeNode>();
+        private static Dictionary<String, TreeNode> categoryDict = new Dictionary<String, TreeNode>();
 
         #region Drag
         [DllImport("user32.dll")]
@@ -35,7 +36,10 @@ namespace LZMP_Launcher
 
         private static void SetNodeChecked(Mod mod, Boolean flag)
         {
-            nodeDict[mod.Key].Checked = flag;
+            if (nodeDict[mod.Key].Checked != flag)
+            {
+                nodeDict[mod.Key].Checked = flag;
+            }
         }
 
         public MainForm()
@@ -49,12 +53,12 @@ namespace LZMP_Launcher
             MainProgressBar.Visible = false;
             BigTitle.Visible = true;
 
-            XmlHelper.ReadDefinitions(Shared.WorkingDir + "\\BasicSettings.xml", ref MainTree);
+            XmlHelper.ReadDefinitions(Shared.WorkingDir + "\\BasicSettings.xml");
             BigTitle.Text += Shared.Version;
             WriteNodes();
 
-            LauncherCore.LauncherCore.CheckAvailability();
-            LauncherCore.LauncherCore.CheckInstallation();
+            Core.CheckAvailability();
+            Core.CheckInstallation();
             CheckIfAllChecked();
             promptOnExit = false;
             SaveDialog.InitialDirectory = Shared.WorkingDir + "\\Sets\\";
@@ -64,14 +68,27 @@ namespace LZMP_Launcher
         {
             foreach (var i in Shared.Mods)
             {
-                if (!nodeDict.ContainsKey(i.Value.Category))
+                if (!categoryDict.ContainsKey(i.Value.Category))
                 {
-                    nodeDict[i.Value.Category] = new TreeNode(i.Value.Category + " Mods");
-
+                    categoryDict[i.Value.Category] = new TreeNode(i.Value.Category + " Mods");
                 }
 
-                nodeDict[i.Value.Category].Nodes.Add(new TreeNode(i.Value.Name));
+                nodeDict[i.Key] = new TreeNode(i.Value.Name);
+                categoryDict[i.Value.Category].Nodes.Add(nodeDict[i.Key]);
+
+                foreach (var j in i.Value.Addons)
+                {
+                    nodeDict[j.Key] = new TreeNode(j.Value.Name);
+                    nodeDict[i.Key].Nodes.Add(nodeDict[j.Key]);
+                }
             }
+
+            foreach (var i in categoryDict)
+            {
+                MainTree.Nodes.Add(i.Value);
+            }
+
+            MainTree.ExpandAll();
         }
 
         private void CheckIfAllChecked()
@@ -152,13 +169,13 @@ namespace LZMP_Launcher
 
         private void ToggleCheck_Click(object sender, EventArgs e)
         {
-            LauncherCore.LauncherCore.CheckAll(!allChecked);
+            Core.CheckAll(!allChecked);
         }
 
         private void LaunchButton_Click(object sender, EventArgs e)
         {
             Apply_Click(null, null);
-            LauncherCore.LauncherCore.LaunchGame();
+            LauncherCore.Core.LaunchGame();
         }
 
         private void SaveSet_Click(object sender, EventArgs e)
@@ -183,7 +200,7 @@ namespace LZMP_Launcher
             }
         }
 
-        private delegate void ApplyAction(ref Int32 total, ref Int32 current);
+
         private void Apply_Click(object sender, EventArgs e)
         {
             BigTitle.Visible = false;
@@ -192,17 +209,16 @@ namespace LZMP_Launcher
             MainProgressBar.Value = 0;
             MainProgressBar.Visible = true;
 
-            Int32 current = 0, total = 0;
-            ApplyAction action = new ApplyAction(LauncherCore.LauncherCore.ApplyChanges);
+            Action action = new Action(Core.ApplyChanges);
             processing = true;
-            action.BeginInvoke(ref total, ref current, UniversalAsyncCallback, null);
+            action.BeginInvoke(UniversalAsyncCallback, null);
 
             while (processing)
             {
-                SmallTitle.Text = "Applying " + current + "/" + total;
-                if (total != 0)
+                SmallTitle.Text = "Applying " + (ApplyProgress.current + 1) + "/" + ApplyProgress.total;
+                if (ApplyProgress.total != 0)
                 {
-                    MainProgressBar.Value = MainProgressBar.Minimum * current / total;
+                    MainProgressBar.Value = MainProgressBar.Maximum * ApplyProgress.current / ApplyProgress.total;
                 }
                 Application.DoEvents();
             }
@@ -227,7 +243,7 @@ namespace LZMP_Launcher
         {
             if (MessageBox.Show("Clean up: This button would delete all unused files in the 'Resources' path. Are you sure to continue? ", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                LauncherCore.LauncherCore.CleanUp();
+                Core.CleanUp();
             }
         }
 

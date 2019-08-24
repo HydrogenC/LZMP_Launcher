@@ -36,9 +36,32 @@ namespace LauncherCore
 
         public static String LauncherPath, Version;
         public static Dictionary<String, Mod> Mods = new Dictionary<String, Mod>();
+
+
     }
 
-    public class LauncherCore
+    public struct SavesStatus
+    {
+        public static void Initialize()
+        {
+            status = "";
+        }
+
+        public static String status = "";
+    }
+
+    public struct ApplyProgress
+    {
+        public static void Initialize()
+        {
+            total = 0;
+            current = 0;
+        }
+
+        public static Int32 total = 0, current = 0;
+    }
+
+    public class Core
     {
         /// <summary>
         /// 
@@ -48,22 +71,16 @@ namespace LauncherCore
         {
             foreach (var i in Shared.Mods)
             {
-                if (i.Value.ToInstall != check)
-                {
-                    i.Value.ToInstall = check;
-                }
+                i.Value.ToInstall = check;
 
                 foreach (var j in i.Value.Addons)
                 {
-                    if (j.Value.ToInstall != check)
-                    {
-                        i.Value.ToInstall = check;
-                    }
+                    j.Value.ToInstall = check;
                 }
             }
         }
 
-        public static void ApplyChanges(ref Int32 total, ref Int32 current)
+        public static void ApplyChanges()
         {
             List<Mod> applyList = new List<Mod>();
             foreach (var i in Shared.Mods)
@@ -87,8 +104,8 @@ namespace LauncherCore
                 return;
             }
 
-            total = applyList.Count;
-            current = 1;
+            ApplyProgress.total = applyList.Count;
+            ApplyProgress.current = 0;
 
             foreach (var i in applyList)
             {
@@ -101,10 +118,11 @@ namespace LauncherCore
                 {
                     i.Install();
                 }
-                current += 1;
+                ApplyProgress.current += 1;
             }
 
-            LauncherCore.CheckInstallation();
+            CheckInstallation();
+            ApplyProgress.Initialize();
         }
 
         private static String GetFileName(String fullPath)

@@ -23,40 +23,41 @@ namespace LauncherCore
             return saves.ToArray();
         }
 
-        public static void ExportSave(Save save, String zipFile, ref String status)
+        public static void ExportSave(Save save, String zipFile)
         {
-            status = "Preparing";
+            SavesStatus.status = "Preparing";
 
             String tmpDir = Shared.WorkingDir + "\\Tmp\\";
             Directory.CreateDirectory(tmpDir);
-            LauncherCore.CopyDirectory(save.Dir, tmpDir + "save\\");
+            Core.CopyDirectory(save.Dir, tmpDir + "save\\");
             XmlHelper.WriteXmlSet(tmpDir + "Set.xml", false);
 
             if (Directory.Exists(Shared.ScriptDir))
             {
-                LauncherCore.CopyDirectory(Shared.ScriptDir, tmpDir + "scripts\\");
+                Core.CopyDirectory(Shared.ScriptDir, tmpDir + "scripts\\");
             }
 
             if (Directory.Exists(Shared.JMDataDir + save.LevelName))
             {
-                LauncherCore.CopyDirectory(Shared.JMDataDir + save.LevelName, tmpDir + "jm\\");
+                Core.CopyDirectory(Shared.JMDataDir + save.LevelName, tmpDir + "jm\\");
             }
 
-            status = "Compressing";
+            SavesStatus.status = "Compressing";
 
             FastZip zip = new FastZip();
             zip.CreateZip(zipFile, tmpDir, true, null);
 
-            status = "Cleaning up";
+            SavesStatus.status = "Cleaning up";
 
             Directory.Delete(tmpDir, true);
+            SavesStatus.Initialize();
         }
 
-        public static void ImportSave(String zipFile, ref String status)
+        public static void ImportSave(String zipFile)
         {
             OpenFileDialog xmlDialog = new OpenFileDialog();
             xmlDialog.Filter = "Xml File（*.xml）|*.xml";
-            status = "Extracting";
+            SavesStatus.status = "Extracting";
 
             String tmpDir = Shared.WorkingDir + "\\Tmp\\";
             Directory.CreateDirectory(tmpDir);
@@ -66,19 +67,18 @@ namespace LauncherCore
             FastZip zip = new FastZip();
             zip.ExtractZip(zipFile, tmpDir, null);
 
-            status = "Importing Map";
+            SavesStatus.status = "Importing Map";
 
             Save save = new Save(tmpDir + "save");
-            LauncherCore.CopyDirectory(tmpDir + "save", Shared.SaveDir + zipName);
+            Core.CopyDirectory(tmpDir + "save", Shared.SaveDir + zipName);
 
             if (MessageBox.Show("Override the current modset with the map's? If you choose No, you can select where to save the map's modset later. ", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                status = "Importing modset";
+                SavesStatus.status = "Importing modset";
 
-                Int32 c = 0, t = 0;
                 XmlHelper.ReadXmlSet(tmpDir + "Set.xml", false);
-                LauncherCore.ApplyChanges(ref t, ref c);
-                LauncherCore.CheckInstallation();
+                Core.ApplyChanges();
+                Core.CheckInstallation();
             }
             else
             {
@@ -90,17 +90,18 @@ namespace LauncherCore
 
             if (Directory.Exists(tmpDir + "scripts\\"))
             {
-                LauncherCore.CopyDirectory(tmpDir + "scripts\\", Shared.ScriptDir);
+                Core.CopyDirectory(tmpDir + "scripts\\", Shared.ScriptDir);
             }
 
             if (Directory.Exists(tmpDir + "jm\\"))
             {
-                LauncherCore.CopyDirectory(tmpDir + "jm\\", Shared.JMDataDir + save.LevelName);
+                Core.CopyDirectory(tmpDir + "jm\\", Shared.JMDataDir + save.LevelName);
             }
 
-            status = "Cleaning up";
+            SavesStatus.status = "Cleaning up";
 
             Directory.Delete(tmpDir, true);
+            SavesStatus.Initialize();
         }
     }
 }

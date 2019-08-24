@@ -1,4 +1,4 @@
-﻿namespace LZMP_Launcher
+﻿namespace LauncherUI
 {
     partial class SavesManager
     {
