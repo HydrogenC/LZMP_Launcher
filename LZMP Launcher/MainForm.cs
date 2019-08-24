@@ -10,6 +10,7 @@ namespace LZMP_Launcher
     public partial class MainForm : Form
     {
         private Boolean processing = false, allChecked = false, promptOnExit = false;
+        private static Dictionary<String, TreeNode> nodeDict = new Dictionary<String, TreeNode>();
 
         #region Drag
         [DllImport("user32.dll")]
@@ -27,9 +28,22 @@ namespace LZMP_Launcher
         }
         #endregion
 
+        private static Boolean GetNodeChecked(Mod mod)
+        {
+            return nodeDict[mod.Key].Checked;
+        }
+
+        private static void SetNodeChecked(Mod mod, Boolean flag)
+        {
+            nodeDict[mod.Key].Checked = flag;
+        }
+
         public MainForm()
         {
             InitializeComponent();
+
+            Mod.GetToInstallState = GetNodeChecked;
+            Mod.SetToInstallState = SetNodeChecked;
 
             CheckForIllegalCrossThreadCalls = false;
             MainProgressBar.Visible = false;
@@ -37,17 +51,10 @@ namespace LZMP_Launcher
 
             XmlHelper.ReadDefinitions(Shared.WorkingDir + "\\BasicSettings.xml", ref MainTree);
             BigTitle.Text += Shared.Version;
+            WriteNodes();
 
-            foreach (var i in Shared.Mods)
-            {
-                i.Value.CheckAvailability();
-                foreach (var j in i.Value.Addons)
-                {
-                    j.Value.CheckAvailability();
-                }
-            }
-
-            LCore.CheckInstallation();
+            LauncherCore.LauncherCore.CheckAvailability();
+            LauncherCore.LauncherCore.CheckInstallation();
             CheckIfAllChecked();
             promptOnExit = false;
             SaveDialog.InitialDirectory = Shared.WorkingDir + "\\Sets\\";
@@ -55,16 +62,15 @@ namespace LZMP_Launcher
 
         private void WriteNodes()
         {
-            Dictionary<String, TreeNode> dict = new Dictionary<String, TreeNode>();
-            foreach(var i in Shared.Mods)
+            foreach (var i in Shared.Mods)
             {
-                if (!dict.ContainsKey(i.Value.Category))
+                if (!nodeDict.ContainsKey(i.Value.Category))
                 {
-                    dict[i.Value.Category] = new TreeNode(i.Value.Category + " Mods");
-                    
+                    nodeDict[i.Value.Category] = new TreeNode(i.Value.Category + " Mods");
+
                 }
 
-                dict[i.Value.Category].Nodes.Add();
+                nodeDict[i.Value.Category].Nodes.Add(new TreeNode(i.Value.Name));
             }
         }
 
@@ -146,13 +152,13 @@ namespace LZMP_Launcher
 
         private void ToggleCheck_Click(object sender, EventArgs e)
         {
-            LCore.CheckAll(!allChecked);
+            LauncherCore.LauncherCore.CheckAll(!allChecked);
         }
 
         private void LaunchButton_Click(object sender, EventArgs e)
         {
             Apply_Click(null, null);
-            LCore.LaunchGame();
+            LauncherCore.LauncherCore.LaunchGame();
         }
 
         private void SaveSet_Click(object sender, EventArgs e)
@@ -187,14 +193,17 @@ namespace LZMP_Launcher
             MainProgressBar.Visible = true;
 
             Int32 current = 0, total = 0;
-            ApplyAction action = new ApplyAction(LCore.ApplyChanges);
+            ApplyAction action = new ApplyAction(LauncherCore.LauncherCore.ApplyChanges);
             processing = true;
             action.BeginInvoke(ref total, ref current, UniversalAsyncCallback, null);
 
             while (processing)
             {
                 SmallTitle.Text = "Applying " + current + "/" + total;
-                MainProgressBar.Value = MainProgressBar.Minimum * current / total;
+                if (total != 0)
+                {
+                    MainProgressBar.Value = MainProgressBar.Minimum * current / total;
+                }
                 Application.DoEvents();
             }
 
@@ -218,7 +227,7 @@ namespace LZMP_Launcher
         {
             if (MessageBox.Show("Clean up: This button would delete all unused files in the 'Resources' path. Are you sure to continue? ", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                LCore.CleanUp();
+                LauncherCore.LauncherCore.CleanUp();
             }
         }
 

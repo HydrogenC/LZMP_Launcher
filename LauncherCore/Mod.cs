@@ -120,6 +120,12 @@ namespace LauncherCore
             set;
         }
 
+        public String Key
+        {
+            get;
+            set;
+        }
+
         public Boolean ToInstall
         {
             get => GetToInstallState(this);

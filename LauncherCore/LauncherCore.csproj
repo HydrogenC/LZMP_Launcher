@@ -45,7 +45,7 @@
     <Compile Include="Mod.cs" />
     <Compile Include="Save.cs" />
     <Compile Include="SavesHelper.cs" />
-    <Compile Include="Shared.cs" />
+    <Compile Include="LauncherCore.cs" />
     <Compile Include="XmlHelper.cs" />
     <Compile Include="ZipChecksum\Adler32.cs" />
     <Compile Include="ZipChecksum\BZip2Crc.cs" />

@@ -38,7 +38,7 @@ namespace LauncherCore
         public static Dictionary<String, Mod> Mods = new Dictionary<String, Mod>();
     }
 
-    public class LCore
+    public class LauncherCore
     {
         /// <summary>
         /// 
@@ -104,7 +104,7 @@ namespace LauncherCore
                 current += 1;
             }
 
-            LCore.CheckInstallation();
+            LauncherCore.CheckInstallation();
         }
 
         private static String GetFileName(String fullPath)
@@ -189,6 +189,18 @@ namespace LauncherCore
                 {
                     j.Value.CheckInstalled();
                     j.Value.ToInstall = j.Value.Installed;
+                }
+            }
+        }
+
+        public static void CheckAvailability()
+        {
+            foreach (var i in Shared.Mods)
+            {
+                i.Value.CheckAvailability();
+                foreach (var j in i.Value.Addons)
+                {
+                    j.Value.CheckAvailability();
                 }
             }
         }

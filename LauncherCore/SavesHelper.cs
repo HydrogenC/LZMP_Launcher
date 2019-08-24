@@ -29,17 +29,17 @@ namespace LauncherCore
 
             String tmpDir = Shared.WorkingDir + "\\Tmp\\";
             Directory.CreateDirectory(tmpDir);
-            LCore.CopyDirectory(save.Dir, tmpDir + "save\\");
+            LauncherCore.CopyDirectory(save.Dir, tmpDir + "save\\");
             XmlHelper.WriteXmlSet(tmpDir + "Set.xml", false);
 
             if (Directory.Exists(Shared.ScriptDir))
             {
-                LCore.CopyDirectory(Shared.ScriptDir, tmpDir + "scripts\\");
+                LauncherCore.CopyDirectory(Shared.ScriptDir, tmpDir + "scripts\\");
             }
 
             if (Directory.Exists(Shared.JMDataDir + save.LevelName))
             {
-                LCore.CopyDirectory(Shared.JMDataDir + save.LevelName, tmpDir + "jm\\");
+                LauncherCore.CopyDirectory(Shared.JMDataDir + save.LevelName, tmpDir + "jm\\");
             }
 
             status = "Compressing";
@@ -69,26 +69,16 @@ namespace LauncherCore
             status = "Importing Map";
 
             Save save = new Save(tmpDir + "save");
-            LCore.CopyDirectory(tmpDir + "save", Shared.SaveDir + zipName);
+            LauncherCore.CopyDirectory(tmpDir + "save", Shared.SaveDir + zipName);
 
             if (MessageBox.Show("Override the current modset with the map's? If you choose No, you can select where to save the map's modset later. ", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 status = "Importing modset";
 
+                Int32 c = 0, t = 0;
                 XmlHelper.ReadXmlSet(tmpDir + "Set.xml", false);
-                Mod[] applyList = LCore.GenerateApplyList();
-                foreach (var i in applyList)
-                {
-                    if (i.Installed)
-                    {
-                        i.Uninstall();
-                    }
-                    else
-                    {
-                        i.Install();
-                    }
-                }
-                LCore.CheckInstallation();
+                LauncherCore.ApplyChanges(ref t, ref c);
+                LauncherCore.CheckInstallation();
             }
             else
             {
@@ -100,12 +90,12 @@ namespace LauncherCore
 
             if (Directory.Exists(tmpDir + "scripts\\"))
             {
-                LCore.CopyDirectory(tmpDir + "scripts\\", Shared.ScriptDir);
+                LauncherCore.CopyDirectory(tmpDir + "scripts\\", Shared.ScriptDir);
             }
 
             if (Directory.Exists(tmpDir + "jm\\"))
             {
-                LCore.CopyDirectory(tmpDir + "jm\\", Shared.JMDataDir + save.LevelName);
+                LauncherCore.CopyDirectory(tmpDir + "jm\\", Shared.JMDataDir + save.LevelName);
             }
 
             status = "Cleaning up";

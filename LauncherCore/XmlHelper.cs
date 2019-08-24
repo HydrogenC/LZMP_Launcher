@@ -47,6 +47,7 @@ namespace LauncherCore
                     String key = mod.GetAttribute("key");
                     Shared.Mods[key] = ReadMod(mod);
                     Shared.Mods[key].Category = ct;
+                    Shared.Mods[key].Key = key;
 
                     foreach (XmlElement addon in mod.ChildNodes)
                     {
