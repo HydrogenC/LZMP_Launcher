@@ -121,7 +121,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="BasicSettings.xml" />
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>

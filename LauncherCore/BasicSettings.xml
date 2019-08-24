@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings>
-  <version value="4.9.0" />
+  <version value="4.9.1" />
   <launcher value="NsisoLauncher.exe" />
 
   <category name="Technology" >
@@ -150,7 +150,7 @@
     </mod>
 
     <mod key="nc" name="NuclearCraft" >
-      <file value="NuclearCraft-2.18c-1.12.2" />
+      <file value="NuclearCraft-2.18e-1.12.2" />
     </mod>
 
     <mod key="omt" name="Open Modular Turrents" >

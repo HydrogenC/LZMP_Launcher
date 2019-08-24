@@ -112,5 +112,8 @@
     <Compile Include="Zip\ZipOutputStream.cs" />
     <Compile Include="Zip\ZipStrings.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="BasicSettings.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
