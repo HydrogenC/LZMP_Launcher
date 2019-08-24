@@ -10,9 +10,9 @@ using System.Windows;
 [assembly: AssemblyTitle("LauncherWPF")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("ExMatics")]
 [assembly: AssemblyProduct("LauncherWPF")]
-[assembly: AssemblyCopyright("Copyright ©  2019")]
+[assembly: AssemblyCopyright("Copyright ExMatics™ LZMC© 2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

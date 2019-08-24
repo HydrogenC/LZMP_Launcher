@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Launcher_WPF.Properties
+namespace LauncherWPF.Properties
 {
 
 

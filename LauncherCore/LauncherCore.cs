@@ -34,7 +34,7 @@ namespace LauncherCore
             get => WorkingDir + "\\Game\\.minecraft\\journeymap\\data\\sp\\";
         }
 
-        public static String LauncherPath, Version;
+        public static String LauncherPath = "", Version = "";
         public static Dictionary<String, Mod> Mods = new Dictionary<String, Mod>();
 
 
@@ -132,6 +132,11 @@ namespace LauncherCore
 
         public static void CleanUp()
         {
+            if (!Directory.Exists(Shared.ResourceDir))
+            {
+                return;
+            }
+
             String[] files = Directory.GetFiles(Shared.ResourceDir);
             foreach (var i in files)
             {

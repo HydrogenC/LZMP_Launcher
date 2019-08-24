@@ -143,5 +143,10 @@ namespace LauncherCore
             private get;
             set;
         }
+
+        public override String ToString()
+        {
+            return Name;
+        }
     }
 }

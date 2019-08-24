@@ -94,5 +94,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LauncherCore\LauncherCore.csproj">
+      <Project>{9163e24d-ed11-4328-8e7e-a40322492968}</Project>
+      <Name>LauncherCore</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
