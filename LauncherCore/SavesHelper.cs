@@ -10,14 +10,24 @@ namespace LauncherCore
 {
     public class SavesHelper
     {
-        public static Save[] GetSaves()
+        public static Save[] GetSaves(MinecraftInstance instance)
         {
             List<Save> saves = new List<Save>();
-            foreach (String i in Directory.GetDirectories(Shared.SaveDir))
+            if (instance == SharedData.Client)
             {
-                if (File.Exists(i + "\\level.dat"))
+                foreach (String i in Directory.GetDirectories(instance.SaveDir))
                 {
-                    saves.Add(new Save(i));
+                    if (File.Exists(i + "\\level.dat"))
+                    {
+                        saves.Add(new Save(i));
+                    }
+                }
+            }
+            else
+            {
+                if (Directory.Exists(instance.GamePath + "\\world\\"))
+                {
+                    saves.Add(new Save(instance.GamePath + "\\world\\"));
                 }
             }
             return saves.ToArray();
@@ -27,19 +37,19 @@ namespace LauncherCore
         {
             SavesStatus.status = "Preparing";
 
-            String tmpDir = Shared.WorkingDir + "\\Tmp\\";
+            String tmpDir = MinecraftInstance.WorkingPath + "\\Tmp\\";
             Directory.CreateDirectory(tmpDir);
             Core.CopyDirectory(save.Dir, tmpDir + "save\\");
             XmlHelper.WriteXmlSet(tmpDir + "Set.xml", false);
 
-            if (Directory.Exists(Shared.ScriptDir))
+            if (Directory.Exists(save.Instance.ScriptDir))
             {
-                Core.CopyDirectory(Shared.ScriptDir, tmpDir + "scripts\\");
+                Core.CopyDirectory(save.Instance.ScriptDir, tmpDir + "scripts\\");
             }
 
-            if (Directory.Exists(Shared.JMDataDir + save.LevelName))
+            if (Directory.Exists(save.Instance.JMDataDir + save.LevelName))
             {
-                Core.CopyDirectory(Shared.JMDataDir + save.LevelName, tmpDir + "jm\\");
+                Core.CopyDirectory(save.Instance.JMDataDir + save.LevelName, tmpDir + "jm\\");
             }
 
             SavesStatus.status = "Compressing";
@@ -53,13 +63,13 @@ namespace LauncherCore
             SavesStatus.Initialize();
         }
 
-        public static void ImportSave(String zipFile)
+        public static void ImportSave(String zipFile, MinecraftInstance instance)
         {
             OpenFileDialog xmlDialog = new OpenFileDialog();
             xmlDialog.Filter = "Xml File（*.xml）|*.xml";
             SavesStatus.status = "Extracting";
 
-            String tmpDir = Shared.WorkingDir + "\\Tmp\\";
+            String tmpDir = MinecraftInstance.WorkingPath + "\\Tmp\\";
             Directory.CreateDirectory(tmpDir);
 
             String zipName = zipFile.Substring(zipFile.LastIndexOf('\\') + 1);
@@ -70,15 +80,34 @@ namespace LauncherCore
             SavesStatus.status = "Importing Map";
 
             Save save = new Save(tmpDir + "save");
-            Core.CopyDirectory(tmpDir + "save", Shared.SaveDir + zipName);
+            if (instance == SharedData.Client)
+            {
+                Core.CopyDirectory(tmpDir + "save", instance.SaveDir + zipName);
+            }
+            else
+            {
+                if (!Directory.Exists(SharedData.Server.GamePath + "\\world"))
+                {
+                    Core.CopyDirectory(tmpDir + "save", SharedData.Server.GamePath + "\\world");
+                }
+                else
+                {
+                    if (MessageBox.Show("Override the current server map? ", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        Directory.Delete(SharedData.Server.GamePath + "\\world", true);
+                        Core.CopyDirectory(tmpDir + "save", SharedData.Server.GamePath + "\\world");
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+            }
 
             if (MessageBox.Show("Override the current modset with the map's? If you choose No, you can select where to save the map's modset later. ", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                SavesStatus.status = "Importing modset";
-
                 XmlHelper.ReadXmlSet(tmpDir + "Set.xml", false);
-                Core.ApplyChanges();
-                Core.CheckInstallation();
+                Core.ApplyChanges(instance);
             }
             else
             {
@@ -90,12 +119,12 @@ namespace LauncherCore
 
             if (Directory.Exists(tmpDir + "scripts\\"))
             {
-                Core.CopyDirectory(tmpDir + "scripts\\", Shared.ScriptDir);
+                Core.CopyDirectory(tmpDir + "scripts\\", instance.ScriptDir);
             }
 
             if (Directory.Exists(tmpDir + "jm\\"))
             {
-                Core.CopyDirectory(tmpDir + "jm\\", Shared.JMDataDir + save.LevelName);
+                Core.CopyDirectory(tmpDir + "jm\\", instance.JMDataDir + save.LevelName);
             }
 
             SavesStatus.status = "Cleaning up";

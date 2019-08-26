@@ -9,7 +9,7 @@ namespace LauncherCore
     {
         private List<String> files = new List<String>();
         private Dictionary<String, Mod> addons = new Dictionary<String, Mod>();
-
+        private Dictionary<MinecraftInstance, Boolean> installStates = new Dictionary<MinecraftInstance, Boolean>();
         public Mod(String name, List<String> files = null, Dictionary<String, Mod> addons = null)
         {
             this.Name = name;
@@ -25,14 +25,14 @@ namespace LauncherCore
             }
         }
 
-        public void CheckInstalled()
+        public void CheckInstalled(MinecraftInstance instance)
         {
-            Installed = true;
+            Installed[instance] = true;
 
             foreach (var i in Files)
             {
-                Installed = File.Exists(Shared.ModDir + i + ".jar");
-                if (!Installed)
+                Installed[instance] = File.Exists(instance.ModDir + i + ".jar");
+                if (!Installed[instance])
                 {
                     break;
                 }
@@ -45,7 +45,7 @@ namespace LauncherCore
 
             foreach (var i in files)
             {
-                Available = File.Exists(Shared.ResourceDir + i + ".jar");
+                Available = File.Exists(MinecraftInstance.ResourceDir + i + ".jar");
                 if (!Available)
                 {
                     MessageBox.Show("File not found: \n" + Name, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -54,13 +54,13 @@ namespace LauncherCore
             }
         }
 
-        public void Install()
+        public void Install(MinecraftInstance instance)
         {
             foreach (var i in files)
             {
                 try
                 {
-                    File.Copy(Shared.ResourceDir + i + ".jar", Shared.ModDir + i + ".jar");
+                    File.Copy(MinecraftInstance.ResourceDir + i + ".jar", instance.ModDir + i + ".jar");
                 }
                 catch (Exception)
                 {
@@ -70,13 +70,13 @@ namespace LauncherCore
             }
         }
 
-        public void Uninstall()
+        public void Uninstall(MinecraftInstance instance)
         {
             foreach (var i in files)
             {
                 try
                 {
-                    File.Delete(Shared.ModDir + i + ".jar");
+                    File.Delete(instance.ModDir + i + ".jar");
                 }
                 catch (Exception)
                 {
@@ -102,10 +102,9 @@ namespace LauncherCore
             set;
         }
 
-        public Boolean Installed
+        public ref Dictionary<MinecraftInstance, Boolean> Installed
         {
-            get;
-            private set;
+            get => ref installStates;
         }
 
         public Boolean Available

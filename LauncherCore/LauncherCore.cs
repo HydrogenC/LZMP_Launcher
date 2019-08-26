@@ -5,39 +5,80 @@ using System.Windows.Forms;
 
 namespace LauncherCore
 {
-    public struct Shared
+    public struct MinecraftInstance
     {
-        public static String WorkingDir = Directory.GetCurrentDirectory();
+        public static String WorkingPath = Directory.GetCurrentDirectory();
+        public String GamePath;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="gamePath">Relative path of the game (no backslash at the end)</param>
+        /// <param name="launcherPath">Relative path of the launcher</param>
+        public MinecraftInstance(String gamePath, String launcherPath)
+        {
+            GamePath = WorkingPath + "\\" + gamePath;
+            LauncherPath = WorkingPath + "\\" + launcherPath;
+        }
+
+        public static Boolean operator ==(MinecraftInstance a, MinecraftInstance b)
+        {
+            return (a.GamePath == b.GamePath) && (a.LauncherPath == b.LauncherPath);
+        }
+
+        public static Boolean operator !=(MinecraftInstance a, MinecraftInstance b)
+        {
+            return (a.GamePath != b.GamePath) || (a.LauncherPath != b.LauncherPath);
+        }
 
         public static String ResourceDir
         {
-            get => WorkingDir + "\\Resources\\";
+            get => WorkingPath + "\\Resources\\";
         }
 
-        public static String ModDir
+        public String ModDir
         {
-            get => WorkingDir + "\\Game\\.minecraft\\mods\\";
+            get => GamePath + "\\mods\\";
         }
 
-        public static String SaveDir
+        public String SaveDir
         {
-            get => WorkingDir + "\\Game\\.minecraft\\saves\\";
+            get => GamePath + "\\saves\\";
         }
 
-        public static String ScriptDir
+        public String ScriptDir
         {
-            get => WorkingDir + "\\Game\\.minecraft\\scripts\\";
+            get => GamePath + "\\scripts\\";
         }
 
-        public static String JMDataDir
+        public String JMDataDir
         {
-            get => WorkingDir + "\\Game\\.minecraft\\journeymap\\data\\sp\\";
+            get => GamePath + "\\journeymap\\data\\sp\\";
         }
 
-        public static String LauncherPath = "", Version = "";
+        public String LauncherPath;
+
+        public override Boolean Equals(object obj)
+        {
+            return obj is MinecraftInstance instance && (GamePath == instance.GamePath) && (LauncherPath == instance.LauncherPath);
+        }
+
+        public override Int32 GetHashCode()
+        {
+            var hashCode = -1660369126;
+            hashCode = hashCode * -1521134295 + EqualityComparer<String>.Default.GetHashCode(GamePath);
+            hashCode = hashCode * -1521134295 + EqualityComparer<String>.Default.GetHashCode(LauncherPath);
+            return hashCode;
+        }
+    }
+
+    public struct SharedData
+    {
+        public static String Version;
         public static Dictionary<String, Mod> Mods = new Dictionary<String, Mod>();
-
-
+        public static MinecraftInstance Client = new MinecraftInstance("Client\\.minecraft", "");
+        public static MinecraftInstance Server = new MinecraftInstance("Server\\", "");
+        public static List<MinecraftInstance> ActiveInstances = new List<MinecraftInstance>();
     }
 
     public struct SavesStatus
@@ -69,30 +110,33 @@ namespace LauncherCore
         /// <param name="check">If true, then check all mods. If false, cancel all mods. </param>
         public static void CheckAll(Boolean check = true)
         {
-            foreach (var i in Shared.Mods)
+            foreach (var instance in SharedData.ActiveInstances)
             {
-                i.Value.ToInstall = check;
-
-                foreach (var j in i.Value.Addons)
+                foreach (var i in SharedData.Mods)
                 {
-                    j.Value.ToInstall = check;
+                    i.Value.ToInstall = check;
+
+                    foreach (var j in i.Value.Addons)
+                    {
+                        j.Value.ToInstall = check;
+                    }
                 }
             }
         }
 
-        public static void ApplyChanges()
+        public static void ApplyChanges(MinecraftInstance instance)
         {
             List<Mod> applyList = new List<Mod>();
-            foreach (var i in Shared.Mods)
+            foreach (var i in SharedData.Mods)
             {
-                if ((i.Value.ToInstall != i.Value.Installed) && i.Value.Available)
+                if ((i.Value.ToInstall != i.Value.Installed[instance]) && i.Value.Available)
                 {
                     applyList.Add(i.Value);
                 }
 
                 foreach (var j in i.Value.Addons)
                 {
-                    if ((j.Value.ToInstall != j.Value.Installed) && j.Value.Available)
+                    if ((j.Value.ToInstall != j.Value.Installed[instance]) && j.Value.Available)
                     {
                         applyList.Add(j.Value);
                     }
@@ -110,48 +154,43 @@ namespace LauncherCore
             foreach (var i in applyList)
             {
 
-                if (i.Installed)
+                if (i.Installed[instance])
                 {
-                    i.Uninstall();
+                    i.Uninstall(instance);
                 }
                 else
                 {
-                    i.Install();
+                    i.Install(instance);
                 }
                 ApplyProgress.current += 1;
             }
 
-            CheckInstallation();
+            CheckInstallation(instance);
             ApplyProgress.Initialize();
-        }
-
-        private static String GetFileName(String fullPath)
-        {
-            return fullPath.Substring(fullPath.LastIndexOf('\\') + 1).Replace(".jar", "");
         }
 
         public static void CleanUp()
         {
-            if (!Directory.Exists(Shared.ResourceDir))
+            if (!Directory.Exists(MinecraftInstance.ResourceDir))
             {
                 return;
             }
 
-            String[] files = Directory.GetFiles(Shared.ResourceDir);
+            String[] files = Directory.GetFiles(MinecraftInstance.ResourceDir);
             foreach (var i in files)
             {
                 Boolean used = false;
-                foreach (var j in Shared.Mods)
+                foreach (var j in SharedData.Mods)
                 {
                     foreach (var k in j.Value.Addons)
                     {
-                        if (k.Value.Files.Contains(GetFileName(i)))
+                        if (k.Value.Files.Contains(Path.GetFileNameWithoutExtension(i)))
                         {
                             used = true;
                             break;
                         }
                     }
-                    if (j.Value.Files.Contains(GetFileName(i)))
+                    if (j.Value.Files.Contains(Path.GetFileNameWithoutExtension(i)))
                     {
                         used = true;
                         break;
@@ -201,24 +240,24 @@ namespace LauncherCore
             }
         }
 
-        public static void CheckInstallation()
+        public static void CheckInstallation(MinecraftInstance instance)
         {
-            foreach (var i in Shared.Mods)
+            foreach (var i in SharedData.Mods)
             {
-                i.Value.CheckInstalled();
-                i.Value.ToInstall = i.Value.Installed;
+                i.Value.CheckInstalled(instance);
+                i.Value.ToInstall = i.Value.Installed[instance];
 
                 foreach (var j in i.Value.Addons)
                 {
-                    j.Value.CheckInstalled();
-                    j.Value.ToInstall = j.Value.Installed;
+                    j.Value.CheckInstalled(instance);
+                    j.Value.ToInstall = j.Value.Installed[instance];
                 }
             }
         }
 
         public static void CheckAvailability()
         {
-            foreach (var i in Shared.Mods)
+            foreach (var i in SharedData.Mods)
             {
                 i.Value.CheckAvailability();
                 foreach (var j in i.Value.Addons)
@@ -228,11 +267,11 @@ namespace LauncherCore
             }
         }
 
-        public static void LaunchGame()
+        public static void LaunchGame(MinecraftInstance instance)
         {
-            Directory.SetCurrentDirectory(Shared.WorkingDir + "\\Game\\");
-            System.Diagnostics.Process.Start(Shared.LauncherPath);
-            Directory.SetCurrentDirectory(Shared.WorkingDir);
+            Directory.SetCurrentDirectory(Path.GetDirectoryName(instance.LauncherPath));
+            System.Diagnostics.Process.Start(instance.LauncherPath);
+            Directory.SetCurrentDirectory(MinecraftInstance.WorkingPath);
         }
     }
 }

@@ -14,6 +14,16 @@ namespace LauncherCore
             {
                 dir = dir.Substring(0, dir.Length - 1);
             }
+
+            if (dir.Substring(0, dir.LastIndexOf('\\') + 1) == SharedData.Client.SaveDir)
+            {
+                Instance = SharedData.Client;
+            }
+            else
+            {
+                Instance = SharedData.Server;
+            }
+
             folderName = dir.Substring(dir.LastIndexOf('\\') + 1);
             Dir = dir + "\\";
             TagCompound tag = AbstractTag.ReadFromFile(Dir + "level.dat") as TagCompound;
@@ -31,14 +41,17 @@ namespace LauncherCore
             get => folderName;
             set
             {
-                if (Directory.Exists(Shared.SaveDir + value))
+                if (Instance == SharedData.Client)
                 {
-                    throw new IOException();
-                }
-                else
-                {
-                    Directory.Move(Dir, Shared.SaveDir + value);
-                    folderName = value;
+                    if (Directory.Exists(Instance.SaveDir + value))
+                    {
+                        throw new IOException();
+                    }
+                    else
+                    {
+                        Directory.Move(Dir, Instance.SaveDir + value);
+                        folderName = value;
+                    }
                 }
             }
         }
@@ -60,6 +73,12 @@ namespace LauncherCore
         public override String ToString()
         {
             return " " + levelName + " (" + folderName + ")";
+        }
+
+        public MinecraftInstance Instance
+        {
+            get;
+            private set;
         }
     }
 }

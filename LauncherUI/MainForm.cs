@@ -53,20 +53,20 @@ namespace LauncherUI
             MainProgressBar.Visible = false;
             BigTitle.Visible = true;
 
-            XmlHelper.ReadDefinitions(Shared.WorkingDir + "\\BasicSettings.xml");
-            BigTitle.Text += Shared.Version;
+            XmlHelper.ReadDefinitions(MinecraftInstance.WorkingPath + "\\BasicSettings.xml");
+            BigTitle.Text += MinecraftInstance.Version;
             WriteNodes();
 
             Core.CheckAvailability();
             Core.CheckInstallation();
             CheckIfAllChecked();
             promptOnExit = false;
-            SaveDialog.InitialDirectory = Shared.WorkingDir + "\\Sets\\";
+            SaveDialog.InitialDirectory = MinecraftInstance.WorkingPath + "\\Sets\\";
         }
 
         private void WriteNodes()
         {
-            foreach (var i in Shared.Mods)
+            foreach (var i in MinecraftInstance.Mods)
             {
                 if (!categoryDict.ContainsKey(i.Value.Category))
                 {
@@ -94,7 +94,7 @@ namespace LauncherUI
         private void CheckIfAllChecked()
         {
             allChecked = true;
-            foreach (var i in Shared.Mods)
+            foreach (var i in MinecraftInstance.Mods)
             {
                 if (!i.Value.ToInstall)
                 {
@@ -175,7 +175,7 @@ namespace LauncherUI
         private void LaunchButton_Click(object sender, EventArgs e)
         {
             Apply_Click(null, null);
-            LauncherCore.Core.LaunchGame();
+            LauncherCore.Core.LaunchClient();
         }
 
         private void SaveSet_Click(object sender, EventArgs e)
@@ -249,9 +249,9 @@ namespace LauncherUI
 
         private void ManageSaves_Click(object sender, EventArgs e)
         {
-            if (!Directory.Exists(Shared.SaveDir))
+            if (!Directory.Exists(MinecraftInstance.SaveDir))
             {
-                Directory.CreateDirectory(Shared.SaveDir);
+                Directory.CreateDirectory(MinecraftInstance.SaveDir);
             }
 
             SavesManager manager = new SavesManager();

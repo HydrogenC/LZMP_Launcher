@@ -35,8 +35,9 @@ namespace LauncherCore
 
             XmlDocument xml = new XmlDocument();
             xml.Load(xmlFile);
-            Shared.LauncherPath = Shared.WorkingDir + "\\Game\\" + GetElementByTagName(ref xml, "launcher").GetAttribute("value");
-            Shared.Version = GetElementByTagName(ref xml, "version").GetAttribute("value");
+            SharedData.Client.LauncherPath = MinecraftInstance.WorkingPath + "\\Game\\" + GetElementByTagName(ref xml, "launcher").GetAttribute("client");
+            SharedData.Server.LauncherPath = MinecraftInstance.WorkingPath + "\\Game\\" + GetElementByTagName(ref xml, "launcher").GetAttribute("server");
+            SharedData.Version = GetElementByTagName(ref xml, "version").GetAttribute("value");
 
             foreach (XmlElement element in xml.GetElementsByTagName("category"))
             {
@@ -45,17 +46,17 @@ namespace LauncherCore
                 foreach (XmlElement mod in element.ChildNodes)
                 {
                     String key = mod.GetAttribute("key");
-                    Shared.Mods[key] = ReadMod(mod);
-                    Shared.Mods[key].Category = ct;
-                    Shared.Mods[key].Key = key;
+                    SharedData.Mods[key] = ReadMod(mod);
+                    SharedData.Mods[key].Category = ct;
+                    SharedData.Mods[key].Key = key;
 
                     foreach (XmlElement addon in mod.ChildNodes)
                     {
                         if (addon.Name == "mod")
                         {
                             String aKey = addon.GetAttribute("key");
-                            Shared.Mods[key].Addons[aKey] = ReadMod(addon);
-                            Shared.Mods[key].Addons[aKey].Key = aKey;
+                            SharedData.Mods[key].Addons[aKey] = ReadMod(addon);
+                            SharedData.Mods[key].Addons[aKey].Key = aKey;
                         }
                     }
                 }
@@ -67,7 +68,7 @@ namespace LauncherCore
             XmlDocument document = new XmlDocument();
             document.Load(xmlFile);
             XmlElement root = GetElementByTagName(ref document, "settings");
-            Boolean versionConforms = GetElementByTagName(ref document, "version").GetAttribute("value") == Shared.Version;
+            Boolean versionConforms = GetElementByTagName(ref document, "version").GetAttribute("value") == SharedData.Version;
             UInt16 skip = 0;
 
             foreach (XmlElement i in root.ChildNodes)
@@ -79,17 +80,17 @@ namespace LauncherCore
 
                 String key = i.GetAttribute("key");
 
-                if (Shared.Mods.ContainsKey(key))
+                if (SharedData.Mods.ContainsKey(key))
                 {
-                    Shared.Mods[key].ToInstall = Boolean.Parse(i.GetAttribute("checked"));
+                    SharedData.Mods[key].ToInstall = Boolean.Parse(i.GetAttribute("checked"));
 
                     foreach (XmlElement j in i.ChildNodes)
                     {
                         String addonKey = j.GetAttribute("key");
 
-                        if (Shared.Mods[key].Addons.ContainsKey(addonKey))
+                        if (SharedData.Mods[key].Addons.ContainsKey(addonKey))
                         {
-                            Shared.Mods[key].Addons[addonKey].ToInstall = Boolean.Parse(j.GetAttribute("checked"));
+                            SharedData.Mods[key].Addons[addonKey].ToInstall = Boolean.Parse(j.GetAttribute("checked"));
                         }
                         else
                         {
@@ -137,9 +138,9 @@ namespace LauncherCore
             XmlElement root = document.CreateElement("settings");
             document.AppendChild(root);
             XmlElement ver = document.CreateElement("version");
-            ver.SetAttribute("value", Shared.Version);
+            ver.SetAttribute("value", SharedData.Version);
             root.AppendChild(ver);
-            foreach (var i in Shared.Mods)
+            foreach (var i in SharedData.Mods)
             {
                 XmlElement element = document.CreateElement("mod");
                 element.IsEmpty = false;

@@ -29,8 +29,8 @@ namespace LauncherWPF
         {
             InitializeComponent();
 
-            XmlHelper.ReadDefinitions(Shared.WorkingDir + "\\BasicSettings.xml");
-            BigTitle.Content = BigTitle.Content.ToString().Replace("%v", Shared.Version);
+            XmlHelper.ReadDefinitions(MinecraftInstance.WorkingPath + "\\BasicSettings.xml");
+            BigTitle.Content = BigTitle.Content.ToString().Replace("%v", MinecraftInstance.Version);
 
             Core.CheckAvailability();
             Core.CheckInstallation();
@@ -38,7 +38,7 @@ namespace LauncherWPF
 
         private void WriteNodes()
         {
-            foreach (var i in Shared.Mods)
+            foreach (var i in MinecraftInstance.Mods)
             {
                 if (!MainTree.Items.Contains(i.Value.Category + " Mods"))
                 {
