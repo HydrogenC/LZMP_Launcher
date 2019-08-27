@@ -31,7 +31,7 @@ namespace LauncherCore
 
             foreach (var i in Files)
             {
-                Installed[instance] = File.Exists(instance.ModDir + i + ".jar");
+                Installed[instance] = File.Exists(instance.ModPath + i + ".jar");
                 if (!Installed[instance])
                 {
                     break;
@@ -45,7 +45,7 @@ namespace LauncherCore
 
             foreach (var i in files)
             {
-                Available = File.Exists(MinecraftInstance.ResourceDir + i + ".jar");
+                Available = File.Exists(MinecraftInstance.ResourcePath + i + ".jar");
                 if (!Available)
                 {
                     MessageBox.Show("File not found: \n" + Name, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -60,7 +60,7 @@ namespace LauncherCore
             {
                 try
                 {
-                    File.Copy(MinecraftInstance.ResourceDir + i + ".jar", instance.ModDir + i + ".jar");
+                    File.Copy(MinecraftInstance.ResourcePath + i + ".jar", instance.ModPath + i + ".jar");
                 }
                 catch (Exception)
                 {
@@ -76,7 +76,7 @@ namespace LauncherCore
             {
                 try
                 {
-                    File.Delete(instance.ModDir + i + ".jar");
+                    File.Delete(instance.ModPath + i + ".jar");
                 }
                 catch (Exception)
                 {

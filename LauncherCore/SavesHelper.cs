@@ -10,24 +10,14 @@ namespace LauncherCore
 {
     public class SavesHelper
     {
-        public static Save[] GetSaves(MinecraftInstance instance)
+        public static Save[] GetSaves()
         {
             List<Save> saves = new List<Save>();
-            if (instance == SharedData.Client)
+            foreach (String i in Directory.GetDirectories(SharedData.SavePath))
             {
-                foreach (String i in Directory.GetDirectories(instance.SaveDir))
+                if (File.Exists(i + "\\level.dat"))
                 {
-                    if (File.Exists(i + "\\level.dat"))
-                    {
-                        saves.Add(new Save(i));
-                    }
-                }
-            }
-            else
-            {
-                if (Directory.Exists(instance.GamePath + "\\world\\"))
-                {
-                    saves.Add(new Save(instance.GamePath + "\\world\\"));
+                    saves.Add(new Save(i));
                 }
             }
             return saves.ToArray();
@@ -42,14 +32,14 @@ namespace LauncherCore
             Core.CopyDirectory(save.Dir, tmpDir + "save\\");
             XmlHelper.WriteXmlSet(tmpDir + "Set.xml", false);
 
-            if (Directory.Exists(save.Instance.ScriptDir))
+            if (Directory.Exists(SharedData.Client.ScriptPath))
             {
-                Core.CopyDirectory(save.Instance.ScriptDir, tmpDir + "scripts\\");
+                Core.CopyDirectory(SharedData.Client.ScriptPath, tmpDir + "scripts\\");
             }
 
-            if (Directory.Exists(save.Instance.JMDataDir + save.LevelName))
+            if (Directory.Exists(SharedData.JMDataPath + save.LevelName))
             {
-                Core.CopyDirectory(save.Instance.JMDataDir + save.LevelName, tmpDir + "jm\\");
+                Core.CopyDirectory(SharedData.JMDataPath + save.LevelName, tmpDir + "jm\\");
             }
 
             SavesStatus.status = "Compressing";
@@ -63,7 +53,7 @@ namespace LauncherCore
             SavesStatus.Initialize();
         }
 
-        public static void ImportSave(String zipFile, MinecraftInstance instance)
+        public static void ImportSave(String zipFile)
         {
             OpenFileDialog xmlDialog = new OpenFileDialog();
             xmlDialog.Filter = "Xml File（*.xml）|*.xml";
@@ -80,34 +70,11 @@ namespace LauncherCore
             SavesStatus.status = "Importing Map";
 
             Save save = new Save(tmpDir + "save");
-            if (instance == SharedData.Client)
-            {
-                Core.CopyDirectory(tmpDir + "save", instance.SaveDir + zipName);
-            }
-            else
-            {
-                if (!Directory.Exists(SharedData.Server.GamePath + "\\world"))
-                {
-                    Core.CopyDirectory(tmpDir + "save", SharedData.Server.GamePath + "\\world");
-                }
-                else
-                {
-                    if (MessageBox.Show("Override the current server map? ", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    {
-                        Directory.Delete(SharedData.Server.GamePath + "\\world", true);
-                        Core.CopyDirectory(tmpDir + "save", SharedData.Server.GamePath + "\\world");
-                    }
-                    else
-                    {
-                        return;
-                    }
-                }
-            }
+            Core.CopyDirectory(tmpDir + "save", SharedData.SavePath + zipName);
 
             if (MessageBox.Show("Override the current modset with the map's? If you choose No, you can select where to save the map's modset later. ", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 XmlHelper.ReadXmlSet(tmpDir + "Set.xml", false);
-                Core.ApplyChanges(instance);
             }
             else
             {
@@ -119,12 +86,12 @@ namespace LauncherCore
 
             if (Directory.Exists(tmpDir + "scripts\\"))
             {
-                Core.CopyDirectory(tmpDir + "scripts\\", instance.ScriptDir);
+                Core.CopyDirectory(tmpDir + "scripts\\", SharedData.Client.ScriptPath);
             }
 
             if (Directory.Exists(tmpDir + "jm\\"))
             {
-                Core.CopyDirectory(tmpDir + "jm\\", instance.JMDataDir + save.LevelName);
+                Core.CopyDirectory(tmpDir + "jm\\", SharedData.JMDataPath + save.LevelName);
             }
 
             SavesStatus.status = "Cleaning up";

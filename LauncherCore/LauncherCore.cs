@@ -5,6 +5,7 @@ using System.Windows.Forms;
 
 namespace LauncherCore
 {
+
     public struct MinecraftInstance
     {
         public static String WorkingPath = Directory.GetCurrentDirectory();
@@ -31,29 +32,19 @@ namespace LauncherCore
             return (a.GamePath != b.GamePath) || (a.LauncherPath != b.LauncherPath);
         }
 
-        public static String ResourceDir
+        public static String ResourcePath
         {
             get => WorkingPath + "\\Resources\\";
         }
 
-        public String ModDir
+        public String ModPath
         {
             get => GamePath + "\\mods\\";
         }
 
-        public String SaveDir
-        {
-            get => GamePath + "\\saves\\";
-        }
-
-        public String ScriptDir
+        public String ScriptPath
         {
             get => GamePath + "\\scripts\\";
-        }
-
-        public String JMDataDir
-        {
-            get => GamePath + "\\journeymap\\data\\sp\\";
         }
 
         public String LauncherPath;
@@ -78,7 +69,16 @@ namespace LauncherCore
         public static Dictionary<String, Mod> Mods = new Dictionary<String, Mod>();
         public static MinecraftInstance Client = new MinecraftInstance("Client\\.minecraft", "");
         public static MinecraftInstance Server = new MinecraftInstance("Server\\", "");
-        public static List<MinecraftInstance> ActiveInstances = new List<MinecraftInstance>();
+
+        public static String SavePath
+        {
+            get => Client.GamePath + "\\saves\\";
+        }
+
+        public static String JMDataPath
+        {
+            get => Client.GamePath + "\\journeymap\\data\\sp\\";
+        }
     }
 
     public struct SavesStatus
@@ -110,16 +110,13 @@ namespace LauncherCore
         /// <param name="check">If true, then check all mods. If false, cancel all mods. </param>
         public static void CheckAll(Boolean check = true)
         {
-            foreach (var instance in SharedData.ActiveInstances)
+            foreach (var i in SharedData.Mods)
             {
-                foreach (var i in SharedData.Mods)
-                {
-                    i.Value.ToInstall = check;
+                i.Value.ToInstall = check;
 
-                    foreach (var j in i.Value.Addons)
-                    {
-                        j.Value.ToInstall = check;
-                    }
+                foreach (var j in i.Value.Addons)
+                {
+                    j.Value.ToInstall = check;
                 }
             }
         }
@@ -171,12 +168,12 @@ namespace LauncherCore
 
         public static void CleanUp()
         {
-            if (!Directory.Exists(MinecraftInstance.ResourceDir))
+            if (!Directory.Exists(MinecraftInstance.ResourcePath))
             {
                 return;
             }
 
-            String[] files = Directory.GetFiles(MinecraftInstance.ResourceDir);
+            String[] files = Directory.GetFiles(MinecraftInstance.ResourcePath);
             foreach (var i in files)
             {
                 Boolean used = false;
