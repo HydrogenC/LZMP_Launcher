@@ -10,14 +10,24 @@ namespace LauncherCore
 {
     public class SavesHelper
     {
-        public static Save[] GetSaves()
+        public static Save[] GetSaves(MinecraftInstance instance)
         {
             List<Save> saves = new List<Save>();
-            foreach (String i in Directory.GetDirectories(SharedData.SavePath))
+            if (instance == SharedData.Client)
             {
-                if (File.Exists(i + "\\level.dat"))
+                foreach (String i in Directory.GetDirectories(SharedData.SavePath))
                 {
-                    saves.Add(new Save(i));
+                    if (File.Exists(i + "\\level.dat"))
+                    {
+                        saves.Add(new Save(i));
+                    }
+                }
+            }
+            else
+            {
+                if (File.Exists(instance.GamePath + "\\world\\level.dat"))
+                {
+                    saves.Add(new Save(instance.GamePath + "\\world\\"));
                 }
             }
             return saves.ToArray();

@@ -3,6 +3,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
+/*
 namespace LauncherUI
 {
     public partial class SavesManager : Form
@@ -27,7 +28,6 @@ namespace LauncherUI
 
         public SavesManager()
         {
-            InitializeComponent();
             CheckForIllegalCrossThreadCalls = false;
             RefreshList();
         }
@@ -121,3 +121,4 @@ namespace LauncherUI
         }
     }
 }
+*/

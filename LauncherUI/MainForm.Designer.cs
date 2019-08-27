@@ -33,20 +33,27 @@
             this.SmallTitle = new System.Windows.Forms.Label();
             this.BigTitle = new System.Windows.Forms.Label();
             this.MainTree = new System.Windows.Forms.TreeView();
-            this.LaunchButton = new System.Windows.Forms.Button();
+            this.LaunchClientButton = new System.Windows.Forms.Button();
             this.Apply = new System.Windows.Forms.Button();
             this.ToggleCheck = new System.Windows.Forms.Button();
             this.ReadSet = new System.Windows.Forms.Button();
             this.SaveSet = new System.Windows.Forms.Button();
             this.MainToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.ExitForm = new System.Windows.Forms.Button();
+            this.ExportButton = new System.Windows.Forms.Button();
+            this.ImportButton = new System.Windows.Forms.Button();
+            this.LaunchServerButton = new System.Windows.Forms.Button();
             this.CleanUpButton = new System.Windows.Forms.Button();
             this.FileDialog = new System.Windows.Forms.OpenFileDialog();
             this.SaveDialog = new System.Windows.Forms.SaveFileDialog();
-            this.PlaceHolder = new System.Windows.Forms.Label();
-            this.MainProgressBar = new System.Windows.Forms.ProgressBar();
-            this.label1 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.ApplyLabel = new System.Windows.Forms.Label();
+            this.ClientCheckBox = new System.Windows.Forms.CheckBox();
+            this.ServerCheckBox = new System.Windows.Forms.CheckBox();
+            this.InstanceLabel = new System.Windows.Forms.Label();
+            this.ClientRadioButton = new System.Windows.Forms.RadioButton();
+            this.ServerRadioButton = new System.Windows.Forms.RadioButton();
+            this.SavesList = new System.Windows.Forms.ListBox();
+            this.MapLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // SmallTitle
@@ -89,30 +96,30 @@
             this.MainTree.TabIndex = 3;
             this.MainTree.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.MainTree_AfterCheck);
             // 
-            // LaunchButton
+            // LaunchClientButton
             // 
-            this.LaunchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LaunchButton.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LaunchButton.ForeColor = System.Drawing.Color.White;
-            this.LaunchButton.Location = new System.Drawing.Point(50, 1106);
-            this.LaunchButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.LaunchButton.Name = "LaunchButton";
-            this.LaunchButton.Size = new System.Drawing.Size(360, 110);
-            this.LaunchButton.TabIndex = 4;
-            this.LaunchButton.Text = "Launch";
-            this.MainToolTip.SetToolTip(this.LaunchButton, "This will automaticly apply the current set. ");
-            this.LaunchButton.UseVisualStyleBackColor = true;
-            this.LaunchButton.Click += new System.EventHandler(this.LaunchButton_Click);
+            this.LaunchClientButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LaunchClientButton.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LaunchClientButton.ForeColor = System.Drawing.Color.White;
+            this.LaunchClientButton.Location = new System.Drawing.Point(50, 1106);
+            this.LaunchClientButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.LaunchClientButton.Name = "LaunchClientButton";
+            this.LaunchClientButton.Size = new System.Drawing.Size(240, 110);
+            this.LaunchClientButton.TabIndex = 4;
+            this.LaunchClientButton.Text = "Client";
+            this.MainToolTip.SetToolTip(this.LaunchClientButton, "This will automaticly apply the current set. ");
+            this.LaunchClientButton.UseVisualStyleBackColor = true;
+            this.LaunchClientButton.Click += new System.EventHandler(this.LaunchClientButton_Click);
             // 
             // Apply
             // 
             this.Apply.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Apply.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Apply.ForeColor = System.Drawing.Color.White;
-            this.Apply.Location = new System.Drawing.Point(478, 1106);
+            this.Apply.Location = new System.Drawing.Point(598, 1106);
             this.Apply.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.Apply.Name = "Apply";
-            this.Apply.Size = new System.Drawing.Size(360, 110);
+            this.Apply.Size = new System.Drawing.Size(240, 110);
             this.Apply.TabIndex = 5;
             this.Apply.Text = "Apply";
             this.Apply.UseVisualStyleBackColor = true;
@@ -168,7 +175,7 @@
             this.ExitForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ExitForm.Font = new System.Drawing.Font("Segoe UI", 20F);
             this.ExitForm.ForeColor = System.Drawing.Color.White;
-            this.ExitForm.Location = new System.Drawing.Point(1302, 42);
+            this.ExitForm.Location = new System.Drawing.Point(1216, 42);
             this.ExitForm.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.ExitForm.Name = "ExitForm";
             this.ExitForm.Size = new System.Drawing.Size(70, 86);
@@ -178,13 +185,56 @@
             this.ExitForm.UseVisualStyleBackColor = true;
             this.ExitForm.Click += new System.EventHandler(this.ExitForm_Click);
             // 
+            // ExportButton
+            // 
+            this.ExportButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ExportButton.Font = new System.Drawing.Font("Segoe UI", 16F);
+            this.ExportButton.ForeColor = System.Drawing.Color.White;
+            this.ExportButton.Location = new System.Drawing.Point(888, 967);
+            this.ExportButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.ExportButton.Name = "ExportButton";
+            this.ExportButton.Size = new System.Drawing.Size(374, 110);
+            this.ExportButton.TabIndex = 26;
+            this.ExportButton.Text = "Export Selected";
+            this.MainToolTip.SetToolTip(this.ExportButton, "Export the selected map to a zip file");
+            this.ExportButton.UseVisualStyleBackColor = true;
+            // 
+            // ImportButton
+            // 
+            this.ImportButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ImportButton.Font = new System.Drawing.Font("Segoe UI", 16F);
+            this.ImportButton.ForeColor = System.Drawing.Color.White;
+            this.ImportButton.Location = new System.Drawing.Point(888, 1106);
+            this.ImportButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.ImportButton.Name = "ImportButton";
+            this.ImportButton.Size = new System.Drawing.Size(374, 110);
+            this.ImportButton.TabIndex = 27;
+            this.ImportButton.Text = "Import From Zip";
+            this.MainToolTip.SetToolTip(this.ImportButton, "Import a zip-format map into the current LZMP copy");
+            this.ImportButton.UseVisualStyleBackColor = true;
+            // 
+            // LaunchServerButton
+            // 
+            this.LaunchServerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LaunchServerButton.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LaunchServerButton.ForeColor = System.Drawing.Color.White;
+            this.LaunchServerButton.Location = new System.Drawing.Point(324, 1106);
+            this.LaunchServerButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.LaunchServerButton.Name = "LaunchServerButton";
+            this.LaunchServerButton.Size = new System.Drawing.Size(240, 110);
+            this.LaunchServerButton.TabIndex = 29;
+            this.LaunchServerButton.Text = "Server";
+            this.MainToolTip.SetToolTip(this.LaunchServerButton, "This will automaticly apply the current set. ");
+            this.LaunchServerButton.UseVisualStyleBackColor = true;
+            this.LaunchServerButton.Click += new System.EventHandler(this.LaunchServerButton_Click);
+            // 
             // CleanUpButton
             // 
             this.CleanUpButton.FlatAppearance.BorderSize = 0;
             this.CleanUpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CleanUpButton.Font = new System.Drawing.Font("Segoe UI", 20F);
             this.CleanUpButton.ForeColor = System.Drawing.Color.White;
-            this.CleanUpButton.Location = new System.Drawing.Point(1224, 42);
+            this.CleanUpButton.Location = new System.Drawing.Point(1138, 42);
             this.CleanUpButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.CleanUpButton.Name = "CleanUpButton";
             this.CleanUpButton.Size = new System.Drawing.Size(70, 86);
@@ -201,48 +251,104 @@
             // 
             this.SaveDialog.Filter = "Xml File（*.xml）|*.xml";
             // 
-            // PlaceHolder
+            // ApplyLabel
             // 
-            this.PlaceHolder.AutoSize = true;
-            this.PlaceHolder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.PlaceHolder.Location = new System.Drawing.Point(802, 1378);
-            this.PlaceHolder.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.PlaceHolder.Name = "PlaceHolder";
-            this.PlaceHolder.Size = new System.Drawing.Size(34, 24);
-            this.PlaceHolder.TabIndex = 13;
-            this.PlaceHolder.Text = "PH";
+            this.ApplyLabel.AutoSize = true;
+            this.ApplyLabel.Font = new System.Drawing.Font("Segoe UI", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ApplyLabel.ForeColor = System.Drawing.Color.White;
+            this.ApplyLabel.Location = new System.Drawing.Point(878, 404);
+            this.ApplyLabel.Name = "ApplyLabel";
+            this.ApplyLabel.Size = new System.Drawing.Size(384, 59);
+            this.ApplyLabel.TabIndex = 17;
+            this.ApplyLabel.Text = "Apply Modset For: ";
             // 
-            // MainProgressBar
+            // ClientCheckBox
             // 
-            this.MainProgressBar.Location = new System.Drawing.Point(50, 1235);
-            this.MainProgressBar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.MainProgressBar.Maximum = 2000;
-            this.MainProgressBar.Name = "MainProgressBar";
-            this.MainProgressBar.Size = new System.Drawing.Size(788, 35);
-            this.MainProgressBar.TabIndex = 15;
+            this.ClientCheckBox.AutoSize = true;
+            this.ClientCheckBox.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.ClientCheckBox.ForeColor = System.Drawing.Color.White;
+            this.ClientCheckBox.Location = new System.Drawing.Point(888, 466);
+            this.ClientCheckBox.Name = "ClientCheckBox";
+            this.ClientCheckBox.Size = new System.Drawing.Size(134, 49);
+            this.ClientCheckBox.TabIndex = 18;
+            this.ClientCheckBox.Text = "Client";
+            this.ClientCheckBox.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // ServerCheckBox
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(892, 258);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(374, 59);
-            this.label1.TabIndex = 17;
-            this.label1.Text = "Apply modset for: ";
+            this.ServerCheckBox.AutoSize = true;
+            this.ServerCheckBox.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.ServerCheckBox.ForeColor = System.Drawing.Color.White;
+            this.ServerCheckBox.Location = new System.Drawing.Point(1068, 465);
+            this.ServerCheckBox.Name = "ServerCheckBox";
+            this.ServerCheckBox.Size = new System.Drawing.Size(140, 49);
+            this.ServerCheckBox.TabIndex = 19;
+            this.ServerCheckBox.Text = "Server";
+            this.ServerCheckBox.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // InstanceLabel
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.checkBox1.ForeColor = System.Drawing.Color.White;
-            this.checkBox1.Location = new System.Drawing.Point(902, 320);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(134, 49);
-            this.checkBox1.TabIndex = 18;
-            this.checkBox1.Text = "Client";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.InstanceLabel.AutoSize = true;
+            this.InstanceLabel.Font = new System.Drawing.Font("Segoe UI", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InstanceLabel.ForeColor = System.Drawing.Color.White;
+            this.InstanceLabel.Location = new System.Drawing.Point(878, 257);
+            this.InstanceLabel.Name = "InstanceLabel";
+            this.InstanceLabel.Size = new System.Drawing.Size(408, 59);
+            this.InstanceLabel.TabIndex = 20;
+            this.InstanceLabel.Text = "Active MC Instance: ";
+            // 
+            // ClientRadioButton
+            // 
+            this.ClientRadioButton.AutoSize = true;
+            this.ClientRadioButton.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.ClientRadioButton.ForeColor = System.Drawing.Color.White;
+            this.ClientRadioButton.Location = new System.Drawing.Point(888, 319);
+            this.ClientRadioButton.Name = "ClientRadioButton";
+            this.ClientRadioButton.Size = new System.Drawing.Size(133, 49);
+            this.ClientRadioButton.TabIndex = 23;
+            this.ClientRadioButton.TabStop = true;
+            this.ClientRadioButton.Text = "Client";
+            this.ClientRadioButton.UseVisualStyleBackColor = true;
+            this.ClientRadioButton.CheckedChanged += new System.EventHandler(this.ClientRadioButton_CheckedChanged);
+            // 
+            // ServerRadioButton
+            // 
+            this.ServerRadioButton.AutoSize = true;
+            this.ServerRadioButton.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.ServerRadioButton.ForeColor = System.Drawing.Color.White;
+            this.ServerRadioButton.Location = new System.Drawing.Point(1068, 319);
+            this.ServerRadioButton.Name = "ServerRadioButton";
+            this.ServerRadioButton.Size = new System.Drawing.Size(139, 49);
+            this.ServerRadioButton.TabIndex = 24;
+            this.ServerRadioButton.TabStop = true;
+            this.ServerRadioButton.Text = "Server";
+            this.ServerRadioButton.UseVisualStyleBackColor = true;
+            this.ServerRadioButton.CheckedChanged += new System.EventHandler(this.ServerRadioButton_CheckedChanged);
+            // 
+            // SavesList
+            // 
+            this.SavesList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.SavesList.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.SavesList.ForeColor = System.Drawing.Color.White;
+            this.SavesList.FormattingEnabled = true;
+            this.SavesList.ItemHeight = 45;
+            this.SavesList.Location = new System.Drawing.Point(888, 614);
+            this.SavesList.Name = "SavesList";
+            this.SavesList.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SavesList.Size = new System.Drawing.Size(374, 319);
+            this.SavesList.Sorted = true;
+            this.SavesList.TabIndex = 25;
+            // 
+            // MapLabel
+            // 
+            this.MapLabel.AutoSize = true;
+            this.MapLabel.Font = new System.Drawing.Font("Segoe UI", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MapLabel.ForeColor = System.Drawing.Color.White;
+            this.MapLabel.Location = new System.Drawing.Point(878, 540);
+            this.MapLabel.Name = "MapLabel";
+            this.MapLabel.Size = new System.Drawing.Size(207, 59);
+            this.MapLabel.TabIndex = 28;
+            this.MapLabel.Text = "Map List: ";
             // 
             // MainForm
             // 
@@ -250,18 +356,25 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.ClientSize = new System.Drawing.Size(1422, 1304);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(1322, 1252);
+            this.Controls.Add(this.LaunchServerButton);
+            this.Controls.Add(this.MapLabel);
+            this.Controls.Add(this.ImportButton);
+            this.Controls.Add(this.ExportButton);
+            this.Controls.Add(this.SavesList);
+            this.Controls.Add(this.ServerRadioButton);
+            this.Controls.Add(this.ClientRadioButton);
+            this.Controls.Add(this.InstanceLabel);
+            this.Controls.Add(this.ServerCheckBox);
+            this.Controls.Add(this.ClientCheckBox);
+            this.Controls.Add(this.ApplyLabel);
             this.Controls.Add(this.CleanUpButton);
-            this.Controls.Add(this.MainProgressBar);
-            this.Controls.Add(this.PlaceHolder);
             this.Controls.Add(this.ReadSet);
             this.Controls.Add(this.SaveSet);
             this.Controls.Add(this.ExitForm);
             this.Controls.Add(this.ToggleCheck);
             this.Controls.Add(this.Apply);
-            this.Controls.Add(this.LaunchButton);
+            this.Controls.Add(this.LaunchClientButton);
             this.Controls.Add(this.MainTree);
             this.Controls.Add(this.BigTitle);
             this.Controls.Add(this.SmallTitle);
@@ -282,7 +395,7 @@
         private System.Windows.Forms.Label SmallTitle;
         private System.Windows.Forms.Label BigTitle;
         private System.Windows.Forms.TreeView MainTree;
-        private System.Windows.Forms.Button LaunchButton;
+        private System.Windows.Forms.Button LaunchClientButton;
         private System.Windows.Forms.Button Apply;
         private System.Windows.Forms.Button ToggleCheck;
         private System.Windows.Forms.Button ReadSet;
@@ -290,11 +403,18 @@
         private System.Windows.Forms.ToolTip MainToolTip;
         private System.Windows.Forms.OpenFileDialog FileDialog;
         private System.Windows.Forms.SaveFileDialog SaveDialog;
-        private System.Windows.Forms.Label PlaceHolder;
-        private System.Windows.Forms.ProgressBar MainProgressBar;
         private System.Windows.Forms.Button CleanUpButton;
         private System.Windows.Forms.Button ExitForm;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label ApplyLabel;
+        private System.Windows.Forms.CheckBox ClientCheckBox;
+        private System.Windows.Forms.CheckBox ServerCheckBox;
+        private System.Windows.Forms.Label InstanceLabel;
+        private System.Windows.Forms.RadioButton ClientRadioButton;
+        private System.Windows.Forms.RadioButton ServerRadioButton;
+        private System.Windows.Forms.ListBox SavesList;
+        private System.Windows.Forms.Button ExportButton;
+        private System.Windows.Forms.Button ImportButton;
+        private System.Windows.Forms.Label MapLabel;
+        private System.Windows.Forms.Button LaunchServerButton;
     }
 }

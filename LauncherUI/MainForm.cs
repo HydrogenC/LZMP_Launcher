@@ -12,6 +12,7 @@ namespace LauncherUI
         private Boolean processing = false, allChecked = false, promptOnExit = false;
         private static Dictionary<String, TreeNode> nodeDict = new Dictionary<String, TreeNode>();
         private static Dictionary<String, TreeNode> categoryDict = new Dictionary<String, TreeNode>();
+        private static MinecraftInstance activeInstance;
 
         #region Drag
         [DllImport("user32.dll")]
@@ -28,6 +29,12 @@ namespace LauncherUI
             SendMessage(Handle, WM_SYSCOMMAND, SC_MOVE + HTCAPTION, 0);
         }
         #endregion
+
+        private static void SetInstance(MinecraftInstance instance)
+        {
+            activeInstance = instance;
+            Core.CheckInstallation(instance);
+        }
 
         private static Boolean GetNodeChecked(Mod mod)
         {
@@ -46,19 +53,21 @@ namespace LauncherUI
         {
             InitializeComponent();
 
+            activeInstance = SharedData.Client;
             Mod.GetToInstallState = GetNodeChecked;
             Mod.SetToInstallState = SetNodeChecked;
+            ClientCheckBox.Checked = true;
+            ServerCheckBox.Checked = true;
+            ClientRadioButton.Checked = true;
 
             CheckForIllegalCrossThreadCalls = false;
-            MainProgressBar.Visible = false;
-            BigTitle.Visible = true;
 
             XmlHelper.ReadDefinitions(MinecraftInstance.WorkingPath + "\\BasicSettings.xml");
-            BigTitle.Text += MinecraftInstance.Version;
+            BigTitle.Text += SharedData.Version;
             WriteNodes();
 
             Core.CheckAvailability();
-            Core.CheckInstallation();
+            Core.CheckInstallation(activeInstance);
             CheckIfAllChecked();
             promptOnExit = false;
             SaveDialog.InitialDirectory = MinecraftInstance.WorkingPath + "\\Sets\\";
@@ -66,7 +75,7 @@ namespace LauncherUI
 
         private void WriteNodes()
         {
-            foreach (var i in MinecraftInstance.Mods)
+            foreach (var i in SharedData.Mods)
             {
                 if (!categoryDict.ContainsKey(i.Value.Category))
                 {
@@ -94,7 +103,7 @@ namespace LauncherUI
         private void CheckIfAllChecked()
         {
             allChecked = true;
-            foreach (var i in MinecraftInstance.Mods)
+            foreach (var i in SharedData.Mods)
             {
                 if (!i.Value.ToInstall)
                 {
@@ -172,15 +181,15 @@ namespace LauncherUI
             Core.CheckAll(!allChecked);
         }
 
-        private void LaunchButton_Click(object sender, EventArgs e)
+        private void LaunchClientButton_Click(object sender, EventArgs e)
         {
             Apply_Click(null, null);
-            LauncherCore.Core.LaunchClient();
+            Core.LaunchGame(SharedData.Client);
         }
 
         private void SaveSet_Click(object sender, EventArgs e)
         {
-            Apply_Click(null, null);
+            Core.ApplyChanges(activeInstance);
             if (!Directory.Exists(SaveDialog.InitialDirectory))
             {
                 Directory.CreateDirectory(SaveDialog.InitialDirectory);
@@ -205,38 +214,21 @@ namespace LauncherUI
         {
             BigTitle.Visible = false;
             SmallTitle.Text = "Applying";
-            MainProgressBar.Maximum = 1000;
-            MainProgressBar.Value = 0;
-            MainProgressBar.Visible = true;
 
-            Action action = new Action(Core.ApplyChanges);
+            Action<MinecraftInstance> action = new Action<MinecraftInstance>(Core.ApplyChanges);
             processing = true;
-            action.BeginInvoke(UniversalAsyncCallback, null);
+            action.BeginInvoke(activeInstance, UniversalAsyncCallback, null);
 
             while (processing)
             {
                 SmallTitle.Text = "Applying " + (ApplyProgress.current + 1) + "/" + ApplyProgress.total;
-                if (ApplyProgress.total != 0)
-                {
-                    MainProgressBar.Value = MainProgressBar.Maximum * ApplyProgress.current / ApplyProgress.total;
-                }
                 Application.DoEvents();
             }
 
-            MainProgressBar.Value = MainProgressBar.Maximum;
-            SmallTitle.Text = "ExMatics";
-            MainProgressBar.Visible = false;
-            MainProgressBar.Value = 0;
             BigTitle.Visible = true;
             promptOnExit = false;
 
             MessageBox.Show("Finished! ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-        #endregion
-
-        private void UniversalAsyncCallback(IAsyncResult ar)
-        {
-            processing = false;
         }
 
         private void CleanUpButton_Click(object sender, EventArgs e)
@@ -247,15 +239,28 @@ namespace LauncherUI
             }
         }
 
-        private void ManageSaves_Click(object sender, EventArgs e)
+        private void LaunchServerButton_Click(object sender, EventArgs e)
         {
-            if (!Directory.Exists(MinecraftInstance.SaveDir))
-            {
-                Directory.CreateDirectory(MinecraftInstance.SaveDir);
-            }
+            Core.ApplyChanges(SharedData.Server);
+            Core.LaunchGame(SharedData.Server);
+        }
+        #endregion
 
-            SavesManager manager = new SavesManager();
-            manager.ShowDialog();
+        private void UniversalAsyncCallback(IAsyncResult ar)
+        {
+            processing = false;
+        }
+
+        private void ServerRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            SetInstance(SharedData.Server);
+            ClientRadioButton.Checked = false;
+        }
+
+        private void ClientRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            SetInstance(SharedData.Client);
+            ServerRadioButton.Checked = false;
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
