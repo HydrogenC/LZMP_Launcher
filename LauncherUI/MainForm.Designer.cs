@@ -44,8 +44,8 @@
             this.ImportButton = new System.Windows.Forms.Button();
             this.LaunchServerButton = new System.Windows.Forms.Button();
             this.CleanUpButton = new System.Windows.Forms.Button();
-            this.FileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.SaveDialog = new System.Windows.Forms.SaveFileDialog();
+            this.OpenXmlDialog = new System.Windows.Forms.OpenFileDialog();
+            this.SaveXmlDialog = new System.Windows.Forms.SaveFileDialog();
             this.ApplyLabel = new System.Windows.Forms.Label();
             this.ClientCheckBox = new System.Windows.Forms.CheckBox();
             this.ServerCheckBox = new System.Windows.Forms.CheckBox();
@@ -54,6 +54,8 @@
             this.ServerRadioButton = new System.Windows.Forms.RadioButton();
             this.SavesList = new System.Windows.Forms.ListBox();
             this.MapLabel = new System.Windows.Forms.Label();
+            this.ExportDialog = new System.Windows.Forms.SaveFileDialog();
+            this.ImportDialog = new System.Windows.Forms.OpenFileDialog();
             this.SuspendLayout();
             // 
             // SmallTitle
@@ -198,6 +200,7 @@
             this.ExportButton.Text = "Export Selected";
             this.MainToolTip.SetToolTip(this.ExportButton, "Export the selected map to a zip file");
             this.ExportButton.UseVisualStyleBackColor = true;
+            this.ExportButton.Click += new System.EventHandler(this.ExportButton_Click);
             // 
             // ImportButton
             // 
@@ -212,6 +215,7 @@
             this.ImportButton.Text = "Import From Zip";
             this.MainToolTip.SetToolTip(this.ImportButton, "Import a zip-format map into the current LZMP copy");
             this.ImportButton.UseVisualStyleBackColor = true;
+            this.ImportButton.Click += new System.EventHandler(this.ImportButton_Click);
             // 
             // LaunchServerButton
             // 
@@ -243,13 +247,13 @@
             this.CleanUpButton.UseVisualStyleBackColor = true;
             this.CleanUpButton.Click += new System.EventHandler(this.CleanUpButton_Click);
             // 
-            // FileDialog
+            // OpenXmlDialog
             // 
-            this.FileDialog.Filter = "Xml File（*.xml）|*.xml";
+            this.OpenXmlDialog.Filter = "Xml File（*.xml）|*.xml";
             // 
-            // SaveDialog
+            // SaveXmlDialog
             // 
-            this.SaveDialog.Filter = "Xml File（*.xml）|*.xml";
+            this.SaveXmlDialog.Filter = "Xml File（*.xml）|*.xml";
             // 
             // ApplyLabel
             // 
@@ -350,6 +354,14 @@
             this.MapLabel.TabIndex = 28;
             this.MapLabel.Text = "Map List: ";
             // 
+            // ExportDialog
+            // 
+            this.ExportDialog.Filter = "Zip File（*.zip）|*.zip";
+            // 
+            // ImportDialog
+            // 
+            this.ImportDialog.Filter = "Zip File（*.zip）|*.zip";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
@@ -401,8 +413,8 @@
         private System.Windows.Forms.Button ReadSet;
         private System.Windows.Forms.Button SaveSet;
         private System.Windows.Forms.ToolTip MainToolTip;
-        private System.Windows.Forms.OpenFileDialog FileDialog;
-        private System.Windows.Forms.SaveFileDialog SaveDialog;
+        private System.Windows.Forms.OpenFileDialog OpenXmlDialog;
+        private System.Windows.Forms.SaveFileDialog SaveXmlDialog;
         private System.Windows.Forms.Button CleanUpButton;
         private System.Windows.Forms.Button ExitForm;
         private System.Windows.Forms.Label ApplyLabel;
@@ -416,5 +428,7 @@
         private System.Windows.Forms.Button ImportButton;
         private System.Windows.Forms.Label MapLabel;
         private System.Windows.Forms.Button LaunchServerButton;
+        private System.Windows.Forms.SaveFileDialog ExportDialog;
+        private System.Windows.Forms.OpenFileDialog ImportDialog;
     }
 }

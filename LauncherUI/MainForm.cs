@@ -30,10 +30,22 @@ namespace LauncherUI
         }
         #endregion
 
-        private static void SetInstance(MinecraftInstance instance)
+        private void RefreshList(MinecraftInstance instance)
+        {
+            Save[] saves = SavesHelper.GetSaves(instance);
+
+            SavesList.Items.Clear();
+            foreach (var i in saves)
+            {
+                SavesList.Items.Add(i);
+            }
+        }
+
+        private void SetInstance(MinecraftInstance instance)
         {
             activeInstance = instance;
             Core.CheckInstallation(instance);
+            RefreshList(instance);
         }
 
         private static Boolean GetNodeChecked(Mod mod)
@@ -70,7 +82,7 @@ namespace LauncherUI
             Core.CheckInstallation(activeInstance);
             CheckIfAllChecked();
             promptOnExit = false;
-            SaveDialog.InitialDirectory = MinecraftInstance.WorkingPath + "\\Sets\\";
+            SaveXmlDialog.InitialDirectory = MinecraftInstance.WorkingPath + "\\Sets\\";
         }
 
         private void WriteNodes()
@@ -189,22 +201,21 @@ namespace LauncherUI
 
         private void SaveSet_Click(object sender, EventArgs e)
         {
-            Core.ApplyChanges(activeInstance);
-            if (!Directory.Exists(SaveDialog.InitialDirectory))
+            if (!Directory.Exists(SaveXmlDialog.InitialDirectory))
             {
-                Directory.CreateDirectory(SaveDialog.InitialDirectory);
+                Directory.CreateDirectory(SaveXmlDialog.InitialDirectory);
             }
-            if (SaveDialog.ShowDialog() == DialogResult.OK)
+            if (SaveXmlDialog.ShowDialog() == DialogResult.OK)
             {
-                XmlHelper.WriteXmlSet(SaveDialog.FileName);
+                XmlHelper.WriteXmlSet(SaveXmlDialog.FileName);
             }
         }
 
         private void ReadSet_Click(object sender, EventArgs e)
         {
-            if (FileDialog.ShowDialog() == DialogResult.OK)
+            if (OpenXmlDialog.ShowDialog() == DialogResult.OK)
             {
-                XmlHelper.ReadXmlSet(FileDialog.FileName);
+                XmlHelper.ReadXmlSet(OpenXmlDialog.FileName);
                 promptOnExit = true;
             }
         }
@@ -216,13 +227,28 @@ namespace LauncherUI
             SmallTitle.Text = "Applying";
 
             Action<MinecraftInstance> action = new Action<MinecraftInstance>(Core.ApplyChanges);
-            processing = true;
-            action.BeginInvoke(activeInstance, UniversalAsyncCallback, null);
-
-            while (processing)
+            if (ClientCheckBox.Checked)
             {
-                SmallTitle.Text = "Applying " + (ApplyProgress.current + 1) + "/" + ApplyProgress.total;
-                Application.DoEvents();
+                processing = true;
+                action.BeginInvoke(SharedData.Client, UniversalAsyncCallback, null);
+
+                while (processing)
+                {
+                    SmallTitle.Text = "Applying " + (ApplyProgress.current + 1) + "/" + ApplyProgress.total;
+                    Application.DoEvents();
+                }
+            }
+
+            if (ServerCheckBox.Checked)
+            {
+                processing = true;
+                action.BeginInvoke(SharedData.Server, UniversalAsyncCallback, null);
+
+                while (processing)
+                {
+                    SmallTitle.Text = "Applying " + (ApplyProgress.current + 1) + "/" + ApplyProgress.total;
+                    Application.DoEvents();
+                }
             }
 
             BigTitle.Visible = true;
@@ -241,8 +267,67 @@ namespace LauncherUI
 
         private void LaunchServerButton_Click(object sender, EventArgs e)
         {
-            Core.ApplyChanges(SharedData.Server);
+            Apply_Click(null, null);
             Core.LaunchGame(SharedData.Server);
+        }
+
+        private void ExportButton_Click(object sender, EventArgs e)
+        {
+            Save selection = SavesList.SelectedItem as Save;
+            if (selection == null)
+            {
+                MessageBox.Show("Please select a map in the list to export. ", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            ExportDialog.FileName = selection.LevelName + ".zip";
+            if (ExportDialog.ShowDialog() == DialogResult.OK)
+            {
+                Action<Save, String> action = new Action<Save, String>(SavesHelper.ExportSave);
+                processing = true;
+                action.BeginInvoke(selection, ExportDialog.FileName, UniversalAsyncCallback, null); ;
+
+                String prevText = "";
+                while (processing)
+                {
+                    if (SavesStatus.status != prevText)
+                    {
+                        BigTitle.Text = SavesStatus.status + "...";
+                        prevText = SavesStatus.status;
+                    }
+
+                    Application.DoEvents();
+                }
+
+                BigTitle.Text = "Saves Manager";
+                MessageBox.Show("Finished! ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void ImportButton_Click(object sender, EventArgs e)
+        {
+            if (ImportDialog.ShowDialog() == DialogResult.OK)
+            {
+                Action<String, MinecraftInstance> action = new Action<String, MinecraftInstance>(SavesHelper.ImportSave);
+                processing = true;
+                action.BeginInvoke(ImportDialog.FileName, activeInstance, UniversalAsyncCallback, null);
+
+                String prevText = "";
+                while (processing)
+                {
+                    if (SavesStatus.status != prevText)
+                    {
+                        BigTitle.Text = SavesStatus.status + "...";
+                        prevText = SavesStatus.status;
+                    }
+
+                    Application.DoEvents();
+                }
+
+                BigTitle.Text = "Saves Manager";
+                RefreshList(activeInstance);
+                MessageBox.Show("Finished! ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
         #endregion
 
