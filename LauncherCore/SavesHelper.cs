@@ -29,7 +29,7 @@ namespace LauncherCore
 
             String tmpDir = MinecraftInstance.WorkingPath + "\\Tmp\\";
             Directory.CreateDirectory(tmpDir);
-            Core.CopyDirectory(save.Dir, tmpDir + "save\\");
+            Core.CopyDirectory(save.Path, tmpDir + "save\\");
             XmlHelper.WriteXmlSet(tmpDir + "Set.xml", false);
 
             if (Directory.Exists(SharedData.Client.ScriptPath))
@@ -37,7 +37,7 @@ namespace LauncherCore
                 Core.CopyDirectory(SharedData.Client.ScriptPath, tmpDir + "scripts\\");
             }
 
-            if (Directory.Exists(SharedData.JMDataPath + save.LevelName))
+            if (save.Path.Substring(0, save.Path.LastIndexOf('\\') + 1) == SharedData.SavePath && Directory.Exists(SharedData.JMDataPath + save.LevelName))
             {
                 Core.CopyDirectory(SharedData.JMDataPath + save.LevelName, tmpDir + "jm\\");
             }
@@ -53,7 +53,7 @@ namespace LauncherCore
             SavesStatus.Initialize();
         }
 
-        public static void ImportSave(String zipFile)
+        public static void ImportSave(String zipFile, MinecraftInstance instance)
         {
             OpenFileDialog xmlDialog = new OpenFileDialog();
             xmlDialog.Filter = "Xml File（*.xml）|*.xml";
@@ -67,10 +67,47 @@ namespace LauncherCore
             FastZip zip = new FastZip();
             zip.ExtractZip(zipFile, tmpDir, null);
 
-            SavesStatus.status = "Importing Map";
-
             Save save = new Save(tmpDir + "save");
-            Core.CopyDirectory(tmpDir + "save", SharedData.SavePath + zipName);
+            String destDir = (instance == SharedData.Client) ? SharedData.SavePath + save.LevelName : SharedData.Server.GamePath + "\\world";
+
+            if (Directory.Exists(destDir))
+            {
+                if (File.Exists(destDir + "\\level.dat"))
+                {
+                    DialogResult result = MessageBox.Show("Destination directory already exists, do you wish to override it. Choose Yes to override it, choose No to export the map in the existing folder, choose Cancel to cancel the current operation. ", "Prompt", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                    switch (result)
+                    {
+                        case DialogResult.Cancel:
+                            goto CleanUp;
+                            break;
+                        case DialogResult.Yes:
+                            Directory.Delete(destDir, true);
+                            break;
+                        case DialogResult.No:
+                            Save existingSave = new Save(destDir);
+                            SaveFileDialog exportDialog = new SaveFileDialog();
+                            exportDialog.Filter = "Zip File（*.zip）|*.zip";
+                            exportDialog.FileName = existingSave.LevelName + ".zip";
+                            if (exportDialog.ShowDialog() == DialogResult.OK)
+                            {
+                                ExportSave(existingSave, exportDialog.FileName);
+                                Directory.Delete(destDir, true);
+                            }
+                            else
+                            {
+                                goto CleanUp;
+                            }
+                            break;
+                    }
+                }
+                else
+                {
+                    Directory.Delete(destDir, true);
+                }
+            }
+
+            SavesStatus.status = "Importing Map";
+            Core.CopyDirectory(tmpDir + "save", destDir);
 
             if (MessageBox.Show("Override the current modset with the map's? If you choose No, you can select where to save the map's modset later. ", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
@@ -89,12 +126,12 @@ namespace LauncherCore
                 Core.CopyDirectory(tmpDir + "scripts\\", SharedData.Client.ScriptPath);
             }
 
-            if (Directory.Exists(tmpDir + "jm\\"))
+            if (instance == SharedData.Client && Directory.Exists(tmpDir + "jm\\"))
             {
                 Core.CopyDirectory(tmpDir + "jm\\", SharedData.JMDataPath + save.LevelName);
             }
 
-            SavesStatus.status = "Cleaning up";
+        CleanUp: SavesStatus.status = "Cleaning up";
 
             Directory.Delete(tmpDir, true);
             SavesStatus.Initialize();

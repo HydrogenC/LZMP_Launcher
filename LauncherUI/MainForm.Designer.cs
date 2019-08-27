@@ -45,7 +45,8 @@
             this.SaveDialog = new System.Windows.Forms.SaveFileDialog();
             this.PlaceHolder = new System.Windows.Forms.Label();
             this.MainProgressBar = new System.Windows.Forms.ProgressBar();
-            this.ManageSaves = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // SmallTitle
@@ -81,10 +82,10 @@
             this.MainTree.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.MainTree.ForeColor = System.Drawing.Color.White;
             this.MainTree.LineColor = System.Drawing.Color.Gainsboro;
-            this.MainTree.Location = new System.Drawing.Point(51, 534);
+            this.MainTree.Location = new System.Drawing.Point(50, 390);
             this.MainTree.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.MainTree.Name = "MainTree";
-            this.MainTree.Size = new System.Drawing.Size(784, 687);
+            this.MainTree.Size = new System.Drawing.Size(788, 687);
             this.MainTree.TabIndex = 3;
             this.MainTree.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.MainTree_AfterCheck);
             // 
@@ -93,10 +94,10 @@
             this.LaunchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LaunchButton.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LaunchButton.ForeColor = System.Drawing.Color.White;
-            this.LaunchButton.Location = new System.Drawing.Point(51, 1250);
+            this.LaunchButton.Location = new System.Drawing.Point(50, 1106);
             this.LaunchButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.LaunchButton.Name = "LaunchButton";
-            this.LaunchButton.Size = new System.Drawing.Size(368, 110);
+            this.LaunchButton.Size = new System.Drawing.Size(360, 110);
             this.LaunchButton.TabIndex = 4;
             this.LaunchButton.Text = "Launch";
             this.MainToolTip.SetToolTip(this.LaunchButton, "This will automaticly apply the current set. ");
@@ -108,10 +109,10 @@
             this.Apply.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Apply.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Apply.ForeColor = System.Drawing.Color.White;
-            this.Apply.Location = new System.Drawing.Point(470, 1250);
+            this.Apply.Location = new System.Drawing.Point(478, 1106);
             this.Apply.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.Apply.Name = "Apply";
-            this.Apply.Size = new System.Drawing.Size(368, 110);
+            this.Apply.Size = new System.Drawing.Size(360, 110);
             this.Apply.TabIndex = 5;
             this.Apply.Text = "Apply";
             this.Apply.UseVisualStyleBackColor = true;
@@ -122,10 +123,10 @@
             this.ToggleCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ToggleCheck.Font = new System.Drawing.Font("Segoe UI", 16F);
             this.ToggleCheck.ForeColor = System.Drawing.Color.White;
-            this.ToggleCheck.Location = new System.Drawing.Point(51, 402);
+            this.ToggleCheck.Location = new System.Drawing.Point(50, 258);
             this.ToggleCheck.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.ToggleCheck.Name = "ToggleCheck";
-            this.ToggleCheck.Size = new System.Drawing.Size(368, 110);
+            this.ToggleCheck.Size = new System.Drawing.Size(240, 110);
             this.ToggleCheck.TabIndex = 6;
             this.ToggleCheck.Text = "Check All";
             this.ToggleCheck.UseVisualStyleBackColor = true;
@@ -136,10 +137,10 @@
             this.ReadSet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ReadSet.Font = new System.Drawing.Font("Segoe UI", 16F);
             this.ReadSet.ForeColor = System.Drawing.Color.White;
-            this.ReadSet.Location = new System.Drawing.Point(470, 272);
+            this.ReadSet.Location = new System.Drawing.Point(324, 258);
             this.ReadSet.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.ReadSet.Name = "ReadSet";
-            this.ReadSet.Size = new System.Drawing.Size(368, 110);
+            this.ReadSet.Size = new System.Drawing.Size(240, 110);
             this.ReadSet.TabIndex = 10;
             this.ReadSet.Text = "Read Set";
             this.MainToolTip.SetToolTip(this.ReadSet, "This will override the current set. ");
@@ -151,10 +152,10 @@
             this.SaveSet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SaveSet.Font = new System.Drawing.Font("Segoe UI", 16F);
             this.SaveSet.ForeColor = System.Drawing.Color.White;
-            this.SaveSet.Location = new System.Drawing.Point(51, 272);
+            this.SaveSet.Location = new System.Drawing.Point(598, 258);
             this.SaveSet.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.SaveSet.Name = "SaveSet";
-            this.SaveSet.Size = new System.Drawing.Size(368, 110);
+            this.SaveSet.Size = new System.Drawing.Size(240, 110);
             this.SaveSet.TabIndex = 9;
             this.SaveSet.Text = "Save Set";
             this.MainToolTip.SetToolTip(this.SaveSet, "This will automaticly apply the set. ");
@@ -167,7 +168,7 @@
             this.ExitForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ExitForm.Font = new System.Drawing.Font("Segoe UI", 20F);
             this.ExitForm.ForeColor = System.Drawing.Color.White;
-            this.ExitForm.Location = new System.Drawing.Point(765, 35);
+            this.ExitForm.Location = new System.Drawing.Point(1302, 42);
             this.ExitForm.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.ExitForm.Name = "ExitForm";
             this.ExitForm.Size = new System.Drawing.Size(70, 86);
@@ -183,7 +184,7 @@
             this.CleanUpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CleanUpButton.Font = new System.Drawing.Font("Segoe UI", 20F);
             this.CleanUpButton.ForeColor = System.Drawing.Color.White;
-            this.CleanUpButton.Location = new System.Drawing.Point(687, 35);
+            this.CleanUpButton.Location = new System.Drawing.Point(1224, 42);
             this.CleanUpButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.CleanUpButton.Name = "CleanUpButton";
             this.CleanUpButton.Size = new System.Drawing.Size(70, 86);
@@ -213,26 +214,35 @@
             // 
             // MainProgressBar
             // 
-            this.MainProgressBar.Location = new System.Drawing.Point(51, 160);
+            this.MainProgressBar.Location = new System.Drawing.Point(50, 1235);
             this.MainProgressBar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MainProgressBar.Maximum = 2000;
             this.MainProgressBar.Name = "MainProgressBar";
-            this.MainProgressBar.Size = new System.Drawing.Size(786, 75);
+            this.MainProgressBar.Size = new System.Drawing.Size(788, 35);
             this.MainProgressBar.TabIndex = 15;
             // 
-            // ManageSaves
+            // label1
             // 
-            this.ManageSaves.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ManageSaves.Font = new System.Drawing.Font("Segoe UI", 16F);
-            this.ManageSaves.ForeColor = System.Drawing.Color.White;
-            this.ManageSaves.Location = new System.Drawing.Point(470, 402);
-            this.ManageSaves.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.ManageSaves.Name = "ManageSaves";
-            this.ManageSaves.Size = new System.Drawing.Size(368, 110);
-            this.ManageSaves.TabIndex = 8;
-            this.ManageSaves.Text = "Manage Maps";
-            this.ManageSaves.UseVisualStyleBackColor = true;
-            this.ManageSaves.Click += new System.EventHandler(this.ManageSaves_Click);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(892, 258);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(374, 59);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "Apply modset for: ";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.checkBox1.ForeColor = System.Drawing.Color.White;
+            this.checkBox1.Location = new System.Drawing.Point(902, 320);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(134, 49);
+            this.checkBox1.TabIndex = 18;
+            this.checkBox1.Text = "Client";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -240,13 +250,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.ClientSize = new System.Drawing.Size(886, 1390);
+            this.ClientSize = new System.Drawing.Size(1422, 1304);
+            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.CleanUpButton);
             this.Controls.Add(this.MainProgressBar);
             this.Controls.Add(this.PlaceHolder);
             this.Controls.Add(this.ReadSet);
             this.Controls.Add(this.SaveSet);
-            this.Controls.Add(this.ManageSaves);
             this.Controls.Add(this.ExitForm);
             this.Controls.Add(this.ToggleCheck);
             this.Controls.Add(this.Apply);
@@ -283,6 +294,7 @@
         private System.Windows.Forms.ProgressBar MainProgressBar;
         private System.Windows.Forms.Button CleanUpButton;
         private System.Windows.Forms.Button ExitForm;
-        private System.Windows.Forms.Button ManageSaves;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
