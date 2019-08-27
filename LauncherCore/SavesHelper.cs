@@ -1,9 +1,7 @@
-﻿using System;
+﻿using ICSharpCode.SharpZipLib.Zip;
+using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
-using System.Threading.Tasks;
-using ICSharpCode.SharpZipLib.Zip;
 using System.Windows.Forms;
 
 namespace LauncherCore
@@ -15,6 +13,11 @@ namespace LauncherCore
             List<Save> saves = new List<Save>();
             if (instance == SharedData.Client)
             {
+                if (!Directory.Exists(SharedData.SavePath))
+                {
+                    Directory.CreateDirectory(SharedData.SavePath);
+                }
+
                 foreach (String i in Directory.GetDirectories(SharedData.SavePath))
                 {
                     if (File.Exists(i + "\\level.dat"))

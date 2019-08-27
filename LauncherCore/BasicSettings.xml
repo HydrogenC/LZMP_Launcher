@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings>
-  <version value="4.9.1" />
-  <launcher value="NsisoLauncher.exe" />
+  <version value="4.10.0" />
+  <launcher client="Client\NsisoLauncher.exe" />
 
   <category name="Technology" >
     <mod key="aa" name="Actually Additions" >

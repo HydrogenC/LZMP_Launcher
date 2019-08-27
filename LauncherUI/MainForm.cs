@@ -30,6 +30,11 @@ namespace LauncherUI
         }
         #endregion
 
+        private void ResetSmallTitle()
+        {
+            SmallTitle.Text = "ExMatics";
+        }
+
         private void RefreshList(MinecraftInstance instance)
         {
             Save[] saves = SavesHelper.GetSaves(instance);
@@ -195,7 +200,7 @@ namespace LauncherUI
 
         private void LaunchClientButton_Click(object sender, EventArgs e)
         {
-            Apply_Click(null, null);
+            Core.ApplyChanges(SharedData.Client);
             Core.LaunchGame(SharedData.Client);
         }
 
@@ -220,10 +225,8 @@ namespace LauncherUI
             }
         }
 
-
         private void Apply_Click(object sender, EventArgs e)
         {
-            BigTitle.Visible = false;
             SmallTitle.Text = "Applying";
 
             Action<MinecraftInstance> action = new Action<MinecraftInstance>(Core.ApplyChanges);
@@ -251,7 +254,7 @@ namespace LauncherUI
                 }
             }
 
-            BigTitle.Visible = true;
+            ResetSmallTitle();
             promptOnExit = false;
 
             MessageBox.Show("Finished! ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -267,7 +270,7 @@ namespace LauncherUI
 
         private void LaunchServerButton_Click(object sender, EventArgs e)
         {
-            Apply_Click(null, null);
+            Core.ApplyChanges(SharedData.Server);
             Core.LaunchGame(SharedData.Server);
         }
 
@@ -292,14 +295,14 @@ namespace LauncherUI
                 {
                     if (SavesStatus.status != prevText)
                     {
-                        BigTitle.Text = SavesStatus.status + "...";
+                        SmallTitle.Text = SavesStatus.status + "...";
                         prevText = SavesStatus.status;
                     }
 
                     Application.DoEvents();
                 }
 
-                BigTitle.Text = "Saves Manager";
+                ResetSmallTitle();
                 MessageBox.Show("Finished! ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -317,14 +320,14 @@ namespace LauncherUI
                 {
                     if (SavesStatus.status != prevText)
                     {
-                        BigTitle.Text = SavesStatus.status + "...";
+                        SmallTitle.Text = SavesStatus.status + "...";
                         prevText = SavesStatus.status;
                     }
 
                     Application.DoEvents();
                 }
 
-                BigTitle.Text = "Saves Manager";
+                ResetSmallTitle();
                 RefreshList(activeInstance);
                 MessageBox.Show("Finished! ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -336,16 +339,19 @@ namespace LauncherUI
             processing = false;
         }
 
-        private void ServerRadioButton_CheckedChanged(object sender, EventArgs e)
+        private void RadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            SetInstance(SharedData.Server);
-            ClientRadioButton.Checked = false;
-        }
-
-        private void ClientRadioButton_CheckedChanged(object sender, EventArgs e)
-        {
-            SetInstance(SharedData.Client);
-            ServerRadioButton.Checked = false;
+            if (ClientRadioButton.Checked)
+            {
+                SetInstance(SharedData.Client);
+                ServerRadioButton.Checked = false;
+                return;
+            }
+            if (ServerRadioButton.Checked)
+            {
+                SetInstance(SharedData.Server);
+                ClientRadioButton.Checked = false;
+            }
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)

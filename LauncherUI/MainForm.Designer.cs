@@ -313,7 +313,7 @@
             this.ClientRadioButton.TabStop = true;
             this.ClientRadioButton.Text = "Client";
             this.ClientRadioButton.UseVisualStyleBackColor = true;
-            this.ClientRadioButton.CheckedChanged += new System.EventHandler(this.ClientRadioButton_CheckedChanged);
+            this.ClientRadioButton.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
             // ServerRadioButton
             // 
@@ -327,7 +327,7 @@
             this.ServerRadioButton.TabStop = true;
             this.ServerRadioButton.Text = "Server";
             this.ServerRadioButton.UseVisualStyleBackColor = true;
-            this.ServerRadioButton.CheckedChanged += new System.EventHandler(this.ServerRadioButton_CheckedChanged);
+            this.ServerRadioButton.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
             // SavesList
             // 
