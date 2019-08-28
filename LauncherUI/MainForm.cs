@@ -106,6 +106,7 @@ namespace LauncherUI
         {
             activeInstance = instance;
             Core.CheckToInstallState(instance);
+            CheckIfAllChecked();
             RefreshList(instance);
         }
 
