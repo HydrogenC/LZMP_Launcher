@@ -376,8 +376,18 @@ namespace LauncherUI
             if (MessageBox.Show("Initialize: This button would reset the modpack to the uninstalled state. Are you sure to continue? ", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 Core.CopyDirectory(SharedData.Client.ModPath, MinecraftInstance.WorkingPath + "\\Mods");
-                Directory.Delete(SharedData.Client.ModPath, true);
-                Directory.Delete(SharedData.Server.ModPath, true);
+
+                try
+                {
+                    Directory.Delete(SharedData.Client.ModPath, true);
+                }
+                catch (Exception) { }
+
+                try
+                {
+                    Directory.Delete(SharedData.Server.ModPath, true);
+                }
+                catch (Exception) { }
             }
         }
         #endregion
