@@ -6,7 +6,7 @@ using System.Windows.Forms;
 namespace LauncherCore
 {
 
-    public struct MinecraftInstance
+    public class MinecraftInstance
     {
         public static String WorkingPath = Directory.GetCurrentDirectory();
         public String GamePath;
@@ -162,8 +162,7 @@ namespace LauncherCore
                 ApplyProgress.current += 1;
             }
 
-            CheckInstallation(SharedData.Client);
-            CheckInstallation(SharedData.Server);
+            CheckInstallation();
             ApplyProgress.Initialize();
         }
 
@@ -238,16 +237,29 @@ namespace LauncherCore
             }
         }
 
-        public static void CheckInstallation(MinecraftInstance instance)
+        public static void CheckInstallation()
         {
             foreach (var i in SharedData.Mods)
             {
-                i.Value.CheckInstalled(instance);
+                i.Value.CheckInstalled(SharedData.Client);
+                i.Value.CheckInstalled(SharedData.Server);
+
+                foreach (var j in i.Value.Addons)
+                {
+                    j.Value.CheckInstalled(SharedData.Client);
+                    j.Value.CheckInstalled(SharedData.Server);
+                }
+            }
+        }
+
+        public static void CheckToInstallState(MinecraftInstance instance)
+        {
+            foreach (var i in SharedData.Mods)
+            {
                 i.Value.ToInstall = i.Value.Installed[instance];
 
                 foreach (var j in i.Value.Addons)
                 {
-                    j.Value.CheckInstalled(instance);
                     j.Value.ToInstall = j.Value.Installed[instance];
                 }
             }

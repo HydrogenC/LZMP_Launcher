@@ -34,6 +34,12 @@ namespace LauncherUI
         {
             InitializeComponent();
 
+            CheckForIllegalCrossThreadCalls = false;
+            XmlHelper.ReadDefinitions(MinecraftInstance.WorkingPath + "\\BasicSettings.xml");
+            BigTitle.Text += SharedData.Version;
+            Core.CheckInstallation();
+            WriteNodes();
+
             activeInstance = SharedData.Client;
             Mod.GetToInstallState = GetNodeChecked;
             Mod.SetToInstallState = SetNodeChecked;
@@ -43,14 +49,7 @@ namespace LauncherUI
             RunInstallWizard();
             CheckMCInstance();
 
-            CheckForIllegalCrossThreadCalls = false;
-
-            XmlHelper.ReadDefinitions(MinecraftInstance.WorkingPath + "\\BasicSettings.xml");
-            BigTitle.Text += SharedData.Version;
-            WriteNodes();
-
             Core.CheckAvailability();
-            Core.CheckInstallation(activeInstance);
             CheckIfAllChecked();
             promptOnExit = false;
             SaveXmlDialog.InitialDirectory = MinecraftInstance.WorkingPath + "\\Sets\\";
@@ -106,7 +105,7 @@ namespace LauncherUI
         private void SetInstance(MinecraftInstance instance)
         {
             activeInstance = instance;
-            Core.CheckInstallation(instance);
+            Core.CheckToInstallState(instance);
             RefreshList(instance);
         }
 
@@ -273,6 +272,8 @@ namespace LauncherUI
                     SmallTitle.Text = "Applying " + (ApplyProgress.current + 1) + "/" + ApplyProgress.total;
                     Application.DoEvents();
                 }
+
+                Core.CheckToInstallState(SharedData.Client);
             }
 
             if (ServerCheckBox.Checked)
@@ -285,6 +286,8 @@ namespace LauncherUI
                     SmallTitle.Text = "Applying " + (ApplyProgress.current + 1) + "/" + ApplyProgress.total;
                     Application.DoEvents();
                 }
+
+                Core.CheckToInstallState(SharedData.Server);
             }
 
             ResetSmallTitle();
@@ -397,6 +400,11 @@ namespace LauncherUI
                     Directory.Delete(SharedData.Server.ModPath, true);
                 }
                 catch (Exception) { }
+
+                Core.CheckToInstallState(SharedData.Client);
+                Core.CheckToInstallState(SharedData.Server);
+                Apply.Enabled = false;
+
                 Cursor = Cursors.Default;
             }
         }
