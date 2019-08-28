@@ -162,7 +162,8 @@ namespace LauncherCore
                 ApplyProgress.current += 1;
             }
 
-            CheckInstallation(instance);
+            CheckInstallation(SharedData.Client);
+            CheckInstallation(SharedData.Server);
             ApplyProgress.Initialize();
         }
 

@@ -74,7 +74,7 @@ namespace LauncherUI
 
         private void CheckMCInstance()
         {
-            if (!Directory.Exists(SharedData.Client.GamePath))
+            if (!Directory.Exists(SharedData.Client.ModPath))
             {
                 ClientCheckBox.Checked = false;
                 ClientCheckBox.Enabled = false;
@@ -84,7 +84,7 @@ namespace LauncherUI
                 activeInstance = SharedData.Server;
             }
 
-            if (!Directory.Exists(SharedData.Server.GamePath))
+            if (!Directory.Exists(SharedData.Server.ModPath))
             {
                 ServerCheckBox.Checked = false;
                 ServerCheckBox.Enabled = false;
@@ -297,7 +297,9 @@ namespace LauncherUI
         {
             if (MessageBox.Show("Clean up: This button would delete all unused files in the 'Resources' path. Are you sure to continue? ", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
+                Cursor = Cursors.WaitCursor;
                 Core.CleanUp();
+                Cursor = Cursors.Default;
             }
         }
 
@@ -375,6 +377,13 @@ namespace LauncherUI
         {
             if (MessageBox.Show("Initialize: This button would reset the modpack to the uninstalled state. Are you sure to continue? ", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
+                Cursor = Cursors.WaitCursor;
+                foreach (var i in SharedData.Mods)
+                {
+                    i.Value.ToInstall = false;
+                }
+                Core.ApplyChanges(SharedData.Client);
+
                 Core.CopyDirectory(SharedData.Client.ModPath, MinecraftInstance.WorkingPath + "\\Mods");
 
                 try
@@ -388,6 +397,7 @@ namespace LauncherUI
                     Directory.Delete(SharedData.Server.ModPath, true);
                 }
                 catch (Exception) { }
+                Cursor = Cursors.Default;
             }
         }
         #endregion

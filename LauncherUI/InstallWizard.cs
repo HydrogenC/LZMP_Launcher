@@ -71,14 +71,12 @@ namespace LauncherUI
             {
                 if (status != prevText)
                 {
-                    TitleLabel.Text = status;
+                    TitleLabel.Text = status + "...";
                     prevText = status;
                 }
 
                 Application.DoEvents();
             }
-
-            System.Threading.Thread.Sleep(1000);
             Close();
         }
     }
