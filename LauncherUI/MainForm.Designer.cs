@@ -56,6 +56,8 @@
             this.MapLabel = new System.Windows.Forms.Label();
             this.ExportDialog = new System.Windows.Forms.SaveFileDialog();
             this.ImportDialog = new System.Windows.Forms.OpenFileDialog();
+            this.RefreshButton = new System.Windows.Forms.Button();
+            this.InitializeButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // SmallTitle
@@ -69,7 +71,7 @@
             this.SmallTitle.Size = new System.Drawing.Size(283, 86);
             this.SmallTitle.TabIndex = 0;
             this.SmallTitle.Text = "ExMatics";
-            this.SmallTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseDown);
+            this.SmallTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_MouseDown);
             // 
             // BigTitle
             // 
@@ -82,7 +84,7 @@
             this.BigTitle.Size = new System.Drawing.Size(288, 114);
             this.BigTitle.TabIndex = 1;
             this.BigTitle.Text = "LZMP ";
-            this.BigTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseDown);
+            this.BigTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_MouseDown);
             // 
             // MainTree
             // 
@@ -362,6 +364,38 @@
             // 
             this.ImportDialog.Filter = "Zip File（*.zip）|*.zip";
             // 
+            // RefreshButton
+            // 
+            this.RefreshButton.FlatAppearance.BorderSize = 0;
+            this.RefreshButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RefreshButton.Font = new System.Drawing.Font("Segoe UI", 20F);
+            this.RefreshButton.ForeColor = System.Drawing.Color.White;
+            this.RefreshButton.Location = new System.Drawing.Point(1060, 42);
+            this.RefreshButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.RefreshButton.Name = "RefreshButton";
+            this.RefreshButton.Size = new System.Drawing.Size(70, 86);
+            this.RefreshButton.TabIndex = 30;
+            this.RefreshButton.Text = "R";
+            this.MainToolTip.SetToolTip(this.RefreshButton, "Refresh the map list. ");
+            this.RefreshButton.UseVisualStyleBackColor = true;
+            this.RefreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
+            // 
+            // InitializeButton
+            // 
+            this.InitializeButton.FlatAppearance.BorderSize = 0;
+            this.InitializeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.InitializeButton.Font = new System.Drawing.Font("Segoe UI", 20F);
+            this.InitializeButton.ForeColor = System.Drawing.Color.White;
+            this.InitializeButton.Location = new System.Drawing.Point(982, 42);
+            this.InitializeButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.InitializeButton.Name = "InitializeButton";
+            this.InitializeButton.Size = new System.Drawing.Size(70, 86);
+            this.InitializeButton.TabIndex = 31;
+            this.InitializeButton.Text = "I";
+            this.MainToolTip.SetToolTip(this.InitializeButton, "Developer feature. ");
+            this.InitializeButton.UseVisualStyleBackColor = true;
+            this.InitializeButton.Click += new System.EventHandler(this.InitializeButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
@@ -369,6 +403,8 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(1322, 1252);
+            this.Controls.Add(this.InitializeButton);
+            this.Controls.Add(this.RefreshButton);
             this.Controls.Add(this.LaunchServerButton);
             this.Controls.Add(this.MapLabel);
             this.Controls.Add(this.ImportButton);
@@ -396,7 +432,7 @@
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseDown);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_MouseDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -430,5 +466,7 @@
         private System.Windows.Forms.Button LaunchServerButton;
         private System.Windows.Forms.SaveFileDialog ExportDialog;
         private System.Windows.Forms.OpenFileDialog ImportDialog;
+        private System.Windows.Forms.Button RefreshButton;
+        private System.Windows.Forms.Button InitializeButton;
     }
 }

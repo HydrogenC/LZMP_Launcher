@@ -68,7 +68,7 @@ namespace LauncherCore
         public static String Version;
         public static Dictionary<String, Mod> Mods = new Dictionary<String, Mod>();
         public static MinecraftInstance Client = new MinecraftInstance("Client\\.minecraft", "");
-        public static MinecraftInstance Server = new MinecraftInstance("Server\\", "");
+        public static MinecraftInstance Server = new MinecraftInstance("Server\\panel\\server", "");
 
         public static String SavePath
         {

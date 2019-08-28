@@ -23,12 +23,38 @@ namespace LauncherUI
         public const int SC_MOVE = 0xF010;
         public const int HTCAPTION = 0x0002;
 
-        private void MainForm_MouseDown(object sender, MouseEventArgs e)
+        private void Form_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
             SendMessage(Handle, WM_SYSCOMMAND, SC_MOVE + HTCAPTION, 0);
         }
         #endregion
+
+        public MainForm()
+        {
+            InitializeComponent();
+
+            activeInstance = SharedData.Client;
+            Mod.GetToInstallState = GetNodeChecked;
+            Mod.SetToInstallState = SetNodeChecked;
+            ClientCheckBox.Checked = true;
+            ServerCheckBox.Checked = true;
+            ClientRadioButton.Checked = true;
+            RunInstallWizard();
+            CheckMCInstance();
+
+            CheckForIllegalCrossThreadCalls = false;
+
+            XmlHelper.ReadDefinitions(MinecraftInstance.WorkingPath + "\\BasicSettings.xml");
+            BigTitle.Text += SharedData.Version;
+            WriteNodes();
+
+            Core.CheckAvailability();
+            Core.CheckInstallation(activeInstance);
+            CheckIfAllChecked();
+            promptOnExit = false;
+            SaveXmlDialog.InitialDirectory = MinecraftInstance.WorkingPath + "\\Sets\\";
+        }
 
         private void ResetSmallTitle()
         {
@@ -43,6 +69,37 @@ namespace LauncherUI
             foreach (var i in saves)
             {
                 SavesList.Items.Add(i);
+            }
+        }
+
+        private void CheckMCInstance()
+        {
+            if (!Directory.Exists(SharedData.Client.GamePath))
+            {
+                ClientCheckBox.Checked = false;
+                ClientCheckBox.Enabled = false;
+                ClientRadioButton.Checked = false;
+                ClientRadioButton.Enabled = false;
+                LaunchClientButton.Enabled = false;
+                activeInstance = SharedData.Server;
+            }
+
+            if (!Directory.Exists(SharedData.Server.GamePath))
+            {
+                ServerCheckBox.Checked = false;
+                ServerCheckBox.Enabled = false;
+                ServerRadioButton.Checked = false;
+                ServerRadioButton.Enabled = false;
+                LaunchServerButton.Enabled = false;
+            }
+        }
+
+        private void RunInstallWizard()
+        {
+            if (Directory.Exists(MinecraftInstance.WorkingPath + "\\Mods"))
+            {
+                InstallWizard wizard = new InstallWizard();
+                wizard.ShowDialog();
             }
         }
 
@@ -64,30 +121,6 @@ namespace LauncherUI
             {
                 nodeDict[mod.Key].Checked = flag;
             }
-        }
-
-        public MainForm()
-        {
-            InitializeComponent();
-
-            activeInstance = SharedData.Client;
-            Mod.GetToInstallState = GetNodeChecked;
-            Mod.SetToInstallState = SetNodeChecked;
-            ClientCheckBox.Checked = true;
-            ServerCheckBox.Checked = true;
-            ClientRadioButton.Checked = true;
-
-            CheckForIllegalCrossThreadCalls = false;
-
-            XmlHelper.ReadDefinitions(MinecraftInstance.WorkingPath + "\\BasicSettings.xml");
-            BigTitle.Text += SharedData.Version;
-            WriteNodes();
-
-            Core.CheckAvailability();
-            Core.CheckInstallation(activeInstance);
-            CheckIfAllChecked();
-            promptOnExit = false;
-            SaveXmlDialog.InitialDirectory = MinecraftInstance.WorkingPath + "\\Sets\\";
         }
 
         private void WriteNodes()
@@ -330,6 +363,21 @@ namespace LauncherUI
                 ResetSmallTitle();
                 RefreshList(activeInstance);
                 MessageBox.Show("Finished! ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void RefreshButton_Click(object sender, EventArgs e)
+        {
+            RefreshList(activeInstance);
+        }
+
+        private void InitializeButton_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Initialize: This button would reset the modpack to the uninstalled state. Are you sure to continue? ", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                Core.CopyDirectory(SharedData.Client.ModPath, MinecraftInstance.WorkingPath + "\\Mods");
+                Directory.Delete(SharedData.Client.ModPath, true);
+                Directory.Delete(SharedData.Server.ModPath, true);
             }
         }
         #endregion
