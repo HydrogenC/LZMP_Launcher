@@ -230,6 +230,7 @@ namespace LauncherUI
         private void ToggleCheck_Click(object sender, EventArgs e)
         {
             Core.CheckAll(!allChecked);
+            CheckIfAllChecked();
         }
 
         private void LaunchClientButton_Click(object sender, EventArgs e)
