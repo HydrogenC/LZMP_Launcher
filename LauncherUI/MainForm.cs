@@ -359,17 +359,15 @@ namespace LauncherUI
 
                 Core.CopyDirectory(SharedData.Client.ModPath, MinecraftInstance.WorkingPath + "\\Mods");
 
-                try
+                if (Directory.Exists(SharedData.Client.ModPath))
                 {
                     Directory.Delete(SharedData.Client.ModPath, true);
                 }
-                catch (Exception) { }
 
-                try
+                if (Directory.Exists(SharedData.Server.ModPath))
                 {
                     Directory.Delete(SharedData.Server.ModPath, true);
                 }
-                catch (Exception) { }
 
                 Core.CheckToInstallState(SharedData.Client);
                 Core.CheckToInstallState(SharedData.Server);
