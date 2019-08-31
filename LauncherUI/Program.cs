@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace LauncherUI
 {
-    static class Program
+    public static class Program
     {
         /// <summary>
         /// 应用程序的主入口点。
@@ -13,7 +13,9 @@ namespace LauncherUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            MainForm form = new MainForm();
+            LauncherCore.SharedData.MainWindow = form;
+            Application.Run(form);
         }
     }
 }

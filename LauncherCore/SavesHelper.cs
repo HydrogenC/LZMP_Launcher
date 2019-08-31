@@ -87,7 +87,7 @@ namespace LauncherCore
             {
                 if (File.Exists(destDir + "\\level.dat"))
                 {
-                    DialogResult result = MessageBox.Show("Destination directory already exists, do you wish to override it. Choose Yes to override it, choose No to export the map in the existing folder, choose Cancel to cancel the current operation. ", "Prompt", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                    DialogResult result = MessageBox.Show(SharedData.MainWindow, "Destination directory already exists, do you wish to override it. Choose Yes to override it, choose No to export the map in the existing folder, choose Cancel to cancel the current operation. ", "Prompt", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                     switch (result)
                     {
                         case DialogResult.Cancel:
@@ -101,7 +101,7 @@ namespace LauncherCore
                             SaveFileDialog exportDialog = new SaveFileDialog();
                             exportDialog.Filter = "Zip File（*.zip）|*.zip";
                             exportDialog.FileName = existingSave.LevelName + ".zip";
-                            if (exportDialog.ShowDialog() == DialogResult.OK)
+                            if (exportDialog.ShowDialog(SharedData.MainWindow) == DialogResult.OK)
                             {
                                 ExportSave(existingSave, exportDialog.FileName);
                                 Directory.Delete(destDir, true);
@@ -122,13 +122,13 @@ namespace LauncherCore
             SavesStatus.status = "Importing Map";
             Core.CopyDirectory(tmpDir + "save", destDir);
 
-            if (MessageBox.Show("Override the current modset with the map's? If you choose No, you can select where to save the map's modset later. ", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show(SharedData.MainWindow, "Override the current modset with the map's? If you choose No, you can select where to save the map's modset later. ", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 XmlHelper.ReadXmlSet(tmpDir + "Set.xml", false);
             }
             else
             {
-                if (xmlDialog.ShowDialog() == DialogResult.OK)
+                if (xmlDialog.ShowDialog(SharedData.MainWindow) == DialogResult.OK)
                 {
                     File.Copy(tmpDir + "Set.xml", xmlDialog.FileName, true);
                 }

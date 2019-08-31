@@ -21,6 +21,11 @@ namespace LauncherCore
             levelName = tag.GetCompound("Data").GetString("LevelName").Value;
         }
 
+        public void Delete()
+        {
+            Directory.Delete(Path, true);
+        }
+
         public String Path
         {
             get;

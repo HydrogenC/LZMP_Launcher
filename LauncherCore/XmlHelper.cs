@@ -29,7 +29,7 @@ namespace LauncherCore
         {
             if (!File.Exists(xmlFile))
             {
-                MessageBox.Show("Settings file not found! ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(SharedData.MainWindow, "Settings file not found! ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -96,7 +96,7 @@ namespace LauncherCore
                         {
                             if (versionConforms)
                             {
-                                MessageBox.Show("Key not found: " + addonKey + " \nSetting file might be broken! ", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                                MessageBox.Show(SharedData.MainWindow, "Key not found: " + addonKey + " \nSetting file might be broken! ", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
                             }
                             else
                             {
@@ -109,7 +109,7 @@ namespace LauncherCore
                 {
                     if (versionConforms)
                     {
-                        MessageBox.Show("Key not found: " + key + " \nSetting file might be broken! ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(SharedData.MainWindow, "Key not found: " + key + " \nSetting file might be broken! ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
@@ -122,11 +122,11 @@ namespace LauncherCore
             {
                 if (versionConforms)
                 {
-                    MessageBox.Show("Finished! ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(SharedData.MainWindow, "Finished! ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    MessageBox.Show("Finished! \nSkipped " + skip + " unidentified keys. ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(SharedData.MainWindow, "Finished! \nSkipped " + skip + " unidentified keys. ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
@@ -160,7 +160,7 @@ namespace LauncherCore
 
             if (showInfo)
             {
-                MessageBox.Show("Finished! ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(SharedData.MainWindow, "Finished! ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

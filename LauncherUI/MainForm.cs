@@ -432,6 +432,20 @@ namespace LauncherUI
             }
         }
 
+        private void DeleteMapToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Save selection = SavesList.SelectedItem as Save;
+            if (selection == null)
+            {
+                MessageBox.Show("Please select a map in the list to delete. ", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                selection.Delete();
+                RefreshList(activeInstance);
+            }
+        }
+
         private void RadioButton_CheckedChanged(object sender, EventArgs e)
         {
             if (ClientRadioButton.Checked)

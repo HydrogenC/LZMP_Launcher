@@ -69,6 +69,7 @@ namespace LauncherCore
         public static Dictionary<String, Mod> Mods = new Dictionary<String, Mod>();
         public static MinecraftInstance Client = new MinecraftInstance("Client\\.minecraft", "");
         public static MinecraftInstance Server = new MinecraftInstance("Server\\panel\\server", "");
+        public static IWin32Window MainWindow;
 
         public static String SavePath
         {
@@ -206,7 +207,7 @@ namespace LauncherCore
                     }
                     catch (Exception)
                     {
-                        MessageBox.Show("An error occured while cleaning! ", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                        MessageBox.Show(SharedData.MainWindow, "An error occured while cleaning! ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
