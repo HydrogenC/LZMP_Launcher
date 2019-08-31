@@ -429,6 +429,7 @@ namespace LauncherUI
             {
                 MapRenameForm form = new MapRenameForm(ref selection);
                 form.ShowDialog();
+                RefreshList(activeInstance);
             }
         }
 

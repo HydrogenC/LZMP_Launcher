@@ -45,6 +45,8 @@ namespace LauncherUI
             {
                 MessageBox.Show("An unexpected exception happened, maybe the map is broken. ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            Close();
         }
     }
 }
