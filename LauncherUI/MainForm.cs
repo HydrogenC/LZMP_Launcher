@@ -441,8 +441,11 @@ namespace LauncherUI
             }
             else
             {
-                selection.Delete();
-                RefreshList(activeInstance);
+                if (MessageBox.Show("Are you sure to delete? You cannot revert this! ", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    selection.Delete();
+                    RefreshList(activeInstance);
+                }
             }
         }
 
