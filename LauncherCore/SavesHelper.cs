@@ -68,7 +68,7 @@ namespace LauncherCore
 
         public static void ImportSave(String zipFile, MinecraftInstance instance)
         {
-            OpenFileDialog xmlDialog = new OpenFileDialog();
+            SaveFileDialog xmlDialog = new SaveFileDialog();
             xmlDialog.Filter = "Xml File（*.xml）|*.xml";
             SavesStatus.status = "Extracting";
 
