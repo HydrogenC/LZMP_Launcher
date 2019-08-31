@@ -40,9 +40,10 @@
             this.SaveSet = new System.Windows.Forms.Button();
             this.MainToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.ExitForm = new System.Windows.Forms.Button();
-            this.ExportButton = new System.Windows.Forms.Button();
             this.ImportButton = new System.Windows.Forms.Button();
             this.LaunchServerButton = new System.Windows.Forms.Button();
+            this.RefreshButton = new System.Windows.Forms.Button();
+            this.InitializeButton = new System.Windows.Forms.Button();
             this.CleanUpButton = new System.Windows.Forms.Button();
             this.OpenXmlDialog = new System.Windows.Forms.OpenFileDialog();
             this.SaveXmlDialog = new System.Windows.Forms.SaveFileDialog();
@@ -53,11 +54,13 @@
             this.ClientRadioButton = new System.Windows.Forms.RadioButton();
             this.ServerRadioButton = new System.Windows.Forms.RadioButton();
             this.SavesList = new System.Windows.Forms.ListBox();
+            this.MapMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.renameMapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MapLabel = new System.Windows.Forms.Label();
             this.ExportDialog = new System.Windows.Forms.SaveFileDialog();
             this.ImportDialog = new System.Windows.Forms.OpenFileDialog();
-            this.RefreshButton = new System.Windows.Forms.Button();
-            this.InitializeButton = new System.Windows.Forms.Button();
+            this.MapMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // SmallTitle
@@ -189,21 +192,6 @@
             this.ExitForm.UseVisualStyleBackColor = true;
             this.ExitForm.Click += new System.EventHandler(this.ExitForm_Click);
             // 
-            // ExportButton
-            // 
-            this.ExportButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ExportButton.Font = new System.Drawing.Font("Segoe UI", 16F);
-            this.ExportButton.ForeColor = System.Drawing.Color.White;
-            this.ExportButton.Location = new System.Drawing.Point(888, 967);
-            this.ExportButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.ExportButton.Name = "ExportButton";
-            this.ExportButton.Size = new System.Drawing.Size(374, 110);
-            this.ExportButton.TabIndex = 26;
-            this.ExportButton.Text = "Export Selected";
-            this.MainToolTip.SetToolTip(this.ExportButton, "Export the selected map to a zip file");
-            this.ExportButton.UseVisualStyleBackColor = true;
-            this.ExportButton.Click += new System.EventHandler(this.ExportButton_Click);
-            // 
             // ImportButton
             // 
             this.ImportButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -233,6 +221,38 @@
             this.MainToolTip.SetToolTip(this.LaunchServerButton, "This will automaticly apply the current set. ");
             this.LaunchServerButton.UseVisualStyleBackColor = true;
             this.LaunchServerButton.Click += new System.EventHandler(this.LaunchServerButton_Click);
+            // 
+            // RefreshButton
+            // 
+            this.RefreshButton.FlatAppearance.BorderSize = 0;
+            this.RefreshButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RefreshButton.Font = new System.Drawing.Font("Segoe UI", 20F);
+            this.RefreshButton.ForeColor = System.Drawing.Color.White;
+            this.RefreshButton.Location = new System.Drawing.Point(1060, 42);
+            this.RefreshButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.RefreshButton.Name = "RefreshButton";
+            this.RefreshButton.Size = new System.Drawing.Size(70, 86);
+            this.RefreshButton.TabIndex = 30;
+            this.RefreshButton.Text = "R";
+            this.MainToolTip.SetToolTip(this.RefreshButton, "Refresh the map list. ");
+            this.RefreshButton.UseVisualStyleBackColor = true;
+            this.RefreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
+            // 
+            // InitializeButton
+            // 
+            this.InitializeButton.FlatAppearance.BorderSize = 0;
+            this.InitializeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.InitializeButton.Font = new System.Drawing.Font("Segoe UI", 20F);
+            this.InitializeButton.ForeColor = System.Drawing.Color.White;
+            this.InitializeButton.Location = new System.Drawing.Point(982, 42);
+            this.InitializeButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.InitializeButton.Name = "InitializeButton";
+            this.InitializeButton.Size = new System.Drawing.Size(70, 86);
+            this.InitializeButton.TabIndex = 31;
+            this.InitializeButton.Text = "I";
+            this.MainToolTip.SetToolTip(this.InitializeButton, "Developer feature. ");
+            this.InitializeButton.UseVisualStyleBackColor = true;
+            this.InitializeButton.Click += new System.EventHandler(this.InitializeButton_Click);
             // 
             // CleanUpButton
             // 
@@ -334,23 +354,50 @@
             // SavesList
             // 
             this.SavesList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.SavesList.ContextMenuStrip = this.MapMenu;
             this.SavesList.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.SavesList.ForeColor = System.Drawing.Color.White;
             this.SavesList.FormattingEnabled = true;
             this.SavesList.ItemHeight = 45;
-            this.SavesList.Location = new System.Drawing.Point(888, 614);
+            this.SavesList.Location = new System.Drawing.Point(888, 623);
             this.SavesList.Name = "SavesList";
             this.SavesList.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.SavesList.Size = new System.Drawing.Size(374, 319);
+            this.SavesList.Size = new System.Drawing.Size(374, 454);
             this.SavesList.Sorted = true;
             this.SavesList.TabIndex = 25;
+            // 
+            // MapMenu
+            // 
+            this.MapMenu.BackColor = System.Drawing.Color.White;
+            this.MapMenu.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.MapMenu.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.MapMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exportToolStripMenuItem,
+            this.renameMapToolStripMenuItem});
+            this.MapMenu.Name = "MapMenu";
+            this.MapMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.MapMenu.Size = new System.Drawing.Size(251, 92);
+            // 
+            // exportToolStripMenuItem
+            // 
+            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(250, 44);
+            this.exportToolStripMenuItem.Text = "Export Map";
+            this.exportToolStripMenuItem.Click += new System.EventHandler(this.ExportToolStripMenuItem_Click);
+            // 
+            // renameMapToolStripMenuItem
+            // 
+            this.renameMapToolStripMenuItem.Name = "renameMapToolStripMenuItem";
+            this.renameMapToolStripMenuItem.Size = new System.Drawing.Size(250, 44);
+            this.renameMapToolStripMenuItem.Text = "Rename Map";
+            this.renameMapToolStripMenuItem.Click += new System.EventHandler(this.RenameMapToolStripMenuItem_Click);
             // 
             // MapLabel
             // 
             this.MapLabel.AutoSize = true;
             this.MapLabel.Font = new System.Drawing.Font("Segoe UI", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MapLabel.ForeColor = System.Drawing.Color.White;
-            this.MapLabel.Location = new System.Drawing.Point(878, 540);
+            this.MapLabel.Location = new System.Drawing.Point(878, 550);
             this.MapLabel.Name = "MapLabel";
             this.MapLabel.Size = new System.Drawing.Size(207, 59);
             this.MapLabel.TabIndex = 28;
@@ -364,38 +411,6 @@
             // 
             this.ImportDialog.Filter = "Zip File（*.zip）|*.zip";
             // 
-            // RefreshButton
-            // 
-            this.RefreshButton.FlatAppearance.BorderSize = 0;
-            this.RefreshButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.RefreshButton.Font = new System.Drawing.Font("Segoe UI", 20F);
-            this.RefreshButton.ForeColor = System.Drawing.Color.White;
-            this.RefreshButton.Location = new System.Drawing.Point(1060, 42);
-            this.RefreshButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.RefreshButton.Name = "RefreshButton";
-            this.RefreshButton.Size = new System.Drawing.Size(70, 86);
-            this.RefreshButton.TabIndex = 30;
-            this.RefreshButton.Text = "R";
-            this.MainToolTip.SetToolTip(this.RefreshButton, "Refresh the map list. ");
-            this.RefreshButton.UseVisualStyleBackColor = true;
-            this.RefreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
-            // 
-            // InitializeButton
-            // 
-            this.InitializeButton.FlatAppearance.BorderSize = 0;
-            this.InitializeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.InitializeButton.Font = new System.Drawing.Font("Segoe UI", 20F);
-            this.InitializeButton.ForeColor = System.Drawing.Color.White;
-            this.InitializeButton.Location = new System.Drawing.Point(982, 42);
-            this.InitializeButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.InitializeButton.Name = "InitializeButton";
-            this.InitializeButton.Size = new System.Drawing.Size(70, 86);
-            this.InitializeButton.TabIndex = 31;
-            this.InitializeButton.Text = "I";
-            this.MainToolTip.SetToolTip(this.InitializeButton, "Developer feature. ");
-            this.InitializeButton.UseVisualStyleBackColor = true;
-            this.InitializeButton.Click += new System.EventHandler(this.InitializeButton_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
@@ -408,7 +423,6 @@
             this.Controls.Add(this.LaunchServerButton);
             this.Controls.Add(this.MapLabel);
             this.Controls.Add(this.ImportButton);
-            this.Controls.Add(this.ExportButton);
             this.Controls.Add(this.SavesList);
             this.Controls.Add(this.ServerRadioButton);
             this.Controls.Add(this.ClientRadioButton);
@@ -433,6 +447,7 @@
             this.Text = "MainForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_MouseDown);
+            this.MapMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -460,7 +475,6 @@
         private System.Windows.Forms.RadioButton ClientRadioButton;
         private System.Windows.Forms.RadioButton ServerRadioButton;
         private System.Windows.Forms.ListBox SavesList;
-        private System.Windows.Forms.Button ExportButton;
         private System.Windows.Forms.Button ImportButton;
         private System.Windows.Forms.Label MapLabel;
         private System.Windows.Forms.Button LaunchServerButton;
@@ -468,5 +482,8 @@
         private System.Windows.Forms.OpenFileDialog ImportDialog;
         private System.Windows.Forms.Button RefreshButton;
         private System.Windows.Forms.Button InitializeButton;
+        private System.Windows.Forms.ContextMenuStrip MapMenu;
+        private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem renameMapToolStripMenuItem;
     }
 }

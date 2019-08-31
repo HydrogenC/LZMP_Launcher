@@ -34,7 +34,7 @@ namespace LauncherCore
             {
                 if (Directory.Exists(SharedData.SavePath + value))
                 {
-                    throw new IOException();
+                    throw new PlatformNotSupportedException();
                 }
                 else
                 {

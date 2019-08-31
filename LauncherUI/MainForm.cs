@@ -313,39 +313,6 @@ namespace LauncherUI
             Core.LaunchGame(SharedData.Server);
         }
 
-        private void ExportButton_Click(object sender, EventArgs e)
-        {
-            Save selection = SavesList.SelectedItem as Save;
-            if (selection == null)
-            {
-                MessageBox.Show("Please select a map in the list to export. ", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            ExportDialog.FileName = selection.LevelName + ".zip";
-            if (ExportDialog.ShowDialog() == DialogResult.OK)
-            {
-                Action<Save, String> action = new Action<Save, String>(SavesHelper.ExportSave);
-                processing = true;
-                action.BeginInvoke(selection, ExportDialog.FileName, UniversalAsyncCallback, null); ;
-
-                String prevText = "";
-                while (processing)
-                {
-                    if (SavesStatus.status != prevText)
-                    {
-                        SmallTitle.Text = SavesStatus.status + "...";
-                        prevText = SavesStatus.status;
-                    }
-
-                    Application.DoEvents();
-                }
-
-                ResetSmallTitle();
-                MessageBox.Show("Finished! ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
         private void ImportButton_Click(object sender, EventArgs e)
         {
             if (ImportDialog.ShowDialog() == DialogResult.OK)
@@ -414,6 +381,55 @@ namespace LauncherUI
         private void UniversalAsyncCallback(IAsyncResult ar)
         {
             processing = false;
+        }
+
+        private void ExportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Save selection = SavesList.SelectedItem as Save;
+            if (selection == null)
+            {
+                MessageBox.Show("Please select a map in the list to export. ", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+
+                ExportDialog.FileName = selection.LevelName + ".zip";
+                if (ExportDialog.ShowDialog() == DialogResult.OK)
+                {
+                    Action<Save, String> action = new Action<Save, String>(SavesHelper.ExportSave);
+                    processing = true;
+                    action.BeginInvoke(selection, ExportDialog.FileName, UniversalAsyncCallback, null); ;
+
+                    String prevText = "";
+                    while (processing)
+                    {
+                        if (SavesStatus.status != prevText)
+                        {
+                            SmallTitle.Text = SavesStatus.status + "...";
+                            prevText = SavesStatus.status;
+                        }
+
+                        Application.DoEvents();
+                    }
+
+                    ResetSmallTitle();
+                    MessageBox.Show("Finished! ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private void RenameMapToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Save selection = SavesList.SelectedItem as Save;
+            if (selection == null)
+            {
+                MessageBox.Show("Please select a map in the list to rename. ", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MapRenameForm form = new MapRenameForm(ref selection);
+                form.ShowDialog();
+            }
         }
 
         private void RadioButton_CheckedChanged(object sender, EventArgs e)
