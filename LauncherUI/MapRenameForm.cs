@@ -1,6 +1,6 @@
 ﻿using LauncherCore;
 using System;
-using System.IO;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace LauncherUI
@@ -8,6 +8,23 @@ namespace LauncherUI
     public partial class MapRenameForm : Form
     {
         private Save currentSave;
+
+        #region Drag
+        [DllImport("user32.dll")]
+        public static extern bool ReleaseCapture();
+        [DllImport("user32.dll")]
+        public static extern bool SendMessage(IntPtr hwnd, int wMsg, int wParam, int lParam);
+
+        public const int WM_SYSCOMMAND = 0x0112;
+        public const int SC_MOVE = 0xF010;
+        public const int HTCAPTION = 0x0002;
+
+        public void Form_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(Handle, WM_SYSCOMMAND, SC_MOVE + HTCAPTION, 0);
+        }
+        #endregion
 
         public MapRenameForm(ref Save save)
         {

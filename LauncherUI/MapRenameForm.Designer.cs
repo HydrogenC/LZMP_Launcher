@@ -34,8 +34,8 @@
             this.FolderBox = new System.Windows.Forms.TextBox();
             this.LevelBox = new System.Windows.Forms.TextBox();
             this.LevelLabel = new System.Windows.Forms.Label();
-            this.OKButton = new System.Windows.Forms.Button();
-            this.CancelButton = new System.Windows.Forms.Button();
+            this.ApplyRenameButton = new System.Windows.Forms.Button();
+            this.CancelRenameButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // TitleLabel
@@ -87,33 +87,33 @@
             this.LevelLabel.TabIndex = 4;
             this.LevelLabel.Text = "Level Name: ";
             // 
-            // OKButton
+            // ApplyRenameButton
             // 
-            this.OKButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.OKButton.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.OKButton.ForeColor = System.Drawing.Color.White;
-            this.OKButton.Location = new System.Drawing.Point(412, 292);
-            this.OKButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.OKButton.Name = "OKButton";
-            this.OKButton.Size = new System.Drawing.Size(128, 66);
-            this.OKButton.TabIndex = 10;
-            this.OKButton.Text = "OK";
-            this.OKButton.UseVisualStyleBackColor = true;
-            this.OKButton.Click += new System.EventHandler(this.OKButton_Click);
+            this.ApplyRenameButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ApplyRenameButton.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.ApplyRenameButton.ForeColor = System.Drawing.Color.White;
+            this.ApplyRenameButton.Location = new System.Drawing.Point(412, 292);
+            this.ApplyRenameButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.ApplyRenameButton.Name = "ApplyRenameButton";
+            this.ApplyRenameButton.Size = new System.Drawing.Size(128, 66);
+            this.ApplyRenameButton.TabIndex = 10;
+            this.ApplyRenameButton.Text = "OK";
+            this.ApplyRenameButton.UseVisualStyleBackColor = true;
+            this.ApplyRenameButton.Click += new System.EventHandler(this.OKButton_Click);
             // 
-            // CancelButton
+            // CancelRenameButton
             // 
-            this.CancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CancelButton.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.CancelButton.ForeColor = System.Drawing.Color.White;
-            this.CancelButton.Location = new System.Drawing.Point(574, 292);
-            this.CancelButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(128, 66);
-            this.CancelButton.TabIndex = 11;
-            this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseVisualStyleBackColor = true;
-            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            this.CancelRenameButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CancelRenameButton.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.CancelRenameButton.ForeColor = System.Drawing.Color.White;
+            this.CancelRenameButton.Location = new System.Drawing.Point(574, 292);
+            this.CancelRenameButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.CancelRenameButton.Name = "CancelRenameButton";
+            this.CancelRenameButton.Size = new System.Drawing.Size(128, 66);
+            this.CancelRenameButton.TabIndex = 11;
+            this.CancelRenameButton.Text = "Cancel";
+            this.CancelRenameButton.UseVisualStyleBackColor = true;
+            this.CancelRenameButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // MapRenameForm
             // 
@@ -121,8 +121,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(748, 390);
-            this.Controls.Add(this.CancelButton);
-            this.Controls.Add(this.OKButton);
+            this.Controls.Add(this.CancelRenameButton);
+            this.Controls.Add(this.ApplyRenameButton);
             this.Controls.Add(this.LevelBox);
             this.Controls.Add(this.LevelLabel);
             this.Controls.Add(this.FolderBox);
@@ -132,6 +132,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MapRenameForm";
             this.Text = "MapRename";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_MouseDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -144,7 +145,7 @@
         private System.Windows.Forms.TextBox FolderBox;
         private System.Windows.Forms.TextBox LevelBox;
         private System.Windows.Forms.Label LevelLabel;
-        private System.Windows.Forms.Button OKButton;
-        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button ApplyRenameButton;
+        private System.Windows.Forms.Button CancelRenameButton;
     }
 }
