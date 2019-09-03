@@ -41,7 +41,7 @@
         <file value="irontanks-1.12.2-2.1.0-beta.14" />
       </mod>
       <mod key="lgs" name="Logistics Pipes">
-        <file value="logisticspipes-0.10.2.203" />
+        <file value="logisticspipes-0.10.2.204" />
       </mod>
     </mod>
 
@@ -86,7 +86,7 @@
     <mod key="ga" name="Guide API" >
       <file value="Guide-API-1.12-2.1.8-63" />
       <mod key="cyl" name="Cyclic" >
-        <file value="Cyclic-1.12.2-1.19.15" />
+        <file value="Cyclic-1.12.2-1.19.16" />
       </mod>
       <mod key="wot" name="Woot" >
         <file value="woot-1.12.2-1.4.11" />
@@ -94,12 +94,12 @@
     </mod>
 
     <mod key="ie" name="Immersive Engineering" >
-      <file value="ImmersiveEngineering-0.12-89" />
+      <file value="ImmersiveEngineering-0.12-90" />
       <mod key="imc" name="Immersive Cables" >
         <file value="ImmersiveCables-1.12.2-1.3.2" />
       </mod>
       <mod key="ime" name="Immersive Energy" >
-        <file value="Immersive+Energy-0.2.2" />
+        <file value="Immersive+Energy-0.2.3" />
       </mod>
       <mod key="imp" name="Immersive Petroleum" >
         <file value="immersivepetroleum-1.12.2-1.1.9" />
@@ -150,7 +150,7 @@
     </mod>
 
     <mod key="nc" name="NuclearCraft" >
-      <file value="NuclearCraft-2.18f-1.12.2" />
+      <file value="NuclearCraft-2.18h-1.12.2" />
     </mod>
 
     <mod key="omt" name="Open Modular Turrents" >
@@ -346,7 +346,7 @@
 
     <mod key="fq" name="FTB Quests" >
       <file value="ItemFilters-1.0.3.12" />
-      <file value="FTBQuests-1.7.2.194" />
+      <file value="FTBQuests-1.7.2.197" />
     </mod>
 
     <mod key="hot" name="Horse Tweaks" >
