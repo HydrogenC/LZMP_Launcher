@@ -47,8 +47,11 @@ namespace LauncherUI
             ClientCheckBox.Checked = true;
             ServerCheckBox.Checked = true;
             ClientRadioButton.Checked = true;
-            RunInstallWizard();
-            CheckMCInstance();
+            if (Directory.Exists(MinecraftInstance.WorkingPath + "\\Mods"))
+            {
+                Core.CopyDirectory(MinecraftInstance.WorkingPath + "\\Mods", SharedData.Client.ModPath);
+                Core.CopyDirectory(MinecraftInstance.WorkingPath + "\\Mods", SharedData.Server.ModPath);
+            }
 
             Core.CheckAvailability();
             CheckIfAllChecked();
@@ -69,37 +72,6 @@ namespace LauncherUI
             foreach (var i in saves)
             {
                 SavesList.Items.Add(i);
-            }
-        }
-
-        private void CheckMCInstance()
-        {
-            if (!Directory.Exists(SharedData.Client.ModPath))
-            {
-                ClientCheckBox.Checked = false;
-                ClientCheckBox.Enabled = false;
-                ClientRadioButton.Checked = false;
-                ClientRadioButton.Enabled = false;
-                LaunchClientButton.Enabled = false;
-                activeInstance = SharedData.Server;
-            }
-
-            if (!Directory.Exists(SharedData.Server.ModPath))
-            {
-                ServerCheckBox.Checked = false;
-                ServerCheckBox.Enabled = false;
-                ServerRadioButton.Checked = false;
-                ServerRadioButton.Enabled = false;
-                LaunchServerButton.Enabled = false;
-            }
-        }
-
-        private void RunInstallWizard()
-        {
-            if (Directory.Exists(MinecraftInstance.WorkingPath + "\\Mods"))
-            {
-                InstallWizard wizard = new InstallWizard();
-                wizard.ShowDialog();
             }
         }
 
@@ -268,11 +240,11 @@ namespace LauncherUI
             if (ClientCheckBox.Checked)
             {
                 processing = true;
-                action.BeginInvoke(SharedData.Client, UniversalAsyncCallback, null);
+                action.BeginInvoke(SharedData.Client, ProcessEndCallback, null);
 
                 while (processing)
                 {
-                    SmallTitle.Text = "Applying " + (ApplyProgress.current + 1) + "/" + ApplyProgress.total;
+                    CurrentProgress.Update(SmallTitle);
                     Application.DoEvents();
                 }
 
@@ -282,11 +254,11 @@ namespace LauncherUI
             if (ServerCheckBox.Checked)
             {
                 processing = true;
-                action.BeginInvoke(SharedData.Server, UniversalAsyncCallback, null);
+                action.BeginInvoke(SharedData.Server, ProcessEndCallback, null);
 
                 while (processing)
                 {
-                    SmallTitle.Text = "Applying " + (ApplyProgress.current + 1) + "/" + ApplyProgress.total;
+                    CurrentProgress.Update(SmallTitle);
                     Application.DoEvents();
                 }
 
@@ -321,15 +293,15 @@ namespace LauncherUI
             {
                 Action<String, MinecraftInstance> action = new Action<String, MinecraftInstance>(SavesHelper.ImportSave);
                 processing = true;
-                action.BeginInvoke(ImportDialog.FileName, activeInstance, UniversalAsyncCallback, null);
+                action.BeginInvoke(ImportDialog.FileName, activeInstance, ProcessEndCallback, null);
 
                 String prevText = "";
                 while (processing)
                 {
-                    if (SavesStatus.status != prevText)
+                    if (CurrentProgress.status != prevText)
                     {
-                        SmallTitle.Text = SavesStatus.status + "...";
-                        prevText = SavesStatus.status;
+                        SmallTitle.Text = CurrentProgress.status + "...";
+                        prevText = CurrentProgress.status;
                     }
 
                     Application.DoEvents();
@@ -378,7 +350,7 @@ namespace LauncherUI
         }
         #endregion
 
-        private void UniversalAsyncCallback(IAsyncResult ar)
+        private void ProcessEndCallback(IAsyncResult ar)
         {
             processing = false;
         }
@@ -398,17 +370,11 @@ namespace LauncherUI
                 {
                     Action<Save, String> action = new Action<Save, String>(SavesHelper.ExportSave);
                     processing = true;
-                    action.BeginInvoke(selection, ExportDialog.FileName, UniversalAsyncCallback, null); ;
+                    action.BeginInvoke(selection, ExportDialog.FileName, ProcessEndCallback, null); ;
 
-                    String prevText = "";
                     while (processing)
                     {
-                        if (SavesStatus.status != prevText)
-                        {
-                            SmallTitle.Text = SavesStatus.status + "...";
-                            prevText = SavesStatus.status;
-                        }
-
+                        CurrentProgress.Update(SmallTitle);
                         Application.DoEvents();
                     }
 

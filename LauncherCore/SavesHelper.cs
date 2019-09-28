@@ -38,7 +38,7 @@ namespace LauncherCore
 
         public static void ExportSave(Save save, String zipFile)
         {
-            SavesStatus.status = "Preparing";
+            CurrentProgress.status = "Preparing";
 
             String tmpDir = MinecraftInstance.WorkingPath + "\\Tmp\\";
             Directory.CreateDirectory(tmpDir);
@@ -55,22 +55,22 @@ namespace LauncherCore
                 Core.CopyDirectory(SharedData.JMDataPath + save.LevelName, tmpDir + "jm\\");
             }
 
-            SavesStatus.status = "Compressing";
+            CurrentProgress.status = "Compressing";
 
             FastZip zip = new FastZip();
             zip.CreateZip(zipFile, tmpDir, true, null);
 
-            SavesStatus.status = "Cleaning up";
+            CurrentProgress.status = "Cleaning up";
 
             Directory.Delete(tmpDir, true);
-            SavesStatus.Initialize();
+            CurrentProgress.Initialize();
         }
 
         public static void ImportSave(String zipFile, MinecraftInstance instance)
         {
             SaveFileDialog xmlDialog = new SaveFileDialog();
             xmlDialog.Filter = "Xml File（*.xml）|*.xml";
-            SavesStatus.status = "Extracting";
+            CurrentProgress.status = "Extracting";
 
             String tmpDir = MinecraftInstance.WorkingPath + "\\Tmp\\";
             Directory.CreateDirectory(tmpDir);
@@ -92,7 +92,6 @@ namespace LauncherCore
                     {
                         case DialogResult.Cancel:
                             goto CleanUp;
-                            break;
                         case DialogResult.Yes:
                             Directory.Delete(destDir, true);
                             break;
@@ -119,7 +118,7 @@ namespace LauncherCore
                 }
             }
 
-            SavesStatus.status = "Importing Map";
+            CurrentProgress.status = "Importing Map";
             Core.CopyDirectory(tmpDir + "save", destDir);
 
             if (MessageBox.Show(SharedData.MainWindow, "Override the current modset with the map's? If you choose No, you can select where to save the map's modset later. ", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -144,10 +143,10 @@ namespace LauncherCore
                 Core.CopyDirectory(tmpDir + "jm\\", SharedData.JMDataPath + save.LevelName);
             }
 
-        CleanUp: SavesStatus.status = "Cleaning up";
+        CleanUp: CurrentProgress.status = "Cleaning up";
 
             Directory.Delete(tmpDir, true);
-            SavesStatus.Initialize();
+            CurrentProgress.Initialize();
         }
     }
 }

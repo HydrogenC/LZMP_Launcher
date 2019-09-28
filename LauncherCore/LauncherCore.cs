@@ -82,25 +82,22 @@ namespace LauncherCore
         }
     }
 
-    public struct SavesStatus
+    public struct CurrentProgress
     {
         public static void Initialize()
         {
             status = "";
         }
 
-        public static String status = "";
-    }
-
-    public struct ApplyProgress
-    {
-        public static void Initialize()
+        public static void Update(Label label)
         {
-            total = 0;
-            current = 0;
+            if (label.Text != status)
+            {
+                label.Text = status;
+            }
         }
 
-        public static Int32 total = 0, current = 0;
+        public static String status = "";
     }
 
     public class Core
@@ -146,8 +143,8 @@ namespace LauncherCore
                 return;
             }
 
-            ApplyProgress.total = applyList.Count;
-            ApplyProgress.current = 0;
+            UInt16 index = 0;
+            CurrentProgress.status = "Applying 0/" + applyList.Count;
 
             foreach (var i in applyList)
             {
@@ -160,11 +157,12 @@ namespace LauncherCore
                 {
                     i.Install(instance);
                 }
-                ApplyProgress.current += 1;
+                index += 1;
+                CurrentProgress.status = "Applying " + index + "/" + applyList.Count;
             }
 
             CheckInstallation();
-            ApplyProgress.Initialize();
+            CurrentProgress.Initialize();
         }
 
         public static void CleanUp()
