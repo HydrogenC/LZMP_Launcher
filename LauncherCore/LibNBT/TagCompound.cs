@@ -189,7 +189,7 @@ namespace LibNBT
             }
         }
 
-        public TagString Getstring(string name)
+        public TagString GetString(string name)
         {
             if (_dictionary.ContainsKey(name))
             {

@@ -18,7 +18,7 @@ namespace LauncherCore
             folderName = dir.Substring(dir.LastIndexOf('\\') + 1);
             Path = dir;
             TagCompound tag = AbstractTag.ReadFromFile(Path + "\\level.dat") as TagCompound;
-            levelName = tag.GetCompound("Data").Getstring("LevelName").Value;
+            levelName = tag.GetCompound("Data").GetString("LevelName").Value;
         }
 
         public void Delete()
