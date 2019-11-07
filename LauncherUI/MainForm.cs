@@ -9,7 +9,7 @@ namespace LauncherUI
 {
     public partial class MainForm : Form
     {
-        private Boolean processing = false, allChecked = false, promptOnExit = false;
+        private Boolean locked = false, processing = false, allChecked = false, promptOnExit = false;
         private static Dictionary<String, TreeNode> nodeDict = new Dictionary<String, TreeNode>();
         private static Dictionary<String, TreeNode> categoryDict = new Dictionary<String, TreeNode>();
         private static MinecraftInstance activeInstance;
@@ -234,39 +234,55 @@ namespace LauncherUI
 
         private void Apply_Click(object sender, EventArgs e)
         {
+            if (locked)
+            {
+                return;
+            }
+
             SmallTitle.Text = "Applying";
+            locked = true;
 
-            Action<MinecraftInstance> action = new Action<MinecraftInstance>(Core.ApplyChanges);
-            if (ClientCheckBox.Checked)
+            try
             {
-                processing = true;
-                action.BeginInvoke(SharedData.Client, ProcessEndCallback, null);
-
-                while (processing)
+                Action<MinecraftInstance> action = new Action<MinecraftInstance>(Core.ApplyChanges);
+                if (ClientCheckBox.Checked)
                 {
-                    CurrentProgress.Update(SmallTitle);
-                    Application.DoEvents();
+                    processing = true;
+                    action.BeginInvoke(SharedData.Client, ProcessEndCallback, null);
+
+                    while (processing)
+                    {
+                        CurrentProgress.Update(SmallTitle);
+                        Application.DoEvents();
+                    }
+
+                    Core.CheckToInstallState(SharedData.Client);
                 }
 
-                Core.CheckToInstallState(SharedData.Client);
-            }
-
-            if (ServerCheckBox.Checked)
-            {
-                processing = true;
-                action.BeginInvoke(SharedData.Server, ProcessEndCallback, null);
-
-                while (processing)
+                if (ServerCheckBox.Checked)
                 {
-                    CurrentProgress.Update(SmallTitle);
-                    Application.DoEvents();
+                    processing = true;
+                    action.BeginInvoke(SharedData.Server, ProcessEndCallback, null);
+
+                    while (processing)
+                    {
+                        CurrentProgress.Update(SmallTitle);
+                        Application.DoEvents();
+                    }
+
+                    Core.CheckToInstallState(SharedData.Server);
                 }
-
-                Core.CheckToInstallState(SharedData.Server);
             }
-
-            ResetSmallTitle();
-            promptOnExit = false;
+            catch (Exception)
+            {
+                MessageBox.Show("Unknown exception caught! ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ResetSmallTitle();
+                promptOnExit = false;
+                locked = false;
+            }
 
             MessageBox.Show("Finished! ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -289,26 +305,44 @@ namespace LauncherUI
 
         private void ImportButton_Click(object sender, EventArgs e)
         {
+            if (locked)
+            {
+                return;
+            }
+
             if (ImportDialog.ShowDialog() == DialogResult.OK)
             {
-                Action<String, MinecraftInstance> action = new Action<String, MinecraftInstance>(SavesHelper.ImportSave);
-                processing = true;
-                action.BeginInvoke(ImportDialog.FileName, activeInstance, ProcessEndCallback, null);
+                locked = true;
 
-                String prevText = "";
-                while (processing)
+                try
                 {
-                    if (CurrentProgress.status != prevText)
-                    {
-                        SmallTitle.Text = CurrentProgress.status + "...";
-                        prevText = CurrentProgress.status;
-                    }
+                    Action<String, MinecraftInstance> action = new Action<String, MinecraftInstance>(SavesHelper.ImportSave);
+                    processing = true;
+                    action.BeginInvoke(ImportDialog.FileName, activeInstance, ProcessEndCallback, null);
 
-                    Application.DoEvents();
+                    String prevText = "";
+                    while (processing)
+                    {
+                        if (CurrentProgress.status != prevText)
+                        {
+                            SmallTitle.Text = CurrentProgress.status + "...";
+                            prevText = CurrentProgress.status;
+                        }
+
+                        Application.DoEvents();
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Unknown exception caught! ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    ResetSmallTitle();
+                    RefreshList(activeInstance);
+                    locked = false;
                 }
 
-                ResetSmallTitle();
-                RefreshList(activeInstance);
                 MessageBox.Show("Finished! ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -357,6 +391,11 @@ namespace LauncherUI
 
         private void ExportToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (locked)
+            {
+                return;
+            }
+
             Save selection = SavesList.SelectedItem as Save;
             if (selection == null)
             {
@@ -364,21 +403,33 @@ namespace LauncherUI
             }
             else
             {
-
                 ExportDialog.FileName = selection.LevelName + ".zip";
                 if (ExportDialog.ShowDialog() == DialogResult.OK)
                 {
-                    Action<Save, String> action = new Action<Save, String>(SavesHelper.ExportSave);
-                    processing = true;
-                    action.BeginInvoke(selection, ExportDialog.FileName, ProcessEndCallback, null); ;
+                    locked = true;
 
-                    while (processing)
+                    try
                     {
-                        CurrentProgress.Update(SmallTitle);
-                        Application.DoEvents();
+                        Action<Save, String> action = new Action<Save, String>(SavesHelper.ExportSave);
+                        processing = true;
+                        action.BeginInvoke(selection, ExportDialog.FileName, ProcessEndCallback, null); ;
+
+                        while (processing)
+                        {
+                            CurrentProgress.Update(SmallTitle);
+                            Application.DoEvents();
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Unknown exception caught! ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    finally
+                    {
+                        ResetSmallTitle();
+                        locked = false;
                     }
 
-                    ResetSmallTitle();
                     MessageBox.Show("Finished! ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }

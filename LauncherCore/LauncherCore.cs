@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace LauncherCore
 {
@@ -87,6 +89,7 @@ namespace LauncherCore
         public static void Initialize()
         {
             status = "";
+            mutex.ReleaseMutex();
         }
 
         public static void Update(Label label)
@@ -98,6 +101,7 @@ namespace LauncherCore
         }
 
         public static String status = "";
+        public static Mutex mutex = new Mutex();
     }
 
     public class Core
@@ -146,20 +150,26 @@ namespace LauncherCore
             UInt16 index = 0;
             CurrentProgress.status = "Applying 0/" + applyList.Count;
 
-            foreach (var i in applyList)
+            Parallel.ForEach(applyList, (Mod i) =>
             {
+                try
+                {
+                    if (i.Installed[instance])
+                    {
+                        i.Uninstall(instance);
+                    }
+                    else
+                    {
+                        i.Install(instance);
+                    }
+                }
+                catch (Exception) { }
 
-                if (i.Installed[instance])
-                {
-                    i.Uninstall(instance);
-                }
-                else
-                {
-                    i.Install(instance);
-                }
+                CurrentProgress.mutex.WaitOne();
                 index += 1;
                 CurrentProgress.status = "Applying " + index + "/" + applyList.Count;
-            }
+                CurrentProgress.mutex.ReleaseMutex();
+            });
 
             CheckInstallation();
             CurrentProgress.Initialize();
