@@ -7,10 +7,10 @@ namespace LauncherCore
 {
     public class Mod
     {
-        private List<String> files = new List<String>();
-        private Dictionary<String, Mod> addons = new Dictionary<String, Mod>();
-        private Dictionary<MinecraftInstance, Boolean> installStates = new Dictionary<MinecraftInstance, Boolean>();
-        public Mod(String name, List<String> files = null, Dictionary<String, Mod> addons = null)
+        private List<string> files = new List<string>();
+        private Dictionary<string, Mod> addons = new Dictionary<string, Mod>();
+        private Dictionary<MinecraftInstance, bool> installStates = new Dictionary<MinecraftInstance, bool>();
+        public Mod(string name, List<string> files = null, Dictionary<string, Mod> addons = null)
         {
             this.Name = name;
 
@@ -86,64 +86,64 @@ namespace LauncherCore
             }
         }
 
-        public ref Dictionary<String, Mod> Addons
+        public ref Dictionary<string, Mod> Addons
         {
             get => ref addons;
         }
 
-        public ref List<String> Files
+        public ref List<string> Files
         {
             get => ref files;
         }
 
-        public String Name
+        public string Name
         {
             get;
             set;
         }
 
-        public ref Dictionary<MinecraftInstance, Boolean> Installed
+        public ref Dictionary<MinecraftInstance, bool> Installed
         {
             get => ref installStates;
         }
 
-        public Boolean Available
+        public bool Available
         {
             get;
             private set;
         }
 
-        public String Category
+        public string Category
         {
             get;
             set;
         }
 
-        public String Key
+        public string Key
         {
             get;
             set;
         }
 
-        public Boolean ToInstall
+        public bool ToInstall
         {
             get => GetToInstallState(this);
             set => SetToInstallState(this, value);
         }
 
-        public static Action<Mod, Boolean> SetToInstallState
+        public static Action<Mod, bool> SetToInstallState
         {
             private get;
             set;
         }
 
-        public static Func<Mod, Boolean> GetToInstallState
+        public static Func<Mod, bool> GetToInstallState
         {
             private get;
             set;
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             return Name;
         }

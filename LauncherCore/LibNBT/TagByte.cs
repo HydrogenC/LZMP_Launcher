@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
 
 namespace LibNBT
 {
-    public class TagByte: AbstractTag
+    public class TagByte : AbstractTag
     {
         public byte Value { get; set; }
 
@@ -29,7 +26,7 @@ namespace LibNBT
 
         public TagByte()
         {
-            Name = String.Empty;
+            Name = string.Empty;
             Value = (byte)0;
         }
 
@@ -65,7 +62,7 @@ namespace LibNBT
 
         public override string ToString(string indentString)
         {
-            return String.Format("{0}[Byte: {1}={2}]", indentString, Name, Value);
+            return string.Format("{0}[Byte: {1}={2}]", indentString, Name, Value);
         }
     }
 }

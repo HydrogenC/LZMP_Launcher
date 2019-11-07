@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.IO;
+using System.Text;
 
 namespace LibNBT
 {
@@ -39,14 +37,17 @@ namespace LibNBT
 
         internal static void WriteList(Stream output, List<AbstractTag> Value)
         {
-            if(Value.Count > 0){
+            if (Value.Count > 0)
+            {
                 output.WriteByte((byte)Value[0].Type);
                 TagInt.WriteInt(output, Value.Count);
                 for (int i = 0; i < Value.Count; i++)
                 {
                     Value[i].WriteUnnamed(output);
                 }
-            }else{
+            }
+            else
+            {
                 output.WriteByte(0);
                 output.WriteByte(0);
             }
@@ -54,7 +55,7 @@ namespace LibNBT
 
         public TagList()
         {
-            Name = String.Empty;
+            Name = string.Empty;
             Value = new List<AbstractTag>();
         }
 
@@ -142,17 +143,17 @@ namespace LibNBT
 
             if (Value.Count == 0)
             {
-                return String.Format("{0}[List: {1}]", indentString, Name);
+                return string.Format("{0}[List: {1}]", indentString, Name);
             }
 
-            sb.AppendLine(String.Format("{0}[List: {1}", indentString, Name));
+            sb.AppendLine(string.Format("{0}[List: {1}", indentString, Name));
 
             foreach (AbstractTag item in _value)
             {
-                sb.AppendLine(String.Format("{0}  {1}", indentString, item.ToString(indentString + "  ").Trim()));
+                sb.AppendLine(string.Format("{0}  {1}", indentString, item.ToString(indentString + "  ").Trim()));
             }
 
-            sb.AppendLine(String.Format("{0}]", indentString));
+            sb.AppendLine(string.Format("{0}]", indentString));
 
             return sb.ToString();
         }

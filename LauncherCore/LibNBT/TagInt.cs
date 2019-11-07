@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
 
 namespace LibNBT
@@ -37,7 +34,7 @@ namespace LibNBT
 
         public TagInt()
         {
-            Name = String.Empty;
+            Name = string.Empty;
             Value = 0;
         }
 
@@ -49,7 +46,7 @@ namespace LibNBT
 
         internal static int ReadInt(Stream input)
         {
-            
+
             byte[] bytes = new byte[PAYLOAD_SIZE];
             if (PAYLOAD_SIZE != input.Read(bytes, 0, PAYLOAD_SIZE))
             {
@@ -76,7 +73,7 @@ namespace LibNBT
 
         public override string ToString(string indentString)
         {
-            return String.Format("{0}[Int: {1}={2}]", indentString, Name, Value);
+            return string.Format("{0}[Int: {1}={2}]", indentString, Name, Value);
         }
     }
 }

@@ -18,7 +18,7 @@ namespace LauncherCore
                     Directory.CreateDirectory(SharedData.SavePath);
                 }
 
-                foreach (String i in Directory.GetDirectories(SharedData.SavePath))
+                foreach (string i in Directory.GetDirectories(SharedData.SavePath))
                 {
                     if (File.Exists(i + "\\level.dat"))
                     {
@@ -36,11 +36,11 @@ namespace LauncherCore
             return saves.ToArray();
         }
 
-        public static void ExportSave(Save save, String zipFile)
+        public static void ExportSave(Save save, string zipFile)
         {
             CurrentProgress.status = "Preparing";
 
-            String tmpDir = MinecraftInstance.WorkingPath + "\\Tmp\\";
+            string tmpDir = MinecraftInstance.WorkingPath + "\\Tmp\\";
             Directory.CreateDirectory(tmpDir);
             Core.CopyDirectory(save.Path, tmpDir + "save\\");
             XmlHelper.WriteXmlSet(tmpDir + "Set.xml", false);
@@ -66,22 +66,22 @@ namespace LauncherCore
             CurrentProgress.Initialize();
         }
 
-        public static void ImportSave(String zipFile, MinecraftInstance instance)
+        public static void ImportSave(string zipFile, MinecraftInstance instance)
         {
             SaveFileDialog xmlDialog = new SaveFileDialog();
             xmlDialog.Filter = "Xml File（*.xml）|*.xml";
             CurrentProgress.status = "Extracting";
 
-            String tmpDir = MinecraftInstance.WorkingPath + "\\Tmp\\";
+            string tmpDir = MinecraftInstance.WorkingPath + "\\Tmp\\";
             Directory.CreateDirectory(tmpDir);
 
-            String zipName = zipFile.Substring(zipFile.LastIndexOf('\\') + 1);
+            string zipName = zipFile.Substring(zipFile.LastIndexOf('\\') + 1);
             zipName = zipName.Substring(0, zipName.Length - 4);
             FastZip zip = new FastZip();
             zip.ExtractZip(zipFile, tmpDir, null);
 
             Save save = new Save(tmpDir + "save");
-            String destDir = (instance == SharedData.Client) ? SharedData.SavePath + save.LevelName : SharedData.Server.GamePath + "\\world";
+            string destDir = (instance == SharedData.Client) ? SharedData.SavePath + save.LevelName : SharedData.Server.GamePath + "\\world";
 
             if (Directory.Exists(destDir))
             {

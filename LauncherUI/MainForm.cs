@@ -9,9 +9,9 @@ namespace LauncherUI
 {
     public partial class MainForm : Form
     {
-        private Boolean locked = false, processing = false, allChecked = false, promptOnExit = false;
-        private static Dictionary<String, TreeNode> nodeDict = new Dictionary<String, TreeNode>();
-        private static Dictionary<String, TreeNode> categoryDict = new Dictionary<String, TreeNode>();
+        private bool locked = false, processing = false, allChecked = false, promptOnExit = false;
+        private static Dictionary<string, TreeNode> nodeDict = new Dictionary<string, TreeNode>();
+        private static Dictionary<string, TreeNode> categoryDict = new Dictionary<string, TreeNode>();
         private static MinecraftInstance activeInstance;
 
         #region Drag
@@ -83,12 +83,12 @@ namespace LauncherUI
             RefreshList(instance);
         }
 
-        private static Boolean GetNodeChecked(Mod mod)
+        private static bool GetNodeChecked(Mod mod)
         {
             return nodeDict[mod.Key].Checked;
         }
 
-        private static void SetNodeChecked(Mod mod, Boolean flag)
+        private static void SetNodeChecked(Mod mod, bool flag)
         {
             if (nodeDict[mod.Key].Checked != flag)
             {
@@ -316,11 +316,11 @@ namespace LauncherUI
 
                 try
                 {
-                    Action<String, MinecraftInstance> action = new Action<String, MinecraftInstance>(SavesHelper.ImportSave);
+                    Action<string, MinecraftInstance> action = new Action<string, MinecraftInstance>(SavesHelper.ImportSave);
                     processing = true;
                     action.BeginInvoke(ImportDialog.FileName, activeInstance, ProcessEndCallback, null);
 
-                    String prevText = "";
+                    string prevText = "";
                     while (processing)
                     {
                         if (CurrentProgress.status != prevText)
@@ -410,7 +410,7 @@ namespace LauncherUI
 
                     try
                     {
-                        Action<Save, String> action = new Action<Save, String>(SavesHelper.ExportSave);
+                        Action<Save, string> action = new Action<Save, string>(SavesHelper.ExportSave);
                         processing = true;
                         action.BeginInvoke(selection, ExportDialog.FileName, ProcessEndCallback, null); ;
 

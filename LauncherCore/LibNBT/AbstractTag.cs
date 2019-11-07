@@ -1,26 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
 using System.IO.Compression;
 
 namespace LibNBT
 {
-    public enum TagType{End=0, Byte=1, Short=2, Int=3, Long=4, Float=5, Double=6, ByteArray=7, String=8, List=9, Compound=10, IntArray=11};
+    public enum TagType { End = 0, Byte = 1, Short = 2, Int = 3, Long = 4, Float = 5, Double = 6, ByteArray = 7, String = 8, List = 9, Compound = 10, IntArray = 11 };
 
     public abstract class AbstractTag
     {
         public abstract TagType Type { get; }
-        public virtual String Name { get; set; }
+        public virtual string Name { get; set; }
 
         public abstract void Write(Stream output);
         public abstract void WriteUnnamed(Stream output);
-        
+
         public static AbstractTag Read(Stream input)
         {
             int temp = input.ReadByte();
-            if(temp != (temp & 0xFF)){
+            if (temp != (temp & 0xFF))
+            {
                 throw new Exception();
             }
 
@@ -55,7 +53,7 @@ namespace LibNBT
             }
         }
 
-        public static AbstractTag ReadFromGzippedFile(String filename)
+        public static AbstractTag ReadFromGzippedFile(string filename)
         {
             using (FileStream input = File.OpenRead(filename))
             {
@@ -66,7 +64,7 @@ namespace LibNBT
             }
         }
 
-        public static AbstractTag ReadFromFile(String filename)
+        public static AbstractTag ReadFromFile(string filename)
         {
             AbstractTag tag = null;
             //Check if gzipped stream
@@ -80,7 +78,7 @@ namespace LibNBT
                     }
                 }
             }
-            catch(Exception)
+            catch (Exception)
             {
                 tag = null;
             }
@@ -101,7 +99,7 @@ namespace LibNBT
                     }
                 }
             }
-            catch(Exception)
+            catch (Exception)
             {
                 tag = null;
             }
@@ -122,7 +120,7 @@ namespace LibNBT
 
         public override string ToString()
         {
-            return ToString(String.Empty);
+            return ToString(string.Empty);
         }
 
         public abstract string ToString(string indentString);

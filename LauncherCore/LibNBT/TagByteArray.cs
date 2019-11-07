@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
 
 namespace LibNBT
@@ -37,7 +34,7 @@ namespace LibNBT
 
         public TagByteArray()
         {
-            Name = String.Empty;
+            Name = string.Empty;
             Value = null;
         }
 
@@ -72,7 +69,7 @@ namespace LibNBT
 
         public override string ToString(string indentString)
         {
-            return String.Format("{0}[Byte_Array: {1}={2} Bytes", indentString, Name, (Value != null)?Value.Length:0);
+            return string.Format("{0}[Byte_Array: {1}={2} Bytes", indentString, Name, (Value != null) ? Value.Length : 0);
         }
     }
 }

@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
 
 namespace LibNBT
@@ -11,13 +8,13 @@ namespace LibNBT
         const int PAYLOAD_SIZE = 2;
 
         public short Value { get; set; }
-        
+
         public TagShort()
         {
-            Name = String.Empty;
+            Name = string.Empty;
             Value = 0;
         }
-        
+
         public TagShort(Stream input)
         {
             Name = TagString.ReadString(input);
@@ -54,7 +51,7 @@ namespace LibNBT
                 throw new Exception();
             }
 
-            
+
             if (BitConverter.IsLittleEndian)
             {
                 BitHelper.SwapBytes(bytes, 0, PAYLOAD_SIZE);
@@ -75,7 +72,7 @@ namespace LibNBT
 
         public override string ToString(string indentString)
         {
-            return String.Format("{0}[Short: {1}={2}]", indentString, Name, Value);
+            return string.Format("{0}[Short: {1}={2}]", indentString, Name, Value);
         }
     }
 }

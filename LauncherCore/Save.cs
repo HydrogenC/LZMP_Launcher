@@ -6,9 +6,9 @@ namespace LauncherCore
 {
     public class Save
     {
-        private String levelName, folderName;
+        private string levelName, folderName;
 
-        public Save(String dir)
+        public Save(string dir)
         {
             if (dir.EndsWith("\\"))
             {
@@ -18,7 +18,7 @@ namespace LauncherCore
             folderName = dir.Substring(dir.LastIndexOf('\\') + 1);
             Path = dir;
             TagCompound tag = AbstractTag.ReadFromFile(Path + "\\level.dat") as TagCompound;
-            levelName = tag.GetCompound("Data").GetString("LevelName").Value;
+            levelName = tag.GetCompound("Data").Getstring("LevelName").Value;
         }
 
         public void Delete()
@@ -26,13 +26,13 @@ namespace LauncherCore
             Directory.Delete(Path, true);
         }
 
-        public String Path
+        public string Path
         {
             get;
             private set;
         }
 
-        public String FolderName
+        public string FolderName
         {
             get => folderName;
             set
@@ -49,7 +49,7 @@ namespace LauncherCore
             }
         }
 
-        public String LevelName
+        public string LevelName
         {
             get => levelName;
             set
@@ -63,7 +63,7 @@ namespace LauncherCore
             }
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             return " " + levelName + " (" + folderName + ")";
         }

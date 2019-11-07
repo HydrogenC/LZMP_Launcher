@@ -10,48 +10,48 @@ namespace LauncherCore
 
     public class MinecraftInstance
     {
-        public static String WorkingPath = Directory.GetCurrentDirectory();
-        public String GamePath;
+        public static string WorkingPath = Directory.GetCurrentDirectory();
+        public string GamePath;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="gamePath">Relative path of the game (no backslash at the end)</param>
         /// <param name="launcherPath">Relative path of the launcher</param>
-        public MinecraftInstance(String gamePath, String launcherPath)
+        public MinecraftInstance(string gamePath, string launcherPath)
         {
             GamePath = WorkingPath + "\\" + gamePath;
             LauncherPath = WorkingPath + "\\" + launcherPath;
         }
 
-        public static Boolean operator ==(MinecraftInstance a, MinecraftInstance b)
+        public static bool operator ==(MinecraftInstance a, MinecraftInstance b)
         {
             return (a.GamePath == b.GamePath) && (a.LauncherPath == b.LauncherPath);
         }
 
-        public static Boolean operator !=(MinecraftInstance a, MinecraftInstance b)
+        public static bool operator !=(MinecraftInstance a, MinecraftInstance b)
         {
             return (a.GamePath != b.GamePath) || (a.LauncherPath != b.LauncherPath);
         }
 
-        public static String ResourcePath
+        public static string ResourcePath
         {
             get => WorkingPath + "\\Resources\\";
         }
 
-        public String ModPath
+        public string ModPath
         {
             get => GamePath + "\\mods\\";
         }
 
-        public String ScriptPath
+        public string ScriptPath
         {
             get => GamePath + "\\scripts\\";
         }
 
-        public String LauncherPath;
+        public string LauncherPath;
 
-        public override Boolean Equals(object obj)
+        public override bool Equals(object obj)
         {
             return obj is MinecraftInstance instance && (GamePath == instance.GamePath) && (LauncherPath == instance.LauncherPath);
         }
@@ -59,26 +59,26 @@ namespace LauncherCore
         public override Int32 GetHashCode()
         {
             var hashCode = -1660369126;
-            hashCode = hashCode * -1521134295 + EqualityComparer<String>.Default.GetHashCode(GamePath);
-            hashCode = hashCode * -1521134295 + EqualityComparer<String>.Default.GetHashCode(LauncherPath);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(GamePath);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(LauncherPath);
             return hashCode;
         }
     }
 
     public struct SharedData
     {
-        public static String Version;
-        public static Dictionary<String, Mod> Mods = new Dictionary<String, Mod>();
+        public static string Version;
+        public static Dictionary<string, Mod> Mods = new Dictionary<string, Mod>();
         public static MinecraftInstance Client = new MinecraftInstance("Client\\.minecraft", "");
         public static MinecraftInstance Server = new MinecraftInstance("Server\\panel\\server", "");
         public static IWin32Window MainWindow;
 
-        public static String SavePath
+        public static string SavePath
         {
             get => Client.GamePath + "\\saves\\";
         }
 
-        public static String JMDataPath
+        public static string JMDataPath
         {
             get => Client.GamePath + "\\journeymap\\data\\sp\\";
         }
@@ -100,7 +100,7 @@ namespace LauncherCore
             }
         }
 
-        public static String status = "";
+        public static string status = "";
         public static Mutex mutex = new Mutex();
     }
 
@@ -110,7 +110,7 @@ namespace LauncherCore
         /// 
         /// </summary>
         /// <param name="check">If true, then check all mods. If false, cancel all mods. </param>
-        public static void CheckAll(Boolean check = true)
+        public static void CheckAll(bool check = true)
         {
             foreach (var i in SharedData.Mods)
             {
@@ -182,10 +182,10 @@ namespace LauncherCore
                 return;
             }
 
-            String[] files = Directory.GetFiles(MinecraftInstance.ResourcePath);
+            string[] files = Directory.GetFiles(MinecraftInstance.ResourcePath);
             foreach (var i in files)
             {
-                Boolean used = false;
+                bool used = false;
                 foreach (var j in SharedData.Mods)
                 {
                     foreach (var k in j.Value.Addons)
@@ -221,7 +221,7 @@ namespace LauncherCore
             }
         }
 
-        public static void CopyDirectory(String srcPath, String aimPath)
+        public static void CopyDirectory(string srcPath, string aimPath)
         {
             if (aimPath[aimPath.Length - 1] != '\\')
             {
@@ -233,7 +233,7 @@ namespace LauncherCore
                 Directory.CreateDirectory(aimPath);
             }
 
-            foreach (String file in Directory.GetFileSystemEntries(srcPath))
+            foreach (string file in Directory.GetFileSystemEntries(srcPath))
             {
                 if (Directory.Exists(file))
                 {

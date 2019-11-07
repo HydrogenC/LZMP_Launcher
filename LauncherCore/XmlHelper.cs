@@ -7,7 +7,7 @@ namespace LauncherCore
 {
     public class XmlHelper
     {
-        private static XmlElement GetElementByTagName(ref XmlDocument element, String tagName)
+        private static XmlElement GetElementByTagName(ref XmlDocument element, string tagName)
         {
             return (XmlElement)(element.GetElementsByTagName(tagName)[0]);
         }
@@ -25,7 +25,7 @@ namespace LauncherCore
             return mod;
         }
 
-        public static void ReadDefinitions(String xmlFile)
+        public static void ReadDefinitions(string xmlFile)
         {
             if (!File.Exists(xmlFile))
             {
@@ -41,11 +41,11 @@ namespace LauncherCore
 
             foreach (XmlElement element in xml.GetElementsByTagName("category"))
             {
-                String ct = element.GetAttribute("name");
+                string ct = element.GetAttribute("name");
 
                 foreach (XmlElement mod in element.ChildNodes)
                 {
-                    String key = mod.GetAttribute("key");
+                    string key = mod.GetAttribute("key");
                     SharedData.Mods[key] = ReadMod(mod);
                     SharedData.Mods[key].Category = ct;
                     SharedData.Mods[key].Key = key;
@@ -54,7 +54,7 @@ namespace LauncherCore
                     {
                         if (addon.Name == "mod")
                         {
-                            String aKey = addon.GetAttribute("key");
+                            string aKey = addon.GetAttribute("key");
                             SharedData.Mods[key].Addons[aKey] = ReadMod(addon);
                             SharedData.Mods[key].Addons[aKey].Key = aKey;
                         }
@@ -63,12 +63,12 @@ namespace LauncherCore
             }
         }
 
-        public static void ReadXmlSet(String xmlFile, Boolean showInfo = true)
+        public static void ReadXmlSet(string xmlFile, bool showInfo = true)
         {
             XmlDocument document = new XmlDocument();
             document.Load(xmlFile);
             XmlElement root = GetElementByTagName(ref document, "settings");
-            Boolean versionConforms = GetElementByTagName(ref document, "version").GetAttribute("value") == SharedData.Version;
+            bool versionConforms = GetElementByTagName(ref document, "version").GetAttribute("value") == SharedData.Version;
             UInt16 skip = 0;
 
             foreach (XmlElement i in root.ChildNodes)
@@ -78,19 +78,19 @@ namespace LauncherCore
                     continue;
                 }
 
-                String key = i.GetAttribute("key");
+                string key = i.GetAttribute("key");
 
                 if (SharedData.Mods.ContainsKey(key))
                 {
-                    SharedData.Mods[key].ToInstall = Boolean.Parse(i.GetAttribute("checked"));
+                    SharedData.Mods[key].ToInstall = bool.Parse(i.GetAttribute("checked"));
 
                     foreach (XmlElement j in i.ChildNodes)
                     {
-                        String addonKey = j.GetAttribute("key");
+                        string addonKey = j.GetAttribute("key");
 
                         if (SharedData.Mods[key].Addons.ContainsKey(addonKey))
                         {
-                            SharedData.Mods[key].Addons[addonKey].ToInstall = Boolean.Parse(j.GetAttribute("checked"));
+                            SharedData.Mods[key].Addons[addonKey].ToInstall = bool.Parse(j.GetAttribute("checked"));
                         }
                         else
                         {
@@ -131,7 +131,7 @@ namespace LauncherCore
             }
         }
 
-        public static void WriteXmlSet(String xmlFile, Boolean showInfo = true)
+        public static void WriteXmlSet(string xmlFile, bool showInfo = true)
         {
             XmlDocument document = new XmlDocument();
             document.CreateXmlDeclaration("1.0", "utf-8", null);

@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
+using System.Text;
 
 namespace LibNBT
 {
@@ -13,11 +11,12 @@ namespace LibNBT
             get { return TagType.String; }
         }
 
-        public String Value{get;set;}
+        public string Value { get; set; }
 
-        public TagString() {
-            Name = String.Empty;
-            Value = String.Empty;
+        public TagString()
+        {
+            Name = string.Empty;
+            Value = string.Empty;
         }
 
         public TagString(Stream input)
@@ -26,7 +25,8 @@ namespace LibNBT
             Value = ReadString(input);
         }
 
-        public static String ReadString(Stream input){
+        public static string ReadString(Stream input)
+        {
             short length = TagShort.ReadShort(input);
             byte[] bytes = new byte[length];
             if (length != input.Read(bytes, 0, length))
@@ -46,7 +46,7 @@ namespace LibNBT
         {
             byte[] bytes = Encoding.UTF8.GetBytes(value);
             TagShort.WriteShort(output, (short)bytes.Length);
-            
+
             output.Write(bytes, 0, bytes.Length);
         }
 
@@ -64,7 +64,7 @@ namespace LibNBT
 
         public override string ToString(string indentString)
         {
-            return String.Format("{0}[String: {1}=\"{2}\"]", indentString, Name, Value);
+            return string.Format("{0}[String: {1}=\"{2}\"]", indentString, Name, Value);
         }
     }
 }

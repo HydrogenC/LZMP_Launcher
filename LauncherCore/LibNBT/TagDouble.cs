@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
 
 namespace LibNBT
@@ -37,7 +34,7 @@ namespace LibNBT
 
         public TagDouble()
         {
-            Name = String.Empty;
+            Name = string.Empty;
             Value = 0;
         }
 
@@ -75,7 +72,7 @@ namespace LibNBT
 
         public override string ToString(string indentString)
         {
-            return String.Format("{0}[Double: {1}={2}]", indentString, Name, Value);
+            return string.Format("{0}[Double: {1}={2}]", indentString, Name, Value);
         }
     }
 }

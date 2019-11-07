@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
 
 namespace LibNBT
@@ -37,7 +34,7 @@ namespace LibNBT
 
         public TagLong()
         {
-            Name = String.Empty;
+            Name = string.Empty;
             Value = 0L;
         }
 
@@ -54,7 +51,7 @@ namespace LibNBT
             {
                 throw new Exception();
             }
-            
+
             if (BitConverter.IsLittleEndian)
             {
                 BitHelper.SwapBytes(bytes, 0, PAYLOAD_SIZE);
@@ -75,7 +72,7 @@ namespace LibNBT
 
         public override string ToString(string indentString)
         {
-            return String.Format("{0}[Long: {1}={2}]", indentString, Name, Value);
+            return string.Format("{0}[Long: {1}={2}]", indentString, Name, Value);
         }
     }
 }

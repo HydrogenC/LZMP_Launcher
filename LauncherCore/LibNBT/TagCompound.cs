@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
+using System.Text;
 
 namespace LibNBT
 {
     public class TagCompound : AbstractTag
     {
-        private Dictionary<String, AbstractTag> _dictionary;
+        private Dictionary<string, AbstractTag> _dictionary;
 
         public override TagType Type
         {
@@ -37,8 +35,8 @@ namespace LibNBT
 
         public TagCompound()
         {
-            Name = String.Empty;
-            _dictionary = new Dictionary<String, AbstractTag>();
+            Name = string.Empty;
+            _dictionary = new Dictionary<string, AbstractTag>();
         }
 
         public TagCompound(Stream input)
@@ -47,16 +45,16 @@ namespace LibNBT
             _dictionary = ReadDictionary(input);
         }
 
-        internal static Dictionary<String, AbstractTag> ReadDictionary(Stream input)
+        internal static Dictionary<string, AbstractTag> ReadDictionary(Stream input)
         {
-            Dictionary<String, AbstractTag> dict = new Dictionary<String, AbstractTag>();
+            Dictionary<string, AbstractTag> dict = new Dictionary<string, AbstractTag>();
             AbstractTag tag = AbstractTag.Read(input);
             while (tag.Type != TagType.End)
             {
                 dict[tag.Name] = tag;
                 tag = AbstractTag.Read(input);
             }
-            
+
             return dict;
         }
 
@@ -65,13 +63,13 @@ namespace LibNBT
             return new TagCompound() { _dictionary = ReadDictionary(input) };
         }
 
-        public void SetTag(String name, AbstractTag tag)
+        public void SetTag(string name, AbstractTag tag)
         {
             tag.Name = name;
             _dictionary[name] = tag;
         }
 
-        public TagByte GetByte(String name)
+        public TagByte GetByte(string name)
         {
             if (_dictionary.ContainsKey(name))
             {
@@ -83,7 +81,7 @@ namespace LibNBT
             }
         }
 
-        public TagByteArray GetByteArray(String name)
+        public TagByteArray GetByteArray(string name)
         {
             if (_dictionary.ContainsKey(name))
             {
@@ -95,7 +93,7 @@ namespace LibNBT
             }
         }
 
-        public TagCompound GetCompound(String name)
+        public TagCompound GetCompound(string name)
         {
             if (_dictionary.ContainsKey(name))
             {
@@ -107,7 +105,7 @@ namespace LibNBT
             }
         }
 
-        public TagDouble GetDouble(String name)
+        public TagDouble GetDouble(string name)
         {
             if (_dictionary.ContainsKey(name))
             {
@@ -119,7 +117,7 @@ namespace LibNBT
             }
         }
 
-        public TagFloat GetFloat(String name)
+        public TagFloat GetFloat(string name)
         {
             if (_dictionary.ContainsKey(name))
             {
@@ -131,7 +129,7 @@ namespace LibNBT
             }
         }
 
-        public TagInt GetInt(String name)
+        public TagInt GetInt(string name)
         {
             if (_dictionary.ContainsKey(name))
             {
@@ -143,7 +141,7 @@ namespace LibNBT
             }
         }
 
-        public TagIntArray GetIntArray(String name)
+        public TagIntArray GetIntArray(string name)
         {
             if (_dictionary.ContainsKey(name))
             {
@@ -155,7 +153,7 @@ namespace LibNBT
             }
         }
 
-        public TagList GetList(String name)
+        public TagList GetList(string name)
         {
             if (_dictionary.ContainsKey(name))
             {
@@ -167,7 +165,7 @@ namespace LibNBT
             }
         }
 
-        public TagLong GetLong(String name)
+        public TagLong GetLong(string name)
         {
             if (_dictionary.ContainsKey(name))
             {
@@ -179,7 +177,7 @@ namespace LibNBT
             }
         }
 
-        public TagShort GetShort(String name)
+        public TagShort GetShort(string name)
         {
             if (_dictionary.ContainsKey(name))
             {
@@ -191,7 +189,7 @@ namespace LibNBT
             }
         }
 
-        public TagString GetString(String name)
+        public TagString Getstring(string name)
         {
             if (_dictionary.ContainsKey(name))
             {
@@ -203,7 +201,7 @@ namespace LibNBT
             }
         }
 
-        public AbstractTag GetAbstractTag(String name)
+        public AbstractTag GetAbstractTag(string name)
         {
             if (_dictionary.ContainsKey(name))
             {
@@ -215,7 +213,7 @@ namespace LibNBT
             }
         }
 
-        public void WriteToFile(String filename)
+        public void WriteToFile(string filename)
         {
             using (FileStream output = File.Open(filename, FileMode.Create))
             {
@@ -237,20 +235,19 @@ namespace LibNBT
 
             if (_dictionary.Keys.Count == 0)
             {
-                return String.Format("{0}[Compound: {1}]", indentString, Name);
+                return string.Format("{0}[Compound: {1}]", indentString, Name);
             }
 
-            sb.AppendLine(String.Format("{0}[Compound: {1}", indentString, Name));
+            sb.AppendLine(string.Format("{0}[Compound: {1}", indentString, Name));
 
             foreach (string key in _dictionary.Keys)
             {
-                sb.AppendLine(String.Format("{0}  {1}={2}", indentString, key, _dictionary[key].ToString(indentString + "  ").Trim()));
+                sb.AppendLine(string.Format("{0}  {1}={2}", indentString, key, _dictionary[key].ToString(indentString + "  ").Trim()));
             }
 
-            sb.AppendLine(String.Format("{0}]", indentString));
+            sb.AppendLine(string.Format("{0}]", indentString));
 
             return sb.ToString();
         }
     }
 }
- 

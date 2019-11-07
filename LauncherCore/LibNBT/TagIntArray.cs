@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
+using System.Text;
 
 namespace LibNBT
 {
-    public class TagIntArray: AbstractTag
+    public class TagIntArray : AbstractTag
     {
         public int[] Value { get; set; }
 
@@ -40,7 +38,7 @@ namespace LibNBT
 
         public TagIntArray()
         {
-            Name = String.Empty;
+            Name = string.Empty;
             Value = null;
         }
 
@@ -56,17 +54,20 @@ namespace LibNBT
             int bufferLength = length * 4;
 
             byte[] buffer = new byte[bufferLength];
-            if(bufferLength != input.Read(buffer, 0, bufferLength)){
+            if (bufferLength != input.Read(buffer, 0, bufferLength))
+            {
                 throw new Exception();
             }
 
             int[] ints = new int[length];
-            for(int i=0; i<length; i++){
-                if(BitConverter.IsLittleEndian){
-                    BitHelper.SwapBytes(buffer, i*4, 4);
+            for (int i = 0; i < length; i++)
+            {
+                if (BitConverter.IsLittleEndian)
+                {
+                    BitHelper.SwapBytes(buffer, i * 4, 4);
                 }
 
-                ints[i] = BitConverter.ToInt32(buffer, i*4);
+                ints[i] = BitConverter.ToInt32(buffer, i * 4);
             }
 
             buffer = null;
@@ -86,17 +87,17 @@ namespace LibNBT
 
             if (Value == null || Value.Length == 0)
             {
-                return String.Format("{0}[Int_Array: {1}]", indentString, Name);
+                return string.Format("{0}[Int_Array: {1}]", indentString, Name);
             }
 
-            sb.AppendLine(String.Format("{0}[Int_Array: {1}", indentString, Name));
+            sb.AppendLine(string.Format("{0}[Int_Array: {1}", indentString, Name));
 
             foreach (int item in Value)
             {
-                sb.AppendLine(String.Format("{0}  {1}", indentString, item));
+                sb.AppendLine(string.Format("{0}  {1}", indentString, item));
             }
 
-            sb.AppendLine(String.Format("{0}]", indentString));
+            sb.AppendLine(string.Format("{0}]", indentString));
 
             return sb.ToString();
         }
