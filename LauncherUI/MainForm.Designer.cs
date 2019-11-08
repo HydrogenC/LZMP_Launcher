@@ -57,10 +57,10 @@
             this.MapMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.renameMapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteMapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MapLabel = new System.Windows.Forms.Label();
             this.ExportDialog = new System.Windows.Forms.SaveFileDialog();
             this.ImportDialog = new System.Windows.Forms.OpenFileDialog();
-            this.deleteMapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MapMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -378,21 +378,28 @@
             this.deleteMapToolStripMenuItem});
             this.MapMenu.Name = "MapMenu";
             this.MapMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.MapMenu.Size = new System.Drawing.Size(301, 180);
+            this.MapMenu.Size = new System.Drawing.Size(251, 136);
             // 
             // exportToolStripMenuItem
             // 
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(300, 44);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(250, 44);
             this.exportToolStripMenuItem.Text = "Export Map";
             this.exportToolStripMenuItem.Click += new System.EventHandler(this.ExportToolStripMenuItem_Click);
             // 
             // renameMapToolStripMenuItem
             // 
             this.renameMapToolStripMenuItem.Name = "renameMapToolStripMenuItem";
-            this.renameMapToolStripMenuItem.Size = new System.Drawing.Size(300, 44);
+            this.renameMapToolStripMenuItem.Size = new System.Drawing.Size(250, 44);
             this.renameMapToolStripMenuItem.Text = "Rename Map";
             this.renameMapToolStripMenuItem.Click += new System.EventHandler(this.RenameMapToolStripMenuItem_Click);
+            // 
+            // deleteMapToolStripMenuItem
+            // 
+            this.deleteMapToolStripMenuItem.Name = "deleteMapToolStripMenuItem";
+            this.deleteMapToolStripMenuItem.Size = new System.Drawing.Size(250, 44);
+            this.deleteMapToolStripMenuItem.Text = "Delete Map";
+            this.deleteMapToolStripMenuItem.Click += new System.EventHandler(this.DeleteMapToolStripMenuItem_Click);
             // 
             // MapLabel
             // 
@@ -412,13 +419,6 @@
             // ImportDialog
             // 
             this.ImportDialog.Filter = "Zip File（*.zip）|*.zip";
-            // 
-            // deleteMapToolStripMenuItem
-            // 
-            this.deleteMapToolStripMenuItem.Name = "deleteMapToolStripMenuItem";
-            this.deleteMapToolStripMenuItem.Size = new System.Drawing.Size(300, 44);
-            this.deleteMapToolStripMenuItem.Text = "Delete Map";
-            this.deleteMapToolStripMenuItem.Click += new System.EventHandler(this.DeleteMapToolStripMenuItem_Click);
             // 
             // MainForm
             // 
