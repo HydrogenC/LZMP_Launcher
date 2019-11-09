@@ -13,9 +13,7 @@ namespace LauncherUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            MainForm form = new MainForm();
-            LauncherCore.SharedData.MainWindow = form;
-            Application.Run(form);
+            Application.Run(new MainForm());
         }
     }
 }

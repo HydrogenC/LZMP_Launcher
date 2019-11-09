@@ -22,8 +22,8 @@ namespace LauncherWPF
     public partial class ModPage : Page
     {
         private Action<Page> action;
-        private Dictionary<string, TreeViewItem> itemDict = new Dictionary<string, TreeViewItem>();
-        private Dictionary<string, TreeViewItem> categoryDict = new Dictionary<string, TreeViewItem>();
+        private static Dictionary<string, TreeViewItem> itemDict = new Dictionary<string, TreeViewItem>();
+        private static Dictionary<string, TreeViewItem> categoryDict = new Dictionary<string, TreeViewItem>();
 
         public ModPage(Action<Page> action)
         {
@@ -31,6 +31,23 @@ namespace LauncherWPF
             this.action = action;
 
             WriteNodes();
+
+            Mod.GetToInstallState = GetNodeChecked;
+            Mod.SetToInstallState = SetNodeChecked;
+        }
+
+        private static bool GetNodeChecked(Mod mod)
+        {
+            bool? check = ((CheckBox)(itemDict[mod.Key].Header)).IsChecked;
+            return check.HasValue ? check.Value : false;
+        }
+
+        private static void SetNodeChecked(Mod mod, bool flag)
+        {
+            if (((CheckBox)(itemDict[mod.Key].Header)).IsChecked != flag)
+            {
+                ((CheckBox)(itemDict[mod.Key].Header)).IsChecked = flag;
+            }
         }
 
         private void WriteNodes()
@@ -41,7 +58,6 @@ namespace LauncherWPF
                 {
                     categoryDict[i.Value.Category] = new TreeViewItem();
                     categoryDict[i.Value.Category].Header = i.Value.Category + " Mods";
-                    MainTreeView.Items.Add(categoryDict[i.Value.Category]);
                 }
 
                 itemDict[i.Key] = new TreeViewItem();
@@ -57,6 +73,11 @@ namespace LauncherWPF
                     addonCheckBox.Content = j.Value.Name;
                     itemDict[i.Key].Items.Add(itemDict[j.Key]);
                 }
+            }
+
+            foreach (var i in categoryDict)
+            {
+                MainTreeView.Items.Add(i);
             }
         }
 

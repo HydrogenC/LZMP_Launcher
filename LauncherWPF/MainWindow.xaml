@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LauncherWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="600" WindowStyle="None" Background="#FF1E1E1E" BorderBrush="#FFC8C8C8" Foreground="White" MouseLeftButtonDown="MainGrid_MouseLeftButtonDown">
+        Title="MainWindow" Height="600" Width="600" WindowStyle="None" Background="#FF1E1E1E" BorderBrush="#FFC8C8C8" Foreground="White" MouseLeftButtonDown="MainGrid_MouseLeftButtonDown" ScrollViewer.VerticalScrollBarVisibility="Disabled" ResizeMode="NoResize">
     <Grid x:Name="MainGrid" MouseLeftButtonDown="MainGrid_MouseLeftButtonDown">
         <Button x:Name="CloseForm" Content="X" HorizontalAlignment="Right" Height="48" Margin="0,16,16,0" VerticalAlignment="Top" Width="48" Background="#FF1E1E1E" Foreground="White" FontSize="28" BorderBrush="{x:Null}" Click="CloseForm_Click"/>
         <Button x:Name="DeveloperToolsButton" Content="D" HorizontalAlignment="Right" Height="48" Margin="0,16,72,0" VerticalAlignment="Top" Width="48" Background="#FF1E1E1E" Foreground="White" FontSize="28" BorderBrush="{x:Null}" Click="DeveloperToolsButton_Click"/>
@@ -13,6 +13,7 @@
         <Button x:Name="LaunchClientButton" Content="Launch Client" HorizontalAlignment="Left" Height="50" Margin="418,92,0,0" VerticalAlignment="Top" Width="150" Background="#FF1E1E1E" FontSize="20" Foreground="White" Click="LaunchClientButton_Click"/>
         <Button x:Name="LaunchServerButton" Content="Launch Server" HorizontalAlignment="Left" Height="50" Margin="418,162,0,0" VerticalAlignment="Top" Width="150" Background="#FF1E1E1E" FontSize="20" Foreground="White" Click="LaunchServerButton_Click"/>
         <Button x:Name="AboutButton" Content="About Us" HorizontalAlignment="Left" Height="50" Margin="418,232,0,0" VerticalAlignment="Top" Width="150" Background="#FF1E1E1E" FontSize="20" Foreground="White"/>
-        <Frame x:Name="PageFrame" HorizontalAlignment="Left" Height="340" Margin="32,80,0,0" VerticalAlignment="Top" Width="360" NavigationUIVisibility="Hidden"/>
+        <Frame x:Name="PageFrame" HorizontalAlignment="Left" Height="500" Margin="32,80,0,0" VerticalAlignment="Top" Width="360" NavigationUIVisibility="Hidden"/>
+        <Grid x:Name="CurrentInstanceGrid" HorizontalAlignment="Left" Height="132" Margin="418,302,0,0" VerticalAlignment="Top" Width="150"/>
     </Grid>
 </Window>

@@ -5,14 +5,14 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:LauncherWPF"
       mc:Ignorable="d"
-      Title="ModPage" Height="340" Width="360">
+      Title="ModPage" Height="500" Width="360">
 
-    <Grid Width="360" Height="340" Margin="0,0,0,0" VerticalAlignment="Top">
-        <TreeView x:Name="MainTreeView" HorizontalAlignment="Left" Height="270" Margin="10,10,0,0" VerticalAlignment="Top" Width="340" Background="{x:Null}">
+    <Grid Width="360" Height="500" Margin="0,0,0,0" VerticalAlignment="Top">
+        <TreeView x:Name="MainTreeView" HorizontalAlignment="Left" Height="425" Margin="10,10,0,0" VerticalAlignment="Top" Width="340" Background="{x:Null}">
 
         </TreeView>
-        <Button x:Name="CheckAllButton" Content="Check All" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="105" Background="#FF1E1E1E" FontSize="18" Foreground="White" Margin="10,290,0,0"/>
-        <Button x:Name="ApplyButton" Content="Apply" HorizontalAlignment="Center" Height="40" VerticalAlignment="Top" Width="105" Background="#FF1E1E1E" FontSize="18" Foreground="White" Margin="0,290,0,0"/>
-        <Button x:Name="BackButton" Content="Back" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="105" Background="#FF1E1E1E" FontSize="18" Foreground="White" Margin="245,290,0,0" Click="BackButton_Click"/>
+        <Button x:Name="CheckAllButton" Content="Check All" HorizontalAlignment="Left" Height="40" VerticalAlignment="Bottom" Width="105" Background="#FF1E1E1E" FontSize="18" Foreground="White" Margin="10,450,0,10"/>
+        <Button x:Name="ApplyButton" Content="Apply" HorizontalAlignment="Center" Height="40" VerticalAlignment="Bottom" Width="104" Background="#FF1E1E1E" FontSize="18" Foreground="White" Margin="128,450,128,10"/>
+        <Button x:Name="BackButton" Content="Back" HorizontalAlignment="Left" Height="40" Width="105" Background="#FF1E1E1E" FontSize="18" Foreground="White" Margin="245,0,0,10" Click="BackButton_Click" VerticalAlignment="Bottom"/>
     </Grid>
 </Page>

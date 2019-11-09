@@ -9,8 +9,8 @@
              x:Name="ClassListItem"
              BorderBrush="#FF969696" BorderThickness="1" Background="{x:Null}">
     <Grid Width="300" Height="100">
-        <Label x:Name="TitleLabel" Content="Null" HorizontalAlignment="Left" Height="30" Margin="76,10,0,0" VerticalAlignment="Top" Width="214" FontSize="18" Foreground="White"/>
-        <Label x:Name="DescriptionLabel" Content="Null" HorizontalAlignment="Left" Height="45" Margin="76,45,0,0" VerticalAlignment="Top" Width="214" Foreground="#FF969696"/>
-        <Image x:Name="MainImage" HorizontalAlignment="Left" Height="60" Margin="10,20,0,0" VerticalAlignment="Top" Width="60" ScrollViewer.VerticalScrollBarVisibility="Disabled" Stretch="Fill"/>
+        <Label x:Name="TitleLabel" Content="Null" HorizontalAlignment="Left" Height="36" Margin="76,10,0,0" VerticalAlignment="Top" Width="214" FontSize="18" Foreground="White"/>
+        <Label x:Name="DescriptionLabel" Content="Null" HorizontalAlignment="Left" Height="44" Margin="76,46,0,0" VerticalAlignment="Top" Width="214" Foreground="#FF969696"/>
+        <Image x:Name="MainImage" HorizontalAlignment="Left" Height="60" Margin="10,10,0,0" VerticalAlignment="Top" Width="60" ScrollViewer.VerticalScrollBarVisibility="Disabled" Stretch="Uniform"/>
     </Grid>
 </Button>

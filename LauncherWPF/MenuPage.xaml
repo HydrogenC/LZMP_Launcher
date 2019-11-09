@@ -5,13 +5,13 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:LauncherWPF"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="MenuPage" Width="360" Height="340">
+      d:DesignHeight="500" d:DesignWidth="360"
+      Title="MenuPage" Width="360" Height="500">
 
-    <Grid x:Name="MainGrid" Width="360" Height="340">
-        <local:MainListItem x:Name="ModCustom" Description="Customize the modset to use in the modpack. " Title="Mod Customizer" Width="300" Height="80" Margin="30,10,30,250" BorderBrush="#FF9B9B9B" Panel.ZIndex="1" Click="ModCustom_Click" />
-        <local:MainListItem x:Name="SavesManager" Description="Manages the maps in your instance. " Title="Saves Manager" Width="300" Height="80" Margin="30,110,30,150" BorderBrush="#FF9B9B9B" Panel.ZIndex="2" BorderThickness="1" />
-        <local:MainListItem x:Name="ComingSoon" Description="New features coming soon. " Title="Comming Soon" Width="300" Height="80" Margin="30,210,30,50" BorderBrush="#FF9B9B9B" Panel.ZIndex="1" />
+    <Grid x:Name="MainGrid" Width="360" Height="500">
+        <local:MainListItem x:Name="ModCustom" Description="Modify your modset. " Title="Mod Customizer" Width="300" Height="80" Margin="30,24,30,396" BorderBrush="#FF9B9B9B" Panel.ZIndex="1" Click="ModCustom_Click" MainImageSource="Wrench.png"/>
+        <local:MainListItem x:Name="SavesManager" Description="Manages your maps. " Title="Saves Manager" Width="300" Height="80" Margin="30,124,30,296" BorderBrush="#FF9B9B9B" Panel.ZIndex="2" BorderThickness="1" MainImageSource="Config.png" />
+        <local:MainListItem x:Name="ComingSoon" Description="New features coming soon. " Title="Comming Soon" Width="300" Height="80" Margin="30,224,30,196" BorderBrush="#FF9B9B9B" Panel.ZIndex="1" MainImageSource="ComingSoon.png" />
     </Grid>
 </Page>
     
