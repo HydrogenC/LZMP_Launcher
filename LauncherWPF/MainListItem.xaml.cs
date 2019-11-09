@@ -18,7 +18,7 @@ namespace LauncherWPF
     /// <summary>
     /// MainListItem.xaml 的交互逻辑
     /// </summary>
-    public partial class MainListItem : UserControl
+    public partial class MainListItem : Button
     {
         public MainListItem()
         {
@@ -35,6 +35,12 @@ namespace LauncherWPF
         {
             get => (string)DescriptionLabel.Content;
             set => DescriptionLabel.Content = value;
+        }
+
+        public ImageSource MainImageSource
+        {
+            get => MainImage.Source;
+            set => MainImage.Source = value;
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Windows.Forms;
 
 namespace LauncherCore
 {
@@ -48,7 +47,7 @@ namespace LauncherCore
                 Available = File.Exists(MinecraftInstance.ResourcePath + i + ".jar");
                 if (!Available)
                 {
-                    MessageBox.Show(SharedData.MainWindow, "File not found: \n" + Name, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    SharedData.DisplayMessage("File not found: \n" + Name, "Warning", MessageType.Warning);
                     break;
                 }
             }
@@ -64,7 +63,7 @@ namespace LauncherCore
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show(SharedData.MainWindow, "An error occured while installing: \n" + Name, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    SharedData.DisplayMessage("An error occured while installing: \n" + Name, "Error", MessageType.Error);
                     return;
                 }
             }
@@ -80,7 +79,7 @@ namespace LauncherCore
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show(SharedData.MainWindow, "An error occured while uninstalling: \n" + Name, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    SharedData.DisplayMessage("An error occured while uninstalling: \n" + Name, "Error", MessageType.Error);
                     return;
                 }
             }

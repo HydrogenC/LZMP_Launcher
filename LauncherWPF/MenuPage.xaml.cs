@@ -28,7 +28,7 @@ namespace LauncherWPF
             this.action = action;
         }
 
-        private void ModCustom_MouseDown(object sender, MouseButtonEventArgs e)
+        private void ModCustom_Click(object sender, RoutedEventArgs e)
         {
             action(new ModPage(action));
         }

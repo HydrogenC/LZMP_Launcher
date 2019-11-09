@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
@@ -29,7 +30,17 @@ namespace LauncherWPF
         public MainWindow()
         {
             InitializeComponent();
+            SharedData.DisplayMessage = (string content, string caption, MessageBoxButton btn, MessageBoxImage img) => MessageBoxResult
+            {
+
+            }
+
             Application.Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
+
+            XmlHelper.ReadDefinitions(MinecraftInstance.WorkingPath + "\\BasicSettings.xml");
+            LauncherTitleLabel.Content = string.Format((string)LauncherTitleLabel.Content, SharedData.Version);
+            Core.CheckInstallation();
+
             PageFrame.Content = new MenuPage(new Action<Page>(SetFrameContent));
         }
 
@@ -60,7 +71,7 @@ namespace LauncherWPF
 
         private void DeveloperToolsButton_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
     }
 }

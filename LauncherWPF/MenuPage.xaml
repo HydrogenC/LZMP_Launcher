@@ -9,7 +9,7 @@
       Title="MenuPage" Width="360" Height="340">
 
     <Grid x:Name="MainGrid" Width="360" Height="340">
-        <local:MainListItem x:Name="ModCustom" Description="Customize the modset to use in the modpack. " Title="Mod Customizer" Width="300" Height="80" Margin="30,10,30,250" BorderBrush="#FF9B9B9B" Panel.ZIndex="1" MouseDown="ModCustom_MouseDown" />
+        <local:MainListItem x:Name="ModCustom" Description="Customize the modset to use in the modpack. " Title="Mod Customizer" Width="300" Height="80" Margin="30,10,30,250" BorderBrush="#FF9B9B9B" Panel.ZIndex="1" Click="ModCustom_Click" />
         <local:MainListItem x:Name="SavesManager" Description="Manages the maps in your instance. " Title="Saves Manager" Width="300" Height="80" Margin="30,110,30,150" BorderBrush="#FF9B9B9B" Panel.ZIndex="2" BorderThickness="1" />
         <local:MainListItem x:Name="ComingSoon" Description="New features coming soon. " Title="Comming Soon" Width="300" Height="80" Margin="30,210,30,50" BorderBrush="#FF9B9B9B" Panel.ZIndex="1" />
     </Grid>

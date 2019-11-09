@@ -1,12 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Windows.Forms;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace LauncherCore
 {
+    public enum MessageType
+    {
+        Error,
+        Info,
+        Warning,
+        YesNoQuestion,
+        YesNoCancelQuestion,
+        OKCancelQuestion
+    }
+
+    public enum MessageResult
+    {
+        OK,
+        Cancel,
+        Yes,
+        No
+    }
 
     public class MinecraftInstance
     {
@@ -71,7 +87,8 @@ namespace LauncherCore
         public static Dictionary<string, Mod> Mods = new Dictionary<string, Mod>();
         public static MinecraftInstance Client = new MinecraftInstance("Client\\.minecraft", "");
         public static MinecraftInstance Server = new MinecraftInstance("Server\\panel\\server", "");
-        public static IWin32Window MainWindow;
+        public static Func<string, string, MessageType, MessageResult> DisplayMessage;
+        public static Func<string, string, string, string> BrowzeFile;
 
         public static string SavePath
         {
@@ -90,14 +107,6 @@ namespace LauncherCore
         {
             status = "";
             mutex.ReleaseMutex();
-        }
-
-        public static void Update(Label label)
-        {
-            if (label.Text != status)
-            {
-                label.Text = status;
-            }
         }
 
         public static string status = "";
@@ -215,7 +224,7 @@ namespace LauncherCore
                     }
                     catch (Exception)
                     {
-                        MessageBox.Show(SharedData.MainWindow, "An error occured while cleaning! ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        SharedData.DisplayMessage("An error occured while cleaning! ", "Error", MessageType.Error);
                     }
                 }
             }

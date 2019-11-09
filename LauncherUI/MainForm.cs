@@ -35,9 +35,30 @@ namespace LauncherUI
         {
             InitializeComponent();
 
+            SharedData.DisplayMessage = (string content, string caption, MessageType type) =>
+            {
+                MessageBoxButtons btn;
+                MessageBoxIcon icn;
+                switch (type)
+                {
+                    case MessageType.Error:
+                        btn = MessageBoxButtons.OK;
+                        icn = MessageBoxIcon.Error;
+                        break;
+                    case MessageType.Info:
+                        btn = MessageBoxButtons.OK;
+                        icn = MessageBoxIcon.Information;
+                        break;
+                    case MessageType.Warning:
+                        btn = MessageBoxButtons.OK;
+                        icn = MessageBoxIcon.Warning;
+                        break;
+                }
+            };
+
             CheckForIllegalCrossThreadCalls = false;
             XmlHelper.ReadDefinitions(MinecraftInstance.WorkingPath + "\\BasicSettings.xml");
-            BigTitle.Text += SharedData.Version;
+            BigTitle.Text = string.Format(BigTitle.Text, SharedData.Version);
             Core.CheckInstallation();
             WriteNodes();
 
@@ -252,7 +273,10 @@ namespace LauncherUI
 
                     while (processing)
                     {
-                        CurrentProgress.Update(SmallTitle);
+                        if (SmallTitle.Text != CurrentProgress.status)
+                        {
+                            SmallTitle.Text = CurrentProgress.status;
+                        }
                         Application.DoEvents();
                     }
 
@@ -266,7 +290,10 @@ namespace LauncherUI
 
                     while (processing)
                     {
-                        CurrentProgress.Update(SmallTitle);
+                        if (SmallTitle.Text != CurrentProgress.status)
+                        {
+                            SmallTitle.Text = CurrentProgress.status;
+                        }
                         Application.DoEvents();
                     }
 
@@ -416,7 +443,10 @@ namespace LauncherUI
 
                         while (processing)
                         {
-                            CurrentProgress.Update(SmallTitle);
+                            if (SmallTitle.Text != CurrentProgress.status)
+                            {
+                                SmallTitle.Text = CurrentProgress.status;
+                            }
                             Application.DoEvents();
                         }
                     }

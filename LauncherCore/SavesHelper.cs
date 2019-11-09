@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Windows.Forms;
 
 namespace LauncherCore
 {
@@ -68,7 +67,6 @@ namespace LauncherCore
 
         public static void ImportSave(string zipFile, MinecraftInstance instance)
         {
-            SaveFileDialog xmlDialog = new SaveFileDialog();
             xmlDialog.Filter = "Xml File（*.xml）|*.xml";
             CurrentProgress.status = "Extracting";
 
@@ -87,17 +85,16 @@ namespace LauncherCore
             {
                 if (File.Exists(destDir + "\\level.dat"))
                 {
-                    DialogResult result = MessageBox.Show(SharedData.MainWindow, "Destination directory already exists, do you wish to override it. Choose Yes to override it, choose No to export the map in the existing folder, choose Cancel to cancel the current operation. ", "Prompt", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                    MessageResult result = SharedData.DisplayMessage("Destination directory already exists, do you wish to override it. Choose Yes to override it, choose No to export the map in the existing folder, choose Cancel to cancel the current operation. ", "Prompt", MessageType.YesNoQuestion);
                     switch (result)
                     {
-                        case DialogResult.Cancel:
+                        case MessageResult.Cancel:
                             goto CleanUp;
-                        case DialogResult.Yes:
+                        case MessageResult.Yes:
                             Directory.Delete(destDir, true);
                             break;
-                        case DialogResult.No:
+                        case MessageResult.No:
                             Save existingSave = new Save(destDir);
-                            SaveFileDialog exportDialog = new SaveFileDialog();
                             exportDialog.Filter = "Zip File（*.zip）|*.zip";
                             exportDialog.FileName = existingSave.LevelName + ".zip";
                             if (exportDialog.ShowDialog(SharedData.MainWindow) == DialogResult.OK)
@@ -121,7 +118,7 @@ namespace LauncherCore
             CurrentProgress.status = "Importing Map";
             Core.CopyDirectory(tmpDir + "save", destDir);
 
-            if (MessageBox.Show(SharedData.MainWindow, "Override the current modset with the map's? If you choose No, you can select where to save the map's modset later. ", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (SharedData.DisplayMessage("Override the current modset with the map's? If you choose No, you can select where to save the map's modset later. ", "Prompt", MessageType.YesNoQuestion) == MessageResult.Yes)
             {
                 XmlHelper.ReadXmlSet(tmpDir + "Set.xml", false);
             }

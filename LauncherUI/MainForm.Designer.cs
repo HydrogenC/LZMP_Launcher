@@ -85,9 +85,9 @@
             this.BigTitle.Location = new System.Drawing.Point(34, 128);
             this.BigTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.BigTitle.Name = "BigTitle";
-            this.BigTitle.Size = new System.Drawing.Size(288, 114);
+            this.BigTitle.Size = new System.Drawing.Size(386, 114);
             this.BigTitle.TabIndex = 1;
-            this.BigTitle.Text = "LZMP ";
+            this.BigTitle.Text = "LZMP {0}";
             this.BigTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_MouseDown);
             // 
             // MainTree
