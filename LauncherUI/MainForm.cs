@@ -53,6 +53,60 @@ namespace LauncherUI
                         btn = MessageBoxButtons.OK;
                         icn = MessageBoxIcon.Warning;
                         break;
+                    case MessageType.OKCancelQuestion:
+                        btn = MessageBoxButtons.OKCancel;
+                        icn = MessageBoxIcon.Question;
+                        break;
+                    case MessageType.YesNoQuestion:
+                        btn = MessageBoxButtons.YesNo;
+                        icn = MessageBoxIcon.Question;
+                        break;
+                    case MessageType.YesNoCancelQuestion:
+                        btn = MessageBoxButtons.YesNoCancel;
+                        icn = MessageBoxIcon.Question;
+                        break;
+                    default:
+                        btn = MessageBoxButtons.OK;
+                        icn = MessageBoxIcon.None;
+                        break;
+                }
+                DialogResult rst = MessageBox.Show(this, content, caption, btn, icn);
+                switch (rst)
+                {
+                    case DialogResult.OK:
+                        return MessageResult.OK;
+                    case DialogResult.Cancel:
+                        return MessageResult.Cancel;
+                    case DialogResult.Yes:
+                        return MessageResult.Yes;
+                    case DialogResult.No:
+                        return MessageResult.No;
+                    default:
+                        return MessageResult.OK;
+                }
+            };
+            SharedData.BrowzeFile = (string initial, string filter, string caption) =>
+            {
+                SaveFileDialog dialog = new SaveFileDialog();
+                if (!string.IsNullOrEmpty(initial))
+                {
+                    dialog.FileName = initial;
+                }
+                if (!string.IsNullOrEmpty(filter))
+                {
+                    dialog.Filter = filter;
+                }
+                if (!string.IsNullOrEmpty(caption))
+                {
+                    dialog.Title = caption;
+                }
+                if (dialog.ShowDialog(this) == DialogResult.OK)
+                {
+                    return dialog.FileName;
+                }
+                else
+                {
+                    return null;
                 }
             };
 
@@ -347,7 +401,7 @@ namespace LauncherUI
                     processing = true;
                     action.BeginInvoke(ImportDialog.FileName, activeInstance, ProcessEndCallback, null);
 
-                    string prevText = "";
+                    string prevText = string.Empty;
                     while (processing)
                     {
                         if (CurrentProgress.status != prevText)

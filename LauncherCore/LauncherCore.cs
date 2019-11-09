@@ -85,8 +85,8 @@ namespace LauncherCore
     {
         public static string Version;
         public static Dictionary<string, Mod> Mods = new Dictionary<string, Mod>();
-        public static MinecraftInstance Client = new MinecraftInstance("Client\\.minecraft", "");
-        public static MinecraftInstance Server = new MinecraftInstance("Server\\panel\\server", "");
+        public static MinecraftInstance Client = new MinecraftInstance("Client\\.minecraft", string.Empty);
+        public static MinecraftInstance Server = new MinecraftInstance("Server\\panel\\server", string.Empty);
         public static Func<string, string, MessageType, MessageResult> DisplayMessage;
         public static Func<string, string, string, string> BrowzeFile;
 
@@ -105,11 +105,11 @@ namespace LauncherCore
     {
         public static void Initialize()
         {
-            status = "";
+            status = string.Empty;
             mutex.ReleaseMutex();
         }
 
-        public static string status = "";
+        public static string status = string.Empty;
         public static Mutex mutex = new Mutex();
     }
 

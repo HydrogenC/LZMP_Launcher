@@ -47,7 +47,7 @@ namespace ICSharpCode.SharpZipLib.Core
                         }
                         else
                         {
-                            result = "";
+                            result = string.Empty;
                         }
                     }
                 }

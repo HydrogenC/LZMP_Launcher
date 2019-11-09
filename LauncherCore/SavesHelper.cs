@@ -67,7 +67,6 @@ namespace LauncherCore
 
         public static void ImportSave(string zipFile, MinecraftInstance instance)
         {
-            xmlDialog.Filter = "Xml File（*.xml）|*.xml";
             CurrentProgress.status = "Extracting";
 
             string tmpDir = MinecraftInstance.WorkingPath + "\\Tmp\\";
@@ -95,11 +94,10 @@ namespace LauncherCore
                             break;
                         case MessageResult.No:
                             Save existingSave = new Save(destDir);
-                            exportDialog.Filter = "Zip File（*.zip）|*.zip";
-                            exportDialog.FileName = existingSave.LevelName + ".zip";
-                            if (exportDialog.ShowDialog(SharedData.MainWindow) == DialogResult.OK)
+                            string exportPath = SharedData.BrowzeFile(existingSave.LevelName + ".zip", "Zip File（*.zip）|*.zip", null);
+                            if (!string.IsNullOrEmpty(exportPath))
                             {
-                                ExportSave(existingSave, exportDialog.FileName);
+                                ExportSave(existingSave, exportPath);
                                 Directory.Delete(destDir, true);
                             }
                             else
@@ -124,9 +122,10 @@ namespace LauncherCore
             }
             else
             {
-                if (xmlDialog.ShowDialog(SharedData.MainWindow) == DialogResult.OK)
+                string fileName = SharedData.BrowzeFile(null, "Xml File（*.xml）|*.xml", null);
+                if (!string.IsNullOrEmpty(fileName))
                 {
-                    File.Copy(tmpDir + "Set.xml", xmlDialog.FileName, true);
+                    File.Copy(tmpDir + "Set.xml", fileName, true);
                 }
             }
 
