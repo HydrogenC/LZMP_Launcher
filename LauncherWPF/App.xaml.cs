@@ -5,6 +5,8 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using LauncherCore;
 
 namespace LauncherWPF
 {
@@ -13,5 +15,22 @@ namespace LauncherWPF
     /// </summary>
     public partial class App : Application
     {
+        public static Action<dynamic> SwitchPage
+        {
+            get;
+            set;
+        }
+
+        public static Type CurrentPage
+        {
+            get;
+            set;
+        }
+
+        public static MinecraftInstance CurrentInstance
+        {
+            get;
+            set;
+        }
     }
 }

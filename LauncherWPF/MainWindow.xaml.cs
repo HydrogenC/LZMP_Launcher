@@ -23,11 +23,6 @@ namespace LauncherWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        public void SetFrameContent(Page content)
-        {
-            PageFrame.Content = content;
-        }
-
         public MainWindow()
         {
             InitializeComponent();
@@ -107,6 +102,11 @@ namespace LauncherWPF
                     return null;
                 }
             };
+            App.SwitchPage = (dynamic page) =>
+            {
+                PageFrame.Content = page;
+                App.CurrentPage = page.GetType();
+            };
 
             Application.Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
 
@@ -114,7 +114,7 @@ namespace LauncherWPF
             LauncherTitleLabel.Content = string.Format((string)LauncherTitleLabel.Content, SharedData.Version);
             Core.CheckInstallation();
 
-            PageFrame.Content = new MenuPage(new Action<Page>(SetFrameContent));
+            PageFrame.Content = new MenuPage();
         }
 
         private void CloseForm_Click(object sender, RoutedEventArgs e)
@@ -145,6 +145,28 @@ namespace LauncherWPF
         private void DeveloperToolsButton_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void ClientRadio_Checked(object sender, RoutedEventArgs e)
+        {
+            App.CurrentInstance = SharedData.Client;
+        }
+
+        private void PageFrame_ContentRendered(object sender, EventArgs e)
+        {
+            if (App.CurrentPage == typeof(ModPage))
+            {
+                ApplyForBorder.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                ApplyForBorder.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void ServerRadio_Checked(object sender, RoutedEventArgs e)
+        {
+            App.CurrentInstance = SharedData.Server;
         }
     }
 }

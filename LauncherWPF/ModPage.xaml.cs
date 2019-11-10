@@ -21,19 +21,52 @@ namespace LauncherWPF
     /// </summary>
     public partial class ModPage : Page
     {
-        private Action<Page> action;
+        private bool allChecked = false;
         private static Dictionary<string, TreeViewItem> itemDict = new Dictionary<string, TreeViewItem>();
         private static Dictionary<string, TreeViewItem> categoryDict = new Dictionary<string, TreeViewItem>();
 
-        public ModPage(Action<Page> action)
+        public ModPage()
         {
             InitializeComponent();
-            this.action = action;
-
             WriteNodes();
 
             Mod.GetToInstallState = GetNodeChecked;
             Mod.SetToInstallState = SetNodeChecked;
+        }
+
+        private void CheckIfAllChecked()
+        {
+            allChecked = true;
+            foreach (var i in SharedData.Mods)
+            {
+                if (!i.Value.ToInstall)
+                {
+                    allChecked = false;
+                }
+
+                foreach (var j in i.Value.Addons)
+                {
+                    if (!j.Value.ToInstall)
+                    {
+                        allChecked = false;
+                        break;
+                    }
+                }
+
+                if (!allChecked)
+                {
+                    break;
+                }
+            }
+
+            if (allChecked)
+            {
+                CheckAllButton.Content = "Cancel All";
+            }
+            else
+            {
+                CheckAllButton.Content = "Check All";
+            }
         }
 
         private static bool GetNodeChecked(Mod mod)
@@ -83,7 +116,13 @@ namespace LauncherWPF
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            action(new MenuPage(action));
+            App.SwitchPage(new MenuPage());
+        }
+
+        private void CheckAllButton_Click(object sender, RoutedEventArgs e)
+        {
+            Core.CheckAll(!allChecked);
+            CheckIfAllChecked();
         }
     }
 }

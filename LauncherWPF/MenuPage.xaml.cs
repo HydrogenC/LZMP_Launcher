@@ -20,17 +20,14 @@ namespace LauncherWPF
     /// </summary>
     public partial class MenuPage : Page
     {
-        private Action<Page> action;
-
-        public MenuPage(Action<Page> action)
+        public MenuPage()
         {
             InitializeComponent();
-            this.action = action;
         }
 
         private void ModCustom_Click(object sender, RoutedEventArgs e)
         {
-            action(new ModPage(action));
+            App.SwitchPage(new ModPage());
         }
     }
 }
