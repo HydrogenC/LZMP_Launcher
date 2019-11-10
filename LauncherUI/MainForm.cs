@@ -251,11 +251,6 @@ namespace LauncherUI
                     }
                 }
             }
-
-            if (i.Checked)
-            {
-                CheckIfAllChecked();
-            }
         }
 
         #region Buttons

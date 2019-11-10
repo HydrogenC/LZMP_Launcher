@@ -19,7 +19,7 @@ namespace LauncherWPF
     /// <summary>
     /// MainTreeView 的交互逻辑
     /// </summary>
-    public class MainTreeItem : INotifyPropertyChanged
+    public class MainTreeItem
     {
         public MainTreeItem(string text)
         {
@@ -43,13 +43,7 @@ namespace LauncherWPF
             get;
         } = new List<MainTreeItem>();
 
-        private bool? itemChecked;
-
-        public bool? CheckedBinding
-        {
-            get => itemChecked;
-            set => itemChecked = value;
-        }
+        private bool? itemChecked = false;
 
         public CheckBoxState Checked
         {
@@ -84,6 +78,7 @@ namespace LauncherWPF
                         itemChecked = null;
                         break;
                 }
+                AfterCheck();
             }
         }
 
@@ -132,69 +127,62 @@ namespace LauncherWPF
             }
         }
 
-        public void CheckAllChildren(bool flag)
+        public bool? ItemChecked
         {
-            CheckBoxState state = CheckBoxState.NotChecked;
-            if (flag)
+            get => itemChecked;
+            set
             {
-                state = CheckBoxState.Checked;
-            }
-            else
-            {
-                state = CheckBoxState.NotChecked;
-            }
-
-            foreach (var i in Children)
-            {
-                i.Checked = state;
+                itemChecked = value;
+                AfterCheck();
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged = (object sender, PropertyChangedEventArgs args) =>
+        public void CheckAllChildren(bool flag)
         {
-            MainTreeItem item = (MainTreeItem)sender;
-
-            if (item.IsCategory)
+            foreach (var i in Children)
             {
-                if (item.Checked == CheckBoxState.Checked)
+                i.itemChecked = flag;
+            }
+        }
+
+        private void AfterCheck()
+        {
+            if (IsCategory)
+            {
+                if (Checked == CheckBoxState.Checked)
                 {
-                    item.CheckAllChildren(true);
+                    CheckAllChildren(true);
                     return;
                 }
 
-                if (item.Checked == CheckBoxState.NotChecked)
+                if (Checked == CheckBoxState.NotChecked)
                 {
-                    item.CheckAllChildren(false);
+                    CheckAllChildren(false);
                     return;
                 }
             }
 
-            if (item.Parent.IsCategory)
+            if ((Parent != null) && Parent.IsCategory)
             {
-                if (item.Parent.AllChildrenChecked)
+                if (Parent.AllChildrenChecked)
                 {
-                    item.Parent.Checked = CheckBoxState.Checked;
+                    Parent.Checked = CheckBoxState.Checked;
                     return;
                 }
-                if (item.Parent.NoChildrenChecked)
+                if (Parent.NoChildrenChecked)
                 {
-                    item.Parent.Checked = CheckBoxState.NotChecked;
+                    Parent.Checked = CheckBoxState.NotChecked;
                     return;
                 }
-                item.Parent.Checked = CheckBoxState.HalfChecked;
+                Parent.Checked = CheckBoxState.HalfChecked;
             }
             else
             {
-                if (item.Checked == CheckBoxState.Checked)
+                if (Checked == CheckBoxState.Checked)
                 {
-                    item.Parent.Checked = CheckBoxState.Checked;
+                    Parent.Checked = CheckBoxState.Checked;
                 }
             }
-        };
-
-        private void NotifyPropertyChanged(string info)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(info));
         }
     }
 }

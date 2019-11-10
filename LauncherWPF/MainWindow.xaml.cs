@@ -133,8 +133,7 @@ namespace LauncherWPF
             Core.CheckAvailability();
             ClientRadio.IsChecked = true;
 
-            PageFrame.Content = new MenuPage();
-            App.CurrentPage = typeof(MenuPage);
+            App.SwitchPage(new MenuPage());
         }
 
         private void CloseForm_Click(object sender, RoutedEventArgs e)
@@ -172,6 +171,11 @@ namespace LauncherWPF
             App.CurrentInstance = SharedData.Client;
         }
 
+        private void ServerRadio_Checked(object sender, RoutedEventArgs e)
+        {
+            App.CurrentInstance = SharedData.Server;
+        }
+
         private void PageFrame_ContentRendered(object sender, EventArgs e)
         {
             if (App.CurrentPage == typeof(ModPage))
@@ -182,16 +186,6 @@ namespace LauncherWPF
             {
                 ApplyForBorder.Visibility = Visibility.Hidden;
             }
-        }
-
-        private void ServerRadio_Checked(object sender, RoutedEventArgs e)
-        {
-            App.CurrentInstance = SharedData.Server;
-        }
-
-        private void ClientCheck_Checked(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

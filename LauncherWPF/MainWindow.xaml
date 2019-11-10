@@ -24,8 +24,8 @@
         <Border x:Name="ApplyForBorder" BorderBrush="#FF9B9B9B" Panel.ZIndex="1" BorderThickness="1" Width="150" Margin="418,401,32,119" Visibility="Hidden">
             <Grid x:Name="ApplyForGrid" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Disabled">
                 <Label x:Name="ApplyForLabel" Content="Apply For: " HorizontalAlignment="Left" Height="27" VerticalAlignment="Top" Width="130" Foreground="White" FontSize="14" Margin="10,0,0,0"/>
-                <CheckBox x:Name="ClientCheck" Content="Client" Margin="10,30,0,30" Foreground="White" Padding="4,0,0,0" FontSize="14" Checked="ClientCheck_Checked"/>
-                <CheckBox x:Name="ServerCheck" Content="Server" Margin="10,50,0,10" Foreground="White" Padding="4,0,0,0" FontSize="14"/>
+                <CheckBox x:Name="ClientCheck" Content="Client" Margin="10,30,0,30" Foreground="White" Padding="4,0,0,0" FontSize="14" IsChecked="{Binding App.ApplyForClient, Mode=OneWayToSource}"/>
+                <CheckBox x:Name="ServerCheck" Content="Server" Margin="10,50,0,10" Foreground="White" Padding="4,0,0,0" FontSize="14" IsChecked="{Binding App.ApplyForServer, Mode=OneWayToSource}"/>
             </Grid>
         </Border>
     </Grid>

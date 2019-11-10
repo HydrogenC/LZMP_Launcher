@@ -21,7 +21,7 @@ namespace LauncherWPF
     /// </summary>
     public partial class ModPage : Page
     {
-        private bool allChecked = false;
+        public static bool allChecked = false;
         public static Dictionary<string, MainTreeItem> itemDict = new Dictionary<string, MainTreeItem>();
         public static Dictionary<string, MainTreeItem> categoryDict = new Dictionary<string, MainTreeItem>();
 
