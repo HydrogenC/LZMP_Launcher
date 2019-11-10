@@ -107,14 +107,30 @@ namespace LauncherWPF
                 PageFrame.Content = page;
                 App.CurrentPage = page.GetType();
             };
-
             Application.Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
+            Mod.GetToInstallState = (Mod mod) => ModPage.itemDict[mod.Key].Checked.Value;
+            Mod.SetToInstallState = (Mod mod, bool flag) =>
+            {
+                if (ModPage.itemDict[mod.Key].Checked.Value != flag)
+                {
+                    ModPage.itemDict[mod.Key].Checked = flag;
+                }
+            };
 
             XmlHelper.ReadDefinitions(MinecraftInstance.WorkingPath + "\\BasicSettings.xml");
             LauncherTitleLabel.Content = string.Format((string)LauncherTitleLabel.Content, SharedData.Version);
             Core.CheckInstallation();
 
+            if (System.IO.Directory.Exists(MinecraftInstance.WorkingPath + "\\Mods"))
+            {
+                Core.CopyDirectory(MinecraftInstance.WorkingPath + "\\Mods", SharedData.Client.ModPath);
+                Core.CopyDirectory(MinecraftInstance.WorkingPath + "\\Mods", SharedData.Server.ModPath);
+            }
+            Core.CheckAvailability();
+            ClientRadio.IsChecked = true;
+
             PageFrame.Content = new MenuPage();
+            App.CurrentPage = typeof(MenuPage);
         }
 
         private void CloseForm_Click(object sender, RoutedEventArgs e)

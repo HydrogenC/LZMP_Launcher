@@ -117,8 +117,14 @@ namespace LauncherUI
             WriteNodes();
 
             activeInstance = SharedData.Client;
-            Mod.GetToInstallState = GetNodeChecked;
-            Mod.SetToInstallState = SetNodeChecked;
+            Mod.GetToInstallState = (Mod mod) => nodeDict[mod.Key].Checked;
+            Mod.SetToInstallState = (Mod mod, bool flag) =>
+            {
+                if (nodeDict[mod.Key].Checked != flag)
+                {
+                    nodeDict[mod.Key].Checked = flag;
+                }
+            };
             ClientCheckBox.Checked = true;
             ServerCheckBox.Checked = true;
             ClientRadioButton.Checked = true;
@@ -156,19 +162,6 @@ namespace LauncherUI
             Core.CheckToInstallState(instance);
             CheckIfAllChecked();
             RefreshList(instance);
-        }
-
-        private static bool GetNodeChecked(Mod mod)
-        {
-            return nodeDict[mod.Key].Checked;
-        }
-
-        private static void SetNodeChecked(Mod mod, bool flag)
-        {
-            if (nodeDict[mod.Key].Checked != flag)
-            {
-                nodeDict[mod.Key].Checked = flag;
-            }
         }
 
         private void WriteNodes()

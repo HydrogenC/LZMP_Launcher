@@ -75,6 +75,7 @@
     <Compile Include="MainListItem.xaml.cs">
       <DependentUpon>MainListItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MainTreeItem.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

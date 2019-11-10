@@ -22,16 +22,13 @@ namespace LauncherWPF
     public partial class ModPage : Page
     {
         private bool allChecked = false;
-        private static Dictionary<string, TreeViewItem> itemDict = new Dictionary<string, TreeViewItem>();
-        private static Dictionary<string, TreeViewItem> categoryDict = new Dictionary<string, TreeViewItem>();
+        public static Dictionary<string, MainTreeItem> itemDict = new Dictionary<string, MainTreeItem>();
+        public static Dictionary<string, MainTreeItem> categoryDict = new Dictionary<string, MainTreeItem>();
 
         public ModPage()
         {
             InitializeComponent();
             WriteNodes();
-
-            Mod.GetToInstallState = GetNodeChecked;
-            Mod.SetToInstallState = SetNodeChecked;
         }
 
         private void CheckIfAllChecked()
@@ -69,48 +66,31 @@ namespace LauncherWPF
             }
         }
 
-        private static bool GetNodeChecked(Mod mod)
-        {
-            bool? check = ((CheckBox)(itemDict[mod.Key].Header)).IsChecked;
-            return check.HasValue ? check.Value : false;
-        }
-
-        private static void SetNodeChecked(Mod mod, bool flag)
-        {
-            if (((CheckBox)(itemDict[mod.Key].Header)).IsChecked != flag)
-            {
-                ((CheckBox)(itemDict[mod.Key].Header)).IsChecked = flag;
-            }
-        }
-
         private void WriteNodes()
         {
             foreach (var i in SharedData.Mods)
             {
                 if (!categoryDict.ContainsKey(i.Value.Category))
                 {
-                    categoryDict[i.Value.Category] = new TreeViewItem();
-                    categoryDict[i.Value.Category].Header = i.Value.Category + " Mods";
+                    categoryDict[i.Value.Category] = new MainTreeItem(i.Value.Category + " Mods");
+                    categoryDict[i.Value.Category].IsCategory = true;
                 }
 
-                itemDict[i.Key] = new TreeViewItem();
-                var checkBox = new CheckBox();
-                checkBox.Content = i.Value.Name;
-                itemDict[i.Key].Header = checkBox;
-                categoryDict[i.Value.Category].Items.Add(itemDict[i.Key]);
+                itemDict[i.Key] = new MainTreeItem(i.Value.Name);
+                itemDict[i.Key].IsCategory = false;
+                categoryDict[i.Value.Category].Children.Add(itemDict[i.Key]);
 
                 foreach (var j in i.Value.Addons)
                 {
-                    itemDict[j.Key] = new TreeViewItem();
-                    var addonCheckBox = new CheckBox();
-                    addonCheckBox.Content = j.Value.Name;
-                    itemDict[i.Key].Items.Add(itemDict[j.Key]);
+                    itemDict[j.Key] = new MainTreeItem(j.Value.Name);
+                    itemDict[j.Key].IsCategory = false;
+                    itemDict[i.Key].Children.Add(itemDict[j.Key]);
                 }
             }
 
             foreach (var i in categoryDict)
             {
-                MainTreeView.Items.Add(i);
+                MainTreeView.Items.Add(i.Value);
             }
         }
 

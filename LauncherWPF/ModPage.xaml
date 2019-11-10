@@ -9,7 +9,11 @@
 
     <Grid Width="360" Height="500" Margin="0,0,0,0" VerticalAlignment="Top">
         <TreeView x:Name="MainTreeView" HorizontalAlignment="Left" Height="425" Margin="10,10,0,0" VerticalAlignment="Top" Width="340" Background="{x:Null}" Foreground="White">
-
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate DataType="{x:Type local:MainTreeItem}" ItemsSource="{Binding Path=Children, Mode=OneWay}">
+                    <CheckBox IsChecked="{Binding Path=Checked, Mode=TwoWay}" IsThreeState="{Binding Path=IsCategory, Mode=OneWay}" Content="{Binding Path=Text, Mode=OneWay}" FontSize="12" Foreground="White" />
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
         </TreeView>
         <Button x:Name="CheckAllButton" Content="Check All" HorizontalAlignment="Left" Height="40" VerticalAlignment="Bottom" Width="105" Background="#FF1E1E1E" FontSize="18" Foreground="White" Margin="10,450,0,10" Click="CheckAllButton_Click"/>
         <Button x:Name="ApplyButton" Content="Apply" HorizontalAlignment="Center" Height="40" VerticalAlignment="Bottom" Width="104" Background="#FF1E1E1E" FontSize="18" Foreground="White" Margin="128,450,128,10"/>
