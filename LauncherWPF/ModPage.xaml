@@ -11,7 +11,7 @@
         <TreeView x:Name="MainTreeView" HorizontalAlignment="Left" Height="425" Margin="10,10,0,0" VerticalAlignment="Top" Width="340" Background="{x:Null}" Foreground="White">
             <TreeView.ItemTemplate>
                 <HierarchicalDataTemplate DataType="{x:Type local:MainTreeItem}" ItemsSource="{Binding Path=Children, Mode=OneWay}">
-                    <CheckBox IsChecked="{Binding Path=Checked, Mode=TwoWay}" IsThreeState="{Binding Path=IsCategory, Mode=OneWay}" Content="{Binding Path=Text, Mode=OneWay}" FontSize="12" Foreground="White" />
+                    <CheckBox IsChecked="{Binding Path=Checked, Mode=TwoWay}" IsThreeState="{Binding Path=IsCategory, Mode=OneWay}" Content="{Binding Path=Text, Mode=OneWay}" FontSize="12" Foreground="White" Padding="0,1,0,1"/>
                 </HierarchicalDataTemplate>
             </TreeView.ItemTemplate>
         </TreeView>

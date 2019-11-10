@@ -108,12 +108,16 @@ namespace LauncherWPF
                 App.CurrentPage = page.GetType();
             };
             Application.Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
-            Mod.GetToInstallState = (Mod mod) => ModPage.itemDict[mod.Key].Checked.Value;
+            Mod.GetToInstallState = (Mod mod) => ModPage.itemDict[mod.Key].Checked == CheckBoxState.Checked;
             Mod.SetToInstallState = (Mod mod, bool flag) =>
             {
-                if (ModPage.itemDict[mod.Key].Checked.Value != flag)
+                if (flag)
                 {
-                    ModPage.itemDict[mod.Key].Checked = flag;
+                    ModPage.itemDict[mod.Key].Checked = CheckBoxState.Checked;
+                }
+                else
+                {
+                    ModPage.itemDict[mod.Key].Checked = CheckBoxState.NotChecked;
                 }
             };
 
@@ -183,6 +187,11 @@ namespace LauncherWPF
         private void ServerRadio_Checked(object sender, RoutedEventArgs e)
         {
             App.CurrentInstance = SharedData.Server;
+        }
+
+        private void ClientCheck_Checked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

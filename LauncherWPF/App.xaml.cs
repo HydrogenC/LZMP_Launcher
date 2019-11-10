@@ -32,5 +32,17 @@ namespace LauncherWPF
             get;
             set;
         }
+
+        public static bool ApplyForClient
+        {
+            get;
+            set;
+        }
+
+        public static bool ApplyForServer
+        {
+            get;
+            set;
+        }
     }
 }

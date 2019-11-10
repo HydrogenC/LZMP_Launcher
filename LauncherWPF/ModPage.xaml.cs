@@ -29,6 +29,7 @@ namespace LauncherWPF
         {
             InitializeComponent();
             WriteNodes();
+            Core.CheckToInstallState(App.CurrentInstance);
         }
 
         private void CheckIfAllChecked()
@@ -78,12 +79,14 @@ namespace LauncherWPF
 
                 itemDict[i.Key] = new MainTreeItem(i.Value.Name);
                 itemDict[i.Key].IsCategory = false;
+                itemDict[i.Key].Parent = categoryDict[i.Value.Category];
                 categoryDict[i.Value.Category].Children.Add(itemDict[i.Key]);
 
                 foreach (var j in i.Value.Addons)
                 {
                     itemDict[j.Key] = new MainTreeItem(j.Value.Name);
                     itemDict[j.Key].IsCategory = false;
+                    itemDict[j.Key].Parent = itemDict[i.Key];
                     itemDict[i.Key].Children.Add(itemDict[j.Key]);
                 }
             }
