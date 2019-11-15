@@ -16,19 +16,13 @@ using System.Windows.Shapes;
 namespace LauncherWPF
 {
     /// <summary>
-    /// MenuPage.xaml 的交互逻辑
+    /// RestartRequest.xaml 的交互逻辑
     /// </summary>
-    public partial class MenuPage : Page
+    public partial class RestartRequest : Page
     {
-        public MenuPage()
+        public RestartRequest()
         {
             InitializeComponent();
-        }
-
-        private void ModCustom_Click(object sender, RoutedEventArgs e)
-        {
-            App.MainModPage.UpdateInstance();
-            App.SwitchPage(App.MainModPage);
         }
     }
 }

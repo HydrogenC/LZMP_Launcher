@@ -23,7 +23,6 @@ namespace LauncherWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        private ModPage mdPage = null;
 
         public MainWindow()
         {
@@ -120,25 +119,23 @@ namespace LauncherWPF
                     LauncherTitleLabel.Foreground = Brushes.White;
                 }
             };
-            App.GetModPage = () => mdPage;
             Application.Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
-            Mod.GetToInstallState = (Mod mod) => ModPage.itemDict[mod.Key].Checked == CheckBoxState.Checked;
+            Mod.GetToInstallState = (Mod mod) => App.MainModPage.itemDict[mod.Key].Checked == CheckBoxState.Checked;
             Mod.SetToInstallState = (Mod mod, bool flag) =>
             {
                 if (flag)
                 {
-                    ModPage.itemDict[mod.Key].Checked = CheckBoxState.Checked;
+                    App.MainModPage.itemDict[mod.Key].Checked = CheckBoxState.Checked;
                 }
                 else
                 {
-                    ModPage.itemDict[mod.Key].Checked = CheckBoxState.NotChecked;
+                    App.MainModPage.itemDict[mod.Key].Checked = CheckBoxState.NotChecked;
                 }
             };
 
             XmlHelper.ReadDefinitions(MinecraftInstance.WorkingPath + "\\BasicSettings.xml");
             LauncherTitleLabel.Content = string.Format((string)LauncherTitleLabel.Content, SharedData.Version);
             Core.CheckInstallation();
-            mdPage = new ModPage();
 
             if (System.IO.Directory.Exists(MinecraftInstance.WorkingPath + "\\Mods"))
             {
@@ -184,13 +181,13 @@ namespace LauncherWPF
         private void ClientRadio_Checked(object sender, RoutedEventArgs e)
         {
             App.CurrentInstance = SharedData.Client;
-            mdPage.UpdateInstance();
+            App.MainModPage.UpdateInstance();
         }
 
         private void ServerRadio_Checked(object sender, RoutedEventArgs e)
         {
             App.CurrentInstance = SharedData.Server;
-            mdPage.UpdateInstance();
+            App.MainModPage.UpdateInstance();
         }
 
         private void PageFrame_ContentRendered(object sender, EventArgs e)

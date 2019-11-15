@@ -27,10 +27,18 @@ namespace LauncherWPF
             set;
         }
 
-        public static Func<ModPage> GetModPage
+        private static ModPage mainModPage = null;
+        public static ModPage MainModPage
         {
-            get;
-            set;
+            get
+            {
+                if (mainModPage == null)
+                {
+                    mainModPage = new ModPage();
+                }
+                return mainModPage;
+            }
+            set => mainModPage = value;
         }
 
         public static Type CurrentPage

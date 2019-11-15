@@ -106,7 +106,6 @@ namespace LauncherCore
         public static void Initialize()
         {
             status = string.Empty;
-            mutex.ReleaseMutex();
         }
 
         public static string status = string.Empty;

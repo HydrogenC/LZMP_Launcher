@@ -43,7 +43,7 @@ namespace LauncherWPF
             get;
         } = new List<MainTreeItem>();
 
-        private bool? itemChecked = false;
+        public bool? itemChecked = false;
 
         public CheckBoxState Checked
         {
@@ -93,37 +93,19 @@ namespace LauncherWPF
             get => Parent != null;
         }
 
-        public bool NoChildrenChecked
+        public uint NumberOfChildrenChecked
         {
             get
             {
-                bool noChecked = true;
+                uint number = 0;
                 foreach (var i in Children)
                 {
-                    if (i.Checked == CheckBoxState.Checked)
+                    if (i.ItemChecked.Value)
                     {
-                        noChecked = false;
-                        break;
+                        number += 1;
                     }
                 }
-                return noChecked;
-            }
-        }
-
-        public bool AllChildrenChecked
-        {
-            get
-            {
-                bool allChecked = true;
-                foreach (var i in Children)
-                {
-                    if (i.Checked != CheckBoxState.Checked)
-                    {
-                        allChecked = false;
-                        break;
-                    }
-                }
-                return allChecked;
+                return number;
             }
         }
 
@@ -137,7 +119,7 @@ namespace LauncherWPF
             }
         }
 
-        public void CheckAllChildren(bool flag)
+        private void CheckAllChildren(bool flag)
         {
             foreach (var i in Children)
             {
@@ -162,25 +144,26 @@ namespace LauncherWPF
                 }
             }
 
-            if ((Parent != null) && Parent.IsCategory)
+            if (Parent.IsCategory)
             {
-                if (Parent.AllChildrenChecked)
+                uint number = Parent.NumberOfChildrenChecked;
+                if (number == Parent.Children.Count)
                 {
-                    Parent.Checked = CheckBoxState.Checked;
+                    Parent.itemChecked = true;
                     return;
                 }
-                if (Parent.NoChildrenChecked)
+                if (number == 0u)
                 {
-                    Parent.Checked = CheckBoxState.NotChecked;
+                    Parent.itemChecked = false;
                     return;
                 }
-                Parent.Checked = CheckBoxState.HalfChecked;
+                Parent.itemChecked = null;
             }
             else
             {
                 if (Checked == CheckBoxState.Checked)
                 {
-                    Parent.Checked = CheckBoxState.Checked;
+                    Parent.ItemChecked = true;
                 }
             }
         }

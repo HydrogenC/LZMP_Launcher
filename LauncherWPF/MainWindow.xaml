@@ -13,7 +13,7 @@
         <Button x:Name="LaunchClientButton" Content="Launch Client" HorizontalAlignment="Left" Height="50" Margin="418,92,0,0" VerticalAlignment="Top" Width="150" Background="#FF1E1E1E" FontSize="20" Foreground="White" Click="LaunchClientButton_Click"/>
         <Button x:Name="LaunchServerButton" Content="Launch Server" HorizontalAlignment="Left" Height="50" Margin="418,162,0,0" VerticalAlignment="Top" Width="150" Background="#FF1E1E1E" FontSize="20" Foreground="White" Click="LaunchServerButton_Click"/>
         <Button x:Name="AboutButton" Content="About Us" HorizontalAlignment="Left" Height="50" Margin="418,232,0,0" VerticalAlignment="Top" Width="150" Background="#FF1E1E1E" FontSize="20" Foreground="White"/>
-        <Frame x:Name="PageFrame" HorizontalAlignment="Left" Height="500" Margin="32,80,0,0" VerticalAlignment="Top" Width="360" NavigationUIVisibility="Hidden" ContentRendered="PageFrame_ContentRendered"/>
+        <Frame x:Name="PageFrame" HorizontalAlignment="Left" Height="500" Margin="32,80,0,0" VerticalAlignment="Top" Width="360" NavigationUIVisibility="Hidden" ContentRendered="PageFrame_ContentRendered" FontSize="16" Foreground="White" />
         <Border x:Name="CurrentInstanceBorder" BorderBrush="#FF9B9B9B" Panel.ZIndex="1" BorderThickness="1" Width="150" Margin="418,300,32,212" Height="80">
             <Grid x:Name="CurrentInstanceGrid" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Disabled">
                 <Label x:Name="CurrentInstanceLabel" Content="Current Instance: " HorizontalAlignment="Left" Height="27" VerticalAlignment="Top" Width="130" Foreground="White" FontSize="14" Margin="10,0,0,0"/>
