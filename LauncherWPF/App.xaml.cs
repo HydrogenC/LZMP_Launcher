@@ -27,6 +27,12 @@ namespace LauncherWPF
             set;
         }
 
+        public static Func<ModPage> GetModPage
+        {
+            get;
+            set;
+        }
+
         public static Type CurrentPage
         {
             get;

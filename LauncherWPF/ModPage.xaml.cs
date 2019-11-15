@@ -32,6 +32,11 @@ namespace LauncherWPF
             Core.CheckToInstallState(App.CurrentInstance);
         }
 
+        public void UpdateInstance()
+        {
+            Core.CheckToInstallState(App.CurrentInstance);
+        }
+
         private void CheckIfAllChecked()
         {
             allChecked = true;

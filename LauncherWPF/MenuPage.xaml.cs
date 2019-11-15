@@ -27,7 +27,7 @@ namespace LauncherWPF
 
         private void ModCustom_Click(object sender, RoutedEventArgs e)
         {
-            App.SwitchPage(new ModPage());
+            App.SwitchPage(App.GetModPage());
         }
     }
 }
