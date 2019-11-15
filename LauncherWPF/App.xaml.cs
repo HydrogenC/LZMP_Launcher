@@ -15,6 +15,12 @@ namespace LauncherWPF
     /// </summary>
     public partial class App : Application
     {
+        public static Action<bool> BusyAction
+        {
+            get;
+            set;
+        }
+
         public static Action<dynamic> SwitchPage
         {
             get;
@@ -43,6 +49,17 @@ namespace LauncherWPF
         {
             get;
             set;
+        }
+
+        private static bool busy = false;
+        public static bool Busy
+        {
+            get => busy;
+            set
+            {
+                BusyAction(value);
+                busy = value;
+            }
         }
     }
 }

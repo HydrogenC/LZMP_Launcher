@@ -23,6 +23,7 @@ namespace LauncherWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
@@ -107,6 +108,17 @@ namespace LauncherWPF
                 PageFrame.Content = page;
                 App.CurrentPage = page.GetType();
             };
+            App.BusyAction = (bool isBusy) =>
+            {
+                if (isBusy)
+                {
+                    LauncherTitleLabel.Foreground = Brushes.LightYellow;
+                }
+                else
+                {
+                    LauncherTitleLabel.Foreground = Brushes.White;
+                }
+            };
             Application.Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
             Mod.GetToInstallState = (Mod mod) => ModPage.itemDict[mod.Key].Checked == CheckBoxState.Checked;
             Mod.SetToInstallState = (Mod mod, bool flag) =>
@@ -163,7 +175,7 @@ namespace LauncherWPF
 
         private void DeveloperToolsButton_Click(object sender, RoutedEventArgs e)
         {
-
+            App.SwitchPage(new DevToolsPage());
         }
 
         private void ClientRadio_Checked(object sender, RoutedEventArgs e)
@@ -186,6 +198,16 @@ namespace LauncherWPF
             {
                 ApplyForBorder.Visibility = Visibility.Hidden;
             }
+        }
+
+        private void ClientCheck_Checked(object sender, RoutedEventArgs e)
+        {
+            App.ApplyForClient = ClientCheck.IsChecked.Value;
+        }
+
+        private void ServerCheck_Checked(object sender, RoutedEventArgs e)
+        {
+            App.ApplyForServer = ServerCheck.IsChecked.Value;
         }
     }
 }

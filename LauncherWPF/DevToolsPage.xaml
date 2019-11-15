@@ -1,0 +1,16 @@
+﻿<Page x:Class="LauncherWPF.DevToolsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LauncherWPF"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="360"
+      Title="DevToolsPage">
+
+    <Grid Height="500" Width="360">
+        <local:MainListItem x:Name="CleanUp" HorizontalAlignment="Left" Height="80" Margin="30,24,0,0" VerticalAlignment="Top" Width="300" Click="CleanUp_Click" Description="Clean up the 'Resources' folder. " Title="Clean Up" MainImageSource="Clean.png" />
+        <local:MainListItem x:Name="Initialize" HorizontalAlignment="Left" Height="80" Margin="30,124,0,0" VerticalAlignment="Top" Width="300" Description="Restore to the uninstalled state. " Title="Initialize Modpack" Click="Initialize_Click" MainImageSource="Restore.png" />
+        <local:MainListItem x:Name="Back" HorizontalAlignment="Left" Height="80" Margin="30,224,0,0" VerticalAlignment="Top" Width="300" Description="Go back to the menu page. " Title="Back" Click="Back_Click" MainImageSource="Back.png" />
+    </Grid>
+</Page>

@@ -60,6 +60,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="DevToolsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainListItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -71,6 +75,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DevToolsPage.xaml.cs">
+      <DependentUpon>DevToolsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainListItem.xaml.cs">
       <DependentUpon>MainListItem.xaml</DependentUpon>
@@ -134,6 +141,11 @@
     <Resource Include="ComingSoon.png" />
     <Resource Include="Config.png" />
     <Resource Include="Wrench.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Back.png" />
+    <Resource Include="Clean.png" />
+    <Resource Include="Restore.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
