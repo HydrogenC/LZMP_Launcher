@@ -131,7 +131,7 @@ namespace LauncherCore
             }
         }
 
-        public static void ApplyChanges(MinecraftInstance instance)
+        public static Action<MinecraftInstance> ApplyChanges = (MinecraftInstance instance) =>
         {
             List<Mod> applyList = new List<Mod>();
             foreach (var i in SharedData.Mods)
@@ -155,7 +155,7 @@ namespace LauncherCore
                 return;
             }
 
-            UInt16 index = 0;
+            uint index = 0;
             CurrentProgress.status = "Applying 0/" + applyList.Count;
 
             Parallel.ForEach(applyList, (Mod i) =>
@@ -181,7 +181,7 @@ namespace LauncherCore
 
             CheckInstallation();
             CurrentProgress.Initialize();
-        }
+        };
 
         public static void CleanUp()
         {

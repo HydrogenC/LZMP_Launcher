@@ -17,7 +17,7 @@ namespace LauncherWPF
     {
         public static Action<bool> BusyAction
         {
-            get;
+            private get;
             set;
         }
 
@@ -27,8 +27,8 @@ namespace LauncherWPF
             set;
         }
 
-        private static dynamic mainModPage = null;
-        public static dynamic MainModPage
+        private static ModPage mainModPage = null;
+        public static ModPage MainModPage
         {
             get
             {
@@ -47,7 +47,13 @@ namespace LauncherWPF
             set;
         }
 
-        public static MinecraftInstance CurrentInstance
+        public static string DefaultTitle
+        {
+            get;
+            set;
+        } = "LZMP {0} Launcher";
+
+        public static MinecraftInstance ActiveInstance
         {
             get;
             set;
@@ -74,6 +80,24 @@ namespace LauncherWPF
                 BusyAction(value);
                 busy = value;
             }
+        }
+
+        public static Action<string> SetTitleText
+        {
+            private get;
+            set;
+        }
+
+        public static Func<string> GetTitleText
+        {
+            private get;
+            set;
+        }
+
+        public static string TitleText
+        {
+            get => GetTitleText();
+            set => SetTitleText(value);
         }
     }
 }

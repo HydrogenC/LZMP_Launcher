@@ -132,6 +132,7 @@ namespace LauncherUI
             {
                 Core.CopyDirectory(MinecraftInstance.WorkingPath + "\\Mods", SharedData.Client.ModPath);
                 Core.CopyDirectory(MinecraftInstance.WorkingPath + "\\Mods", SharedData.Server.ModPath);
+                Directory.Delete(MinecraftInstance.WorkingPath + "\\Mods", true);
             }
 
             Core.CheckAvailability();
@@ -256,7 +257,7 @@ namespace LauncherUI
         #region Buttons
         private void ExitForm_Click(object sender, EventArgs e)
         {
-            if (!processing)
+            if (!locked)
             {
                 Application.Exit();
             }
@@ -264,6 +265,11 @@ namespace LauncherUI
 
         private void ToggleCheck_Click(object sender, EventArgs e)
         {
+            if (locked)
+            {
+                return;
+            }
+
             Core.CheckAll(!allChecked);
             CheckIfAllChecked();
         }
@@ -307,11 +313,10 @@ namespace LauncherUI
 
             try
             {
-                Action<MinecraftInstance> action = new Action<MinecraftInstance>(Core.ApplyChanges);
                 if (ClientCheckBox.Checked)
                 {
                     processing = true;
-                    action.BeginInvoke(SharedData.Client, ProcessEndCallback, null);
+                    Core.ApplyChanges.BeginInvoke(SharedData.Client, ProcessEndCallback, null);
 
                     while (processing)
                     {
@@ -321,14 +326,12 @@ namespace LauncherUI
                         }
                         Application.DoEvents();
                     }
-
-                    Core.CheckToInstallState(SharedData.Client);
                 }
 
                 if (ServerCheckBox.Checked)
                 {
                     processing = true;
-                    action.BeginInvoke(SharedData.Server, ProcessEndCallback, null);
+                    Core.ApplyChanges.BeginInvoke(SharedData.Server, ProcessEndCallback, null);
 
                     while (processing)
                     {
@@ -338,8 +341,6 @@ namespace LauncherUI
                         }
                         Application.DoEvents();
                     }
-
-                    Core.CheckToInstallState(SharedData.Server);
                 }
             }
             catch (Exception)
@@ -348,6 +349,7 @@ namespace LauncherUI
             }
             finally
             {
+                Core.CheckToInstallState(activeInstance);
                 ResetSmallTitle();
                 promptOnExit = false;
                 locked = false;
@@ -385,9 +387,8 @@ namespace LauncherUI
 
                 try
                 {
-                    Action<string, MinecraftInstance> action = new Action<string, MinecraftInstance>(SavesHelper.ImportSave);
                     processing = true;
-                    action.BeginInvoke(ImportDialog.FileName, activeInstance, ProcessEndCallback, null);
+                    SavesHelper.ImportSave.BeginInvoke(ImportDialog.FileName, activeInstance, ProcessEndCallback, null);
 
                     string prevText = string.Empty;
                     while (processing)
@@ -479,9 +480,8 @@ namespace LauncherUI
 
                     try
                     {
-                        Action<Save, string> action = new Action<Save, string>(SavesHelper.ExportSave);
                         processing = true;
-                        action.BeginInvoke(selection, ExportDialog.FileName, ProcessEndCallback, null); ;
+                        SavesHelper.ExportSave.BeginInvoke(selection, ExportDialog.FileName, ProcessEndCallback, null); ;
 
                         while (processing)
                         {

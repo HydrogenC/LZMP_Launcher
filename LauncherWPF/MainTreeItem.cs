@@ -187,6 +187,13 @@ namespace LauncherWPF
                     return;
                 }
             }
+            else
+            {
+                if (Checked == CheckBoxState.NotChecked)
+                {
+                    CheckAllChildren(false);
+                }
+            }
 
             if (Parent.IsCategory)
             {

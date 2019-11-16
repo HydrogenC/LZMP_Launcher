@@ -35,7 +35,7 @@ namespace LauncherCore
             return saves.ToArray();
         }
 
-        public static void ExportSave(Save save, string zipFile)
+        public static Action<Save, string> ExportSave = (Save save, string zipFile) =>
         {
             CurrentProgress.status = "Preparing";
 
@@ -63,9 +63,9 @@ namespace LauncherCore
 
             Directory.Delete(tmpDir, true);
             CurrentProgress.Initialize();
-        }
+        };
 
-        public static void ImportSave(string zipFile, MinecraftInstance instance)
+        public static Action<string, MinecraftInstance> ImportSave = (string zipFile, MinecraftInstance instance) =>
         {
             CurrentProgress.status = "Extracting";
 
@@ -143,6 +143,6 @@ namespace LauncherCore
 
             Directory.Delete(tmpDir, true);
             CurrentProgress.Initialize();
-        }
+        };
     }
 }

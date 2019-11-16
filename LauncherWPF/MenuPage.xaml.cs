@@ -31,6 +31,7 @@ namespace LauncherWPF
             {
                 App.MainModPage.UpdateInstance();
             }
+
             App.SwitchPage(App.MainModPage);
         }
     }

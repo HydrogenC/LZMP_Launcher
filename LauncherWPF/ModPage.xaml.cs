@@ -21,7 +21,7 @@ namespace LauncherWPF
     /// </summary>
     public partial class ModPage : Page
     {
-        public bool allChecked = false;
+        private bool allChecked = false, processing = false;
         public Dictionary<string, MainTreeItem> itemDict = new Dictionary<string, MainTreeItem>();
         public Dictionary<string, MainTreeItem> categoryDict = new Dictionary<string, MainTreeItem>();
 
@@ -31,9 +31,14 @@ namespace LauncherWPF
             WriteNodes();
         }
 
+        private void ProcessEndCallback(IAsyncResult ar)
+        {
+            processing = false;
+        }
+
         public void UpdateInstance()
         {
-            Core.CheckToInstallState(App.CurrentInstance);
+            Core.CheckToInstallState(App.ActiveInstance);
         }
 
         private void CheckIfAllChecked()
@@ -109,13 +114,70 @@ namespace LauncherWPF
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
+            if (App.Busy)
+            {
+                return;
+            }
+
             App.SwitchPage(new MenuPage());
         }
 
         private void CheckAllButton_Click(object sender, RoutedEventArgs e)
         {
+            if (App.Busy)
+            {
+                return;
+            }
+
             Core.CheckAll(!allChecked);
             CheckIfAllChecked();
+        }
+
+        private void ApplyButton_Click(object sender, RoutedEventArgs e)
+        {
+            App.Busy = true;
+
+            try
+            {
+                if (App.ApplyForClient)
+                {
+                    processing = true;
+                    Core.ApplyChanges.BeginInvoke(SharedData.Client, ProcessEndCallback, null);
+
+                    while (processing)
+                    {
+                        if (App.TitleText != CurrentProgress.status)
+                        {
+                            App.TitleText = CurrentProgress.status;
+                        }
+                        DispatcherHelper.DoEvents();
+                    }
+                }
+
+                if (App.ApplyForServer)
+                {
+                    Core.ApplyChanges.BeginInvoke(SharedData.Server, ProcessEndCallback, null);
+
+                    while (processing)
+                    {
+                        if (App.TitleText != CurrentProgress.status)
+                        {
+                            App.TitleText = CurrentProgress.status;
+                        }
+                        DispatcherHelper.DoEvents();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Unknown exception caught! ", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            finally
+            {
+                Core.CheckToInstallState(App.ActiveInstance);
+                App.Busy = false;
+                App.TitleText = App.DefaultTitle;
+            }
         }
     }
 }

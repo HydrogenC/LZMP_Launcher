@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -119,6 +120,8 @@ namespace LauncherWPF
                     LauncherTitleLabel.Foreground = Brushes.White;
                 }
             };
+            App.GetTitleText = () => (string)LauncherTitleLabel.Content;
+            App.SetTitleText = (string a) => LauncherTitleLabel.Content = a;
             Application.Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
             Mod.GetToInstallState = (Mod mod) => App.MainModPage.itemDict[mod.Key].Checked == CheckBoxState.Checked;
             Mod.SetToInstallState = (Mod mod, bool flag) =>
@@ -134,22 +137,33 @@ namespace LauncherWPF
             };
 
             XmlHelper.ReadDefinitions(MinecraftInstance.WorkingPath + "\\BasicSettings.xml");
-            LauncherTitleLabel.Content = string.Format((string)LauncherTitleLabel.Content, SharedData.Version);
+            App.DefaultTitle = string.Format(App.DefaultTitle, SharedData.Version);
+            LauncherTitleLabel.Content = App.DefaultTitle;
             Core.CheckInstallation();
 
-            if (System.IO.Directory.Exists(MinecraftInstance.WorkingPath + "\\Mods"))
+            if (Directory.Exists(MinecraftInstance.WorkingPath + "\\Mods"))
             {
                 Core.CopyDirectory(MinecraftInstance.WorkingPath + "\\Mods", SharedData.Client.ModPath);
                 Core.CopyDirectory(MinecraftInstance.WorkingPath + "\\Mods", SharedData.Server.ModPath);
+                Directory.Delete(MinecraftInstance.WorkingPath + "\\Mods", true);
             }
             Core.CheckAvailability();
             ClientRadio.IsChecked = true;
+            ClientCheck.IsChecked = true;
+            App.ApplyForClient = true;
+            ServerCheck.IsChecked = true;
+            App.ApplyForServer = true;
 
             App.SwitchPage(new MenuPage());
         }
 
         private void CloseForm_Click(object sender, RoutedEventArgs e)
         {
+            if (App.Busy)
+            {
+                return;
+            }
+
             Close();
         }
 
@@ -175,25 +189,24 @@ namespace LauncherWPF
 
         private void DeveloperToolsButton_Click(object sender, RoutedEventArgs e)
         {
+            if (App.Busy)
+            {
+                return;
+            }
+
             App.SwitchPage(new DevToolsPage());
         }
 
         private void ClientRadio_Checked(object sender, RoutedEventArgs e)
         {
-            App.CurrentInstance = SharedData.Client;
-            if (App.MainModPage is ModPage)
-            {
-                App.MainModPage.UpdateInstance();
-            }
+            App.ActiveInstance = SharedData.Client;
+            App.MainModPage.UpdateInstance();
         }
 
         private void ServerRadio_Checked(object sender, RoutedEventArgs e)
         {
-            App.CurrentInstance = SharedData.Server;
-            if (App.MainModPage is ModPage)
-            {
-                App.MainModPage.UpdateInstance();
-            }
+            App.ActiveInstance = SharedData.Server;
+            App.MainModPage.UpdateInstance();
         }
 
         private void PageFrame_ContentRendered(object sender, EventArgs e)
@@ -208,12 +221,12 @@ namespace LauncherWPF
             }
         }
 
-        private void ClientCheck_Checked(object sender, RoutedEventArgs e)
+        private void ClientCheck_Click(object sender, RoutedEventArgs e)
         {
             App.ApplyForClient = ClientCheck.IsChecked.Value;
         }
 
-        private void ServerCheck_Checked(object sender, RoutedEventArgs e)
+        private void ServerCheck_Click(object sender, RoutedEventArgs e)
         {
             App.ApplyForServer = ServerCheck.IsChecked.Value;
         }

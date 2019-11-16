@@ -30,13 +30,19 @@ namespace LauncherWPF
         private void CleanUp_Click(object sender, RoutedEventArgs e)
         {
             App.Busy = true;
+            App.TitleText = "Cleaning up";
+            DispatcherHelper.DoEvents();
+
             Core.CleanUp();
             App.Busy = false;
+            App.TitleText = App.DefaultTitle;
         }
 
         private void Initialize_Click(object sender, RoutedEventArgs e)
         {
             App.Busy = true;
+            App.TitleText = "Initializing";
+            DispatcherHelper.DoEvents();
 
             foreach (var i in SharedData.Mods)
             {
@@ -59,12 +65,18 @@ namespace LauncherWPF
             Core.CheckToInstallState(SharedData.Client);
             Core.CheckToInstallState(SharedData.Server);
             App.Busy = false;
+            App.TitleText = App.DefaultTitle;
 
-            App.MainModPage = new RestartRequest();
+            App.SwitchPage(new RestartRequest());
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
+            if (App.Busy)
+            {
+                return;
+            }
+
             App.SwitchPage(new MenuPage());
         }
     }
