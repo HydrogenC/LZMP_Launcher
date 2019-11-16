@@ -88,7 +88,7 @@ namespace LauncherCore
         public static MinecraftInstance Client = new MinecraftInstance("Client\\.minecraft", string.Empty);
         public static MinecraftInstance Server = new MinecraftInstance("Server\\panel\\server", string.Empty);
         public static Func<string, string, MessageType, MessageResult> DisplayMessage;
-        public static Func<string, string, string, string> BrowzeFile;
+        public static Func<string, string, string, string> SaveFile;
 
         public static string SavePath
         {
@@ -131,7 +131,7 @@ namespace LauncherCore
             }
         }
 
-        public static Action<MinecraftInstance> ApplyChanges = (MinecraftInstance instance) =>
+        public static void ApplyChanges(MinecraftInstance instance)
         {
             List<Mod> applyList = new List<Mod>();
             foreach (var i in SharedData.Mods)
@@ -181,7 +181,8 @@ namespace LauncherCore
 
             CheckInstallation();
             CurrentProgress.Initialize();
-        };
+        }
+        public static readonly Action<MinecraftInstance> ApplyAction = ApplyChanges;
 
         public static void CleanUp()
         {

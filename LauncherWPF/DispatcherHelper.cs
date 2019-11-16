@@ -13,7 +13,7 @@ namespace LauncherWPF
         /// <summary>
         /// Simulate Application.DoEvents function of <see cref=" System.Windows.Forms.Application"/> class.
         /// </summary>
-        [SecurityPermissionAttribute(SecurityAction.Demand, Flags = SecurityPermissionFlag.UnmanagedCode)]
+        [SecurityPermission(SecurityAction.Demand, Flags = SecurityPermissionFlag.UnmanagedCode)]
         public static void DoEvents()
         {
             DispatcherFrame frame = new DispatcherFrame();

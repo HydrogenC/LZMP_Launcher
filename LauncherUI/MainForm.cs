@@ -70,7 +70,8 @@ namespace LauncherUI
                         icn = MessageBoxIcon.None;
                         break;
                 }
-                DialogResult rst = MessageBox.Show(this, content, caption, btn, icn);
+                DialogResult rst = DialogResult.OK;
+                Invoke(new Action(() => rst = MessageBox.Show(this, content, caption, btn, icn)));
                 switch (rst)
                 {
                     case DialogResult.OK:
@@ -85,7 +86,7 @@ namespace LauncherUI
                         return MessageResult.OK;
                 }
             };
-            SharedData.BrowzeFile = (string initial, string filter, string caption) =>
+            SharedData.SaveFile = (string initial, string filter, string caption) =>
             {
                 SaveFileDialog dialog = new SaveFileDialog();
                 if (!string.IsNullOrEmpty(initial))
@@ -100,7 +101,11 @@ namespace LauncherUI
                 {
                     dialog.Title = caption;
                 }
-                if (dialog.ShowDialog(this) == DialogResult.OK)
+
+                DialogResult rst = DialogResult.OK;
+                Invoke(new Action(() => rst = dialog.ShowDialog(this)));
+
+                if (rst == DialogResult.OK)
                 {
                     return dialog.FileName;
                 }
@@ -321,7 +326,7 @@ namespace LauncherUI
                 if (ClientCheckBox.Checked)
                 {
                     processing = true;
-                    Core.ApplyChanges.BeginInvoke(SharedData.Client, ProcessEndCallback, null);
+                    Core.ApplyAction.BeginInvoke(SharedData.Client, ProcessEndCallback, null);
 
                     while (processing)
                     {
@@ -336,7 +341,7 @@ namespace LauncherUI
                 if (ServerCheckBox.Checked)
                 {
                     processing = true;
-                    Core.ApplyChanges.BeginInvoke(SharedData.Server, ProcessEndCallback, null);
+                    Core.ApplyAction.BeginInvoke(SharedData.Server, ProcessEndCallback, null);
 
                     while (processing)
                     {
@@ -393,7 +398,7 @@ namespace LauncherUI
                 try
                 {
                     processing = true;
-                    SavesHelper.ImportSave.BeginInvoke(ImportDialog.FileName, activeInstance, ProcessEndCallback, null);
+                    SavesHelper.ImportAction.BeginInvoke(ImportDialog.FileName, activeInstance, ProcessEndCallback, null);
 
                     string prevText = string.Empty;
                     while (processing)
@@ -491,7 +496,7 @@ namespace LauncherUI
                     try
                     {
                         processing = true;
-                        SavesHelper.ExportSave.BeginInvoke(selection, ExportDialog.FileName, ProcessEndCallback, null);
+                        SavesHelper.ExportAction.BeginInvoke(selection, ExportDialog.FileName, ProcessEndCallback, null);
 
                         while (processing)
                         {

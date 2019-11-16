@@ -147,7 +147,7 @@ namespace LauncherWPF
                 if (App.ApplyForClient)
                 {
                     processing = true;
-                    Core.ApplyChanges.BeginInvoke(SharedData.Client, ProcessEndCallback, null);
+                    Core.ApplyAction.BeginInvoke(SharedData.Client, ProcessEndCallback, null);
 
                     while (processing)
                     {
@@ -161,7 +161,7 @@ namespace LauncherWPF
 
                 if (App.ApplyForServer)
                 {
-                    Core.ApplyChanges.BeginInvoke(SharedData.Server, ProcessEndCallback, null);
+                    Core.ApplyAction.BeginInvoke(SharedData.Server, ProcessEndCallback, null);
 
                     while (processing)
                     {

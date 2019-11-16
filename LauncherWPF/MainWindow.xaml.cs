@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using LauncherCore;
 using Microsoft.Win32;
 
@@ -59,7 +60,10 @@ namespace LauncherWPF
                         icn = MessageBoxImage.Question;
                         break;
                 }
-                MessageBoxResult rst = MessageBox.Show(this, content, caption, btn, icn);
+
+                MessageBoxResult rst = MessageBoxResult.OK;
+                Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() => rst = MessageBox.Show(this, content, caption, btn, icn)));
+
                 switch (rst)
                 {
                     case MessageBoxResult.OK:
@@ -74,7 +78,7 @@ namespace LauncherWPF
                         return MessageResult.OK;
                 }
             };
-            SharedData.BrowzeFile = (string initial, string filter, string caption) =>
+            SharedData.SaveFile = (string initial, string filter, string caption) =>
             {
                 SaveFileDialog dialog = new SaveFileDialog();
                 if (!string.IsNullOrEmpty(initial))
@@ -90,8 +94,10 @@ namespace LauncherWPF
                     dialog.Title = caption;
                 }
 
-                bool? succeed = dialog.ShowDialog(this);
-                if (succeed.HasValue ? succeed.Value : false)
+                bool? rst = null;
+                Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() => rst = dialog.ShowDialog(this)));
+
+                if (rst.HasValue ? rst.Value : false)
                 {
                     return dialog.FileName;
                 }
@@ -151,6 +157,7 @@ namespace LauncherWPF
             App.ApplyForServer = true;
 
             App.SwitchPage(new MenuPage());
+            App.GeneratePages();
         }
 
         private void CloseForm_Click(object sender, RoutedEventArgs e)

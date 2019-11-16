@@ -27,33 +27,17 @@ namespace LauncherWPF
             set;
         }
 
-        private static ModPage mainModPage = null;
         public static ModPage MainModPage
         {
-            get
-            {
-                if (mainModPage == null)
-                {
-                    mainModPage = new ModPage();
-                }
-                return mainModPage;
-            }
-            set => mainModPage = value;
-        }
+            get;
+            set;
+        } = null;
 
-        private static SavesPage mainSavesPage = null;
         public static SavesPage MainSavesPage
         {
-            get
-            {
-                if (mainSavesPage == null)
-                {
-                    mainSavesPage = new SavesPage();
-                }
-                return mainSavesPage;
-            }
-            set => mainSavesPage = value;
-        }
+            get;
+            set;
+        } = null;
 
         public static dynamic CurrentPage
         {
@@ -112,6 +96,19 @@ namespace LauncherWPF
         {
             get => GetTitleText();
             set => SetTitleText(value);
+        }
+
+        public static void GeneratePages()
+        {
+            if (MainModPage == null)
+            {
+                MainModPage = new ModPage();
+                MainModPage.UpdateInstance();
+            }
+            if (MainSavesPage == null)
+            {
+                MainSavesPage = new SavesPage();
+            }
         }
     }
 }

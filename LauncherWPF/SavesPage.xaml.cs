@@ -92,7 +92,7 @@ namespace LauncherWPF
                 try
                 {
                     processing = true;
-                    SavesHelper.ImportSave.BeginInvoke(dialog.FileName, App.ActiveInstance, ProcessEndCallback, null);
+                    SavesHelper.ImportAction.BeginInvoke(dialog.FileName, App.ActiveInstance, ProcessEndCallback, null);
 
                     string prevText = string.Empty;
                     while (processing)
@@ -147,7 +147,7 @@ namespace LauncherWPF
                     try
                     {
                         processing = true;
-                        SavesHelper.ExportSave.BeginInvoke(selection, dialog.FileName, ProcessEndCallback, null);
+                        SavesHelper.ExportAction.BeginInvoke(selection, dialog.FileName, ProcessEndCallback, null);
 
                         while (processing)
                         {

@@ -43,13 +43,13 @@ namespace LauncherCore
             return saves.ToArray();
         }
 
-        public static Action<Save, string> ExportSave = (Save save, string zipFile) =>
+        public static void ExportSave(Save save, string zipFile)
         {
             CurrentProgress.status = "Preparing";
 
             string tmpDir = MinecraftInstance.WorkingPath + "\\Tmp\\";
             Directory.CreateDirectory(tmpDir);
-            Core.CopyDirectory(save.Path, tmpDir + "save\\");
+            Core.CopyDirectory(save.FolderPath, tmpDir + "save\\");
             XmlHelper.WriteXmlSet(tmpDir + "Set.xml", false);
 
             if (Directory.Exists(SharedData.Client.ScriptPath))
@@ -57,7 +57,7 @@ namespace LauncherCore
                 Core.CopyDirectory(SharedData.Client.ScriptPath, tmpDir + "scripts\\");
             }
 
-            if (save.Path.Substring(0, save.Path.LastIndexOf('\\') + 1) == SharedData.SavePath && Directory.Exists(SharedData.JMDataPath + save.LevelName))
+            if (save.FolderPath.Substring(0, save.FolderPath.LastIndexOf('\\') + 1) == SharedData.SavePath && Directory.Exists(SharedData.JMDataPath + save.LevelName))
             {
                 Core.CopyDirectory(SharedData.JMDataPath + save.LevelName, tmpDir + "jm\\");
             }
@@ -71,9 +71,10 @@ namespace LauncherCore
 
             Directory.Delete(tmpDir, true);
             CurrentProgress.Initialize();
-        };
+        }
+        public static readonly Action<Save, string> ExportAction = ExportSave;
 
-        public static Action<string, MinecraftInstance> ImportSave = (string zipFile, MinecraftInstance instance) =>
+        public static void ImportSave(string zipFile, MinecraftInstance instance)
         {
             CurrentProgress.status = "Extracting";
 
@@ -102,7 +103,7 @@ namespace LauncherCore
                             break;
                         case MessageResult.No:
                             Save existingSave = new Save(destDir);
-                            string exportPath = SharedData.BrowzeFile(existingSave.LevelName + ".zip", "Zip File（*.zip）|*.zip", null);
+                            string exportPath = SharedData.SaveFile(existingSave.LevelName + ".zip", "Zip File（*.zip）|*.zip", null);
                             if (!string.IsNullOrEmpty(exportPath))
                             {
                                 ExportSave(existingSave, exportPath);
@@ -130,7 +131,7 @@ namespace LauncherCore
             }
             else
             {
-                string fileName = SharedData.BrowzeFile(null, "Xml File（*.xml）|*.xml", null);
+                string fileName = SharedData.SaveFile(null, "Xml File（*.xml）|*.xml", null);
                 if (!string.IsNullOrEmpty(fileName))
                 {
                     File.Copy(tmpDir + "Set.xml", fileName, true);
@@ -151,6 +152,7 @@ namespace LauncherCore
 
             Directory.Delete(tmpDir, true);
             CurrentProgress.Initialize();
-        };
+        }
+        public static readonly Action<string, MinecraftInstance> ImportAction = ImportSave;
     }
 }
