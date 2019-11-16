@@ -10,6 +10,6 @@
 
     <Grid Width="360" Height="500">
         <Label HorizontalAlignment="Left" Height="40" Margin="30,24,0,0" VerticalAlignment="Top" Width="300" Foreground="White" FontSize="14" Content="Modpack restored to uninstalled state. " />
-        <Label HorizontalAlignment="Left" Height="40" Margin="30,44,0,0" VerticalAlignment="Top" Width="300" Foreground="White" FontSize="14" Content="Please restart the launcher! " />
+        <Label HorizontalAlignment="Left" Height="40" Margin="30,44,0,0" VerticalAlignment="Top" Width="300" Foreground="White" FontSize="14" Content="Please restart the launcher to edit! " />
     </Grid>
 </Page>

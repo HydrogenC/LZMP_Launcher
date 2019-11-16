@@ -27,8 +27,8 @@ namespace LauncherWPF
             set;
         }
 
-        private static ModPage mainModPage = null;
-        public static ModPage MainModPage
+        private static dynamic mainModPage = null;
+        public static dynamic MainModPage
         {
             get
             {
@@ -41,7 +41,7 @@ namespace LauncherWPF
             set => mainModPage = value;
         }
 
-        public static Type CurrentPage
+        public static dynamic CurrentPage
         {
             get;
             set;

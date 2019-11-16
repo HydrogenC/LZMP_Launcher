@@ -60,7 +60,7 @@ namespace LauncherWPF
             Core.CheckToInstallState(SharedData.Server);
             App.Busy = false;
 
-            App.SwitchPage(new RestartRequest());
+            App.MainModPage = new RestartRequest();
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)

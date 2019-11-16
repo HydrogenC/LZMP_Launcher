@@ -105,8 +105,8 @@ namespace LauncherWPF
             };
             App.SwitchPage = (dynamic page) =>
             {
-                PageFrame.Content = page;
-                App.CurrentPage = page.GetType();
+                App.CurrentPage = page;
+                PageFrame.Content = App.CurrentPage;
             };
             App.BusyAction = (bool isBusy) =>
             {
@@ -181,18 +181,24 @@ namespace LauncherWPF
         private void ClientRadio_Checked(object sender, RoutedEventArgs e)
         {
             App.CurrentInstance = SharedData.Client;
-            App.MainModPage.UpdateInstance();
+            if (App.MainModPage is ModPage)
+            {
+                App.MainModPage.UpdateInstance();
+            }
         }
 
         private void ServerRadio_Checked(object sender, RoutedEventArgs e)
         {
             App.CurrentInstance = SharedData.Server;
-            App.MainModPage.UpdateInstance();
+            if (App.MainModPage is ModPage)
+            {
+                App.MainModPage.UpdateInstance();
+            }
         }
 
         private void PageFrame_ContentRendered(object sender, EventArgs e)
         {
-            if (App.CurrentPage == typeof(ModPage))
+            if (App.CurrentPage is ModPage)
             {
                 ApplyForBorder.Visibility = Visibility.Visible;
             }

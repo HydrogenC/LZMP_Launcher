@@ -19,7 +19,7 @@ namespace LauncherWPF
     /// <summary>
     /// MainTreeView 的交互逻辑
     /// </summary>
-    public class MainTreeItem
+    public class MainTreeItem : INotifyPropertyChanged
     {
         public MainTreeItem(string text)
         {
@@ -43,7 +43,13 @@ namespace LauncherWPF
             get;
         } = new List<MainTreeItem>();
 
-        public bool? itemChecked = false;
+        private bool? itemChecked = false;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged(string prop)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+        }
 
         public CheckBoxState Checked
         {
@@ -66,19 +72,29 @@ namespace LauncherWPF
 
             set
             {
+                bool? intend = null;
                 switch (value)
                 {
                     case CheckBoxState.Checked:
-                        itemChecked = true;
+                        intend = true;
                         break;
                     case CheckBoxState.NotChecked:
-                        itemChecked = false;
+                        intend = false;
                         break;
                     case CheckBoxState.HalfChecked:
-                        itemChecked = null;
+                        intend = null;
                         break;
                 }
+
+                if (intend == itemChecked)
+                {
+                    return;
+                }
+
+                itemChecked = intend;
+                UpdateParent();
                 AfterCheck();
+                OnPropertyChanged("itemChecked");
             }
         }
 
@@ -95,27 +111,40 @@ namespace LauncherWPF
 
         public uint NumberOfChildrenChecked
         {
-            get
-            {
-                uint number = 0;
-                foreach (var i in Children)
-                {
-                    if (i.ItemChecked.Value)
-                    {
-                        number += 1;
-                    }
-                }
-                return number;
-            }
-        }
+            get;
+            set;
+        } = 0u;
 
         public bool? ItemChecked
         {
             get => itemChecked;
             set
             {
+                if (itemChecked == value)
+                {
+                    return;
+                }
+
                 itemChecked = value;
+                UpdateParent();
                 AfterCheck();
+                OnPropertyChanged("itemChecked");
+            }
+        }
+
+        public bool? ItemCheckedNoCheck
+        {
+            get => itemChecked;
+            set
+            {
+                if (itemChecked == value)
+                {
+                    return;
+                }
+
+                itemChecked = value;
+                UpdateParent();
+                OnPropertyChanged("itemChecked");
             }
         }
 
@@ -123,7 +152,22 @@ namespace LauncherWPF
         {
             foreach (var i in Children)
             {
-                i.itemChecked = flag;
+                i.ItemCheckedNoCheck = flag;
+            }
+        }
+
+        private void UpdateParent()
+        {
+            if (Parent != null && Parent.IsCategory)
+            {
+                if (ItemCheckedNoCheck.Value)
+                {
+                    Parent.NumberOfChildrenChecked += 1u;
+                }
+                else
+                {
+                    Parent.NumberOfChildrenChecked -= 1u;
+                }
             }
         }
 
@@ -146,18 +190,17 @@ namespace LauncherWPF
 
             if (Parent.IsCategory)
             {
-                uint number = Parent.NumberOfChildrenChecked;
-                if (number == Parent.Children.Count)
+                if (Parent.NumberOfChildrenChecked == Parent.Children.Count)
                 {
-                    Parent.itemChecked = true;
+                    Parent.ItemCheckedNoCheck = true;
                     return;
                 }
-                if (number == 0u)
+                if (Parent.NumberOfChildrenChecked == 0u)
                 {
-                    Parent.itemChecked = false;
+                    Parent.ItemCheckedNoCheck = false;
                     return;
                 }
-                Parent.itemChecked = null;
+                Parent.ItemCheckedNoCheck = null;
             }
             else
             {
