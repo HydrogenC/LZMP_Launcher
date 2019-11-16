@@ -9,12 +9,12 @@
       Title="RenameMapPage">
 
     <Grid Height="500" Width="360">
-        <Label x:Name="TitleLabel" Content="Renaming map: " HorizontalAlignment="Left" Height="40" Margin="10,10,0,0" VerticalAlignment="Top" Width="340" Foreground="White" FontSize="22"/>
-        <Label x:Name="MapTitleLabel" Content="Null" HorizontalAlignment="Left" Height="40" Margin="10,42,0,0" VerticalAlignment="Top" Width="340" Foreground="White" FontSize="20"/>
-        <Label x:Name="FolderNameLabel" Content="Folder name: " HorizontalAlignment="Left" Height="40" Margin="10,82,0,0" VerticalAlignment="Top" Width="340" Foreground="White" FontSize="18"/>
-        <TextBox x:Name="FolderBox" HorizontalAlignment="Left" Height="24" Margin="125,87,0,0" TextWrapping="NoWrap" Text="TextBox" VerticalAlignment="Top" Width="225"/>
-        <Label x:Name="LevelNameLabel" Content="Level name: " HorizontalAlignment="Left" Height="40" Margin="10,116,0,0" VerticalAlignment="Top" Width="340" Foreground="White" FontSize="18"/>
-        <TextBox x:Name="LevelBox" HorizontalAlignment="Left" Height="24" Margin="125,122,0,0" TextWrapping="NoWrap" Text="TextBox" VerticalAlignment="Top" Width="225"/>
+        <Label x:Name="TitleLabel" Content="Renaming map: " HorizontalAlignment="Left" Height="40" Margin="10,10,0,0" VerticalAlignment="Top" Width="340" Foreground="White" FontSize="24"/>
+        <Label x:Name="MapTitleLabel" Content="Null" HorizontalAlignment="Left" Height="32" Margin="10,48,0,0" VerticalAlignment="Top" Width="340" Foreground="White" FontSize="20"/>
+        <Label x:Name="FolderNameLabel" Content="Folder name: " HorizontalAlignment="Left" Height="40" Margin="10,95,0,0" VerticalAlignment="Top" Width="340" Foreground="White" FontSize="18"/>
+        <TextBox x:Name="FolderBox" HorizontalAlignment="Left" Height="24" Margin="140,101,0,0" TextWrapping="NoWrap" Text="TextBox" VerticalAlignment="Top" Width="210"/>
+        <Label x:Name="LevelNameLabel" Content="Level name: " HorizontalAlignment="Left" Height="40" Margin="10,130,0,0" VerticalAlignment="Top" Width="340" Foreground="White" FontSize="18"/>
+        <TextBox x:Name="LevelBox" HorizontalAlignment="Left" Height="24" Margin="140,136,0,0" TextWrapping="NoWrap" Text="TextBox" VerticalAlignment="Top" Width="210"/>
         <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Left" Height="40" VerticalAlignment="Bottom" Width="160" Background="#FF1E1E1E" FontSize="18" Foreground="White" Margin="10,0,0,10" Click="CancelButton_Click" />
         <Button x:Name="ConfirmButton" Content="Confirm" HorizontalAlignment="Right" Height="40" VerticalAlignment="Bottom" Width="160" Background="#FF1E1E1E" FontSize="18" Foreground="White" Margin="0,0,10,10" Click="ConfirmButton_Click" />
     </Grid>

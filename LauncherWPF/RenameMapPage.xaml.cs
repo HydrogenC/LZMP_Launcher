@@ -55,6 +55,7 @@ namespace LauncherWPF
                 MessageBox.Show("An unexpected exception happened, maybe the map is broken. ", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
+            App.MainSavesPage.UpdateInstance();
             App.SwitchPage(App.MainSavesPage);
         }
 
