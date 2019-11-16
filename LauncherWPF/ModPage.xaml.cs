@@ -29,7 +29,6 @@ namespace LauncherWPF
         {
             InitializeComponent();
             WriteNodes();
-            UpdateInstance();
         }
 
         private void ProcessEndCallback(IAsyncResult ar)

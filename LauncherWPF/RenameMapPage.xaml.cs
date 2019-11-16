@@ -46,7 +46,7 @@ namespace LauncherWPF
                     save.FolderName = FolderBox.Text;
                 }
             }
-            catch (PlatformNotSupportedException)
+            catch (System.IO.IOException)
             {
                 MessageBox.Show("Please notice that changing the folder name of a server map is invalid. ", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
             }
@@ -55,8 +55,8 @@ namespace LauncherWPF
                 MessageBox.Show("An unexpected exception happened, maybe the map is broken. ", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
-            App.MainSavesPage.UpdateInstance();
             App.SwitchPage(App.MainSavesPage);
+            App.MainSavesPage.UpdateInstance();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

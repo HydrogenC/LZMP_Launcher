@@ -17,9 +17,10 @@
                 </HierarchicalDataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button x:Name="ExportButton" Content="Export Map" HorizontalAlignment="Left" Height="40" VerticalAlignment="Bottom" Width="160" Background="#FF1E1E1E" FontSize="18" Foreground="White" Margin="10,0,0,10" Click="ExportButton_Click" />
+        <Button x:Name="ExportButton" Content="Export" HorizontalAlignment="Left" Height="40" VerticalAlignment="Bottom" Width="105" Background="#FF1E1E1E" FontSize="18" Foreground="White" Margin="10,0,0,64" Click="ExportButton_Click" />
         <Button x:Name="BackButton" Content="Back" HorizontalAlignment="Right" Height="40" VerticalAlignment="Bottom" Width="160" Background="#FF1E1E1E" FontSize="18" Foreground="White" Margin="0,0,10,10" Click="BackButton_Click" />
-        <Button x:Name="ImportButton" Content="Import Map" HorizontalAlignment="Left" Height="40" VerticalAlignment="Bottom" Width="160" Background="#FF1E1E1E" FontSize="18" Foreground="White" Margin="10,0,0,64" Click="ImportButton_Click" />
-        <Button x:Name="RenameButton" Content="Rename Map" HorizontalAlignment="Right" Height="40" VerticalAlignment="Bottom" Width="160" Background="#FF1E1E1E" FontSize="18" Foreground="White" Margin="0,0,10,64" Click="RenameButton_Click" />
+        <Button x:Name="ImportButton" Content="Import Map" HorizontalAlignment="Left" Height="40" VerticalAlignment="Bottom" Width="160" Background="#FF1E1E1E" FontSize="18" Foreground="White" Margin="10,0,0,10" Click="ImportButton_Click" />
+        <Button x:Name="RenameButton" Content="Rename" HorizontalAlignment="Right" Height="40" VerticalAlignment="Bottom" Width="105" Background="#FF1E1E1E" FontSize="18" Foreground="White" Margin="0,0,10,64" Click="RenameButton_Click" />
+        <Button x:Name="DeleteButton" Content="Delete" HorizontalAlignment="Center" Height="40" VerticalAlignment="Bottom" Width="105" Background="#FF1E1E1E" FontSize="18" Foreground="White" Margin="0,0,0,64" Click="DeleteButton_Click" />
     </Grid>
 </Page>

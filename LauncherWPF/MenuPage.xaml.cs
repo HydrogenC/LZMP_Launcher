@@ -27,14 +27,14 @@ namespace LauncherWPF
 
         private void ModCustom_Click(object sender, RoutedEventArgs e)
         {
-            App.MainModPage.UpdateInstance();
             App.SwitchPage(App.MainModPage);
+            App.MainModPage.UpdateInstance();
         }
 
         private void SavesManager_Click(object sender, RoutedEventArgs e)
         {
-            App.MainSavesPage.UpdateInstance();
             App.SwitchPage(App.MainSavesPage);
+            App.MainSavesPage.UpdateInstance();
         }
     }
 }

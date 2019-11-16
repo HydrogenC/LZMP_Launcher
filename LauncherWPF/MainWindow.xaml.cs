@@ -30,8 +30,8 @@ namespace LauncherWPF
             InitializeComponent();
             SharedData.DisplayMessage = (string content, string caption, MessageType type) =>
             {
-                MessageBoxButton btn;
-                MessageBoxImage icn;
+                MessageBoxButton btn = MessageBoxButton.OK;
+                MessageBoxImage icn = MessageBoxImage.None;
                 switch (type)
                 {
                     case MessageType.Error:
@@ -57,10 +57,6 @@ namespace LauncherWPF
                     case MessageType.YesNoCancelQuestion:
                         btn = MessageBoxButton.YesNoCancel;
                         icn = MessageBoxImage.Question;
-                        break;
-                    default:
-                        btn = MessageBoxButton.OK;
-                        icn = MessageBoxImage.None;
                         break;
                 }
                 MessageBoxResult rst = MessageBox.Show(this, content, caption, btn, icn);

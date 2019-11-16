@@ -54,7 +54,7 @@ namespace LauncherUI
                     currentSave.FolderName = FolderBox.Text;
                 }
             }
-            catch (PlatformNotSupportedException)
+            catch (System.IO.IOException)
             {
                 MessageBox.Show("Please notice that changing the folder name of a server map is invalid. ", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

@@ -1,4 +1,5 @@
-﻿using NbtLib;
+﻿using NBT.IO;
+using NBT.Tags;
 using System;
 using System.IO;
 
@@ -6,28 +7,26 @@ namespace LauncherCore
 {
     public class Save
     {
-        private string levelName, folderName;
+        private string folderName, levelName;
+        private NBTFile nbtFile = new NBTFile();
 
         public Save(string dir)
         {
-            if (dir.EndsWith("\\"))
-            {
-                dir = dir.Substring(0, dir.Length - 1);
-            }
-
-            folderName = dir.Substring(dir.LastIndexOf('\\') + 1);
-            Path = dir;
-            var nbt = NbtConvert.ParseNbtStream(File.OpenRead(Path + "\\level.dat"));
-
-            levelName = ((NbtStringTag)(((NbtCompoundTag)nbt["Data"])["LevelName"])).ToString();
+            FolderPath = dir.EndsWith("\\") ? dir.Substring(0, dir.Length - 1) : dir;
+            folderName = FolderPath.Substring(FolderPath.LastIndexOf('\\') + 1);
+            nbtFile.Load(FolderPath + "\\level.dat");
+            levelName = (nbtFile.RootTag["Data"] as TagCompound)["LevelName"].Value as string;
         }
 
+        /// <summary>
+        /// Delete the save. 
+        /// </summary>
         public void Delete()
         {
-            Directory.Delete(Path, true);
+            Directory.Delete(FolderPath, true);
         }
 
-        public string Path
+        public string FolderPath
         {
             get;
             private set;
@@ -40,12 +39,13 @@ namespace LauncherCore
             {
                 if (Directory.Exists(SharedData.SavePath + value))
                 {
-                    throw new PlatformNotSupportedException();
+                    throw new IOException();
                 }
                 else
                 {
-                    Directory.Move(Path, SharedData.SavePath + value);
+                    Directory.Move(FolderPath, SharedData.SavePath + value);
                     folderName = value;
+                    FolderPath = FolderPath.Substring(0, FolderPath.LastIndexOf('\\') + 1) + value;
                 }
             }
         }
@@ -55,9 +55,8 @@ namespace LauncherCore
             get => levelName;
             set
             {
-                var nbt = NbtConvert.ParseNbtStream(File.OpenRead(Path + "\\level.dat"));
-                ((NbtCompoundTag)nbt["Data"])["LevelName"] = new NbtStringTag(value);
-                var output = NbtConvert.CreateNbtStream(nbt);
+                (nbtFile.RootTag["Data"] as TagCompound)["LevelName"].Value = value;
+                nbtFile.Save(FolderPath + "\\level.dat");
                 levelName = value;
             }
         }
@@ -67,6 +66,9 @@ namespace LauncherCore
             return " " + levelName + " (" + folderName + ")";
         }
 
+        /// <summary>
+        /// A property equivalant to <see cref="ToString"/> used in WPF. 
+        /// </summary>
         public string DisplayName
         {
             get => ToString();

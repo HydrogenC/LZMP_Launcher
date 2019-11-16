@@ -27,7 +27,6 @@ namespace LauncherWPF
         public SavesPage()
         {
             InitializeComponent();
-            UpdateInstance();
         }
 
         private void ProcessEndCallback(IAsyncResult ar)
@@ -170,6 +169,28 @@ namespace LauncherWPF
                     }
 
                     MessageBox.Show("Finished! ", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (App.Busy)
+            {
+                return;
+            }
+
+            Save selection = MainListBox.SelectedItem as Save;
+            if (selection == null)
+            {
+                MessageBox.Show("Please select a map in the list to delete. ", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                if (MessageBox.Show("Are you sure to delete? You cannot revert this! ", "Prompt", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    selection.Delete();
+                    UpdateInstance();
                 }
             }
         }

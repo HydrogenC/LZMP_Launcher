@@ -16,7 +16,7 @@
             </TreeView.ItemTemplate>
         </TreeView>
         <Button x:Name="CheckAllButton" Content="Check All" HorizontalAlignment="Left" Height="40" VerticalAlignment="Bottom" Width="105" Background="#FF1E1E1E" FontSize="18" Foreground="White" Margin="10,450,0,10" Click="CheckAllButton_Click"/>
-        <Button x:Name="ApplyButton" Content="Apply" HorizontalAlignment="Center" Height="40" VerticalAlignment="Bottom" Width="104" Background="#FF1E1E1E" FontSize="18" Foreground="White" Margin="128,450,128,10" Click="ApplyButton_Click"/>
-        <Button x:Name="BackButton" Content="Back" HorizontalAlignment="Left" Height="40" Width="105" Background="#FF1E1E1E" FontSize="18" Foreground="White" Margin="245,0,0,10" Click="BackButton_Click" VerticalAlignment="Bottom"/>
+        <Button x:Name="ApplyButton" Content="Apply" HorizontalAlignment="Center" Height="40" VerticalAlignment="Bottom" Width="105" Background="#FF1E1E1E" FontSize="18" Foreground="White" Margin="128,450,128,10" Click="ApplyButton_Click"/>
+        <Button x:Name="BackButton" Content="Back" HorizontalAlignment="Right" Height="40" Width="105" Background="#FF1E1E1E" FontSize="18" Foreground="White" Margin="0,0,10,10" Click="BackButton_Click" VerticalAlignment="Bottom"/>
     </Grid>
 </Page>
