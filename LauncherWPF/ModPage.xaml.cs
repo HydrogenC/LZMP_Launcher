@@ -19,7 +19,7 @@ namespace LauncherWPF
     /// <summary>
     /// ModPage.xaml 的交互逻辑
     /// </summary>
-    public partial class ModPage : Page
+    public partial class ModPage : Page, IUpdateInstance
     {
         private bool allChecked = false, processing = false;
         public Dictionary<string, MainTreeItem> itemDict = new Dictionary<string, MainTreeItem>();
@@ -29,6 +29,7 @@ namespace LauncherWPF
         {
             InitializeComponent();
             WriteNodes();
+            UpdateInstance();
         }
 
         private void ProcessEndCallback(IAsyncResult ar)
@@ -135,6 +136,11 @@ namespace LauncherWPF
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
+            if (App.Busy)
+            {
+                return;
+            }
+
             App.Busy = true;
 
             try

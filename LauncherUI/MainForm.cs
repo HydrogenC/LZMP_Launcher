@@ -481,7 +481,7 @@ namespace LauncherUI
                     try
                     {
                         processing = true;
-                        SavesHelper.ExportSave.BeginInvoke(selection, ExportDialog.FileName, ProcessEndCallback, null); ;
+                        SavesHelper.ExportSave.BeginInvoke(selection, ExportDialog.FileName, ProcessEndCallback, null);
 
                         while (processing)
                         {
@@ -509,6 +509,11 @@ namespace LauncherUI
 
         private void RenameMapToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (locked)
+            {
+                return;
+            }
+
             Save selection = SavesList.SelectedItem as Save;
             if (selection == null)
             {

@@ -200,13 +200,19 @@ namespace LauncherWPF
         private void ClientRadio_Checked(object sender, RoutedEventArgs e)
         {
             App.ActiveInstance = SharedData.Client;
-            App.MainModPage.UpdateInstance();
+            if (App.CurrentPage is IUpdateInstance)
+            {
+                App.CurrentPage.UpdateInstance();
+            }
         }
 
         private void ServerRadio_Checked(object sender, RoutedEventArgs e)
         {
             App.ActiveInstance = SharedData.Server;
-            App.MainModPage.UpdateInstance();
+            if (App.CurrentPage is IUpdateInstance)
+            {
+                App.CurrentPage.UpdateInstance();
+            }
         }
 
         private void PageFrame_ContentRendered(object sender, EventArgs e)

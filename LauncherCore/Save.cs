@@ -67,5 +67,10 @@ namespace LauncherCore
         {
             return " " + levelName + " (" + folderName + ")";
         }
+
+        public string DisplayName
+        {
+            get => ToString();
+        }
     }
 }

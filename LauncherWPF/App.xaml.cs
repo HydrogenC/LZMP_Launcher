@@ -41,6 +41,20 @@ namespace LauncherWPF
             set => mainModPage = value;
         }
 
+        private static SavesPage mainSavesPage = null;
+        public static SavesPage MainSavesPage
+        {
+            get
+            {
+                if (mainSavesPage == null)
+                {
+                    mainSavesPage = new SavesPage();
+                }
+                return mainSavesPage;
+            }
+            set => mainSavesPage = value;
+        }
+
         public static dynamic CurrentPage
         {
             get;

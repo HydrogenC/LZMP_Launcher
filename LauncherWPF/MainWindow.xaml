@@ -28,5 +28,8 @@
                 <CheckBox x:Name="ServerCheck" Content="Server" Margin="10,50,0,10" Foreground="White" Padding="4,0,0,0" FontSize="14" Click="ServerCheck_Click"/>
             </Grid>
         </Border>
+        <Grid x:Name="SetGrid">
+            <Button x:Name="" Content="Launch Client" HorizontalAlignment="Left" Height="50" Margin="418,401,0,0" VerticalAlignment="Top" Width="150" Background="#FF1E1E1E" FontSize="20" Foreground="White" Click="LaunchClientButton_Click"/>
+        </Grid>
     </Grid>
 </Window>

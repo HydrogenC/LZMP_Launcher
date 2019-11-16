@@ -56,9 +56,9 @@
             this.FolderLabel.ForeColor = System.Drawing.Color.White;
             this.FolderLabel.Location = new System.Drawing.Point(39, 135);
             this.FolderLabel.Name = "FolderLabel";
-            this.FolderLabel.Size = new System.Drawing.Size(255, 51);
+            this.FolderLabel.Size = new System.Drawing.Size(249, 51);
             this.FolderLabel.TabIndex = 2;
-            this.FolderLabel.Text = "Folder Name: ";
+            this.FolderLabel.Text = "Folder name: ";
             // 
             // FolderBox
             // 
@@ -83,9 +83,9 @@
             this.LevelLabel.ForeColor = System.Drawing.Color.White;
             this.LevelLabel.Location = new System.Drawing.Point(59, 212);
             this.LevelLabel.Name = "LevelLabel";
-            this.LevelLabel.Size = new System.Drawing.Size(235, 51);
+            this.LevelLabel.Size = new System.Drawing.Size(229, 51);
             this.LevelLabel.TabIndex = 4;
-            this.LevelLabel.Text = "Level Name: ";
+            this.LevelLabel.Text = "Level name: ";
             // 
             // ApplyRenameButton
             // 
