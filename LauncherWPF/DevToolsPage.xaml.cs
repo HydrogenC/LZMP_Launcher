@@ -40,6 +40,11 @@ namespace LauncherWPF
 
         private void Initialize_Click(object sender, RoutedEventArgs e)
         {
+            if (App.Busy)
+            {
+                return;
+            }
+
             App.Busy = true;
             App.TitleText = "Initializing";
             DispatcherHelper.DoEvents();

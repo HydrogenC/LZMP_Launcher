@@ -159,12 +159,10 @@ namespace LauncherWPF
 
         private void CloseForm_Click(object sender, RoutedEventArgs e)
         {
-            if (App.Busy)
+            if (!App.Busy)
             {
-                return;
+                Close();
             }
-
-            Close();
         }
 
         private void LaunchServerButton_Click(object sender, RoutedEventArgs e)
@@ -220,10 +218,12 @@ namespace LauncherWPF
             if (App.CurrentPage is ModPage)
             {
                 ApplyForBorder.Visibility = Visibility.Visible;
+                SetGrid.Visibility = Visibility.Visible;
             }
             else
             {
                 ApplyForBorder.Visibility = Visibility.Hidden;
+                SetGrid.Visibility = Visibility.Hidden;
             }
         }
 
@@ -235,6 +235,42 @@ namespace LauncherWPF
         private void ServerCheck_Click(object sender, RoutedEventArgs e)
         {
             App.ApplyForServer = ServerCheck.IsChecked.Value;
+        }
+
+        private void ReadSet_Click(object sender, RoutedEventArgs e)
+        {
+            if (App.Busy)
+            {
+                return;
+            }
+
+            OpenFileDialog dialog = new OpenFileDialog()
+            {
+                Filter = "Xml File（*.xml）|*.xml"
+            };
+
+            if (dialog.ShowDialog(this).Value)
+            {
+                XmlHelper.ReadXmlSet(dialog.FileName);
+            }
+        }
+
+        private void SaveSet_Click(object sender, RoutedEventArgs e)
+        {
+            if (App.Busy)
+            {
+                return;
+            }
+
+            SaveFileDialog dialog = new SaveFileDialog()
+            {
+                Filter = "Xml File（*.xml）|*.xml"
+            };
+
+            if (dialog.ShowDialog(this).Value)
+            {
+                XmlHelper.WriteXmlSet(dialog.FileName);
+            }
         }
     }
 }

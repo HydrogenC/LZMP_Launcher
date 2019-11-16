@@ -138,7 +138,6 @@ namespace LauncherUI
             Core.CheckAvailability();
             CheckIfAllChecked();
             promptOnExit = false;
-            SaveXmlDialog.InitialDirectory = MinecraftInstance.WorkingPath + "\\Sets\\";
         }
 
         private void ResetSmallTitle()
@@ -282,10 +281,11 @@ namespace LauncherUI
 
         private void SaveSet_Click(object sender, EventArgs e)
         {
-            if (!Directory.Exists(SaveXmlDialog.InitialDirectory))
+            if (locked)
             {
-                Directory.CreateDirectory(SaveXmlDialog.InitialDirectory);
+                return;
             }
+
             if (SaveXmlDialog.ShowDialog() == DialogResult.OK)
             {
                 XmlHelper.WriteXmlSet(SaveXmlDialog.FileName);
@@ -294,6 +294,11 @@ namespace LauncherUI
 
         private void ReadSet_Click(object sender, EventArgs e)
         {
+            if (locked)
+            {
+                return;
+            }
+
             if (OpenXmlDialog.ShowDialog() == DialogResult.OK)
             {
                 XmlHelper.ReadXmlSet(OpenXmlDialog.FileName);
@@ -424,6 +429,11 @@ namespace LauncherUI
 
         private void InitializeButton_Click(object sender, EventArgs e)
         {
+            if (locked)
+            {
+                return;
+            }
+
             if (MessageBox.Show("Initialize: This button would reset the modpack to the uninstalled state. Are you sure to continue? ", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 Cursor = Cursors.WaitCursor;
