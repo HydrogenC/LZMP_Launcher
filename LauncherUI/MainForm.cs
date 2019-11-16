@@ -70,8 +70,7 @@ namespace LauncherUI
                         icn = MessageBoxIcon.None;
                         break;
                 }
-                DialogResult rst = DialogResult.OK;
-                Invoke(new Action(() => rst = MessageBox.Show(this, content, caption, btn, icn)));
+                DialogResult rst = MessageBox.Show(this, content, caption, btn, icn);
                 switch (rst)
                 {
                     case DialogResult.OK:
@@ -101,10 +100,7 @@ namespace LauncherUI
                 {
                     dialog.Title = caption;
                 }
-
-                DialogResult rst = DialogResult.OK;
-                Invoke(new Action(() => rst = dialog.ShowDialog(this)));
-
+                DialogResult rst = dialog.ShowDialog(this);
                 if (rst == DialogResult.OK)
                 {
                     return dialog.FileName;
