@@ -1,4 +1,4 @@
-﻿using LibNBT;
+﻿using NbtLib;
 using System;
 using System.IO;
 
@@ -17,8 +17,9 @@ namespace LauncherCore
 
             folderName = dir.Substring(dir.LastIndexOf('\\') + 1);
             Path = dir;
-            TagCompound tag = AbstractTag.ReadFromFile(Path + "\\level.dat") as TagCompound;
-            levelName = tag.GetCompound("Data").GetString("LevelName").Value;
+            var nbt = NbtConvert.ParseNbtStream(File.OpenRead(Path + "\\level.dat"));
+
+            levelName = ((NbtStringTag)(((NbtCompoundTag)nbt["Data"])["LevelName"])).ToString();
         }
 
         public void Delete()
@@ -54,11 +55,9 @@ namespace LauncherCore
             get => levelName;
             set
             {
-                TagCompound tag = AbstractTag.ReadFromFile(Path + "\\level.dat") as TagCompound;
-                TagString lvName = new TagString();
-                lvName.Value = value;
-                tag.GetCompound("Data").SetTag("LevelName", lvName);
-                tag.WriteToFile(Path + "\\level.dat");
+                var nbt = NbtConvert.ParseNbtStream(File.OpenRead(Path + "\\level.dat"));
+                ((NbtCompoundTag)nbt["Data"])["LevelName"] = new NbtStringTag(value);
+                var output = NbtConvert.CreateNbtStream(nbt);
                 levelName = value;
             }
         }

@@ -21,7 +21,11 @@ namespace LauncherCore
                 {
                     if (File.Exists(i + "\\level.dat"))
                     {
-                        saves.Add(new Save(i));
+                        try
+                        {
+                            saves.Add(new Save(i));
+                        }
+                        catch (Exception) { }
                     }
                 }
             }
@@ -29,7 +33,11 @@ namespace LauncherCore
             {
                 if (File.Exists(instance.GamePath + "\\world\\level.dat"))
                 {
-                    saves.Add(new Save(instance.GamePath + "\\world\\"));
+                    try
+                    {
+                        saves.Add(new Save(instance.GamePath + "\\world\\"));
+                    }
+                    catch (Exception) { }
                 }
             }
             return saves.ToArray();
