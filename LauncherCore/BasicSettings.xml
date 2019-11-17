@@ -1,33 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings>
-  <version value="4.10.0" />
+  <version value="4.10.2" />
   <launcher client="Client\NsisoLauncher.exe" server="Server\MCim.exe" />
 
   <category name="Technology" >
     <mod key="aa" name="Actually Additions" >
-      <file value="ActuallyAdditions-1.12.2-r150" />
+      <file value="ActuallyAdditions-1.12.2-r151" />
     </mod>
 
     <mod key="alc" name="Alchemistry" >
       <file value="alib-1.0.12" />
-      <file value="alchemistry-1.0.34" />
+      <file value="alchemistry-1.0.35" />
     </mod>
 
     <mod key="ae" name="Applied Energetics" >
-      <file value="appliedenergistics2-rv6-stable-6" />
+      <file value="appliedenergistics2-rv6-stable-7" />
       <mod key="sft" name="AE2 Stuff" >
         <file value="ae2stuff-0.7.0.4-mc1.12.2" />
       </mod>
       <mod key="ait" name="Applied Integrations" >
-        <file value="AppliedIntegrations-1.12.2-eea02101" />
+        <file value="AppliedIntegrations-1.12.2-3cd3ad3c" />
       </mod>
       <mod key="wct" name="Wireless Terminals" >
         <file value="p455w0rdslib-1.12.2-2.2.156" />
-        <file value="AE2WTLib-1.12.2-1.0.30" />
-        <file value="WirelessCraftingTerminal-1.12.2-3.12.93" />
-        <file value="WirelessFluidTerminal-1.12.2-1.0.1" />
-        <file value="WirelessInterfaceTerminal-1.12.2-1.0.0" />
-        <file value="WirelessPatternTerminal-1.12.2-1.0.1" />
+        <file value="AE2WTLib-1.12.2-1.0.32" />
+        <file value="WirelessCraftingTerminal-1.12.2-3.12.96" />
+        <file value="WirelessFluidTerminal-1.12.2-1.0.2" />
+        <file value="WirelessInterfaceTerminal-1.12.2-1.0.1" />
+        <file value="WirelessPatternTerminal-1.12.2-1.0.2" />
       </mod>
     </mod>
 
@@ -36,12 +36,12 @@
     </mod>
 
     <mod key="bc" name="Buildcraft" >
-      <file value="buildcraft-all-7.99.24.2" />
+      <file value="buildcraft-all-7.99.24.3" />
       <mod key="irt" name="Iron Tanks">
-        <file value="irontanks-1.12.2-2.1.0-beta.14" />
+        <file value="irontanks-1.12.2-2.1.0-beta.18" />
       </mod>
       <mod key="lgs" name="Logistics Pipes">
-        <file value="logisticspipes-0.10.2.204" />
+        <file value="logisticspipes-0.10.2.211" />
       </mod>
     </mod>
 
@@ -62,10 +62,10 @@
     </mod>
 
     <mod key="for" name="Forestry">
-      <file value="forestry_1.12.2-5.8.2.394" />
+      <file value="forestry_1.12.2-5.8.2.409" />
       <file value="jeibees-0.9.0.5-mc1.12.2" />
       <mod key="bin" name="Binne's Mods">
-        <file value="binnie-mods-1.12.2-2.5.1.188" />
+        <file value="binnie-mods-1.12.2-2.5.1.196" />
       </mod>
       <mod key="gen" name="Gendustry">
         <file value="gendustry-1.6.5.8-mc1.12.2" />
@@ -74,19 +74,19 @@
     </mod>
 
     <mod key="gc" name="Galacticraft" >
-      <file value="MicdoodleCore-1.12.2-4.0.2.231" />
-      <file value="GalacticraftCore-1.12.2-4.0.2.231" />
-      <file value="Galacticraft-Planets-1.12.2-4.0.2.231" />
+      <file value="MicdoodleCore-1.12.2-4.0.2.238" />
+      <file value="GalacticraftCore-1.12.2-4.0.2.238" />
+      <file value="Galacticraft-Planets-1.12.2-4.0.2.238" />
       <mod key="exp" name="Extra Planets">
-        <file value="MJRLegendsLib-1.12.2-1.1.8" />
-        <file value="ExtraPlanets-1.12.2-0.5.6" />
+        <file value="MJRLegendsLib-1.12.2-1.1.9" />
+        <file value="ExtraPlanets-1.12.2-0.5.8" />
       </mod>
     </mod>
 
     <mod key="ga" name="Guide API" >
       <file value="Guide-API-1.12-2.1.8-63" />
       <mod key="cyl" name="Cyclic" >
-        <file value="Cyclic-1.12.2-1.19.16" />
+        <file value="Cyclic-1.12.2-1.19.18" />
       </mod>
       <mod key="wot" name="Woot" >
         <file value="woot-1.12.2-1.4.11" />
@@ -94,12 +94,12 @@
     </mod>
 
     <mod key="ie" name="Immersive Engineering" >
-      <file value="ImmersiveEngineering-0.12-90" />
+      <file value="ImmersiveEngineering-0.12-92" />
       <mod key="imc" name="Immersive Cables" >
         <file value="ImmersiveCables-1.12.2-1.3.2" />
       </mod>
       <mod key="ime" name="Immersive Energy" >
-        <file value="Immersive+Energy-0.2.3" />
+        <file value="Immersive+Energy-0.3.3" />
       </mod>
       <mod key="imp" name="Immersive Petroleum" >
         <file value="immersivepetroleum-1.12.2-1.1.9" />
@@ -113,7 +113,7 @@
     </mod>
 
     <mod key="ic" name="IndustrialCraft" >
-      <file value="industrialcraft-2-2.8.170-ex112" />
+      <file value="industrialcraft-2-2.8.187-ex112" />
       <mod key="asp" name="Advanced Solar Panels" >
         <file value="Advanced+Solar+Panels-4.3.0" />
       </mod>
@@ -126,12 +126,12 @@
     </mod>
 
     <mod key="itd" name="Integrated Dynamics" >
-      <file value="CyclopsCore-1.12.2-1.5.0" />
+      <file value="CyclopsCore-1.12.2-1.5.1" />
       <file value="CommonCapabilities-1.12.2-2.4.4" />
-      <file value="IntegratedDynamics-1.12.2-1.0.18" />
+      <file value="IntegratedDynamics-1.12.2-1.1.0" />
       <file value="IntegratedTunnels-1.12.2-1.6.10" />
       <file value="IntegratedCrafting-1.12.2-1.0.8" />
-      <file value="IntegratedTerminals-1.12.2-1.0.9" />
+      <file value="IntegratedTerminals-1.12.2-1.0.12" />
     </mod>
 
     <mod key="mo" name="Matter Overdrive" >
@@ -150,19 +150,19 @@
     </mod>
 
     <mod key="nc" name="NuclearCraft" >
-      <file value="NuclearCraft-2.18h-1.12.2" />
+      <file value="NuclearCraft-2.18k-1.12.2" />
     </mod>
 
     <mod key="omt" name="Open Modular Turrents" >
       <file value="omlib-1.12.2-3.1.3-246" />
-      <file value="openmodularturrets-1.12.2-3.1.3-355" />
+      <file value="openmodularturrets-1.12.2-3.1.4-356" />
     </mod>
 
     <mod key="pe" name="ProjectE" >
       <file value="ProjectE-1.12.2-PE1.4.1" />
       <file value="ViewEMC-1.12.2-v8" />
       <mod key="eqa" name="Equivalent Additions">
-        <file value="HammerCore-1.12.2-2.0.5.0" />
+        <file value="HammerCore-1.12.2-2.0.5.5" />
         <file value="EquivalentAdditions-1.12.2-7r" />
       </mod>
       <mod key="eqi" name="Equivalent Integration" >
@@ -202,12 +202,12 @@
     </mod>
 
     <mod key="rco" name="Reborn Core" >
-      <file value="RebornCore-1.12.2-3.16.0.469-universal" />
+      <file value="RebornCore-1.12.2-3.16.4.478-universal" />
       <mod key="car" name="Steve's Carts" >
         <file value="StevesCarts-1.12.2-2.4.31.135" />
       </mod>
       <mod key="tr" name="Tech Reborn" >
-        <file value="TechReborn-1.12.2-2.24.1.1017-universal" />
+        <file value="TechReborn-1.12.2-2.24.3.1043-universal" />
       </mod>
       <mod key="reb" name="Reborn Storage" >
         <file value="RebornStorage-1.12.2-3.3.4.85" />
@@ -232,18 +232,13 @@
       </mod>
     </mod>
 
-    <mod key="sof" name="Solar Flux" >
-      <file value="SolarFluxReborn_1.12.2-4.34r" />
-      <file value="SolarFluxAdditions-1.12.2-17r" />
-    </mod>
-
     <mod key="sc" name="Sonar Core" >
       <file value="sonarcore-1.12.2-5.0.19-20" />
       <mod key="cal" name="Calculator" >
         <file value="calculator-1.12.2-5.0.11-12" />
       </mod>
       <mod key="net" name="Flux Networks" >
-        <file value="fluxnetworks-1.12.2-3.0.19-21" />
+        <file value="fluxnetworks-1.12.2-4.0.13-30" />
       </mod>
       <mod key="plo" name="Practical Logistics" >
         <file value="practicallogistics2-1.12.2-3.0.8-11" />
@@ -264,7 +259,7 @@
     </mod>
 
     <mod key="wlu" name="Wireless Utilities" >
-      <file value="wirelessutils-1.12.2-1.7.76-universal" />
+      <file value="wirelessutils-1.12.2-1.10.136-universal" />
     </mod>
 
     <mod key="xn" name="XNet" >
@@ -278,12 +273,12 @@
 
   <category name="Decoration" >
     <mod key="bop" name="Biomes O Plenty" >
-      <file value="BiomesOPlenty-1.12.2-7.0.1.2441-universal" />
+      <file value="BiomesOPlenty-1.12.2-7.0.1.2443-universal" />
     </mod>
 
     <mod key="dys" name="Dynamic Surroundings" >
-      <file value="OreLib-1.12.2-3.5.2.2" />
-      <file value="DynamicSurroundings-1.12.2-3.5.4.3" />
+      <file value="OreLib-1.12.2-3.6.0.1" />
+      <file value="DynamicSurroundings-1.12.2-3.6.0.2" />
     </mod>
 
     <mod key="mdb" name="Malisis Doors / Blocks" >
@@ -299,15 +294,24 @@
 
   <category name="Optimization" >
     <mod key="fmf" name="FoamFix" >
-      <file value="foamfix-0.10.5-1.12.2" />
+      <file value="foamfix-0.10.8-1.12.2" />
     </mod>
 
     <mod key="lgg" name="Lag Goggles" >
-      <file value="LagGoggles-FAT-1.12.2-4.8" />
+      <file value="LagGoggles-FAT-1.12.2-4.9" />
     </mod>
 
     <mod key="psp" name="Phosphor" >
       <file value="phosphor-1.12.2-0.2.6+build50-universal" />
+    </mod>
+
+    <mod key="sse" name="Senere Seasons" >
+      <file value="SereneSeasons-1.12.2-1.2.18-universal" />
+    </mod>
+
+    <mod key="ste" name="Stellar Sky" >
+      <file value="Stellar+API-1.12.2-0.4.2.9" />
+      <file value="Stellar+Sky-1.12.2-0.5.3.2" />
     </mod>
 
     <mod key="td" name="Tick Dynamic">
@@ -317,7 +321,7 @@
 
   <category name="Miscellaneous" >
     <mod key="apm" name="Airplanes Mod" >
-      <file value="airplanes_a0.8" />
+      <file value="airplanes_a0.9" />
     </mod>
 
     <mod key="ctk" name="CraftTweaker" >
@@ -337,7 +341,7 @@
     </mod>
 
     <mod key="npc" name="Custom NPCs" >
-      <file value="CustomNPCs_1.12.2(30Jan19)" />
+      <file value="CustomNPCs_1.12.2-(01Oct19)" />
     </mod>
 
     <mod key="edu" name="Ender Utilities" >
@@ -346,7 +350,7 @@
 
     <mod key="fq" name="FTB Quests" >
       <file value="ItemFilters-1.0.3.12" />
-      <file value="FTBQuests-1.7.2.197" />
+      <file value="FTBQuests-1.8.0.237" />
     </mod>
 
     <mod key="hot" name="Horse Tweaks" >
@@ -380,7 +384,7 @@
 
     <mod key="sca" name="Scaling Health" >
       <file value="SilentLib-1.12.2-3.0.13+167" />
-      <file value="ScalingHealth-1.12.2-1.3.40+145" />
+      <file value="ScalingHealth-1.12.2-1.3.42+147" />
     </mod>
 
     <mod key="tmf" name="Tiny Mob Farm" >
