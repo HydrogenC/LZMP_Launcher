@@ -165,14 +165,14 @@
     <Resource Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ComingSoon.png" />
-    <Resource Include="Config.png" />
-    <Resource Include="Wrench.png" />
+    <Resource Include="Images\ComingSoon.png" />
+    <Resource Include="Images\Config.png" />
+    <Resource Include="Images\Wrench.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Back.png" />
-    <Resource Include="Clean.png" />
-    <Resource Include="Restore.png" />
+    <Resource Include="Images\Back.png" />
+    <Resource Include="Images\Clean.png" />
+    <Resource Include="Images\Restore.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

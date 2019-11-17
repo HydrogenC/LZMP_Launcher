@@ -9,9 +9,9 @@
       Title="MenuPage" Width="360" Height="500">
 
     <Grid x:Name="MainGrid" Width="360" Height="500">
-        <local:MainListItem x:Name="ModCustom" Description="Modify your modset. " Title="Mod Customizer" Width="300" Height="80" Margin="30,24,30,396" BorderBrush="#FF9B9B9B" Panel.ZIndex="1" Click="ModCustom_Click" MainImageSource="Wrench.png"/>
-        <local:MainListItem x:Name="SavesManager" Description="Manages your maps. " Title="Saves Manager" Width="300" Height="80" Margin="30,124,30,296" BorderBrush="#FF9B9B9B" Panel.ZIndex="2" BorderThickness="1" MainImageSource="Config.png" Click="SavesManager_Click" />
-        <local:MainListItem x:Name="ComingSoon" Description="New features coming soon. " Title="Comming Soon" Width="300" Height="80" Margin="30,224,30,196" BorderBrush="#FF9B9B9B" Panel.ZIndex="1" MainImageSource="ComingSoon.png" />
+        <local:MainListItem x:Name="ModCustom" Description="Modify your modset. " Title="Mod Customizer" Width="300" Height="80" Margin="30,24,30,396" BorderBrush="#FF9B9B9B" Panel.ZIndex="1" Click="ModCustom_Click" MainImageSource="Images\Wrench.png"/>
+        <local:MainListItem x:Name="SavesManager" Description="Manages your maps. " Title="Saves Manager" Width="300" Height="80" Margin="30,124,30,296" BorderBrush="#FF9B9B9B" Panel.ZIndex="2" BorderThickness="1" MainImageSource="Images\Config.png" Click="SavesManager_Click" />
+        <local:MainListItem x:Name="ComingSoon" Description="New features coming soon. " Title="Comming Soon" Width="300" Height="80" Margin="30,224,30,196" BorderBrush="#FF9B9B9B" Panel.ZIndex="1" MainImageSource="Images\ComingSoon.png" />
     </Grid>
 </Page>
     
