@@ -131,7 +131,7 @@ namespace LauncherCore
             }
             else
             {
-                string fileName = SharedData.SaveFile(null, "Xml File（*.xml）|*.xml", null);
+                string fileName = SharedData.SaveFile(save.LevelName + ".xml", "Xml File（*.xml）|*.xml", null);
                 if (!string.IsNullOrEmpty(fileName))
                 {
                     File.Copy(tmpDir + "Set.xml", fileName, true);
