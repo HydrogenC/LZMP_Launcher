@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace LauncherUtilities
@@ -12,17 +10,18 @@ namespace LauncherUtilities
     {
         static void Main(string[] args)
         {
-            try
+            SharedData.DisplayMessage = (string content, string caption, MessageType type) =>
             {
-                XmlHelper.ReadDefinitions(MinecraftInstance.WorkingPath + "\\BasicSettings.xml");
-                Core.CheckInstallation();
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Settings file not found! ");
-                Console.ReadLine();
-                return;
-            }
+                Console.WriteLine("[{0}]{1}", caption, content);
+                if (type == MessageType.Error)
+                {
+                    Console.ReadKey();
+                    Environment.Exit(-1);
+                }
+                return MessageResult.OK;
+            };
+            XmlHelper.ReadDefinitions(MinecraftInstance.WorkingPath + "\\BasicSettings.xml");
+            Core.CheckInstallation();
 
         cls: Console.Clear();
             Console.WriteLine("1. Clean up unused resources");
