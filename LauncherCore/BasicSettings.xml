@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings>
-  <version value="4.10.2" />
+  <version value="4.10.4" />
   <launcher client="Client\NsisoLauncher.exe" server="Server\MCim.exe" />
 
   <category name="Technology" >
@@ -329,14 +329,15 @@
       <file value="MTLib-3.0.6" />
       <file value="modtweaker-4.0.17" />
       <file value="EnderTweaker-1.12.2-1.1.7" />
-      <mod key="ext" name="External Tweaker" >
-        <file value="externaltweaker-1.12-0.3" />
-      </mod>
+      <file value="probe-0.1.21" />
       <mod key="gct" name="Galacticraft Tweaker" >
         <file value="GalacticraftTweaker-1.12.2-1.0.3" />
       </mod>
       <mod key="ict" name="IC2 Tweaker" >
         <file value="ic2-tweaker-0.2.0" />
+      </mod>
+      <mod key="mkt" name="Meka Tweaker" >
+        <file value="mekatweaker-1.12-1.2.0" />
       </mod>
     </mod>
 
