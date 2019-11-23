@@ -23,6 +23,8 @@ namespace LauncherUtilities
             XmlHelper.ReadDefinitions(MinecraftInstance.WorkingPath + "\\BasicSettings.xml");
             Core.CheckInstallation();
             Core.CheckAvailability();
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadKey();
 
         cls: Console.Clear();
             Console.WriteLine("1. Clean up unused resources");
