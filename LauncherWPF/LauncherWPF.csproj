@@ -69,16 +69,9 @@
     <Compile Include="RenameMapPage.xaml.cs">
       <DependentUpon>RenameMapPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="RestartRequest.xaml.cs">
-      <DependentUpon>RestartRequest.xaml</DependentUpon>
-    </Compile>
     <Compile Include="SavesPage.xaml.cs">
       <DependentUpon>SavesPage.xaml</DependentUpon>
     </Compile>
-    <Page Include="DevToolsPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainListItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -90,9 +83,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DevToolsPage.xaml.cs">
-      <DependentUpon>DevToolsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainListItem.xaml.cs">
       <DependentUpon>MainListItem.xaml</DependentUpon>
@@ -111,10 +101,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="RenameMapPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="RestartRequest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -171,8 +157,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Back.png" />
-    <Resource Include="Images\Clean.png" />
-    <Resource Include="Images\Restore.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

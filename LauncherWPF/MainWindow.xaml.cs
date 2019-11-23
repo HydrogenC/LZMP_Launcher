@@ -188,16 +188,6 @@ namespace LauncherWPF
             }
         }
 
-        private void DeveloperToolsButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (App.Busy)
-            {
-                return;
-            }
-
-            App.SwitchPage(new DevToolsPage());
-        }
-
         private void ClientRadio_Checked(object sender, RoutedEventArgs e)
         {
             App.ActiveInstance = SharedData.Client;

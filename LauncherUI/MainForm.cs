@@ -364,16 +364,6 @@ namespace LauncherUI
             MessageBox.Show("Finished! ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void CleanUpButton_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Clean up: This button would delete all unused files in the 'Resources' path. Are you sure to continue? ", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                Cursor = Cursors.WaitCursor;
-                Core.CleanUp();
-                Cursor = Cursors.Default;
-            }
-        }
-
         private void LaunchServerButton_Click(object sender, EventArgs e)
         {
             Core.ApplyChanges(SharedData.Server);
@@ -426,42 +416,6 @@ namespace LauncherUI
         private void RefreshButton_Click(object sender, EventArgs e)
         {
             RefreshList(activeInstance);
-        }
-
-        private void InitializeButton_Click(object sender, EventArgs e)
-        {
-            if (locked)
-            {
-                return;
-            }
-
-            if (MessageBox.Show("Initialize: This button would reset the modpack to the uninstalled state. Are you sure to continue? ", "Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                Cursor = Cursors.WaitCursor;
-                foreach (var i in SharedData.Mods)
-                {
-                    i.Value.ToInstall = false;
-                }
-                Core.ApplyChanges(SharedData.Client);
-
-                Core.CopyDirectory(SharedData.Client.ModPath, MinecraftInstance.WorkingPath + "\\Mods");
-
-                if (Directory.Exists(SharedData.Client.ModPath))
-                {
-                    Directory.Delete(SharedData.Client.ModPath, true);
-                }
-
-                if (Directory.Exists(SharedData.Server.ModPath))
-                {
-                    Directory.Delete(SharedData.Server.ModPath, true);
-                }
-
-                Core.CheckToInstallState(SharedData.Client);
-                Core.CheckToInstallState(SharedData.Server);
-                Apply.Enabled = false;
-
-                Cursor = Cursors.Default;
-            }
         }
         #endregion
 

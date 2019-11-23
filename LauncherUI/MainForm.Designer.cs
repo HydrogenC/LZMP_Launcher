@@ -43,8 +43,6 @@
             this.ImportButton = new System.Windows.Forms.Button();
             this.LaunchServerButton = new System.Windows.Forms.Button();
             this.RefreshButton = new System.Windows.Forms.Button();
-            this.InitializeButton = new System.Windows.Forms.Button();
-            this.CleanUpButton = new System.Windows.Forms.Button();
             this.OpenXmlDialog = new System.Windows.Forms.OpenFileDialog();
             this.SaveXmlDialog = new System.Windows.Forms.SaveFileDialog();
             this.ApplyLabel = new System.Windows.Forms.Label();
@@ -229,7 +227,7 @@
             this.RefreshButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RefreshButton.Font = new System.Drawing.Font("Segoe UI", 20F);
             this.RefreshButton.ForeColor = System.Drawing.Color.White;
-            this.RefreshButton.Location = new System.Drawing.Point(1060, 42);
+            this.RefreshButton.Location = new System.Drawing.Point(1138, 42);
             this.RefreshButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.RefreshButton.Name = "RefreshButton";
             this.RefreshButton.Size = new System.Drawing.Size(70, 86);
@@ -238,37 +236,6 @@
             this.MainToolTip.SetToolTip(this.RefreshButton, "Refresh the map list. ");
             this.RefreshButton.UseVisualStyleBackColor = true;
             this.RefreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
-            // 
-            // InitializeButton
-            // 
-            this.InitializeButton.FlatAppearance.BorderSize = 0;
-            this.InitializeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.InitializeButton.Font = new System.Drawing.Font("Segoe UI", 20F);
-            this.InitializeButton.ForeColor = System.Drawing.Color.White;
-            this.InitializeButton.Location = new System.Drawing.Point(982, 42);
-            this.InitializeButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.InitializeButton.Name = "InitializeButton";
-            this.InitializeButton.Size = new System.Drawing.Size(70, 86);
-            this.InitializeButton.TabIndex = 31;
-            this.InitializeButton.Text = "I";
-            this.MainToolTip.SetToolTip(this.InitializeButton, "Developer feature. ");
-            this.InitializeButton.UseVisualStyleBackColor = true;
-            this.InitializeButton.Click += new System.EventHandler(this.InitializeButton_Click);
-            // 
-            // CleanUpButton
-            // 
-            this.CleanUpButton.FlatAppearance.BorderSize = 0;
-            this.CleanUpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CleanUpButton.Font = new System.Drawing.Font("Segoe UI", 20F);
-            this.CleanUpButton.ForeColor = System.Drawing.Color.White;
-            this.CleanUpButton.Location = new System.Drawing.Point(1138, 42);
-            this.CleanUpButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.CleanUpButton.Name = "CleanUpButton";
-            this.CleanUpButton.Size = new System.Drawing.Size(70, 86);
-            this.CleanUpButton.TabIndex = 16;
-            this.CleanUpButton.Text = "C";
-            this.CleanUpButton.UseVisualStyleBackColor = true;
-            this.CleanUpButton.Click += new System.EventHandler(this.CleanUpButton_Click);
             // 
             // OpenXmlDialog
             // 
@@ -427,7 +394,6 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(1322, 1252);
-            this.Controls.Add(this.InitializeButton);
             this.Controls.Add(this.RefreshButton);
             this.Controls.Add(this.LaunchServerButton);
             this.Controls.Add(this.MapLabel);
@@ -439,7 +405,6 @@
             this.Controls.Add(this.ServerCheckBox);
             this.Controls.Add(this.ClientCheckBox);
             this.Controls.Add(this.ApplyLabel);
-            this.Controls.Add(this.CleanUpButton);
             this.Controls.Add(this.ReadSet);
             this.Controls.Add(this.SaveSet);
             this.Controls.Add(this.ExitForm);
@@ -475,7 +440,6 @@
         private System.Windows.Forms.ToolTip MainToolTip;
         private System.Windows.Forms.OpenFileDialog OpenXmlDialog;
         private System.Windows.Forms.SaveFileDialog SaveXmlDialog;
-        private System.Windows.Forms.Button CleanUpButton;
         private System.Windows.Forms.Button ExitForm;
         private System.Windows.Forms.Label ApplyLabel;
         private System.Windows.Forms.CheckBox ClientCheckBox;
@@ -490,7 +454,6 @@
         private System.Windows.Forms.SaveFileDialog ExportDialog;
         private System.Windows.Forms.OpenFileDialog ImportDialog;
         private System.Windows.Forms.Button RefreshButton;
-        private System.Windows.Forms.Button InitializeButton;
         private System.Windows.Forms.ContextMenuStrip MapMenu;
         private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem renameMapToolStripMenuItem;

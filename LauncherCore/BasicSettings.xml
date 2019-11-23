@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings>
-  <version value="4.10.4" />
+  <version value="4.10.5" />
   <launcher client="Client\NsisoLauncher.exe" server="Server\MCim.exe" />
 
   <category name="Technology" >
@@ -29,10 +29,6 @@
         <file value="WirelessInterfaceTerminal-1.12.2-1.0.1" />
         <file value="WirelessPatternTerminal-1.12.2-1.0.2" />
       </mod>
-    </mod>
-
-    <mod key="atc" name="Atomic Science" >
-      <file value="Atomic-Science-1.12.2-3.2.0b3" />
     </mod>
 
     <mod key="bc" name="Buildcraft" >
@@ -181,10 +177,6 @@
       <file value="ProjectRed-1.12.2-4.9.3.116-world" />
     </mod>
 
-    <mod key="rc" name="Railcraft" >
-      <file value="railcraft-12.0.0" />
-    </mod>
-
     <mod key="rs" name="Refined Storage" >
       <file value="refinedstorage-1.6.15" />
       <file value="refinedstorageaddons-0.4.4" />
@@ -212,11 +204,6 @@
       <mod key="reb" name="Reborn Storage" >
         <file value="RebornStorage-1.12.2-3.3.4.85" />
       </mod>
-    </mod>
-
-    <mod key="rfr" name="Refraction" >
-      <file value="librarianlib-1.12.2-4.19.2-release" />
-      <file value="refraction-1.12.2-1.9.11" />
     </mod>
 
     <mod key="rft" name="RFTools" >
@@ -320,16 +307,14 @@
   </category>
 
   <category name="Miscellaneous" >
-    <mod key="apm" name="Airplanes Mod" >
-      <file value="airplanes_a0.9" />
-    </mod>
-
     <mod key="ctk" name="CraftTweaker" >
       <file value="CraftTweaker2-1.12-4.1.19" />
       <file value="MTLib-3.0.6" />
       <file value="modtweaker-4.0.17" />
       <file value="EnderTweaker-1.12.2-1.1.7" />
-      <file value="probe-0.1.21" />
+      <mod key="ext" name="External Tweaker" >
+        <file value="externaltweaker-1.12-0.3" />
+      </mod>
       <mod key="gct" name="Galacticraft Tweaker" >
         <file value="GalacticraftTweaker-1.12.2-1.0.3" />
       </mod>
@@ -392,4 +377,30 @@
       <file value="TinyMobFarm-1.12.2-1.0.5" />
     </mod>
   </category>
+
+  <category name="Transportation" >
+    <mod key="ir" name="Immersive Railroading">
+      <file value="TrackAPI-1.2" />
+      <file value="ImmersiveRailroading-1.7.2_1.12.2" />
+    </mod>
+
+    <mod key="iv" name="Immersive Vehicles">
+      <file value="Immersive+Vehicles-1.12.2-15.5.0" />
+      <file value="MTS_Official_Pack_V12" />
+    </mod>
+
+    <mod key="unp" name="UNU Parts (IV and IR)" >
+      <file value="UNU+Parts+Pack+for+IE+[MTS]+[IR]+1.12.2-15.5.0-1.5.0-3.0.0" />
+      <mod key="gda" name="Golden Airport (IV)">
+        <file value="Golden+Airport+Pack+[Immersive-Vehicles]+0.2.0" />
+      </mod>
+      <mod key="unc" name="UNU Civilian (IV and IR)">
+        <file value="UNU+Civilian+Vehicles+[MTS]+[IR]+1.12.2-15.5.0-1.5.0-3.0.0" />
+      </mod>
+      <mod key="unm" name="UNU Military (IV and IR)">
+        <file value="UNU+Military+Vehicles+[MTS]+[IR]+1.12.2-15.5.0-1.5.0-3.0.0" />
+      </mod>
+    </mod>
+  </category>
+
 </settings>
