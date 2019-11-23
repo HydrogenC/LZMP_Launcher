@@ -12,11 +12,29 @@ namespace LauncherUtilities
     {
         static void Main(string[] args)
         {
+            try
+            {
+                XmlHelper.ReadDefinitions(MinecraftInstance.WorkingPath + "\\BasicSettings.xml");
+                Core.CheckInstallation();
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Settings file not found! ");
+                Console.ReadLine();
+                return;
+            }
+
         cls: Console.Clear();
             Console.WriteLine("1. Clean up unused resources");
             Console.WriteLine("2. Initialize modpack to uninstalled state");
             Console.Write("Enter number: ");
-            ushort num = ushort.Parse(Console.ReadLine());
+            ushort num = 0;
+
+            if (!ushort.TryParse(Console.ReadLine(), out num))
+            {
+                goto cls;
+            }
+
             switch (num)
             {
                 case 1:
