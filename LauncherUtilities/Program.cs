@@ -12,7 +12,7 @@ namespace LauncherUtilities
         {
             SharedData.DisplayMessage = (string content, string caption, MessageType type) =>
             {
-                Console.WriteLine("[{0}]{1}", caption, content);
+                Console.WriteLine("[{0}] {1}", caption, content);
                 if (type == MessageType.Error)
                 {
                     Console.ReadKey();
