@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings>
-  <version value="4.10.5" />
+  <version value="4.10.6" />
   <launcher client="Client\NsisoLauncher.exe" server="Server\MCim.exe" />
 
   <category name="Technology" >
