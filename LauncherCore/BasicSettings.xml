@@ -277,6 +277,15 @@
     <mod key="fur" name="MrCrayfish's Furniture" >
       <file value="furniture-6.3.1-1.12.2" />
     </mod>
+  
+  <mod key="sse" name="Senere Seasons" >
+      <file value="SereneSeasons-1.12.2-1.2.18-universal" />
+    </mod>
+
+    <mod key="ste" name="Stellar Sky" >
+      <file value="Stellar+API-1.12.2-0.4.2.9" />
+      <file value="Stellar+Sky-1.12.2-0.5.3.2" />
+    </mod>
   </category>
 
   <category name="Optimization" >
@@ -290,15 +299,6 @@
 
     <mod key="psp" name="Phosphor" >
       <file value="phosphor-1.12.2-0.2.6+build50-universal" />
-    </mod>
-
-    <mod key="sse" name="Senere Seasons" >
-      <file value="SereneSeasons-1.12.2-1.2.18-universal" />
-    </mod>
-
-    <mod key="ste" name="Stellar Sky" >
-      <file value="Stellar+API-1.12.2-0.4.2.9" />
-      <file value="Stellar+Sky-1.12.2-0.5.3.2" />
     </mod>
 
     <mod key="td" name="Tick Dynamic">
@@ -343,6 +343,21 @@
       <file value="HorseTweaks_1.12.2-1.0.5" />
     </mod>
 
+    <mod key="iv" name="Immersive Vehicles">
+      <file value="Immersive+Vehicles-1.12.2-15.5.0" />
+      <file value="MTS_Official_Pack_V12" />
+      <file value="UNU+Parts+Pack+for+IE+[MTS]+[IR]+1.12.2-15.5.0-1.5.0-3.0.0" />
+      <mod key="gda" name="Golden Airport">
+        <file value="Golden+Airport+Pack+[Immersive-Vehicles]+0.2.0" />
+      </mod>
+      <mod key="unc" name="UNU Civilian">
+        <file value="UNU+Civilian+Vehicles+[MTS]+[IR]+1.12.2-15.5.0-1.5.0-3.0.0" />
+      </mod>
+      <mod key="unm" name="UNU Military">
+        <file value="UNU+Military+Vehicles+[MTS]+[IR]+1.12.2-15.5.0-1.5.0-3.0.0" />
+      </mod>
+    </mod>
+
     <mod key="mmg" name="Mapmaker's Gadgets" >
       <file value="Mapmaker's+Gadgets-1.2" />
     </mod>
@@ -375,31 +390,6 @@
 
     <mod key="tmf" name="Tiny Mob Farm" >
       <file value="TinyMobFarm-1.12.2-1.0.5" />
-    </mod>
-  </category>
-
-  <category name="Transportation" >
-    <mod key="ir" name="Immersive Railroading">
-      <file value="TrackAPI-1.2" />
-      <file value="ImmersiveRailroading-1.7.2_1.12.2" />
-    </mod>
-
-    <mod key="iv" name="Immersive Vehicles">
-      <file value="Immersive+Vehicles-1.12.2-15.5.0" />
-      <file value="MTS_Official_Pack_V12" />
-    </mod>
-
-    <mod key="unp" name="UNU Parts (IV and IR)" >
-      <file value="UNU+Parts+Pack+for+IE+[MTS]+[IR]+1.12.2-15.5.0-1.5.0-3.0.0" />
-      <mod key="gda" name="Golden Airport (IV)">
-        <file value="Golden+Airport+Pack+[Immersive-Vehicles]+0.2.0" />
-      </mod>
-      <mod key="unc" name="UNU Civilian (IV and IR)">
-        <file value="UNU+Civilian+Vehicles+[MTS]+[IR]+1.12.2-15.5.0-1.5.0-3.0.0" />
-      </mod>
-      <mod key="unm" name="UNU Military (IV and IR)">
-        <file value="UNU+Military+Vehicles+[MTS]+[IR]+1.12.2-15.5.0-1.5.0-3.0.0" />
-      </mod>
     </mod>
   </category>
 
