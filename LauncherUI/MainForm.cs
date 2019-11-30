@@ -85,31 +85,6 @@ namespace LauncherUI
                         return MessageResult.OK;
                 }
             };
-            SharedData.SaveFile = (string initial, string filter, string caption) =>
-            {
-                SaveFileDialog dialog = new SaveFileDialog();
-                if (!string.IsNullOrEmpty(initial))
-                {
-                    dialog.FileName = initial;
-                }
-                if (!string.IsNullOrEmpty(filter))
-                {
-                    dialog.Filter = filter;
-                }
-                if (!string.IsNullOrEmpty(caption))
-                {
-                    dialog.Title = caption;
-                }
-                DialogResult rst = dialog.ShowDialog(this);
-                if (rst == DialogResult.OK)
-                {
-                    return dialog.FileName;
-                }
-                else
-                {
-                    return null;
-                }
-            };
 
             CheckForIllegalCrossThreadCalls = false;
             XmlHelper.ReadDefinitions(MinecraftInstance.WorkingPath + "\\BasicSettings.xml");

@@ -88,7 +88,6 @@ namespace LauncherCore
         public static MinecraftInstance Client = new MinecraftInstance("Client\\.minecraft", string.Empty);
         public static MinecraftInstance Server = new MinecraftInstance("Server\\panel\\server", string.Empty);
         public static Func<string, string, MessageType, MessageResult> DisplayMessage;
-        public static Func<string, string, string, string> SaveFile;
 
         public static string SavePath
         {

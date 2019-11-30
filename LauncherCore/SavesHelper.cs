@@ -93,26 +93,13 @@ namespace LauncherCore
             {
                 if (File.Exists(destDir + "\\level.dat"))
                 {
-                    MessageResult result = SharedData.DisplayMessage("Destination directory already exists, do you wish to override it. Choose Yes to override it, choose No to export the map in the existing folder, choose Cancel to cancel the current operation. ", "Prompt", MessageType.YesNoCancelQuestion);
+                    MessageResult result = SharedData.DisplayMessage("Destination directory already exists, do you wish to override it? Choose OK to override it, choose Cancel to cancel the current operation. ", "Prompt", MessageType.OKCancelQuestion);
                     switch (result)
                     {
                         case MessageResult.Cancel:
                             goto CleanUp;
-                        case MessageResult.Yes:
+                        case MessageResult.OK:
                             Directory.Delete(destDir, true);
-                            break;
-                        case MessageResult.No:
-                            Save existingSave = new Save(destDir);
-                            string exportPath = SharedData.SaveFile(existingSave.LevelName + ".zip", "Zip File（*.zip）|*.zip", null);
-                            if (!string.IsNullOrEmpty(exportPath))
-                            {
-                                ExportSave(existingSave, exportPath);
-                                Directory.Delete(destDir, true);
-                            }
-                            else
-                            {
-                                goto CleanUp;
-                            }
                             break;
                     }
                 }
@@ -125,17 +112,9 @@ namespace LauncherCore
             CurrentProgress.status = "Importing Map";
             Core.CopyDirectory(tmpDir + "save", destDir);
 
-            if (SharedData.DisplayMessage("Override the current modset with the map's? If you choose No, you can select where to save the map's modset later. ", "Prompt", MessageType.YesNoQuestion) == MessageResult.Yes)
+            if (SharedData.DisplayMessage("Do you wish to override the current modset with the map's? ", "Question", MessageType.YesNoQuestion) == MessageResult.Yes)
             {
                 XmlHelper.ReadXmlSet(tmpDir + "Set.xml", false);
-            }
-            else
-            {
-                string fileName = SharedData.SaveFile(save.LevelName + ".xml", "Xml File（*.xml）|*.xml", null);
-                if (!string.IsNullOrEmpty(fileName))
-                {
-                    File.Copy(tmpDir + "Set.xml", fileName, true);
-                }
             }
 
             if (Directory.Exists(tmpDir + "scripts\\"))

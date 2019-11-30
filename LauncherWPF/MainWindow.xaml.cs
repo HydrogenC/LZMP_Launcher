@@ -78,34 +78,6 @@ namespace LauncherWPF
                         return MessageResult.OK;
                 }
             };
-            SharedData.SaveFile = (string initial, string filter, string caption) =>
-            {
-                SaveFileDialog dialog = new SaveFileDialog();
-                if (!string.IsNullOrEmpty(initial))
-                {
-                    dialog.FileName = initial;
-                }
-                if (!string.IsNullOrEmpty(filter))
-                {
-                    dialog.Filter = filter;
-                }
-                if (!string.IsNullOrEmpty(caption))
-                {
-                    dialog.Title = caption;
-                }
-
-                bool? rst = null;
-                Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() => rst = dialog.ShowDialog(this)));
-
-                if (rst.HasValue ? rst.Value : false)
-                {
-                    return dialog.FileName;
-                }
-                else
-                {
-                    return null;
-                }
-            };
             App.SwitchPage = (dynamic page) =>
             {
                 App.CurrentPage = page;
