@@ -25,12 +25,12 @@
         <file value="ExtraCells-1.12.2-2.6.4" />
       </mod>
       <mod key="wct" name="Wireless Terminals" >
-        <file value="p455w0rdslib-1.12.2-2.2.156" />
-        <file value="AE2WTLib-1.12.2-1.0.32" />
-        <file value="WirelessCraftingTerminal-1.12.2-3.12.96" />
-        <file value="WirelessFluidTerminal-1.12.2-1.0.2" />
-        <file value="WirelessInterfaceTerminal-1.12.2-1.0.1" />
-        <file value="WirelessPatternTerminal-1.12.2-1.0.2" />
+        <file value="p455w0rdslib-1.12.2-2.3.161" />
+        <file value="AE2WTLib-1.12.2-1.0.34" />
+        <file value="WirelessCraftingTerminal-1.12.2-3.12.97" />
+        <file value="WirelessFluidTerminal-1.12.2-1.0.4" />
+        <file value="WirelessInterfaceTerminal-1.12.2-1.0.2" />
+        <file value="WirelessPatternTerminal-1.12.2-1.0.3" />
       </mod>
     </mod>
 
