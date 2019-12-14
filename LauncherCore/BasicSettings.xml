@@ -310,10 +310,6 @@
     <mod key="psp" name="Phosphor" >
       <file value="phosphor-1.12.2-0.2.6+build50-universal" />
     </mod>
-
-    <mod key="td" name="Tick Dynamic">
-      <file value="TickDynamic-1.12.2-1.0.2" />
-    </mod>
   </category>
 
   <category name="Miscellaneous" >
