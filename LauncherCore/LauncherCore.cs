@@ -190,6 +190,7 @@ namespace LauncherCore
                 return;
             }
 
+            string msg = "";
             string[] files = Directory.GetFiles(MinecraftInstance.ResourcePath);
             foreach (var i in files)
             {
@@ -220,6 +221,7 @@ namespace LauncherCore
                     try
                     {
                         File.Delete(i);
+                        msg += "\n" + i;
                     }
                     catch (Exception)
                     {
@@ -227,6 +229,8 @@ namespace LauncherCore
                     }
                 }
             }
+
+            SharedData.DisplayMessage("Deleted unused files: " + msg, "Info", MessageType.Info);
         }
 
         public static void CopyDirectory(string srcPath, string aimPath)
@@ -284,13 +288,25 @@ namespace LauncherCore
 
         public static void CheckAvailability()
         {
+            string msg = "";
             foreach (var i in SharedData.Mods)
             {
-                i.Value.CheckAvailability();
+                if (!i.Value.CheckAvailability())
+                {
+                    msg += "\n" + i.Value.Name;
+                }
+
                 foreach (var j in i.Value.Addons)
                 {
-                    j.Value.CheckAvailability();
+                    if (!j.Value.CheckAvailability())
+                    {
+                        msg += "\n" + j.Value.Name;
+                    }
                 }
+            }
+            if (!string.IsNullOrEmpty(msg))
+            {
+                SharedData.DisplayMessage("Source files of these mods cannot be found: " + msg, "Warning", MessageType.Warning);
             }
         }
 

@@ -38,7 +38,7 @@ namespace LauncherCore
             }
         }
 
-        public void CheckAvailability()
+        public bool CheckAvailability()
         {
             Available = true;
 
@@ -47,10 +47,10 @@ namespace LauncherCore
                 Available = File.Exists(MinecraftInstance.ResourcePath + i + ".jar");
                 if (!Available)
                 {
-                    SharedData.DisplayMessage("File not found: \n" + Name, "Warning", MessageType.Warning);
                     break;
                 }
             }
+            return Available;
         }
 
         public void Install(MinecraftInstance instance)
