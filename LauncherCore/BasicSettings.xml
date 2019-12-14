@@ -124,9 +124,6 @@
       <mod key="cpm" name="Compact Machines" >
         <file value="compactmachines3-1.12.2-3.0.18-b278" />
       </mod>
-      <mod key="gra" name="Gravitation Suite" >
-        <file value="Gravitation+Suite-3.1.1" />
-      </mod>
     </mod>
 
     <mod key="itd" name="Integrated Dynamics" >
