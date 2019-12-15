@@ -320,18 +320,6 @@
   </category>
 
   <category name="Miscellaneous" >
-    <mod key="arl" name="AutoRegLib" >
-      <file value="AutoRegLib-1.3-32" />
-      <mod key="psi" name="Psi" >
-        <file value="Psi-r1.1-77" />
-        <file value="librarianlib-1.12.2-4.20-release" />
-        <file value="rpsideas-2.4.2" />
-      </mod>
-      <mod key="qrk" name="Quark">
-        <file value="Quark-r1.6-177" />
-      </mod>
-    </mod>
-
     <mod key="cdl" name="CD4017BE Lib" >
       <file value="CD4017BE_lib-1.12.2-6.4.14.1" />
       <mod key="idl" name="Inductive Logistics">
@@ -403,6 +391,15 @@
       <file value="ProjectRed-1.12.2-4.9.3.116-lighting" />
       <file value="ProjectRed-1.12.2-4.9.3.116-mechanical" />
       <file value="ProjectRed-1.12.2-4.9.3.116-world" />
+    </mod>
+
+    <mod key="arl" name="Psi" >
+      <file value="AutoRegLib-1.3-32" />
+      <file value="Psi-r1.1-77" />
+      <mod key="psi" name="Random PsIdeas" >
+        <file value="librarianlib-1.12.2-4.20-release" />
+        <file value="rpsideas-2.4.2" />
+      </mod>
     </mod>
 
     <mod key="rel" name="Refined Relocation" >
