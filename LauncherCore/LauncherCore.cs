@@ -230,7 +230,10 @@ namespace LauncherCore
                 }
             }
 
-            SharedData.DisplayMessage("Deleted unused files: " + msg, "Info", MessageType.Info);
+            if (!string.IsNullOrEmpty(msg))
+            {
+                SharedData.DisplayMessage("Deleted unused files: " + msg, "Info", MessageType.Info);
+            }
         }
 
         public static void CopyDirectory(string srcPath, string aimPath)
