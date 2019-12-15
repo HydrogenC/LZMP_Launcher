@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings>
-  <version value="4.11.3" />
+  <version value="4.11.4" />
   <launcher client="Client\NsisoLauncher.exe" server="Server\MCim.exe" />
 
   <category name="Technology" >
@@ -278,6 +278,13 @@
       <file value="UNU+Parts+Pack+for+IE+[MTS]+[IR]+1.12.2-15.5.0-1.5.0-3.0.0" />
       <mod key="gda" name="Golden Airport">
         <file value="Golden+Airport+Pack+[Immersive-Vehicles]+0.2.0" />
+      </mod>
+      <mod key="hvi" name="Heavy Industrial" >
+        <file value="MTS_Heavy_Industrial_by_AdamRK_1.9.1" />
+      </mod>
+      <mod key="trn" name="Trin Civil" >
+        <file value="IV_Trin_Part_Pack_2.5.0" />
+        <file value="IV_Trin_Civil_Pack_(extended)_2.3.0" />
       </mod>
       <mod key="unc" name="UNU Civilian">
         <file value="UNU+Civilian+Vehicles+[MTS]+[IR]+1.12.2-15.5.0-1.5.0-3.0.0" />
