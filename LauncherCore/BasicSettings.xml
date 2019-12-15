@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings>
-  <version value="4.11.2" />
+  <version value="4.11.3" />
   <launcher client="Client\NsisoLauncher.exe" server="Server\MCim.exe" />
 
   <category name="Technology" >
@@ -317,6 +317,8 @@
       <file value="AutoRegLib-1.3-32" />
       <mod key="psi" name="Psi" >
         <file value="Psi-r1.1-77" />
+        <file value="librarianlib-1.12.2-4.20-release" />
+        <file value="rpsideas-2.4.2" />
       </mod>
       <mod key="qrk" name="Quark">
         <file value="Quark-r1.6-177" />
