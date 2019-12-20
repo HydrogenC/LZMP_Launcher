@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings>
-  <version value="4.11.4" />
+  <version value="4.11.5" />
   <launcher client="Client\NsisoLauncher.exe" server="Server\MCim.exe" />
 
   <category name="Technology" >
     <mod key="aa" name="Actually Additions" >
-      <file value="ActuallyAdditions-1.12.2-r151" />
+      <file value="ActuallyAdditions-1.12.2-r151-2" />
     </mod>
 
     <mod key="alc" name="Alchemistry" >
@@ -19,7 +19,7 @@
         <file value="ae2stuff-0.7.0.4-mc1.12.2" />
       </mod>
       <mod key="ait" name="Applied Integrations" >
-        <file value="AppliedIntegrations-1.12.2-3cd3ad3c" />
+        <file value="AppliedIntegrations-1.12.2-26c2706e" />
       </mod>
       <mod key="exc" name="Extra Cells 2" >
         <file value="ExtraCells-1.12.2-2.6.4" />
@@ -242,6 +242,11 @@
   </category>
 
   <category name="Decoration" >
+    <mod key="anm" name="Animania">
+      <file value="CraftStudioAPI-universal-1.0.1.95-mc1.12-alpha" />
+      <file value="animania-1.12.2-1.7.3" />
+    </mod>
+
     <mod key="bop" name="Biomes O Plenty" >
       <file value="BiomesOPlenty-1.12.2-7.0.1.2443-universal" />
     </mod>
@@ -277,14 +282,11 @@
       <file value="MTS_Official_Pack_V12" />
       <file value="UNU+Parts+Pack+for+IE+[MTS]+[IR]+1.12.2-15.5.0-1.5.0-3.0.0" />
       <mod key="gda" name="Golden Airport">
-        <file value="Golden+Airport+Pack+[Immersive-Vehicles]+0.2.0" />
-      </mod>
-      <mod key="hvi" name="Heavy Industrial" >
-        <file value="MTS_Heavy_Industrial_by_AdamRK_1.9.1" />
+        <file value="Golden+Airport+Pack+[Immersive-Vehicles]+0.2.1" />
       </mod>
       <mod key="trn" name="Trin Civil" >
-        <file value="IV_Trin_Part_Pack_2.5.0" />
-        <file value="IV_Trin_Civil_Pack_(extended)_2.3.0" />
+        <file value="IV_Trin_Part_Pack_2.7.0" />
+        <file value="IV_Trin_Civil_Pack_(extended)_2.4.0" />
       </mod>
       <mod key="unc" name="UNU Civilian">
         <file value="UNU+Civilian+Vehicles+[MTS]+[IR]+1.12.2-15.5.0-1.5.0-3.0.0" />
@@ -396,10 +398,6 @@
     <mod key="arl" name="Psi" >
       <file value="AutoRegLib-1.3-32" />
       <file value="Psi-r1.1-77" />
-      <mod key="psi" name="Random PsIdeas" >
-        <file value="librarianlib-1.12.2-4.20-release" />
-        <file value="rpsideas-2.4.2" />
-      </mod>
     </mod>
 
     <mod key="rel" name="Refined Relocation" >
