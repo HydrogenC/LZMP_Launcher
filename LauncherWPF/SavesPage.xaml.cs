@@ -138,7 +138,7 @@ namespace LauncherWPF
                 SaveFileDialog dialog = new SaveFileDialog()
                 {
                     Filter = "Zip File（*.zip）| *.zip",
-                    FileName = selection.LevelName + ".zip"
+                    FileName = selection.FolderName + ".zip"
                 };
                 if (dialog.ShowDialog().Value)
                 {

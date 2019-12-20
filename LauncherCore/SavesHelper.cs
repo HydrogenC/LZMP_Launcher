@@ -57,9 +57,10 @@ namespace LauncherCore
                 Core.CopyDirectory(SharedData.Client.ScriptPath, tmpDir + "scripts\\");
             }
 
-            if (save.FolderPath.Substring(0, save.FolderPath.LastIndexOf('\\') + 1) == SharedData.SavePath && Directory.Exists(SharedData.JMDataPath + save.LevelName))
+            string jmName = save.FolderName.Replace('-', '~');
+            if (save.FolderPath.Substring(0, save.FolderPath.LastIndexOf('\\') + 1) == SharedData.SavePath && Directory.Exists(SharedData.JMDataPath + jmName))
             {
-                Core.CopyDirectory(SharedData.JMDataPath + save.LevelName, tmpDir + "jm\\");
+                Core.CopyDirectory(SharedData.JMDataPath + jmName, tmpDir + "jm\\");
             }
 
             CurrentProgress.status = "Compressing";
@@ -124,7 +125,7 @@ namespace LauncherCore
 
             if (instance == SharedData.Client && Directory.Exists(tmpDir + "jm\\"))
             {
-                Core.CopyDirectory(tmpDir + "jm\\", SharedData.JMDataPath + save.LevelName);
+                Core.CopyDirectory(tmpDir + "jm\\", SharedData.JMDataPath + save.FolderName.Replace('-', '~'));
             }
 
         CleanUp: CurrentProgress.status = "Cleaning up";

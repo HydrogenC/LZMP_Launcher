@@ -21,6 +21,7 @@ namespace LauncherUtilities
                 return MessageResult.OK;
             };
             XmlHelper.ReadDefinitions(MinecraftInstance.WorkingPath + "\\BasicSettings.xml");
+            Console.WriteLine("Modpack version: " + SharedData.Version);
             Core.CheckInstallation();
             Core.CheckAvailability();
             Console.WriteLine("Press any key to continue...");
