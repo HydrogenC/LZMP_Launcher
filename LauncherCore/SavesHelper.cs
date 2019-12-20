@@ -125,7 +125,7 @@ namespace LauncherCore
 
             if (instance == SharedData.Client && Directory.Exists(tmpDir + "jm\\"))
             {
-                Core.CopyDirectory(tmpDir + "jm\\", SharedData.JMDataPath + save.FolderName.Replace('-', '~'));
+                Core.CopyDirectory(tmpDir + "jm\\", SharedData.JMDataPath + save.LevelName.Replace('-', '~'));
             }
 
         CleanUp: CurrentProgress.status = "Cleaning up";
