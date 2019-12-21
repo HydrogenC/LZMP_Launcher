@@ -377,7 +377,7 @@
     </mod>
 
     <mod key="mcs" name="Minecolonies" >
-      <file value="minecolonies-0.10.593-RELEASE-universal" />
+      <file value="minecolonies-1.12.2-0.10.592-RELEASE-universal" />
     </mod>
 
     <mod key="mr" name="Modular Routers" >
