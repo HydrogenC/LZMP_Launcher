@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings>
-  <version value="4.11.5" />
+  <version value="4.11.6" />
   <launcher client="Client\NsisoLauncher.exe" server="Server\MCim.exe" />
 
   <category name="Technology" >
@@ -247,6 +247,10 @@
       <file value="animania-1.12.2-1.7.3" />
     </mod>
 
+    <mod key="aqu" name="Aquaculture">
+      <file value="Aquaculture-1.12.2-1.6.8" />
+    </mod>
+
     <mod key="bop" name="Biomes O Plenty" >
       <file value="BiomesOPlenty-1.12.2-7.0.1.2443-universal" />
     </mod>
@@ -373,7 +377,7 @@
     </mod>
 
     <mod key="mcs" name="Minecolonies" >
-      <file value="minecolonies-1.12.2-0.10.587-BETA-universal" />
+      <file value="minecolonies-0.10.593-RELEASE-universal" />
     </mod>
 
     <mod key="mr" name="Modular Routers" >
