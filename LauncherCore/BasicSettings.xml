@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings>
-  <version value="4.12.0" />
+  <version value="4.12.1" />
   <launcher client="Client\NsisoLauncher.exe" server="Server\MCim.exe" />
 
   <category name="Technology" >
@@ -40,7 +40,7 @@
         <file value="irontanks-1.12.2-2.1.0-beta.18" />
       </mod>
       <mod key="lgs" name="Logistics Pipes">
-        <file value="logisticspipes-0.10.2.214" />
+        <file value="logisticspipes-0.10.2.216" />
       </mod>
     </mod>
 
@@ -84,6 +84,9 @@
       <mod key="exp" name="Extra Planets">
         <file value="MJRLegendsLib-1.12.2-1.1.9" />
         <file value="ExtraPlanets-1.12.2-0.6.0" />
+      </mod>
+      <mod key="spx" name="SpaceCraftX">
+        <file value="spacecraftx-1.12.2-1.0.35" />
       </mod>
     </mod>
 
@@ -135,6 +138,10 @@
       <file value="IntegratedTerminals-1.12.2-1.0.13" />
     </mod>
 
+    <mod key="mag" name="MagneticCraft">
+      <file value="Magneticraft_1.12-2.8.2-dev" />
+    </mod>
+
     <mod key="mo" name="Matter Overdrive" >
       <file value="MatterOverdrive-1.12.2-0.7.1.0-universal" />
     </mod>
@@ -151,7 +158,7 @@
     </mod>
 
     <mod key="nc" name="NuclearCraft" >
-      <file value="NuclearCraft-2.18l-1.12.2" />
+      <file value="NuclearCraft-2.18n-1.12.2" />
     </mod>
 
     <mod key="pe" name="ProjectE" >
@@ -212,7 +219,7 @@
     <mod key="sc" name="Sonar Core" >
       <file value="sonarcore-1.12.2-5.0.19-20" />
       <mod key="cal" name="Calculator" >
-        <file value="calculator-1.12.2-5.0.11-12" />
+        <file value="calculator-1.12.2-5.0.12-15" />
       </mod>
       <mod key="plo" name="Practical Logistics" >
         <file value="practicallogistics2-1.12.2-3.0.8-11" />
@@ -231,7 +238,7 @@
     <mod key="wpd" name="Warp Drive" >
       <file value="WarpDrive-1.12.2-1.5.12" />
     </mod>
-    
+
     <mod key="wlu" name="Wireless Utilities" >
       <file value="wirelessutils-1.12.2-1.10.136-universal" />
     </mod>
@@ -302,10 +309,6 @@
 
     <mod key="mw" name="Modern Warfare" >
       <file value="mw_2.0-0.4.1_mc1.12.2" />
-    </mod>
-
-    <mod key="nvl" name="NVL Forcfields">
-      <file value="nvlforcefields-1.12.2.2491.1.0" />
     </mod>
 
     <mod key="omt" name="Open Modular Turrents" >
