@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings>
-  <version value="4.11.6" />
+  <version value="4.12.0" />
   <launcher client="Client\NsisoLauncher.exe" server="Server\MCim.exe" />
 
   <category name="Technology" >
@@ -158,7 +158,7 @@
       <file value="ProjectE-1.12.2-PE1.4.1" />
       <file value="ViewEMC-1.12.2-v8" />
       <mod key="eqa" name="Equivalent Additions">
-        <file value="HammerCore-1.12.2-2.0.5.7" />
+        <file value="HammerCore-1.12.2-2.0.5.9" />
         <file value="EquivalentAdditions-1.12.2-7r" />
       </mod>
       <mod key="eqi" name="Equivalent Integration" >
@@ -228,6 +228,10 @@
       </mod>
     </mod>
 
+    <mod key="wpd" name="Warp Drive" >
+      <file name="WarpDrive-1.12.2-1.5.12" />
+    </mod>
+    
     <mod key="wlu" name="Wireless Utilities" >
       <file value="wirelessutils-1.12.2-1.10.136-universal" />
     </mod>
@@ -247,12 +251,8 @@
       <file value="animania-1.12.2-1.7.3" />
     </mod>
 
-    <mod key="aqu" name="Aquaculture">
-      <file value="Aquaculture-1.12.2-1.6.8" />
-    </mod>
-
     <mod key="bop" name="Biomes O Plenty" >
-      <file value="BiomesOPlenty-1.12.2-7.0.1.2443-universal" />
+      <file value="BiomesOPlenty-1.12.2-7.0.1.2444-universal" />
     </mod>
 
     <mod key="dys" name="Dynamic Surroundings" >
@@ -302,6 +302,10 @@
 
     <mod key="mw" name="Modern Warfare" >
       <file value="mw_2.0-0.4.1_mc1.12.2" />
+    </mod>
+
+    <mod key="nvl" name="NVL Forcfields">
+      <file value="nvlforcefields-1.12.2.2491.1.0" />
     </mod>
 
     <mod key="omt" name="Open Modular Turrents" >
@@ -376,10 +380,6 @@
       <file value="Mapmaker's+Gadgets-1.2" />
     </mod>
 
-    <mod key="mcs" name="Minecolonies" >
-      <file value="minecolonies-1.12.2-0.10.592-RELEASE-universal" />
-    </mod>
-
     <mod key="mr" name="Modular Routers" >
       <file value="modular-routers-1.12.2-3.2.2" />
     </mod>
@@ -387,6 +387,10 @@
     <mod key="ob" name="OpenBlocks" >
       <file value="OpenModsLib-1.12.2-0.12.2" />
       <file value="OpenBlocks-1.12.2-1.8.1" />
+    </mod>
+
+    <mod key="oc" name="OpenComputers" >
+      <file value="OpenComputers-MC1.12.2-1.7.5.192" />
     </mod>
 
     <mod key="prd" name="ProjectRed" >
