@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings>
-  <version value="4.12.1" />
+  <version value="4.12.2" />
   <launcher client="Client\NsisoLauncher.exe" server="Server\MCim.exe" />
 
   <category name="Technology" >
@@ -19,7 +19,7 @@
         <file value="ae2stuff-0.7.0.4-mc1.12.2" />
       </mod>
       <mod key="ait" name="Applied Integrations" >
-        <file value="AppliedIntegrations-1.12.2-26c2706e" />
+        <file value="AppliedIntegrations-1.12.2-b37240fd" />
       </mod>
       <mod key="exc" name="Extra Cells 2" >
         <file value="ExtraCells-1.12.2-2.6.4" />
@@ -93,7 +93,7 @@
     <mod key="ga" name="Guide API" >
       <file value="Guide-API-1.12-2.1.8-63" />
       <mod key="cyl" name="Cyclic" >
-        <file value="Cyclic-1.12.2-1.19.18" />
+        <file value="Cyclic-1.12.2-1.19.19" />
       </mod>
       <mod key="wot" name="Woot" >
         <file value="woot-1.12.2-1.4.11" />
@@ -289,8 +289,8 @@
 
   <category name="Warfare">
     <mod key="iv" name="Immersive Vehicles">
-      <file value="Immersive+Vehicles-1.12.2-15.7.0" />
-      <file value="MTS_Official_Pack_V12" />
+      <file value="Immersive+Vehicles-1.12.2-15.8.0" />
+      <file value="MTS_Official_Pack_V13" />
       <file value="UNU+Parts+Pack+for+IE+[MTS]+[IR]+1.12.2-15.5.0-1.5.0-3.0.0" />
       <mod key="gda" name="Golden Airport">
         <file value="Golden+Airport+Pack+[Immersive-Vehicles]+0.2.1" />
