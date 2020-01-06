@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings>
-  <version value="4.12.2" />
+  <version value="4.12.3" />
   <launcher client="Client\NsisoLauncher.exe" server="Server\MCim.exe" />
 
   <category name="Technology" >
@@ -77,6 +77,10 @@
       </mod>
     </mod>
 
+    <mod key="ftr" name="Futurepack" >
+      <file value="Futurepack-1.12.2-26.4.88" />
+    </mod>
+      
     <mod key="gc" name="Galacticraft" >
       <file value="MicdoodleCore-1.12.2-4.0.2.238" />
       <file value="GalacticraftCore-1.12.2-4.0.2.238" />
@@ -138,10 +142,6 @@
       <file value="IntegratedTerminals-1.12.2-1.0.13" />
     </mod>
 
-    <mod key="mag" name="MagneticCraft">
-      <file value="Magneticraft_1.12-2.8.2-dev" />
-    </mod>
-
     <mod key="mo" name="Matter Overdrive" >
       <file value="MatterOverdrive-1.12.2-0.7.1.0-universal" />
     </mod>
@@ -158,14 +158,14 @@
     </mod>
 
     <mod key="nc" name="NuclearCraft" >
-      <file value="NuclearCraft-2.18n-1.12.2" />
+      <file value="NuclearCraft-2.18o-1.12.2" />
     </mod>
 
     <mod key="pe" name="ProjectE" >
       <file value="ProjectE-1.12.2-PE1.4.1" />
       <file value="ViewEMC-1.12.2-v8" />
       <mod key="eqa" name="Equivalent Additions">
-        <file value="HammerCore-1.12.2-2.0.5.11" />
+        <file value="HammerCore-1.12.2-2.0.6.3" />
         <file value="EquivalentAdditions-1.12.2-7r" />
       </mod>
       <mod key="eqi" name="Equivalent Integration" >
@@ -289,11 +289,11 @@
 
   <category name="Warfare">
     <mod key="iv" name="Immersive Vehicles">
-      <file value="Immersive+Vehicles-1.12.2-15.8.0" />
+      <file value="Immersive+Vehicles-1.12.2-15.9.0" />
       <file value="MTS_Official_Pack_V13" />
       <file value="UNU+Parts+Pack+for+IE+[MTS]+[IR]+1.12.2-15.5.0-1.5.0-3.0.0" />
       <mod key="gda" name="Golden Airport">
-        <file value="Golden+Airport+Pack+[Immersive-Vehicles]+0.2.1" />
+        <file value="Golden+Airport+Pack+[Immersive-Vehicles]+0.2.2" />
       </mod>
       <mod key="trn" name="Trin Civil" >
         <file value="IV_Trin_Part_Pack_2.7.0" />
