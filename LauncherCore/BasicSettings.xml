@@ -82,9 +82,9 @@
     </mod>
       
     <mod key="gc" name="Galacticraft" >
-      <file value="MicdoodleCore-1.12.2-4.0.2.238" />
-      <file value="GalacticraftCore-1.12.2-4.0.2.238" />
-      <file value="Galacticraft-Planets-1.12.2-4.0.2.238" />
+      <file value="MicdoodleCore-1.12.2-4.0.2.243" />
+      <file value="GalacticraftCore-1.12.2-4.0.2.243" />
+      <file value="Galacticraft-Planets-1.12.2-4.0.2.243" />
       <mod key="exp" name="Extra Planets">
         <file value="MJRLegendsLib-1.12.2-1.1.9" />
         <file value="ExtraPlanets-1.12.2-0.6.0" />
