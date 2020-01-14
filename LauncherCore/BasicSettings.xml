@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings>
-  <version value="4.12.3" />
+  <version value="4.12.4" />
   <launcher client="Client\NsisoLauncher.exe" server="Server\MCim.exe" />
 
   <category name="Technology" >
@@ -22,7 +22,7 @@
         <file value="AppliedIntegrations-1.12.2-b37240fd" />
       </mod>
       <mod key="exc" name="Extra Cells 2" >
-        <file value="ExtraCells-1.12.2-2.6.4" />
+        <file value="ExtraCells-1.12.2-2.6.5" />
       </mod>
       <mod key="wct" name="Wireless Terminals" >
         <file value="p455w0rdslib-1.12.2-2.3.161" />
@@ -76,10 +76,6 @@
         <file value="gendustryjei-1.0.2" />
       </mod>
     </mod>
-
-    <mod key="ftr" name="Futurepack" >
-      <file value="Futurepack-1.12.2-26.4.88" />
-    </mod>
       
     <mod key="gc" name="Galacticraft" >
       <file value="MicdoodleCore-1.12.2-4.0.2.243" />
@@ -87,7 +83,7 @@
       <file value="Galacticraft-Planets-1.12.2-4.0.2.243" />
       <mod key="exp" name="Extra Planets">
         <file value="MJRLegendsLib-1.12.2-1.1.9" />
-        <file value="ExtraPlanets-1.12.2-0.6.0" />
+        <file value="ExtraPlanets-1.12.2-0.6.2" />
       </mod>
       <mod key="spx" name="SpaceCraftX">
         <file value="spacecraftx-1.12.2-1.0.35" />
@@ -165,7 +161,7 @@
       <file value="ProjectE-1.12.2-PE1.4.1" />
       <file value="ViewEMC-1.12.2-v8" />
       <mod key="eqa" name="Equivalent Additions">
-        <file value="HammerCore-1.12.2-2.0.6.3" />
+        <file value="HammerCore-1.12.2-2.0.6.4" />
         <file value="EquivalentAdditions-1.12.2-7r" />
       </mod>
       <mod key="eqi" name="Equivalent Integration" >
@@ -288,16 +284,20 @@
   </category>
 
   <category name="Warfare">
+    <mod key="dia" name="Diamond Caliber">
+      <file value="diamond-caliber-2.0" />
+    </mod>
+    
     <mod key="iv" name="Immersive Vehicles">
-      <file value="Immersive+Vehicles-1.12.2-15.9.0" />
+      <file value="Immersive+Vehicles-1.12.2-15.9.1" />
       <file value="MTS_Official_Pack_V13" />
       <file value="UNU+Parts+Pack+for+IE+[MTS]+[IR]+1.12.2-15.5.0-1.5.0-3.0.0" />
       <mod key="gda" name="Golden Airport">
         <file value="Golden+Airport+Pack+[Immersive-Vehicles]+0.2.2" />
       </mod>
       <mod key="trn" name="Trin Civil" >
-        <file value="IV_Trin_Part_Pack_2.7.0" />
-        <file value="IV_Trin_Civil_Pack_(extended)_2.4.0" />
+        <file value="IV_Trin_Part_Pack_2.8.0" />
+        <file value="IV_Trin_Civil_Pack_(extended)_2.5.0" />
       </mod>
       <mod key="unc" name="UNU Civilian">
         <file value="UNU+Civilian+Vehicles+[MTS]+[IR]+1.12.2-15.5.0-1.5.0-3.0.0" />
@@ -307,10 +307,11 @@
       </mod>
     </mod>
 
-    <mod key="mw" name="Modern Warfare" >
-      <file value="mw_2.0-0.4.1_mc1.12.2" />
+    <mod key="cfg" name="MrCrayfish's Guns">
+      <file value="obfuscate-0.2.6-1.12.2" />
+      <file value="guns-0.15.3-1.12.2" />
     </mod>
-
+    
     <mod key="omt" name="Open Modular Turrents" >
       <file value="omlib-1.12.2-3.1.3-246" />
       <file value="openmodularturrets-1.12.2-3.1.4-356" />
@@ -347,7 +348,7 @@
       <file value="CraftTweaker2-1.12-4.1.19" />
       <file value="MTLib-3.0.6" />
       <file value="modtweaker-4.0.17" />
-      <file value="EnderTweaker-1.12.2-1.1.7" />
+      <file value="EnderTweaker-1.12.2-1.2.0" />
       <mod key="ext" name="External Tweaker" >
         <file value="externaltweaker-1.12-0.3" />
       </mod>
