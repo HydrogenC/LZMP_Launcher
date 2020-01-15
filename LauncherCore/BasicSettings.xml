@@ -347,9 +347,6 @@
       <mod key="ext" name="External Tweaker" >
         <file value="externaltweaker-1.12-0.3" />
       </mod>
-      <mod key="gct" name="Galacticraft Tweaker" >
-        <file value="GalacticraftTweaker-1.12.2-1.0.3" />
-      </mod>
       <mod key="ict" name="IC2 Tweaker" >
         <file value="ic2-tweaker-0.2.0" />
       </mod>
