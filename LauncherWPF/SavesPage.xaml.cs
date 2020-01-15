@@ -114,7 +114,7 @@ namespace LauncherWPF
                 {
                     UpdateInstance();
                     App.Busy = false;
-                    App.TitleText = App.DefaultTitle;
+                    App.TitleText = SharedData.Title;
                 }
 
                 MessageBox.Show("Finished! ", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -165,7 +165,7 @@ namespace LauncherWPF
                     finally
                     {
                         App.Busy = false;
-                        App.TitleText = App.DefaultTitle;
+                        App.TitleText = SharedData.Title;
                     }
 
                     MessageBox.Show("Finished! ", "Information", MessageBoxButton.OK, MessageBoxImage.Information);

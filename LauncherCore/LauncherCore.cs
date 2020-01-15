@@ -83,7 +83,7 @@ namespace LauncherCore
 
     public struct SharedData
     {
-        public static string Version;
+        public static string Version, Title;
         public static Dictionary<string, Mod> Mods = new Dictionary<string, Mod>();
         public static MinecraftInstance Client = new MinecraftInstance("Client\\.minecraft", string.Empty);
         public static MinecraftInstance Server = new MinecraftInstance("Server\\panel\\server", string.Empty);

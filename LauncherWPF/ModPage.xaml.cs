@@ -181,7 +181,7 @@ namespace LauncherWPF
             {
                 Core.CheckToInstallState(App.ActiveInstance);
                 App.Busy = false;
-                App.TitleText = App.DefaultTitle;
+                App.TitleText = SharedData.Title;
             }
         }
     }

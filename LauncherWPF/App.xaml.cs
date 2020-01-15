@@ -45,12 +45,6 @@ namespace LauncherWPF
             set;
         }
 
-        public static string DefaultTitle
-        {
-            get;
-            set;
-        } = "LZMP {0} Launcher";
-
         public static MinecraftInstance ActiveInstance
         {
             get;

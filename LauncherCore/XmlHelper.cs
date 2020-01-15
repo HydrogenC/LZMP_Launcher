@@ -36,7 +36,8 @@ namespace LauncherCore
             xml.Load(xmlFile);
             SharedData.Client.LauncherPath = MinecraftInstance.WorkingPath + "\\" + GetElementByTagName(ref xml, "launcher").GetAttribute("client");
             SharedData.Server.LauncherPath = MinecraftInstance.WorkingPath + "\\" + GetElementByTagName(ref xml, "launcher").GetAttribute("server");
-            SharedData.Version = GetElementByTagName(ref xml, "version").GetAttribute("value");
+            SharedData.Version = GetElementByTagName(ref xml, "pack").GetAttribute("version");
+            SharedData.Title = GetElementByTagName(ref xml, "pack").GetAttribute("title").Replace("%v", SharedData.Version);
 
             foreach (XmlElement element in xml.GetElementsByTagName("category"))
             {

@@ -111,8 +111,7 @@ namespace LauncherWPF
             };
 
             XmlHelper.ReadDefinitions(MinecraftInstance.WorkingPath + "\\BasicSettings.xml");
-            App.DefaultTitle = string.Format(App.DefaultTitle, SharedData.Version);
-            LauncherTitleLabel.Content = App.DefaultTitle;
+            LauncherTitleLabel.Content = SharedData.Title;
             Core.CheckInstallation();
 
             if (Directory.Exists(MinecraftInstance.WorkingPath + "\\Mods"))
