@@ -77,19 +77,6 @@
       </mod>
     </mod>
 
-    <mod key="gc" name="Galacticraft" >
-      <file value="MicdoodleCore-1.12.2-4.0.2.243" />
-      <file value="GalacticraftCore-1.12.2-4.0.2.243" />
-      <file value="Galacticraft-Planets-1.12.2-4.0.2.243" />
-      <mod key="exp" name="Extra Planets">
-        <file value="MJRLegendsLib-1.12.2-1.1.9" />
-        <file value="ExtraPlanets-1.12.2-0.6.2" />
-      </mod>
-      <mod key="spx" name="SpaceCraftX">
-        <file value="spacecraftx-1.12.2-1.0.35" />
-      </mod>
-    </mod>
-
     <mod key="ga" name="Guide API" >
       <file value="Guide-API-1.12-2.1.8-63" />
       <mod key="cyl" name="Cyclic" >
