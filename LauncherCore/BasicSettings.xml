@@ -338,6 +338,10 @@
   </category>
 
   <category name="Miscellaneous" >
+    <mod key="aca" name="AcademyCraft (Win Only)" >
+      <file value="AcademyCraft-1.1.2" />
+    </mod>
+
     <mod key="cdl" name="CD4017BE Lib" >
       <file value="CD4017BE_lib-1.12.2-6.4.14.1" />
       <mod key="idl" name="Inductive Logistics">
@@ -378,10 +382,6 @@
     <mod key="fq" name="FTB Quests" >
       <file value="ItemFilters-1.0.3.12" />
       <file value="FTBQuests-1.8.0.237" />
-    </mod>
-
-    <mod key="hot" name="Horse Tweaks" >
-      <file value="HorseTweaks_1.12.2-1.0.5" />
     </mod>
 
     <mod key="mmg" name="Mapmaker's Gadgets" >
