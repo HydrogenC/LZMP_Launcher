@@ -8,7 +8,7 @@ namespace LauncherCore
     {
         private List<string> files = new List<string>();
         private Dictionary<string, Mod> addons = new Dictionary<string, Mod>();
-        private Dictionary<MinecraftInstance, bool> installStates = new Dictionary<MinecraftInstance, bool>();
+        private bool installState = false;
         public Mod(string name, List<string> files = null, Dictionary<string, Mod> addons = null)
         {
             this.Name = name;
@@ -24,14 +24,14 @@ namespace LauncherCore
             }
         }
 
-        public void CheckInstalled(MinecraftInstance instance)
+        public void CheckInstalled()
         {
-            Installed[instance] = true;
+            Installed = true;
 
             foreach (var i in Files)
             {
-                Installed[instance] = File.Exists(instance.ModPath + i + ".jar");
-                if (!Installed[instance])
+                Installed = File.Exists(SharedData.ModPath + i + ".jar");
+                if (!Installed)
                 {
                     break;
                 }
@@ -44,7 +44,7 @@ namespace LauncherCore
 
             foreach (var i in files)
             {
-                Available = File.Exists(MinecraftInstance.ResourcePath + i + ".jar");
+                Available = File.Exists(SharedData.ResourcePath + i + ".jar");
                 if (!Available)
                 {
                     break;
@@ -53,33 +53,33 @@ namespace LauncherCore
             return Available;
         }
 
-        public void Install(MinecraftInstance instance)
+        public void Install()
         {
             foreach (var i in files)
             {
                 try
                 {
-                    File.Copy(MinecraftInstance.ResourcePath + i + ".jar", instance.ModPath + i + ".jar");
+                    File.Copy(SharedData.ResourcePath + i + ".jar", SharedData.ModPath + i + ".jar");
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
-                    SharedData.DisplayMessage("An error occured while installing: \n" + Name, "Error", MessageType.Error);
+                    SharedData.DisplayMessage("An error occured while installing: " + Name + "\nDetails: \n" + e.ToString(), "Error", MessageType.Error);
                     return;
                 }
             }
         }
 
-        public void Uninstall(MinecraftInstance instance)
+        public void Uninstall()
         {
             foreach (var i in files)
             {
                 try
                 {
-                    File.Delete(instance.ModPath + i + ".jar");
+                    File.Delete(SharedData.ModPath + i + ".jar");
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
-                    SharedData.DisplayMessage("An error occured while uninstalling: \n" + Name, "Error", MessageType.Error);
+                    SharedData.DisplayMessage("An error occured while uninstalling: " + Name + "\nDetails: \n" + e.ToString(), "Error", MessageType.Error);
                     return;
                 }
             }
@@ -101,9 +101,9 @@ namespace LauncherCore
             set;
         }
 
-        public ref Dictionary<MinecraftInstance, bool> Installed
+        public ref bool Installed
         {
-            get => ref installStates;
+            get => ref installState;
         }
 
         public bool Available

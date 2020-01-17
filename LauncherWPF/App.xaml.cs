@@ -15,15 +15,21 @@ namespace LauncherWPF
     /// </summary>
     public partial class App : Application
     {
-        public static Action<bool> BusyAction
+        public static Action<Save> BeginRename
         {
-            private get;
+            get;
             set;
         }
 
-        public static Action<dynamic> SwitchPage
+        public static Action EndRename
         {
             get;
+            set;
+        }
+
+        public static Action<bool> BusyAction
+        {
+            private get;
             set;
         }
 
@@ -38,30 +44,6 @@ namespace LauncherWPF
             get;
             set;
         } = null;
-
-        public static dynamic CurrentPage
-        {
-            get;
-            set;
-        }
-
-        public static MinecraftInstance ActiveInstance
-        {
-            get;
-            set;
-        }
-
-        public static bool ApplyForClient
-        {
-            get;
-            set;
-        }
-
-        public static bool ApplyForServer
-        {
-            get;
-            set;
-        }
 
         private static bool busy = false;
         public static bool Busy
@@ -97,11 +79,11 @@ namespace LauncherWPF
             if (MainModPage == null)
             {
                 MainModPage = new ModPage();
-                MainModPage.UpdateInstance();
             }
             if (MainSavesPage == null)
             {
                 MainSavesPage = new SavesPage();
+                MainSavesPage.RefreshList();
             }
         }
     }

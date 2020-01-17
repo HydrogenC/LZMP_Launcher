@@ -19,7 +19,7 @@ namespace LauncherWPF
     /// <summary>
     /// ModPage.xaml 的交互逻辑
     /// </summary>
-    public partial class ModPage : Page, IUpdateInstance
+    public partial class ModPage : Page
     {
         private bool allChecked = false, processing = false;
         public Dictionary<string, MainTreeItem> itemDict = new Dictionary<string, MainTreeItem>();
@@ -34,11 +34,6 @@ namespace LauncherWPF
         private void ProcessEndCallback(IAsyncResult ar)
         {
             processing = false;
-        }
-
-        public void UpdateInstance()
-        {
-            Core.CheckToInstallState(App.ActiveInstance);
         }
 
         private void CheckIfAllChecked()
@@ -112,16 +107,6 @@ namespace LauncherWPF
             }
         }
 
-        private void BackButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (App.Busy)
-            {
-                return;
-            }
-
-            App.SwitchPage(new MenuPage());
-        }
-
         private void CheckAllButton_Click(object sender, RoutedEventArgs e)
         {
             if (App.Busy)
@@ -144,33 +129,16 @@ namespace LauncherWPF
 
             try
             {
-                if (App.ApplyForClient)
+                processing = true;
+                Core.ApplyAction.BeginInvoke(ProcessEndCallback, null);
+
+                while (processing)
                 {
-                    processing = true;
-                    Core.ApplyAction.BeginInvoke(SharedData.Client, ProcessEndCallback, null);
-
-                    while (processing)
+                    if (App.TitleText != CurrentProgress.status)
                     {
-                        if (App.TitleText != CurrentProgress.status)
-                        {
-                            App.TitleText = CurrentProgress.status;
-                        }
-                        DispatcherHelper.DoEvents();
+                        App.TitleText = CurrentProgress.status;
                     }
-                }
-
-                if (App.ApplyForServer)
-                {
-                    Core.ApplyAction.BeginInvoke(SharedData.Server, ProcessEndCallback, null);
-
-                    while (processing)
-                    {
-                        if (App.TitleText != CurrentProgress.status)
-                        {
-                            App.TitleText = CurrentProgress.status;
-                        }
-                        DispatcherHelper.DoEvents();
-                    }
+                    DispatcherHelper.DoEvents();
                 }
             }
             catch (Exception)
@@ -179,7 +147,7 @@ namespace LauncherWPF
             }
             finally
             {
-                Core.CheckToInstallState(App.ActiveInstance);
+                Core.CheckToInstallState();
                 App.Busy = false;
                 App.TitleText = SharedData.Title;
             }

@@ -55,13 +55,13 @@ namespace LauncherWPF
                 MessageBox.Show("An unexpected exception happened, maybe the map is broken. ", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
-            App.SwitchPage(App.MainSavesPage);
-            App.MainSavesPage.UpdateInstance();
+            App.MainSavesPage.RefreshList();
+            App.EndRename();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            App.SwitchPage(App.MainSavesPage);
+            App.EndRename();
         }
     }
 }

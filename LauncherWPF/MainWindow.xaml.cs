@@ -78,11 +78,6 @@ namespace LauncherWPF
                         return MessageResult.OK;
                 }
             };
-            App.SwitchPage = (dynamic page) =>
-            {
-                App.CurrentPage = page;
-                PageFrame.Content = App.CurrentPage;
-            };
             App.BusyAction = (bool isBusy) =>
             {
                 if (isBusy)
@@ -109,26 +104,23 @@ namespace LauncherWPF
                     App.MainModPage.itemDict[mod.Key].Checked = CheckBoxState.NotChecked;
                 }
             };
+            App.BeginRename = (Save obj) =>
+              {
+                  MapFrame.Content = new RenameMapPage(obj);
+              };
+            App.EndRename = () =>
+            {
+                MapFrame.Content = App.MainSavesPage;
+            };
 
-            XmlHelper.ReadDefinitions(MinecraftInstance.WorkingPath + "\\BasicSettings.xml");
+            XmlHelper.ReadDefinitions(SharedData.WorkingPath + "\\BasicSettings.xml");
             LauncherTitleLabel.Content = SharedData.Title;
             Core.CheckInstallation();
-
-            if (Directory.Exists(MinecraftInstance.WorkingPath + "\\Mods"))
-            {
-                Core.CopyDirectory(MinecraftInstance.WorkingPath + "\\Mods", SharedData.Client.ModPath);
-                Core.CopyDirectory(MinecraftInstance.WorkingPath + "\\Mods", SharedData.Server.ModPath);
-                Directory.Delete(MinecraftInstance.WorkingPath + "\\Mods", true);
-            }
             Core.CheckAvailability();
-            ClientRadio.IsChecked = true;
-            ClientCheck.IsChecked = true;
-            App.ApplyForClient = true;
-            ServerCheck.IsChecked = true;
-            App.ApplyForServer = true;
 
-            App.SwitchPage(new MenuPage());
             App.GeneratePages();
+            PageFrame.Content = App.MainModPage;
+            MapFrame.Content = App.MainSavesPage;
         }
 
         private void CloseForm_Click(object sender, RoutedEventArgs e)
@@ -139,16 +131,10 @@ namespace LauncherWPF
             }
         }
 
-        private void LaunchServerButton_Click(object sender, RoutedEventArgs e)
-        {
-            Core.ApplyChanges(SharedData.Server);
-            Core.LaunchGame(SharedData.Server);
-        }
-
         private void LaunchClientButton_Click(object sender, RoutedEventArgs e)
         {
-            Core.ApplyChanges(SharedData.Client);
-            Core.LaunchGame(SharedData.Client);
+            Core.ApplyChanges();
+            Core.LaunchGame();
         }
 
         private void MainGrid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -157,48 +143,6 @@ namespace LauncherWPF
             {
                 DragMove();
             }
-        }
-
-        private void ClientRadio_Checked(object sender, RoutedEventArgs e)
-        {
-            App.ActiveInstance = SharedData.Client;
-            if (App.CurrentPage is IUpdateInstance)
-            {
-                App.CurrentPage.UpdateInstance();
-            }
-        }
-
-        private void ServerRadio_Checked(object sender, RoutedEventArgs e)
-        {
-            App.ActiveInstance = SharedData.Server;
-            if (App.CurrentPage is IUpdateInstance)
-            {
-                App.CurrentPage.UpdateInstance();
-            }
-        }
-
-        private void PageFrame_ContentRendered(object sender, EventArgs e)
-        {
-            if (App.CurrentPage is ModPage)
-            {
-                ApplyForBorder.Visibility = Visibility.Visible;
-                SetGrid.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                ApplyForBorder.Visibility = Visibility.Hidden;
-                SetGrid.Visibility = Visibility.Hidden;
-            }
-        }
-
-        private void ClientCheck_Click(object sender, RoutedEventArgs e)
-        {
-            App.ApplyForClient = ClientCheck.IsChecked.Value;
-        }
-
-        private void ServerCheck_Click(object sender, RoutedEventArgs e)
-        {
-            App.ApplyForServer = ServerCheck.IsChecked.Value;
         }
 
         private void ReadSet_Click(object sender, RoutedEventArgs e)
@@ -235,6 +179,11 @@ namespace LauncherWPF
             {
                 XmlHelper.WriteXmlSet(dialog.FileName);
             }
+        }
+
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        {
+            App.MainSavesPage.RefreshList();
         }
     }
 }

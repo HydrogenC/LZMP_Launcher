@@ -7,35 +7,21 @@ namespace LauncherCore
 {
     public class SavesHelper
     {
-        public static Save[] GetSaves(MinecraftInstance instance)
+        public static Save[] GetSaves()
         {
             List<Save> saves = new List<Save>();
-            if (instance == SharedData.Client)
+            if (!Directory.Exists(SharedData.SavePath))
             {
-                if (!Directory.Exists(SharedData.SavePath))
-                {
-                    Directory.CreateDirectory(SharedData.SavePath);
-                }
-
-                foreach (string i in Directory.GetDirectories(SharedData.SavePath))
-                {
-                    if (File.Exists(i + "\\level.dat"))
-                    {
-                        try
-                        {
-                            saves.Add(new Save(i));
-                        }
-                        catch (Exception) { }
-                    }
-                }
+                Directory.CreateDirectory(SharedData.SavePath);
             }
-            else
+
+            foreach (string i in Directory.GetDirectories(SharedData.SavePath))
             {
-                if (File.Exists(instance.GamePath + "\\world\\level.dat"))
+                if (File.Exists(i + "\\level.dat"))
                 {
                     try
                     {
-                        saves.Add(new Save(instance.GamePath + "\\world\\"));
+                        saves.Add(new Save(i));
                     }
                     catch (Exception) { }
                 }
@@ -47,14 +33,14 @@ namespace LauncherCore
         {
             CurrentProgress.status = "Preparing";
 
-            string tmpDir = MinecraftInstance.WorkingPath + "\\Tmp\\";
+            string tmpDir = SharedData.WorkingPath + "\\Tmp\\";
             Directory.CreateDirectory(tmpDir);
             Core.CopyDirectory(save.FolderPath, tmpDir + "save\\");
             XmlHelper.WriteXmlSet(tmpDir + "Set.xml", false);
 
-            if (Directory.Exists(SharedData.Client.ScriptPath))
+            if (Directory.Exists(SharedData.ScriptPath))
             {
-                Core.CopyDirectory(SharedData.Client.ScriptPath, tmpDir + "scripts\\");
+                Core.CopyDirectory(SharedData.ScriptPath, tmpDir + "scripts\\");
             }
 
             string jmName = save.FolderName.Replace('-', '~');
@@ -75,11 +61,11 @@ namespace LauncherCore
         }
         public static readonly Action<Save, string> ExportAction = ExportSave;
 
-        public static void ImportSave(string zipFile, MinecraftInstance instance)
+        public static void ImportSave(string zipFile)
         {
             CurrentProgress.status = "Extracting";
 
-            string tmpDir = MinecraftInstance.WorkingPath + "\\Tmp\\";
+            string tmpDir = SharedData.WorkingPath + "\\Tmp\\";
             Directory.CreateDirectory(tmpDir);
 
             string zipName = zipFile.Substring(zipFile.LastIndexOf('\\') + 1);
@@ -88,7 +74,7 @@ namespace LauncherCore
             zip.ExtractZip(zipFile, tmpDir, null);
 
             Save save = new Save(tmpDir + "save");
-            string destDir = (instance == SharedData.Client) ? SharedData.SavePath + save.LevelName : SharedData.Server.GamePath + "\\world";
+            string destDir = SharedData.SavePath + save.LevelName;
 
             if (Directory.Exists(destDir))
             {
@@ -120,19 +106,19 @@ namespace LauncherCore
 
             if (Directory.Exists(tmpDir + "scripts\\"))
             {
-                Core.CopyDirectory(tmpDir + "scripts\\", SharedData.Client.ScriptPath);
+                Core.CopyDirectory(tmpDir + "scripts\\", SharedData.ScriptPath);
             }
 
-            if (instance == SharedData.Client && Directory.Exists(tmpDir + "jm\\"))
+            if (Directory.Exists(tmpDir + "jm\\"))
             {
                 Core.CopyDirectory(tmpDir + "jm\\", SharedData.JMDataPath + save.LevelName.Replace('-', '~'));
             }
 
-        CleanUp: CurrentProgress.status = "Cleaning up";
+            CleanUp: CurrentProgress.status = "Cleaning up";
 
             Directory.Delete(tmpDir, true);
             CurrentProgress.Initialize();
         }
-        public static readonly Action<string, MinecraftInstance> ImportAction = ImportSave;
+        public static readonly Action<string> ImportAction = ImportSave;
     }
 }

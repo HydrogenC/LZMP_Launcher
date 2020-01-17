@@ -24,30 +24,27 @@ namespace LauncherCore
         No
     }
 
-    public class MinecraftInstance
+    public struct SharedData
     {
+        public static string Version, Title, LauncherPath;
+        public static Dictionary<string, Mod> Mods = new Dictionary<string, Mod>();
+        public static Func<string, string, MessageType, MessageResult> DisplayMessage;
+
         public static string WorkingPath = Directory.GetCurrentDirectory();
-        public string GamePath;
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="gamePath">Relative path of the game (no backslash at the end)</param>
-        /// <param name="launcherPath">Relative path of the launcher</param>
-        public MinecraftInstance(string gamePath, string launcherPath)
+        public static string GamePath
         {
-            GamePath = WorkingPath + "\\" + gamePath;
-            LauncherPath = WorkingPath + "\\" + launcherPath;
+            get => WorkingPath + "\\Client\\.minecraft";
         }
 
-        public static bool operator ==(MinecraftInstance a, MinecraftInstance b)
+        public static string SavePath
         {
-            return (a.GamePath == b.GamePath) && (a.LauncherPath == b.LauncherPath);
+            get => GamePath + "\\saves\\";
         }
 
-        public static bool operator !=(MinecraftInstance a, MinecraftInstance b)
+        public static string JMDataPath
         {
-            return (a.GamePath != b.GamePath) || (a.LauncherPath != b.LauncherPath);
+            get => GamePath + "\\journeymap\\data\\sp\\";
         }
 
         public static string ResourcePath
@@ -55,48 +52,14 @@ namespace LauncherCore
             get => WorkingPath + "\\Resources\\";
         }
 
-        public string ModPath
+        public static string ModPath
         {
             get => GamePath + "\\mods\\";
         }
 
-        public string ScriptPath
+        public static string ScriptPath
         {
             get => GamePath + "\\scripts\\";
-        }
-
-        public string LauncherPath;
-
-        public override bool Equals(object obj)
-        {
-            return obj is MinecraftInstance instance && (GamePath == instance.GamePath) && (LauncherPath == instance.LauncherPath);
-        }
-
-        public override Int32 GetHashCode()
-        {
-            var hashCode = -1660369126;
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(GamePath);
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(LauncherPath);
-            return hashCode;
-        }
-    }
-
-    public struct SharedData
-    {
-        public static string Version, Title;
-        public static Dictionary<string, Mod> Mods = new Dictionary<string, Mod>();
-        public static MinecraftInstance Client = new MinecraftInstance("Client\\.minecraft", string.Empty);
-        public static MinecraftInstance Server = new MinecraftInstance("Server\\panel\\server", string.Empty);
-        public static Func<string, string, MessageType, MessageResult> DisplayMessage;
-
-        public static string SavePath
-        {
-            get => Client.GamePath + "\\saves\\";
-        }
-
-        public static string JMDataPath
-        {
-            get => Client.GamePath + "\\journeymap\\data\\sp\\";
         }
     }
 
@@ -130,19 +93,19 @@ namespace LauncherCore
             }
         }
 
-        public static void ApplyChanges(MinecraftInstance instance)
+        public static void ApplyChanges()
         {
             List<Mod> applyList = new List<Mod>();
             foreach (var i in SharedData.Mods)
             {
-                if ((i.Value.ToInstall != i.Value.Installed[instance]) && i.Value.Available)
+                if ((i.Value.ToInstall != i.Value.Installed) && i.Value.Available)
                 {
                     applyList.Add(i.Value);
                 }
 
                 foreach (var j in i.Value.Addons)
                 {
-                    if ((j.Value.ToInstall != j.Value.Installed[instance]) && j.Value.Available)
+                    if ((j.Value.ToInstall != j.Value.Installed) && j.Value.Available)
                     {
                         applyList.Add(j.Value);
                     }
@@ -161,13 +124,13 @@ namespace LauncherCore
             {
                 try
                 {
-                    if (i.Installed[instance])
+                    if (i.Installed)
                     {
-                        i.Uninstall(instance);
+                        i.Uninstall();
                     }
                     else
                     {
-                        i.Install(instance);
+                        i.Install();
                     }
                 }
                 catch (Exception) { }
@@ -181,17 +144,17 @@ namespace LauncherCore
             CheckInstallation();
             CurrentProgress.Initialize();
         }
-        public static readonly Action<MinecraftInstance> ApplyAction = ApplyChanges;
+        public static readonly Action ApplyAction = ApplyChanges;
 
         public static void CleanUp()
         {
-            if (!Directory.Exists(MinecraftInstance.ResourcePath))
+            if (!Directory.Exists(SharedData.ResourcePath))
             {
                 return;
             }
 
             string msg = "";
-            string[] files = Directory.GetFiles(MinecraftInstance.ResourcePath);
+            string[] files = Directory.GetFiles(SharedData.ResourcePath);
             foreach (var i in files)
             {
                 bool used = false;
@@ -265,26 +228,24 @@ namespace LauncherCore
         {
             foreach (var i in SharedData.Mods)
             {
-                i.Value.CheckInstalled(SharedData.Client);
-                i.Value.CheckInstalled(SharedData.Server);
+                i.Value.CheckInstalled();
 
                 foreach (var j in i.Value.Addons)
                 {
-                    j.Value.CheckInstalled(SharedData.Client);
-                    j.Value.CheckInstalled(SharedData.Server);
+                    j.Value.CheckInstalled();
                 }
             }
         }
 
-        public static void CheckToInstallState(MinecraftInstance instance)
+        public static void CheckToInstallState()
         {
             foreach (var i in SharedData.Mods)
             {
-                i.Value.ToInstall = i.Value.Installed[instance];
+                i.Value.ToInstall = i.Value.Installed;
 
                 foreach (var j in i.Value.Addons)
                 {
-                    j.Value.ToInstall = j.Value.Installed[instance];
+                    j.Value.ToInstall = j.Value.Installed;
                 }
             }
         }
@@ -313,11 +274,11 @@ namespace LauncherCore
             }
         }
 
-        public static void LaunchGame(MinecraftInstance instance)
+        public static void LaunchGame()
         {
-            Directory.SetCurrentDirectory(Path.GetDirectoryName(instance.LauncherPath));
-            System.Diagnostics.Process.Start(instance.LauncherPath);
-            Directory.SetCurrentDirectory(MinecraftInstance.WorkingPath);
+            Directory.SetCurrentDirectory(Path.GetDirectoryName(SharedData.LauncherPath));
+            System.Diagnostics.Process.Start(SharedData.LauncherPath);
+            Directory.SetCurrentDirectory(SharedData.WorkingPath);
         }
     }
 }

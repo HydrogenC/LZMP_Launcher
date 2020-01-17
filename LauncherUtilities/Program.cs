@@ -20,64 +20,15 @@ namespace LauncherUtilities
                 }
                 return MessageResult.OK;
             };
-            XmlHelper.ReadDefinitions(MinecraftInstance.WorkingPath + "\\BasicSettings.xml");
+            XmlHelper.ReadDefinitions(SharedData.WorkingPath + "\\BasicSettings.xml");
             Console.WriteLine("Modpack version: " + SharedData.Version);
             Core.CheckInstallation();
             Core.CheckAvailability();
-            Console.WriteLine("Press any key to continue...");
-            Console.ReadKey();
-
-        cls: Console.Clear();
-            Console.WriteLine("1. Clean up unused resources");
-            Console.WriteLine("2. Initialize modpack to uninstalled state");
-            Console.Write("Enter number: ");
-            ushort num = 0;
-
-            if (!ushort.TryParse(Console.ReadLine(), out num))
-            {
-                goto cls;
-            }
-
-            switch (num)
-            {
-                case 1:
-                    Console.WriteLine("Processing...");
-
-                    Core.CleanUp();
-
-                    Console.WriteLine("Complete! ");
-                    Console.ReadLine();
-                    break;
-                case 2:
-                    Console.WriteLine("Processing...");
-
-                    Parallel.ForEach(SharedData.Mods, (KeyValuePair<string, Mod> pair) =>
-                    {
-                        if (pair.Value.Installed[SharedData.Client])
-                        {
-                            pair.Value.Uninstall(SharedData.Client);
-                        }
-                    });
-
-                    Core.CopyDirectory(SharedData.Client.ModPath, MinecraftInstance.WorkingPath + "\\Mods");
-
-                    if (Directory.Exists(SharedData.Client.ModPath))
-                    {
-                        Directory.Delete(SharedData.Client.ModPath, true);
-                    }
-
-                    if (Directory.Exists(SharedData.Server.ModPath))
-                    {
-                        Directory.Delete(SharedData.Server.ModPath, true);
-                    }
-
-                    Console.WriteLine("Complete! ");
-                    Console.ReadLine();
-                    break;
-                default:
-                    break;
-            }
-            goto cls;
+            Console.WriteLine("Press any key to clean up resources...");
+            Console.WriteLine("Cleaning up...");
+            Core.CleanUp();
+            Console.WriteLine("Complete! ");
+            Console.ReadLine();
         }
     }
 }

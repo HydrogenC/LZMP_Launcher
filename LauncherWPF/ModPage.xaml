@@ -5,18 +5,17 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:LauncherWPF"
       mc:Ignorable="d"
-      Title="ModPage" Height="500" Width="360">
+      Title="ModPage" Height="496" Width="360">
 
-    <Grid Width="360" Height="500" Margin="0,0,0,0" VerticalAlignment="Top">
-        <TreeView x:Name="MainTreeView" HorizontalAlignment="Left" Height="425" Margin="10,10,0,0" VerticalAlignment="Top" Width="340" Background="{x:Null}" Foreground="White">
+    <Grid Width="360" Height="496" Margin="0,0,0,0" VerticalAlignment="Top">
+        <TreeView x:Name="MainTreeView" HorizontalAlignment="Left" Height="430" Margin="10,0,0,0" VerticalAlignment="Top" Width="340" Background="{x:Null}" Foreground="White">
             <TreeView.ItemTemplate>
                 <HierarchicalDataTemplate DataType="{x:Type local:MainTreeItem}" ItemsSource="{Binding Path=Children, Mode=OneWay}">
                     <CheckBox IsChecked="{Binding Path=ItemChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsThreeState="{Binding Path=IsCategory, Mode=OneWay}" Content="{Binding Path=Text, Mode=OneWay}" FontSize="12" Foreground="White" Padding="0,1,0,1"/>
                 </HierarchicalDataTemplate>
             </TreeView.ItemTemplate>
         </TreeView>
-        <Button x:Name="CheckAllButton" Content="Check All" HorizontalAlignment="Left" Height="40" VerticalAlignment="Bottom" Width="105" Background="#FF1E1E1E" FontSize="18" Foreground="White" Margin="10,450,0,10" Click="CheckAllButton_Click"/>
-        <Button x:Name="ApplyButton" Content="Apply" HorizontalAlignment="Center" Height="40" VerticalAlignment="Bottom" Width="105" Background="#FF1E1E1E" FontSize="18" Foreground="White" Margin="128,450,128,10" Click="ApplyButton_Click"/>
-        <Button x:Name="BackButton" Content="Back" HorizontalAlignment="Right" Height="40" Width="105" Background="#FF1E1E1E" FontSize="18" Foreground="White" Margin="0,0,10,10" Click="BackButton_Click" VerticalAlignment="Bottom"/>
+        <Button x:Name="CheckAllButton" Content="Check All" HorizontalAlignment="Left" Height="40" VerticalAlignment="Bottom" Width="160" Background="#FF1E1E1E" FontSize="18" Foreground="White" Margin="10,0,0,10" Click="CheckAllButton_Click"/>
+        <Button x:Name="ApplyButton" Content="Apply" HorizontalAlignment="Center" Height="40" VerticalAlignment="Bottom" Width="160" Background="#FF1E1E1E" FontSize="18" Foreground="White" Margin="190,0,10,10" Click="ApplyButton_Click"/>
     </Grid>
 </Page>

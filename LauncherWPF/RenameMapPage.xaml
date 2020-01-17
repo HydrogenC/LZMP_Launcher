@@ -5,10 +5,10 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:LauncherWPF"
       mc:Ignorable="d" 
-      d:DesignHeight="500" d:DesignWidth="360"
+      d:DesignHeight="350" d:DesignWidth="360"
       Title="RenameMapPage">
 
-    <Grid Height="500" Width="360">
+    <Grid Height="350" Width="360">
         <Label x:Name="TitleLabel" Content="Renaming map: " HorizontalAlignment="Left" Height="40" Margin="10,10,0,0" VerticalAlignment="Top" Width="340" Foreground="White" FontSize="24"/>
         <Label x:Name="MapTitleLabel" Content="Null" HorizontalAlignment="Left" Height="32" Margin="10,48,0,0" VerticalAlignment="Top" Width="340" Foreground="White" FontSize="20"/>
         <Label x:Name="FolderNameLabel" Content="Folder name: " HorizontalAlignment="Left" Height="40" Margin="10,95,0,0" VerticalAlignment="Top" Width="340" Foreground="White" FontSize="18"/>

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings>
-  <pack title="LZMP %v Launcher" version="4.12.6" />
+  <pack title="LZMP %v Launcher" version="5.0.0" />
   <launcher client="Client\NsisoLauncher.exe" server="Server\MCim.exe" />
 
   <category name="Technology" >
@@ -233,18 +233,9 @@
     <mod key="xn" name="XNet" >
       <file value="xnet-1.12-1.8.2" />
     </mod>
-
-    <mod key="zi" name="Zetta Industries" >
-      <file value="zettaindustries-1.3-1.12.2-161" />
-    </mod>
   </category>
 
   <category name="Decoration" >
-    <mod key="anm" name="Animania">
-      <file value="CraftStudioAPI-universal-1.0.1.95-mc1.12-alpha" />
-      <file value="animania-1.12.2-1.7.3" />
-    </mod>
-
     <mod key="bop" name="Biomes O Plenty" >
       <file value="BiomesOPlenty-1.12.2-7.0.1.2444-universal" />
     </mod>
@@ -262,15 +253,6 @@
 
     <mod key="fur" name="MrCrayfish's Furniture" >
       <file value="furniture-6.3.1-1.12.2" />
-    </mod>
-
-    <mod key="sse" name="Senere Seasons" >
-      <file value="SereneSeasons-1.12.2-1.2.18-universal" />
-    </mod>
-
-    <mod key="ste" name="Stellar Sky" >
-      <file value="Stellar+API-1.12.2-0.4.2.9" />
-      <file value="Stellar+Sky-1.12.2-0.5.3.2" />
     </mod>
 
     <mod key="twi" name="Twilight Forest" >
@@ -300,11 +282,6 @@
 
     <mod key="mwt" name="Minewatch" >
       <file value="Minewatch-1.12.X-3.13" />
-    </mod>
-
-    <mod key="cfg" name="MrCrayfish's Guns">
-      <file value="obfuscate-0.2.6-1.12.2" />
-      <file value="guns-0.15.3-1.12.2" />
     </mod>
 
     <mod key="omt" name="Open Modular Turrents" >

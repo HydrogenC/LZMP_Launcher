@@ -20,7 +20,7 @@ namespace LauncherWPF
     /// <summary>
     /// SavesPage.xaml 的交互逻辑
     /// </summary>
-    public partial class SavesPage : Page, IUpdateInstance
+    public partial class SavesPage : Page
     {
         private bool processing = false;
 
@@ -34,25 +34,15 @@ namespace LauncherWPF
             processing = false;
         }
 
-        public void UpdateInstance()
+        public void RefreshList()
         {
             MainListBox.Items.Clear();
 
-            Save[] saves = SavesHelper.GetSaves(App.ActiveInstance);
+            Save[] saves = SavesHelper.GetSaves();
             foreach (var i in saves)
             {
                 MainListBox.Items.Add(i);
             }
-        }
-
-        private void BackButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (App.Busy)
-            {
-                return;
-            }
-
-            App.SwitchPage(new MenuPage());
         }
 
         private void RenameButton_Click(object sender, RoutedEventArgs e)
@@ -69,7 +59,7 @@ namespace LauncherWPF
             }
             else
             {
-                App.SwitchPage(new RenameMapPage(selection));
+                App.BeginRename(selection);
             }
         }
 
@@ -92,7 +82,7 @@ namespace LauncherWPF
                 try
                 {
                     processing = true;
-                    SavesHelper.ImportAction.BeginInvoke(dialog.FileName, App.ActiveInstance, ProcessEndCallback, null);
+                    SavesHelper.ImportAction.BeginInvoke(dialog.FileName, ProcessEndCallback, null);
 
                     string prevText = string.Empty;
                     while (processing)
@@ -112,7 +102,7 @@ namespace LauncherWPF
                 }
                 finally
                 {
-                    UpdateInstance();
+                    RefreshList();
                     App.Busy = false;
                     App.TitleText = SharedData.Title;
                 }
@@ -190,7 +180,7 @@ namespace LauncherWPF
                 if (MessageBox.Show("Are you sure to delete? You cannot revert this! ", "Prompt", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
                 {
                     selection.Delete();
-                    UpdateInstance();
+                    RefreshList();
                 }
             }
         }

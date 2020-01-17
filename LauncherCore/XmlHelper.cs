@@ -34,8 +34,7 @@ namespace LauncherCore
 
             XmlDocument xml = new XmlDocument();
             xml.Load(xmlFile);
-            SharedData.Client.LauncherPath = MinecraftInstance.WorkingPath + "\\" + GetElementByTagName(ref xml, "launcher").GetAttribute("client");
-            SharedData.Server.LauncherPath = MinecraftInstance.WorkingPath + "\\" + GetElementByTagName(ref xml, "launcher").GetAttribute("server");
+            SharedData.LauncherPath = SharedData.WorkingPath + "\\" + GetElementByTagName(ref xml, "launcher").GetAttribute("value");
             SharedData.Version = GetElementByTagName(ref xml, "pack").GetAttribute("version");
             SharedData.Title = GetElementByTagName(ref xml, "pack").GetAttribute("title").Replace("%v", SharedData.Version);
 
@@ -69,7 +68,7 @@ namespace LauncherCore
             document.Load(xmlFile);
             XmlElement root = GetElementByTagName(ref document, "settings");
             bool versionConforms = GetElementByTagName(ref document, "version").GetAttribute("value") == SharedData.Version;
-            UInt16 skip = 0;
+            ushort skip = 0;
 
             foreach (XmlElement i in root.ChildNodes)
             {
