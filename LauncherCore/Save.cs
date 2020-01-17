@@ -44,6 +44,10 @@ namespace LauncherCore
                 else
                 {
                     Directory.Move(FolderPath, SharedData.SavePath + value);
+                    if (Directory.Exists(SharedData.JMDataPath + folderName.Replace('-', '~')))
+                    {
+                        Directory.Move(SharedData.JMDataPath + folderName.Replace('-', '~'), SharedData.JMDataPath + value.Replace('-', '~'));
+                    }
                     folderName = value;
                     FolderPath = FolderPath.Substring(0, FolderPath.LastIndexOf('\\') + 1) + value;
                 }

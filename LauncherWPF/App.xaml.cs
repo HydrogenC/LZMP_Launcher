@@ -79,6 +79,7 @@ namespace LauncherWPF
             if (MainModPage == null)
             {
                 MainModPage = new ModPage();
+                Core.CheckToInstallState();
             }
             if (MainSavesPage == null)
             {
