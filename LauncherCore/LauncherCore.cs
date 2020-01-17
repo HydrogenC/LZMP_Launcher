@@ -34,7 +34,7 @@ namespace LauncherCore
 
         public static string GamePath
         {
-            get => WorkingPath + "\\Client\\.minecraft";
+            get => WorkingPath + "\\Game\\.minecraft";
         }
 
         public static string SavePath

@@ -34,7 +34,7 @@ namespace LauncherCore
 
             XmlDocument xml = new XmlDocument();
             xml.Load(xmlFile);
-            SharedData.LauncherPath = SharedData.WorkingPath + "\\" + GetElementByTagName(ref xml, "launcher").GetAttribute("value");
+            SharedData.LauncherPath = SharedData.WorkingPath + "\\" + GetElementByTagName(ref xml, "pack").GetAttribute("launcher");
             SharedData.Version = GetElementByTagName(ref xml, "pack").GetAttribute("version");
             SharedData.Title = GetElementByTagName(ref xml, "pack").GetAttribute("title").Replace("%v", SharedData.Version);
 
