@@ -24,7 +24,9 @@ namespace LauncherUtilities
             Console.WriteLine("Modpack version: " + SharedData.Version);
             Core.CheckInstallation();
             Core.CheckAvailability();
+
             Console.WriteLine("Press any key to clean up resources...");
+            Console.ReadKey();
             Console.WriteLine("Cleaning up...");
             Core.CleanUp();
             Console.WriteLine("Complete! ");
