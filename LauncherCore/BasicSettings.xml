@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings>
-  <pack title="LZMP %v Launcher" version="5.0.0A" launcher="Game\NsisoLauncher.exe"/>
+  <pack title="LZMP %v Launcher" version="5.0.1A" launcher="Game\NsisoLauncher.exe"/>
 
   <category name="Technology" >
     <mod key="aa" name="Actually Additions" >
@@ -9,7 +9,7 @@
 
     <mod key="alc" name="Alchemistry" >
       <file value="alib-1.0.12" />
-      <file value="alchemistry-1.0.36" />
+      <file value="alchemistry-1.0.37" />
     </mod>
 
     <mod key="ae" name="Applied Energetics" >
@@ -52,7 +52,7 @@
     </mod>
 
     <mod key="emg" name="Emerging Tech">
-      <file value="EmergingTechnology-1.12.2-1.3.0-beta" />
+      <file value="EmergingTechnology-1.12.2-1.3.4-beta" />
     </mod>
 
     <mod key="evt" name="Environmental Tech" >
@@ -85,7 +85,7 @@
 
     <mod key="ga" name="Guide API" >
       <file value="Guide-API-1.12-2.1.8-63" />
-      <mod key="cyl" name="Cyclic" >
+      <mod key="cyl" name="Cyclic (SP Only)" >
         <file value="Cyclic-1.12.2-1.19.19" />
       </mod>
       <mod key="wot" name="Woot" >
@@ -163,12 +163,12 @@
     </mod>
 
     <mod key="rco" name="Reborn Core" >
-      <file value="RebornCore-1.12.2-3.16.4.478-universal" />
+      <file value="RebornCore-1.12.2-3.18.1.514-universal" />
       <mod key="car" name="Steve's Carts" >
         <file value="StevesCarts-1.12.2-2.4.32.137" />
       </mod>
       <mod key="tr" name="Tech Reborn" >
-        <file value="TechReborn-1.12.2-2.24.3.1043-universal" />
+        <file value="TechReborn-1.12.2-2.26.2.1063-universal" />
       </mod>
       <mod key="reb" name="Reborn Storage" >
         <file value="RebornStorage-1.12.2-3.3.4.85" />
@@ -253,7 +253,10 @@
     <mod key="iv" name="Immersive Vehicles">
       <file value="Immersive+Vehicles-1.12.2-15.9.2" />
       <file value="MTS_Official_Pack_V13" />
-      <file value="UNU+Parts+Pack+for+IE+[MTS]+[IR]+1.12.2-15.5.0-1.5.0-3.0.0" />
+      <file value="UNU+Parts+Pack+[MTS]+1.10.2-15.9.0-3.1.0" />
+      <mod key="asv" name="ASV Pack">
+        <file value="Automobilwerke_Schwikau_VEB_1967" />
+      </mod>
       <mod key="gda" name="Golden Airport">
         <file value="Golden+Airport+Pack+[Immersive-Vehicles]+0.2.2" />
       </mod>
@@ -262,10 +265,10 @@
         <file value="IV_Trin_Civil_Pack_(extended)_2.5.0" />
       </mod>
       <mod key="unc" name="UNU Civilian">
-        <file value="UNU+Civilian+Vehicles+[MTS]+[IR]+1.12.2-15.5.0-1.5.0-3.0.0" />
+        <file value="UNU+Civilian+Pack+[MTS]+1.10.2-15.9.0-3.1.0" />
       </mod>
       <mod key="unm" name="UNU Military">
-        <file value="UNU+Military+Vehicles+[MTS]+[IR]+1.12.2-15.5.0-1.5.0-3.0.0" />
+        <file value="UNU+Military+Pack+[MTS]+1.10.2-15.9.0-3.0.0" />
       </mod>
     </mod>
 
@@ -348,7 +351,7 @@
     <mod key="pe" name="ProjectE" >
       <file value="ProjectE-1.12.2-PE1.4.1" />
       <mod key="eqa" name="Equivalent Additions">
-        <file value="HammerCore-1.12.2-2.0.6.4" />
+        <file value="HammerCore-1.12.2-2.0.6.7" />
         <file value="EquivalentAdditions-1.12.2-7r" />
       </mod>
     </mod>
@@ -369,7 +372,7 @@
     </mod>
 
     <mod key="rel" name="Refined Relocation" >
-      <file value="RefinedRelocation_1.12.2-4.2.36" />
+      <file value="RefinedRelocation_1.12.2-4.2.37" />
     </mod>
 
     <mod key="sca" name="Scaling Health" >
