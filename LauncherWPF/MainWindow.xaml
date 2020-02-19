@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LauncherWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="800" WindowStyle="None" Background="#FF1E1E1E" BorderBrush="#FFC8C8C8" Foreground="White" MouseLeftButtonDown="MainGrid_MouseLeftButtonDown" ScrollViewer.VerticalScrollBarVisibility="Disabled" ResizeMode="NoResize">
+        Title="LZMP Launcher" Height="600" Width="800" WindowStyle="None" Background="#FF1E1E1E" BorderBrush="#FFC8C8C8" Foreground="White" MouseLeftButtonDown="MainGrid_MouseLeftButtonDown" ScrollViewer.VerticalScrollBarVisibility="Disabled" ResizeMode="NoResize">
     <Grid x:Name="MainGrid" MouseLeftButtonDown="MainGrid_MouseLeftButtonDown">
         <Button x:Name="CloseForm" Content="X" HorizontalAlignment="Right" Height="48" Margin="0,16,16,0" VerticalAlignment="Top" Width="48" Background="#FF1E1E1E" Foreground="White" FontSize="28" BorderBrush="{x:Null}" Click="CloseForm_Click"/>
         <Label x:Name="LauncherTitleLabel" Content="" HorizontalAlignment="Left" Height="56" Margin="32,16,0,0" VerticalAlignment="Top" Width="600" Foreground="White" FontSize="36" MouseLeftButtonDown="MainGrid_MouseLeftButtonDown"/>
