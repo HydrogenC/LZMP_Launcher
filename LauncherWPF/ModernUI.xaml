@@ -5,14 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LauncherWPF"
         mc:Ignorable="d"
-        Title="ModernUI" Height="720" Width="720" ResizeMode="CanMinimize" WindowStyle="ThreeDBorderWindow">
+        Title="LZMP Launcher" Height="720" Width="720" ResizeMode="CanMinimize" WindowStyle="ThreeDBorderWindow">
     <Grid>
         <Border Margin="0,0,0,0" Panel.ZIndex="-1">
             <Image x:Name="Background" Source="Images\Bg.png" Margin="0,0,0,0" Stretch="Fill"/>
             <Border.Effect>
-                <BlurEffect Radius="12" KernelType="Gaussian"/>
+                <BlurEffect Radius="13.2" KernelType="Gaussian"/>
             </Border.Effect>
         </Border>
-        <Label x:Name="TitleLabel" Content="NULL" HorizontalAlignment="Left" Margin="10,10,10,0" VerticalAlignment="Top" Width="694" Height="56" Foreground="White" HorizontalContentAlignment="Center" FontFamily="Segoe UI Semibold" FontSize="40" Background="#66FFFFFF" Padding="5,0"/>
+        <Label x:Name="TitleLabel" Content="NULL" HorizontalAlignment="Left" Margin="10,10,10,0" VerticalAlignment="Top" Width="694" Height="56" Foreground="White" HorizontalContentAlignment="Center" FontFamily="Segoe UI Bold" FontSize="40" Background="#66FFFFFF" Padding="5,0"/>
+        <Button x:Name="LaunchButton" Content="Launch Game" FontSize="26" Margin="0,85,10,0" Background="#99E32121" BorderBrush="#99FFFFFF" Foreground="White" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Width="320" VerticalAlignment="Top" Height="50" FontFamily="Segoe UI" Click="LaunchButton_Click"/>
     </Grid>
 </Window>

@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using LauncherCore;
 
 namespace LauncherWPF
 {
@@ -22,6 +23,12 @@ namespace LauncherWPF
         public ModernUI()
         {
             InitializeComponent();
+        }
+
+        private void LaunchButton_Click(object sender, RoutedEventArgs e)
+        {
+            Core.ApplyChanges();
+            Core.LaunchGame();
         }
     }
 }
