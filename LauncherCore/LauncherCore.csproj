@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IEditableFile.cs" />
     <Compile Include="Mod.cs" />
     <Compile Include="Save.cs" />
     <Compile Include="SavesHelper.cs" />

@@ -8,12 +8,17 @@
         Title="LZMP Launcher" Height="720" Width="720" ResizeMode="CanMinimize" WindowStyle="ThreeDBorderWindow">
     <Grid>
         <Border Margin="0,0,0,0" Panel.ZIndex="-1">
-            <Image x:Name="Background" Source="Images\Bg.png" Margin="0,0,0,0" Stretch="Fill"/>
+            <Image x:Name="Background" Source="Images\Bg.png" Margin="0,0,0,0" Stretch="Fill" ToolTip="Refresh"/>
             <Border.Effect>
                 <BlurEffect Radius="13.2" KernelType="Gaussian"/>
             </Border.Effect>
         </Border>
         <Label x:Name="TitleLabel" Content="NULL" HorizontalAlignment="Left" Margin="10,10,10,0" VerticalAlignment="Top" Width="694" Height="56" Foreground="White" HorizontalContentAlignment="Center" FontFamily="Segoe UI Bold" FontSize="40" Background="#66FFFFFF" Padding="5,0"/>
         <Button x:Name="LaunchButton" Content="Launch Game" FontSize="26" Margin="0,85,10,0" Background="#99E32121" BorderBrush="#99FFFFFF" Foreground="White" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Width="320" VerticalAlignment="Top" Height="50" FontFamily="Segoe UI" Click="LaunchButton_Click"/>
+        <Grid x:Name="SelectorGrid" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,154,10,0" Height="50" Width="320">
+            <Button x:Name="MapsButton" Content="Maps" FontSize="26" Margin="0,0,185,0" Background="#99E32121" BorderBrush="{x:Null}" Foreground="White" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Width="135" VerticalAlignment="Top" Height="50" FontFamily="Segoe UI"/>
+            <Button x:Name="ModsetsButton" Content="Modsets" FontSize="26" Margin="0,0,50,0" Background="#99E32121" BorderBrush="{x:Null}" Foreground="White" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Width="135" Height="50" FontFamily="Segoe UI"/>
+            <Button x:Name="ModsetsButton_Copy" Content="R" FontSize="26" Background="#99E32121" BorderBrush="{x:Null}" Foreground="White" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Width="50" Height="50" FontFamily="Segoe UI"/>
+        </Grid>
     </Grid>
 </Window>
