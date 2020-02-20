@@ -14,11 +14,23 @@
             </Border.Effect>
         </Border>
         <Label x:Name="TitleLabel" Content="NULL" HorizontalAlignment="Left" Margin="10,10,10,0" VerticalAlignment="Top" Width="694" Height="56" Foreground="White" HorizontalContentAlignment="Center" FontFamily="Segoe UI Bold" FontSize="40" Background="#66FFFFFF" Padding="5,0"/>
+        <TreeView x:Name="MainTreeView" HorizontalAlignment="Left" Height="536" Margin="10,85,0,0" VerticalAlignment="Top" Width="356" Background="#66FFFFFF" Foreground="White">
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate DataType="{x:Type local:MainTreeItem}" ItemsSource="{Binding Path=Children, Mode=OneWay}">
+                    <CheckBox IsChecked="{Binding Path=ItemChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsThreeState="{Binding Path=IsCategory, Mode=OneWay}" Content="{Binding Path=Text, Mode=OneWay}" FontSize="12" Foreground="White" Padding="0,1,0,1"/>
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+        </TreeView>
+        <Grid x:Name="TreeControllerGrid" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,348,9.5" Height="50" Width="356">
+            <Button x:Name="CheckButton" Content="Maps" FontSize="26" Margin="0,0,184,0" Background="#99E32121" BorderBrush="#99FFFFFF" Foreground="White" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Width="172" VerticalAlignment="Top" Height="50" FontFamily="Segoe UI"/>
+            <Button x:Name="ApplyButton" Content="Modsets" FontSize="26" Background="#99E32121" BorderBrush="#99FFFFFF" Foreground="White" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Width="172" Height="50" FontFamily="Segoe UI"/>
+        </Grid>
+
         <Button x:Name="LaunchButton" Content="Launch Game" FontSize="26" Margin="0,85,10,0" Background="#99E32121" BorderBrush="#99FFFFFF" Foreground="White" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Width="320" VerticalAlignment="Top" Height="50" FontFamily="Segoe UI" Click="LaunchButton_Click"/>
         <Grid x:Name="SelectorGrid" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,154,10,0" Height="50" Width="320">
             <Button x:Name="MapsButton" Content="Maps" FontSize="26" Margin="0,0,185,0" Background="#99E32121" BorderBrush="{x:Null}" Foreground="White" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Width="135" VerticalAlignment="Top" Height="50" FontFamily="Segoe UI"/>
             <Button x:Name="ModsetsButton" Content="Modsets" FontSize="26" Margin="0,0,50,0" Background="#99E32121" BorderBrush="{x:Null}" Foreground="White" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Width="135" Height="50" FontFamily="Segoe UI"/>
-            <Button x:Name="ModsetsButton_Copy" Content="R" FontSize="26" Background="#99E32121" BorderBrush="{x:Null}" Foreground="White" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Width="50" Height="50" FontFamily="Segoe UI"/>
+            <Button x:Name="RefreshButton" Content="R" FontSize="26" Background="#99E32121" BorderBrush="{x:Null}" Foreground="White" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Width="50" Height="50" FontFamily="Segoe UI"/>
         </Grid>
     </Grid>
 </Window>

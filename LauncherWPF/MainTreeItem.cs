@@ -5,7 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
+using System.Windows.Controls;
 
 namespace LauncherWPF
 {
@@ -19,7 +19,7 @@ namespace LauncherWPF
     /// <summary>
     /// MainTreeView 的交互逻辑
     /// </summary>
-    public class MainTreeItem : INotifyPropertyChanged
+    public class MainTreeItem : TreeViewItem, INotifyPropertyChanged
     {
         public MainTreeItem(string text)
         {

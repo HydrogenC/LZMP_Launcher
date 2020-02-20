@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 
@@ -62,8 +63,9 @@ namespace LauncherCore
             }
         }
 
-        public static void ReadXmlSet(string xmlFile, bool showInfo = true)
+        public static Modset ReadXmlSet(string xmlFile, bool showInfo = true)
         {
+            Dictionary<string, bool> pairs = new Dictionary<string, bool>();
             XmlDocument document = new XmlDocument();
             document.Load(xmlFile);
             XmlElement root = GetElementByTagName(ref document, "settings");
@@ -81,7 +83,7 @@ namespace LauncherCore
 
                 if (SharedData.Mods.ContainsKey(key))
                 {
-                    SharedData.Mods[key].ToInstall = bool.Parse(i.GetAttribute("checked"));
+                    pairs.Add(key, bool.Parse(i.GetAttribute("checked")));
 
                     foreach (XmlElement j in i.ChildNodes)
                     {
@@ -89,7 +91,7 @@ namespace LauncherCore
 
                         if (SharedData.Mods[key].Addons.ContainsKey(addonKey))
                         {
-                            SharedData.Mods[key].Addons[addonKey].ToInstall = bool.Parse(j.GetAttribute("checked"));
+                            pairs.Add(addonKey, bool.Parse(j.GetAttribute("checked")));
                         }
                         else
                         {
@@ -128,9 +130,10 @@ namespace LauncherCore
                     SharedData.DisplayMessage("Finished! \nSkipped " + skip + " unidentified keys. ", "Information", MessageType.Info);
                 }
             }
+            return new Modset(ref pairs);
         }
 
-        public static void WriteXmlSet(string xmlFile, bool showInfo = true)
+        public static void WriteXmlSet(string xmlFile, Modset modset, bool showInfo = true)
         {
             XmlDocument document = new XmlDocument();
             document.CreateXmlDeclaration("1.0", "utf-8", null);
@@ -144,13 +147,13 @@ namespace LauncherCore
                 XmlElement element = document.CreateElement("mod");
                 element.IsEmpty = false;
                 element.SetAttribute("key", i.Key);
-                element.SetAttribute("checked", i.Value.ToInstall.ToString());
+                element.SetAttribute("checked", modset[i.Key].ToString());
                 foreach (var j in i.Value.Addons)
                 {
                     XmlElement xmlElement = document.CreateElement("mod");
                     xmlElement.IsEmpty = false;
                     xmlElement.SetAttribute("key", j.Key);
-                    xmlElement.SetAttribute("checked", j.Value.ToInstall.ToString());
+                    xmlElement.SetAttribute("checked", modset[j.Key].ToString());
                     element.AppendChild(xmlElement);
                 }
                 root.AppendChild(element);

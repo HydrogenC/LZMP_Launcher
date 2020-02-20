@@ -9,9 +9,12 @@ namespace LauncherCore
         private List<string> files = new List<string>();
         private Dictionary<string, Mod> addons = new Dictionary<string, Mod>();
         private bool installState = false;
+
+        public Mod() { }
+
         public Mod(string name, List<string> files = null, Dictionary<string, Mod> addons = null)
         {
-            this.Name = name;
+            Name = name;
 
             if (files != null)
             {
@@ -145,6 +148,48 @@ namespace LauncherCore
         public override string ToString()
         {
             return Name;
+        }
+
+        public static bool FindMod(ref Dictionary<string, Mod> ie, string reqKey, out Mod mod)
+        {
+            foreach (var i in ie)
+            {
+                if (i.Key == reqKey)
+                {
+                    mod = i.Value;
+                    return true;
+                }
+                else
+                {
+                    foreach (var j in i.Value.Addons)
+                    {
+                        if (j.Key == reqKey)
+                        {
+                            mod = j.Value;
+                            return true;
+                        }
+                    }
+                }
+            }
+            mod = new Mod();
+            return false;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Mod mod &&
+                   EqualityComparer<Dictionary<string, Mod>>.Default.Equals(Addons, mod.Addons) &&
+                   Name == mod.Name &&
+                   Key == mod.Key;
+        }
+
+        public override int GetHashCode()
+        {
+            var hashCode = -2139369844;
+            hashCode = hashCode * -1521134295 + EqualityComparer<Dictionary<string, Mod>>.Default.GetHashCode(Addons);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Name);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Key);
+            return hashCode;
         }
     }
 }

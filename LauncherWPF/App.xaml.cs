@@ -27,6 +27,7 @@ namespace LauncherWPF
             set;
         }
 
+        /*
         public static Action<bool> BusyAction
         {
             private get;
@@ -87,5 +88,6 @@ namespace LauncherWPF
                 MainSavesPage.RefreshList();
             }
         }
+        */
     }
 }

@@ -5,7 +5,7 @@ using System.IO;
 
 namespace LauncherCore
 {
-    public partial class Save : IEditableFile
+    public partial class Save : IEditable
     {
         private string folderName, levelName;
         private NBTFile nbtFile = new NBTFile();
@@ -21,7 +21,7 @@ namespace LauncherCore
         /// <summary>
         /// Delete the save. 
         /// </summary>
-        public void Delete()
+        public override void Delete()
         {
             Directory.Delete(FolderPath, true);
         }
@@ -70,12 +70,21 @@ namespace LauncherCore
             return " " + levelName + " (" + folderName + ")";
         }
 
-        /// <summary>
-        /// A property equivalant to <see cref="ToString"/> used in WPF. 
-        /// </summary>
-        public string DisplayName
+        public override void ExportTo(string dest)
         {
-            get => ToString();
+            throw new NotImplementedException();
+        }
+
+        public override void Rename(string newName, bool type)
+        {
+            if (type)
+            {
+                FolderName = newName;
+            }
+            else
+            {
+                LevelName = newName;
+            }
         }
     }
 }
