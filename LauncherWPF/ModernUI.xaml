@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:LauncherWPF"
         xmlns:core="clr-namespace:LauncherCore;assembly=LauncherCore"
         mc:Ignorable="d"
-        Title="LZMP Launcher" Height="720" Width="720" ResizeMode="CanMinimize" WindowStyle="ThreeDBorderWindow">
+        Title="LZMP Launcher" Height="720" Width="720" WindowStyle="ThreeDBorderWindow" MinWidth="720" MinHeight="600">
     <Grid>
 
         <Image Margin="0,0,0,0" Panel.ZIndex="-1" x:Name="Background" Source="Images\BgHD.png" Stretch="UniformToFill" ToolTip="Refresh" >
@@ -14,16 +14,16 @@
                 <BlurEffect Radius="12" KernelType="Gaussian"/>
             </Image.Effect>
         </Image>
-        <Label x:Name="TitleLabel" Content="NULL" HorizontalAlignment="Left" Margin="10,10,10,0" VerticalAlignment="Top" Width="694" Height="56" Foreground="White" HorizontalContentAlignment="Center" FontFamily="Segoe UI Bold" FontSize="40" Background="#665A5A5A" Padding="5,0"/>
-        <TreeView x:Name="MainTreeView" HorizontalAlignment="Left" Height="525" Margin="10,85,0,0" VerticalAlignment="Top" Width="356" Background="#665A5A5A" Foreground="White">
+        <Label x:Name="TitleLabel" Content="NULL" Margin="10,10,10,0" VerticalAlignment="Top" Height="56" Foreground="White" HorizontalContentAlignment="Center" FontFamily="Segoe UI Bold" FontSize="40" Background="#665A5A5A" Padding="5,0"/>
+        <TreeView x:Name="MainTreeView" Margin="10,85,347,82.5" Background="#665A5A5A" Foreground="White">
             <TreeView.ItemTemplate>
                 <HierarchicalDataTemplate DataType="{x:Type local:MainTreeItem}" ItemsSource="{Binding Path=Children, Mode=OneWay}">
                     <CheckBox IsChecked="{Binding Path=ItemChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsThreeState="{Binding Path=IsCategory, Mode=OneWay}" Content="{Binding Path=Text, Mode=OneWay}" FontSize="12" Foreground="White" Padding="0,1,0,1"/>
                 </HierarchicalDataTemplate>
             </TreeView.ItemTemplate>
         </TreeView>
-        <Grid x:Name="TreeControllerGrid" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10,0,0,9.5" Height="50" Width="356">
-            <Button x:Name="CheckButton" Content="Check All" FontSize="26" Margin="0,0,184,0" Background="#8EE32121" BorderBrush="#99FFFFFF" Foreground="White" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Width="172" VerticalAlignment="Top" Height="50" FontFamily="Segoe UI" Click="CheckButton_Click"/>
+        <Grid x:Name="TreeControllerGrid" VerticalAlignment="Bottom" Margin="10,0,349,9.5" Height="50">
+            <Button x:Name="CheckButton" Content="Check All" FontSize="26" Margin="0" Background="#8EE32121" BorderBrush="#99FFFFFF" Foreground="White" HorizontalAlignment="Left" RenderTransformOrigin="0.5,0.5" Width="172" VerticalAlignment="Top" Height="50" FontFamily="Segoe UI" Click="CheckButton_Click"/>
             <Button x:Name="ApplyButton" Content="Apply" FontSize="26" Background="#8EE32121" BorderBrush="#99FFFFFF" Foreground="White" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Width="172" Height="50" FontFamily="Segoe UI" Click="ApplyButton_Click"/>
         </Grid>
 
@@ -33,9 +33,9 @@
             <Button x:Name="ModsetsButton" Content="Modsets" FontSize="26" Margin="0,0,50,0" Background="#8EE32121" BorderBrush="{x:Null}" Foreground="White" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Width="135" Height="50" FontFamily="Segoe UI" Click="ModsetsButton_Click"/>
             <Button x:Name="RefreshButton" Content="R" FontSize="26" Background="#8EE32121" BorderBrush="{x:Null}" Foreground="White" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Width="50" Height="50" FontFamily="Segoe UI" Click="RefreshButton_Click"/>
         </Grid>
-        <ListBox x:Name="MainListBox" HorizontalAlignment="Right" Height="312" Margin="0,215,10,0" VerticalAlignment="Top" Width="320" Background="#665A5A5A" Foreground="White" BorderBrush="#FF828790">
+        <ListBox x:Name="MainListBox" HorizontalAlignment="Right" Margin="0,218,11,162.5" Width="320" Background="#665A5A5A" Foreground="White" BorderBrush="#FF828790">
             <ListBox.ItemTemplate>
-                <HierarchicalDataTemplate DataType="{x:Type core:Save}">
+                <HierarchicalDataTemplate DataType="{x:Type core:IEditable}">
                     <ListBoxItem Content="{Binding Path=DisplayName, Mode=OneWay}" FontSize="12" Foreground="White" />
                 </HierarchicalDataTemplate>
             </ListBox.ItemTemplate>

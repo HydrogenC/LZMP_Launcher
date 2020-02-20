@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LauncherWPF"
         mc:Ignorable="d"
-        Title="Rename" Height="360" Width="360">
+        Title="Rename" Height="360" Width="360" MaxHeight="360" MinWidth="360" MinHeight="360">
     <Grid Margin="0,0,0,0">
         <Border Margin="0,0,0,0" Panel.ZIndex="-1">
             <Image x:Name="Background" Source="Images\Bg.png" Margin="0,0,0,0" Stretch="UniformToFill" ToolTip="Refresh"/>
@@ -15,10 +15,10 @@
         </Border>
         <Label x:Name="TitleLabel" Content="Renaming: " HorizontalAlignment="Left" Height="40" Margin="10,10,0,0" VerticalAlignment="Top" Width="340" Foreground="White" FontSize="23.6"/>
         <Label x:Name="MapTitleLabel" Content="Null" HorizontalAlignment="Left" Height="32" Margin="10,48,0,0" VerticalAlignment="Top" Width="340" Foreground="White" FontSize="18"/>
-        <Label x:Name="FolderNameLabel" Content="Folder name: " HorizontalAlignment="Left" Height="30" Margin="10,95,0,0" VerticalAlignment="Top" Width="125" Foreground="White" FontSize="18"/>
-        <TextBox x:Name="FolderBox" HorizontalAlignment="Left" Height="24" Margin="140,101,0,0" TextWrapping="NoWrap" Text="TextBox" VerticalAlignment="Top" Width="205"/>
-        <Label x:Name="LevelNameLabel" Content="Level name: " HorizontalAlignment="Left" Height="30" Margin="10,130,0,0" VerticalAlignment="Top" Width="125" Foreground="White" FontSize="18"/>
-        <TextBox x:Name="LevelBox" HorizontalAlignment="Left" Height="24" Margin="140,136,0,0" TextWrapping="NoWrap" Text="TextBox" VerticalAlignment="Top" Width="205"/>
+        <Label x:Name="FolderNameLabel" Content="Folder name: " HorizontalAlignment="Left" Height="30" Margin="10,95,0,0" VerticalAlignment="Top" Width="125" Foreground="White" FontSize="16"/>
+        <TextBox x:Name="FolderBox" HorizontalAlignment="Right" Height="24" Margin="0,101,10,0" TextWrapping="NoWrap" Text="TextBox" VerticalAlignment="Top" Width="205"/>
+        <Label x:Name="LevelNameLabel" Content="Level name: " HorizontalAlignment="Left" Height="30" Margin="10,130,0,0" VerticalAlignment="Top" Width="125" Foreground="White" FontSize="16"/>
+        <TextBox x:Name="LevelBox" HorizontalAlignment="Right" Height="24" Margin="0,136,10,0" TextWrapping="NoWrap" Text="TextBox" VerticalAlignment="Top" Width="205"/>
         <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Left" Height="50" VerticalAlignment="Bottom" Width="160"  Background="#8EE32121" BorderBrush="#99FFFFFF" Foreground="White" FontSize="18" Margin="10,0,0,10.5" Click="CancelButton_Click" />
         <Button x:Name="ConfirmButton" Content="Confirm" HorizontalAlignment="Right" Height="50" VerticalAlignment="Bottom" Width="160"  Background="#8EE32121" BorderBrush="#99FFFFFF" Foreground="White" FontSize="18" Margin="0,0,10,10.5" Click="ConfirmButton_Click" />
     </Grid>

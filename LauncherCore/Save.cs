@@ -98,17 +98,14 @@ namespace LauncherCore
             }
         }
 
-        public override string GetIOFilter()
+        public override string IOFilter
         {
-            return "Zip File（*.zip）| *.zip";
+            get => "Zip File（*.zip）| *.zip";
         }
 
-        public string DisplayName
+        public override string DisplayName
         {
-            get
-            {
-                return ToString();
-            }
+            get => ToString();
         }
     }
 }

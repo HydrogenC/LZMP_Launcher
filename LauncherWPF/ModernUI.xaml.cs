@@ -51,6 +51,7 @@ namespace LauncherWPF
                     ModsetsButton.IsEnabled = false;
                     break;
             }
+            RefreshButton_Click(null, null);
         }
 
         public ModernUI()
@@ -134,7 +135,6 @@ namespace LauncherWPF
             Core.LaunchGame();
         }
 
-        #region FromModPage
         private void ProcessEndCallback(IAsyncResult ar)
         {
             processing = false;
@@ -305,7 +305,7 @@ namespace LauncherWPF
             IEditable editable = MainListBox.SelectedItem as IEditable;
             OpenFileDialog openFile = new OpenFileDialog()
             {
-                Filter = currentLD == ListDisplay.Maps ? (new Save()).GetIOFilter() : (new Modset()).GetIOFilter()
+                Filter = currentLD == ListDisplay.Maps ? (new Save()).IOFilter : (new Modset()).IOFilter
             };
 
             if (openFile.ShowDialog().Value == true)
@@ -355,10 +355,15 @@ namespace LauncherWPF
                 return;
             }
 
+            if (currentLD == ListDisplay.Modsets)
+            {
+                RefreshButton_Click(null, null);
+            }
+
             IEditable editable = MainListBox.SelectedItem as IEditable;
             SaveFileDialog saveFile = new SaveFileDialog()
             {
-                Filter = editable.GetIOFilter()
+                Filter = editable.IOFilter
             };
 
             if (saveFile.ShowDialog().Value == true)
@@ -426,6 +431,5 @@ namespace LauncherWPF
                 TitleLabel.Content = SharedData.Title;
             }
         }
-        #endregion
     }
 }

@@ -46,6 +46,11 @@ namespace LauncherCore
 
         public void Load(bool showInfo = false)
         {
+            if (string.IsNullOrEmpty(fileName))
+            {
+                return;
+            }
+
             XmlDocument document = new XmlDocument();
             document.Load(fileName);
             XmlElement root = Scanner.GetElementByTagName(ref document, "settings");
@@ -222,9 +227,14 @@ namespace LauncherCore
             return name;
         }
 
-        public override string GetIOFilter()
+        public override string DisplayName
         {
-            return "Xml Modset File（*.xml）|*.xml";
+            get => ToString();
+        }
+
+        public override string IOFilter
+        {
+            get => "Xml Modset File（*.xml）|*.xml";
         }
     }
 }

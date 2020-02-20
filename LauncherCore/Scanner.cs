@@ -11,9 +11,9 @@ namespace LauncherCore
     public class Scanner
     {
 
-        public static Save[] ScanForMaps()
+        public static IEditable[] ScanForMaps()
         {
-            List<Save> saves = new List<Save>();
+            List<IEditable> saves = new List<IEditable>();
             if (!Directory.Exists(SharedData.SavePath))
             {
                 Directory.CreateDirectory(SharedData.SavePath);
@@ -33,9 +33,14 @@ namespace LauncherCore
             return saves.ToArray();
         }
 
-        public static Modset[] ScanForModsets()
+        public static IEditable[] ScanForModsets()
         {
-            List<Modset> modsets = new List<Modset>();
+            if (!Directory.Exists(SharedData.WorkingPath + "\\Sets"))
+            {
+                Directory.CreateDirectory(SharedData.WorkingPath + "\\Sets");
+            }
+
+            List<IEditable> modsets = new List<IEditable>();
             modsets.Add(new Modset(ref SharedData.Mods, "(Current)"));
             foreach (string i in Directory.EnumerateFiles(SharedData.WorkingPath + "\\Sets"))
             {
