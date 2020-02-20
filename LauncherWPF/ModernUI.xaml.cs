@@ -290,6 +290,12 @@ namespace LauncherWPF
                 return;
             }
 
+            IEditable target = MainListBox.SelectedItem as IEditable;
+            if (currentLD == ListDisplay.Modsets && MainListBox.SelectedIndex == 0)
+            {
+                target = new Modset(ref SharedData.Mods, "New Modset");
+            }
+
             RenameWindow rename = new RenameWindow(MainListBox.SelectedItem as IEditable);
             rename.ShowDialog();
             RefreshButton_Click(null, null);
@@ -355,12 +361,12 @@ namespace LauncherWPF
                 return;
             }
 
-            if (currentLD == ListDisplay.Modsets)
+            IEditable editable = MainListBox.SelectedItem as IEditable;
+            if (currentLD == ListDisplay.Modsets && MainListBox.SelectedIndex == 0)
             {
-                RefreshButton_Click(null, null);
+                editable = new Modset(ref SharedData.Mods, "New Modset");
             }
 
-            IEditable editable = MainListBox.SelectedItem as IEditable;
             SaveFileDialog saveFile = new SaveFileDialog()
             {
                 Filter = editable.IOFilter
