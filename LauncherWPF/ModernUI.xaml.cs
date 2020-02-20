@@ -278,9 +278,17 @@ namespace LauncherWPF
                 return;
             }
 
-            IEditable editable = MainListBox.SelectedItem as IEditable;
-            editable.Delete();
-            RefreshButton_Click(null, null);
+            if (currentLD == ListDisplay.Modsets && MainListBox.SelectedIndex == 0)
+            {
+                return;
+            }
+
+            if (SharedData.DisplayMessage("Are you sure to delete, you cannot revert this! ", "Warning", MessageType.YesNoQuestion) == MessageResult.Yes)
+            {
+                IEditable editable = MainListBox.SelectedItem as IEditable;
+                editable.Delete();
+                RefreshButton_Click(null, null);
+            }
         }
 
         private void RenameButton_Click(object sender, RoutedEventArgs e)

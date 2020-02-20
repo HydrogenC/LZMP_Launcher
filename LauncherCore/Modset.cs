@@ -181,10 +181,8 @@ namespace LauncherCore
         {
             if (fileName != "")
             {
-                if (SharedData.DisplayMessage("Are you sure to delete, you cannot revert this! ", "Warning", MessageType.Warning) == MessageResult.OK)
-                {
-                    File.Delete(fileName);
-                }
+
+                File.Delete(fileName);
             }
         }
 
