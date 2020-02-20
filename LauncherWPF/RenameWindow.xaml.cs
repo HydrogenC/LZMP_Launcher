@@ -27,14 +27,14 @@ namespace LauncherWPF
             InitializeComponent();
             editable = save;
             MapTitleLabel.Content = save.ToString();
-            if(editable is Save)
+            if (editable is Save)
             {
                 LevelBox.Text = (editable as Save).LevelName;
                 FolderBox.Text = (editable as Save).FolderName;
                 return;
             }
 
-            if(editable is Modset)
+            if (editable is Modset)
             {
                 LevelNameLabel.Visibility = Visibility.Hidden;
                 LevelBox.Visibility = Visibility.Hidden;
@@ -42,27 +42,34 @@ namespace LauncherWPF
                 LevelBox.Text = "";
                 FolderBox.Text = editable.ToString();
             }
-            
+
         }
 
         private void ConfirmButton_Click(object sender, RoutedEventArgs e)
         {
+
+#if !DEBUG
             try
             {
-                if (!string.IsNullOrEmpty(FolderBox.Text))
-                {
-                    editable.Rename(FolderBox.Text, true);
-                }
+#endif
 
-                if (!string.IsNullOrEmpty(LevelBox.Text))
-                {
-                    editable.Rename(LevelBox.Text, false);
-                }
+            if (!string.IsNullOrEmpty(FolderBox.Text))
+            {
+                editable.Rename(FolderBox.Text, true);
+            }
+
+            if (!string.IsNullOrEmpty(LevelBox.Text))
+            {
+                editable.Rename(LevelBox.Text, false);
+            }
+
+#if !DEBUG
             }
             catch (Exception)
             {
                 MessageBox.Show("An unexpected exception happened, maybe the map or modset is broken. ", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+#endif
 
             Close();
         }

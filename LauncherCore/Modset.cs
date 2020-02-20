@@ -12,7 +12,7 @@ namespace LauncherCore
     {
         public bool HasActualFile
         {
-            get => string.IsNullOrEmpty(fileName);
+            get => !string.IsNullOrEmpty(fileName);
         }
 
         public static void ImportFrom(string source)
@@ -55,6 +55,8 @@ namespace LauncherCore
             {
                 return;
             }
+
+            Unload();
 
             XmlDocument document = new XmlDocument();
             document.Load(fileName);
@@ -120,6 +122,8 @@ namespace LauncherCore
                     SharedData.DisplayMessage("Finished! \nSkipped " + skip + " unidentified keys. ", "Information", MessageType.Info);
                 }
             }
+
+            loaded = true;
         }
 
         public void Unload()
@@ -177,7 +181,10 @@ namespace LauncherCore
         {
             if (fileName != "")
             {
-                File.Delete(fileName);
+                if (SharedData.DisplayMessage("Are you sure to delete, you cannot revert this! ", "Warning", MessageType.Warning) == MessageResult.OK)
+                {
+                    File.Delete(fileName);
+                }
             }
         }
 

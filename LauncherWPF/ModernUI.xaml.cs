@@ -291,7 +291,7 @@ namespace LauncherWPF
             }
 
             RenameWindow rename = new RenameWindow(MainListBox.SelectedItem as IEditable);
-            rename.Show();
+            rename.ShowDialog();
             RefreshButton_Click(null, null);
         }
 
