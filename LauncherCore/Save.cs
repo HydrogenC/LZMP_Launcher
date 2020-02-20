@@ -11,7 +11,12 @@ namespace LauncherCore
         private string folderName, levelName;
         private NBTFile nbtFile = new NBTFile();
 
-        public Save(string dir) 
+        public Save()
+        {
+
+        }
+
+        public Save(string dir)
         {
             FolderPath = dir.EndsWith("\\") ? dir.Substring(0, dir.Length - 1) : dir;
             folderName = FolderPath.Substring(FolderPath.LastIndexOf('\\') + 1);
@@ -91,6 +96,11 @@ namespace LauncherCore
             {
                 LevelName = newName;
             }
+        }
+
+        public override string GetIOFilter()
+        {
+            return "Zip File（*.zip）| *.zip";
         }
 
         public string DisplayName

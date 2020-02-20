@@ -40,7 +40,7 @@ namespace LauncherCore
             CurrentProgress.Initialize();
         }
 
-        public void ImportFrom(string filePath) 
+        public static void ImportFrom(string filePath) 
         {
             CurrentProgress.status = "Extracting";
 

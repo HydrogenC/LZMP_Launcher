@@ -36,7 +36,7 @@ namespace LauncherCore
         public static Modset[] ScanForModsets()
         {
             List<Modset> modsets = new List<Modset>();
-            modsets.Add(new Modset(ref SharedData.Mods));
+            modsets.Add(new Modset(ref SharedData.Mods, "(Current)"));
             foreach (string i in Directory.EnumerateFiles(SharedData.WorkingPath + "\\Sets"))
             {
                 try

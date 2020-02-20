@@ -10,10 +10,12 @@ namespace LauncherCore
 {
     public class Modset : IEditable
     {
-        public void ImportFrom(string source)
+        public static void ImportFrom(string source)
         {
             File.Copy(source, SharedData.WorkingPath + "\\Sets\\" + Path.GetFileName(source));
         }
+
+        public Modset() { }
 
         public Modset(string filePath)
         {
@@ -21,7 +23,7 @@ namespace LauncherCore
             name = Path.GetFileNameWithoutExtension(filePath);
         }
 
-        public Modset(ref Dictionary<string, Mod> dict)
+        public Modset(ref Dictionary<string, Mod> dict, string name = "")
         {
             foreach (var i in dict)
             {
@@ -31,12 +33,14 @@ namespace LauncherCore
                     pairs.Add(j.Key, j.Value.ToInstall);
                 }
             }
+            this.name = name;
             loaded = true;
         }
 
-        public Modset(ref Dictionary<string, bool> dict)
+        public Modset(ref Dictionary<string, bool> dict, string name = "")
         {
             pairs = dict;
+            this.name = name;
             loaded = true;
         }
 
@@ -202,7 +206,7 @@ namespace LauncherCore
 
         public override void Rename(string newName, bool type)
         {
-            if (newName == ToString())
+            if (newName == name)
             {
                 return;
             }
@@ -216,6 +220,11 @@ namespace LauncherCore
         public override string ToString()
         {
             return name;
+        }
+
+        public override string GetIOFilter()
+        {
+            return "Xml Modset File（*.xml）|*.xml";
         }
     }
 }

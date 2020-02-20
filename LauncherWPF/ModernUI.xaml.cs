@@ -39,14 +39,14 @@ namespace LauncherWPF
             switch (display)
             {
                 case ListDisplay.Maps:
-                    // MapsButton.Foreground = uBrush;
-                    // ModsetsButton.Foreground = aBrush;
+                    MapsButton.Foreground = new SolidColorBrush(Colors.Black);
+                    ModsetsButton.Foreground = new SolidColorBrush(Colors.White);
                     ModsetsButton.IsEnabled = true;
                     MapsButton.IsEnabled = false;
                     break;
                 case ListDisplay.Modsets:
-                    // ModsetsButton.Foreground = aBrush;
-                    // MapsButton.Foreground = uBrush;
+                    ModsetsButton.Foreground = new SolidColorBrush(Colors.Black);
+                    MapsButton.Foreground = new SolidColorBrush(Colors.White);
                     MapsButton.IsEnabled = true;
                     ModsetsButton.IsEnabled = false;
                     break;
@@ -125,6 +125,7 @@ namespace LauncherWPF
             Core.CheckAvailability();
 
             WriteNodes();
+            ToggleListDisplay(ListDisplay.Maps);
         }
 
         private void LaunchButton_Click(object sender, RoutedEventArgs e)
@@ -260,8 +261,23 @@ namespace LauncherWPF
             }
         }
 
+        private bool NullShield()
+        {
+            if (MainListBox.SelectedItem == null || !(MainListBox.SelectedItem is IEditable))
+            {
+                SharedData.DisplayMessage("You should select an item in the list to operate. ", "Info", MessageType.Info);
+                return false;
+            }
+            return true;
+        }
+
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
+            if ((!NullShield()) || processing)
+            {
+                return;
+            }
+
             IEditable editable = MainListBox.SelectedItem as IEditable;
             editable.Delete();
             RefreshButton_Click(null, null);
@@ -269,9 +285,111 @@ namespace LauncherWPF
 
         private void RenameButton_Click(object sender, RoutedEventArgs e)
         {
+            if ((!NullShield()) || processing)
+            {
+                return;
+            }
+
             RenameWindow rename = new RenameWindow(MainListBox.SelectedItem as IEditable);
             rename.Show();
             RefreshButton_Click(null, null);
+        }
+
+        private void ImportButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (processing)
+            {
+                return;
+            }
+
+            IEditable editable = MainListBox.SelectedItem as IEditable;
+            OpenFileDialog openFile = new OpenFileDialog()
+            {
+                Filter = currentLD == ListDisplay.Maps ? (new Save()).GetIOFilter() : (new Modset()).GetIOFilter()
+            };
+
+            if (openFile.ShowDialog().Value == true)
+            {
+                processing = true;
+                Action<string> action = null;
+                switch (currentLD)
+                {
+                    case ListDisplay.Maps:
+                        action = new Action<string>(Save.ImportFrom);
+                        break;
+                    case ListDisplay.Modsets:
+                        action = new Action<string>(Modset.ImportFrom);
+                        break;
+                }
+
+                try
+                {
+                    action.BeginInvoke(openFile.FileName, ProcessEndCallback, null);
+                    CurrentProgress.status = SharedData.Title;
+                    while (processing)
+                    {
+                        if ((string)TitleLabel.Content != CurrentProgress.status)
+                        {
+                            TitleLabel.Content = CurrentProgress.status;
+                        }
+                        DispatcherHelper.DoEvents();
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Unknown exception caught! ", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                finally
+                {
+                    RefreshButton_Click(null, null);
+                    processing = false;
+                    TitleLabel.Content = SharedData.Title;
+                }
+            }
+        }
+
+        private void ExportButton_Click(object sender, RoutedEventArgs e)
+        {
+            if ((!NullShield()) || processing)
+            {
+                return;
+            }
+
+            IEditable editable = MainListBox.SelectedItem as IEditable;
+            SaveFileDialog saveFile = new SaveFileDialog()
+            {
+                Filter = editable.GetIOFilter()
+            };
+
+            if (saveFile.ShowDialog().Value == true)
+            {
+                processing = true;
+                Action<string, bool> action = new Action<string, bool>(editable.ExportTo);
+
+                try
+                {
+                    action.BeginInvoke(saveFile.FileName, false, ProcessEndCallback, null);
+                    CurrentProgress.status = SharedData.Title;
+                    while (processing)
+                    {
+                        if ((string)TitleLabel.Content != CurrentProgress.status)
+                        {
+                            TitleLabel.Content = CurrentProgress.status;
+                        }
+                        DispatcherHelper.DoEvents();
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Unknown exception caught! ", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                finally
+                {
+                    RefreshButton_Click(null, null);
+                    processing = false;
+                    TitleLabel.Content = SharedData.Title;
+                }
+            }
         }
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)

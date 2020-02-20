@@ -284,7 +284,7 @@ namespace LauncherCore
             }
             catch (Exception)
             {
-                SharedData.DisplayMessage("An error occurred while launching! ", "Error", MessageType.Error);
+                SharedData.DisplayMessage("An error occurred while launching, the launcher could have been missing! ", "Error", MessageType.Error);
             }
         }
     }

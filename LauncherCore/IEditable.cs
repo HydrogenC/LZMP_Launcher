@@ -2,7 +2,7 @@
 {
     public abstract class IEditable
     {
-
+        public abstract string GetIOFilter();
         public abstract void Delete();
         public abstract void ExportTo(string dest, bool showInfo);
 
