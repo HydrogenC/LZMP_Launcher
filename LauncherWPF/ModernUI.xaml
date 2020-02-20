@@ -31,9 +31,9 @@
         <Grid x:Name="SelectorGrid" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,150,10,0" Height="50" Width="320">
             <Button x:Name="MapsButton" Content="Maps" FontSize="26" Margin="0,0,185,0" Background="#8EE32121" BorderBrush="{x:Null}" Foreground="White" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Width="135" VerticalAlignment="Top" Height="50" FontFamily="Segoe UI" Click="MapsButton_Click"/>
             <Button x:Name="ModsetsButton" Content="Modsets" FontSize="26" Margin="0,0,50,0" Background="#8EE32121" BorderBrush="{x:Null}" Foreground="White" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Width="135" Height="50" FontFamily="Segoe UI" Click="ModsetsButton_Click"/>
-            <Button x:Name="RefreshButton" Content="R" FontSize="26" Background="#8EE32121" BorderBrush="{x:Null}" Foreground="White" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Width="50" Height="50" FontFamily="Segoe UI" Click="RefreshButton_Click"/>
+            <Button x:Name="RefreshButton" Content="R" FontSize="26" Background="#8EE32121" BorderBrush="{x:Null}" Foreground="White" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Width="50" Height="50" FontFamily="Segoe UI" Click="RefreshButton_Click" ToolTip="Refresh the list. "/>
         </Grid>
-        <ListBox x:Name="MainListBox" HorizontalAlignment="Right" Margin="0,218,11,162.5" Width="320" Background="#665A5A5A" Foreground="White" BorderBrush="#FF828790">
+        <ListBox x:Name="MainListBox" HorizontalAlignment="Right" Margin="0,218,11,162.5" Width="320" Background="#665A5A5A" Foreground="White" BorderBrush="#FF828790" MouseDoubleClick="MainListBox_MouseDoubleClick" ToolTip="Double click to load a modset. ">
             <ListBox.ItemTemplate>
                 <HierarchicalDataTemplate DataType="{x:Type core:IEditable}">
                     <ListBoxItem Content="{Binding Path=DisplayName, Mode=OneWay}" FontSize="12" Foreground="White" />

@@ -8,7 +8,7 @@
         }
 
         public virtual void Delete() { }
-        public virtual void ExportTo(string dest, bool showInfo) { }
+        public virtual void ExportTo(string dest) { }
 
         /// <summary>
         /// Rename the file

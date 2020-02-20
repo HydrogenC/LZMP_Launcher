@@ -22,7 +22,7 @@ namespace LauncherWPF
     /// </summary>
     public partial class ModernUI : Window
     {
-        private bool allChecked = false, processing = false;
+        private bool allChecked = false, processing = false, setLoaded = false;
         public Dictionary<string, MainTreeItem> itemDict = new Dictionary<string, MainTreeItem>();
         public Dictionary<string, MainTreeItem> categoryDict = new Dictionary<string, MainTreeItem>();
         private ListDisplay currentLD;
@@ -263,7 +263,7 @@ namespace LauncherWPF
 
         private bool NullShield()
         {
-            if (MainListBox.SelectedItem == null || !(MainListBox.SelectedItem is IEditable))
+            if (MainListBox.SelectedItem == null || (!(MainListBox.SelectedItem is IEditable)))
             {
                 SharedData.DisplayMessage("You should select an item in the list to operate. ", "Info", MessageType.Info);
                 return false;
@@ -369,11 +369,11 @@ namespace LauncherWPF
             if (saveFile.ShowDialog().Value == true)
             {
                 processing = true;
-                Action<string, bool> action = new Action<string, bool>(editable.ExportTo);
+                Action<string> action = new Action<string>(editable.ExportTo);
 
                 try
                 {
-                    action.BeginInvoke(saveFile.FileName, false, ProcessEndCallback, null);
+                    action.BeginInvoke(saveFile.FileName, ProcessEndCallback, null);
                     CurrentProgress.status = SharedData.Title;
                     while (processing)
                     {
@@ -394,6 +394,19 @@ namespace LauncherWPF
                     processing = false;
                     TitleLabel.Content = SharedData.Title;
                 }
+            }
+        }
+
+        private void MainListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if ((!NullShield()) || (!(MainListBox.SelectedItem is Modset)))
+            {
+                return;
+            }
+
+            if (MainListBox.SelectedIndex != 0)
+            {
+                (MainListBox.SelectedItem as Modset).Apply();
             }
         }
 

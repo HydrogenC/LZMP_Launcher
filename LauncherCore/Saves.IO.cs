@@ -7,7 +7,7 @@ namespace LauncherCore
 {
     public partial class Save
     {
-        public override void ExportTo(string dest, bool showInfo)
+        public override void ExportTo(string dest)
         {
             CurrentProgress.status = "Preparing";
 

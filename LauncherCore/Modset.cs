@@ -10,6 +10,11 @@ namespace LauncherCore
 {
     public class Modset : IEditable
     {
+        public bool HasActualFile
+        {
+            get => string.IsNullOrEmpty(fileName);
+        }
+
         public static void ImportFrom(string source)
         {
             File.Copy(source, SharedData.WorkingPath + "\\Sets\\" + Path.GetFileName(source));
@@ -176,7 +181,7 @@ namespace LauncherCore
             }
         }
 
-        public override void ExportTo(string dest, bool showInfo = false)
+        public override void ExportTo(string dest)
         {
             XmlDocument document = new XmlDocument();
             document.CreateXmlDeclaration("1.0", "utf-8", null);
@@ -202,11 +207,6 @@ namespace LauncherCore
                 root.AppendChild(element);
             }
             document.Save(dest);
-
-            if (showInfo)
-            {
-                SharedData.DisplayMessage("Finished! ", "Information", MessageType.Info);
-            }
         }
 
         public override void Rename(string newName, bool type)
@@ -217,7 +217,15 @@ namespace LauncherCore
             }
 
             string newPath = SharedData.WorkingPath + "\\Sets\\" + newName + ".xml";
-            File.Move(fileName, newPath);
+            if (HasActualFile)
+            {
+                File.Move(fileName, newPath);
+            }
+            else
+            {
+                ExportTo(newPath);
+            }
+
             name = newName;
             fileName = newPath;
         }
