@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LauncherCore</RootNamespace>
     <AssemblyName>LauncherCore</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -55,9 +56,9 @@
     <Compile Include="Mod.cs" />
     <Compile Include="Modset.cs" />
     <Compile Include="Save.cs" />
-    <Compile Include="SavesHelper.cs" />
+    <Compile Include="Saves.IO.cs" />
     <Compile Include="LauncherCore.cs" />
-    <Compile Include="XmlHelper.cs" />
+    <Compile Include="Scanner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

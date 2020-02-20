@@ -11,7 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using LauncherCore;
+using Microsoft.Win32;
 
 namespace LauncherWPF
 {
@@ -23,10 +25,106 @@ namespace LauncherWPF
         private bool allChecked = false, processing = false;
         public Dictionary<string, MainTreeItem> itemDict = new Dictionary<string, MainTreeItem>();
         public Dictionary<string, MainTreeItem> categoryDict = new Dictionary<string, MainTreeItem>();
+        private ListDisplay currentLD;
+
+        enum ListDisplay
+        {
+            Maps,
+            Modsets
+        }
+
+        private void ToggleListDisplay(ListDisplay display)
+        {
+            currentLD = display;
+            switch (display)
+            {
+                case ListDisplay.Maps:
+                    // MapsButton.Foreground = uBrush;
+                    // ModsetsButton.Foreground = aBrush;
+                    ModsetsButton.IsEnabled = true;
+                    MapsButton.IsEnabled = false;
+                    break;
+                case ListDisplay.Modsets:
+                    // ModsetsButton.Foreground = aBrush;
+                    // MapsButton.Foreground = uBrush;
+                    MapsButton.IsEnabled = true;
+                    ModsetsButton.IsEnabled = false;
+                    break;
+            }
+        }
 
         public ModernUI()
         {
             InitializeComponent();
+            SharedData.DisplayMessage = (string content, string caption, MessageType type) =>
+            {
+                MessageBoxButton btn = MessageBoxButton.OK;
+                MessageBoxImage icn = MessageBoxImage.None;
+                switch (type)
+                {
+                    case MessageType.Error:
+                        btn = MessageBoxButton.OK;
+                        icn = MessageBoxImage.Error;
+                        break;
+                    case MessageType.Info:
+                        btn = MessageBoxButton.OK;
+                        icn = MessageBoxImage.Information;
+                        break;
+                    case MessageType.Warning:
+                        btn = MessageBoxButton.OK;
+                        icn = MessageBoxImage.Warning;
+                        break;
+                    case MessageType.OKCancelQuestion:
+                        btn = MessageBoxButton.OKCancel;
+                        icn = MessageBoxImage.Question;
+                        break;
+                    case MessageType.YesNoQuestion:
+                        btn = MessageBoxButton.YesNo;
+                        icn = MessageBoxImage.Question;
+                        break;
+                    case MessageType.YesNoCancelQuestion:
+                        btn = MessageBoxButton.YesNoCancel;
+                        icn = MessageBoxImage.Question;
+                        break;
+                }
+
+                MessageBoxResult rst = MessageBoxResult.OK;
+                Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() => rst = MessageBox.Show(this, content, caption, btn, icn)));
+
+                switch (rst)
+                {
+                    case MessageBoxResult.OK:
+                        return MessageResult.OK;
+                    case MessageBoxResult.Cancel:
+                        return MessageResult.Cancel;
+                    case MessageBoxResult.Yes:
+                        return MessageResult.Yes;
+                    case MessageBoxResult.No:
+                        return MessageResult.No;
+                    default:
+                        return MessageResult.OK;
+                }
+            };
+            Application.Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
+            Mod.GetToInstallState = (Mod mod) => itemDict[mod.Key].Checked == CheckBoxState.Checked;
+            Mod.SetToInstallState = (Mod mod, bool flag) =>
+            {
+                if (flag)
+                {
+                    itemDict[mod.Key].Checked = CheckBoxState.Checked;
+                }
+                else
+                {
+                    itemDict[mod.Key].Checked = CheckBoxState.NotChecked;
+                }
+            };
+
+            Scanner.ScanConfig(SharedData.WorkingPath + "\\BasicSettings.xml");
+            TitleLabel.Content = SharedData.Title;
+            Core.CheckInstallation();
+            Core.CheckAvailability();
+
+            WriteNodes();
         }
 
         private void LaunchButton_Click(object sender, RoutedEventArgs e)
@@ -34,5 +132,182 @@ namespace LauncherWPF
             Core.ApplyChanges();
             Core.LaunchGame();
         }
+
+        #region FromModPage
+        private void ProcessEndCallback(IAsyncResult ar)
+        {
+            processing = false;
+        }
+
+        private void CheckIfAllChecked()
+        {
+            allChecked = true;
+            foreach (var i in SharedData.Mods)
+            {
+                if (!i.Value.ToInstall)
+                {
+                    allChecked = false;
+                }
+
+                foreach (var j in i.Value.Addons)
+                {
+                    if (!j.Value.ToInstall)
+                    {
+                        allChecked = false;
+                        break;
+                    }
+                }
+
+                if (!allChecked)
+                {
+                    break;
+                }
+            }
+
+            if (allChecked)
+            {
+                CheckButton.Content = "Cancel All";
+            }
+            else
+            {
+                CheckButton.Content = "Check All";
+            }
+        }
+
+        private void WriteNodes()
+        {
+            foreach (var i in SharedData.Mods)
+            {
+                if (!categoryDict.ContainsKey(i.Value.Category))
+                {
+                    categoryDict[i.Value.Category] = new MainTreeItem(i.Value.Category + " Mods")
+                    {
+                        IsCategory = true
+                    };
+                }
+
+                itemDict[i.Key] = new MainTreeItem(i.Value.Name)
+                {
+                    IsCategory = false,
+                    Parent = categoryDict[i.Value.Category]
+                };
+                categoryDict[i.Value.Category].Children.Add(itemDict[i.Key]);
+
+                foreach (var j in i.Value.Addons)
+                {
+                    itemDict[j.Key] = new MainTreeItem(j.Value.Name)
+                    {
+                        IsCategory = false,
+                        Parent = itemDict[i.Key]
+                    };
+                    itemDict[i.Key].Children.Add(itemDict[j.Key]);
+                }
+            }
+
+            foreach (var i in categoryDict)
+            {
+                MainTreeView.Items.Add(i.Value);
+            }
+        }
+
+        private void CheckButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (processing)
+            {
+                return;
+            }
+
+            Core.CheckAll(!allChecked);
+            CheckIfAllChecked();
+        }
+
+        private void MapsButton_Click(object sender, RoutedEventArgs e)
+        {
+            ToggleListDisplay(ListDisplay.Maps);
+        }
+
+        private void ModsetsButton_Click(object sender, RoutedEventArgs e)
+        {
+            ToggleListDisplay(ListDisplay.Modsets);
+        }
+
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainListBox.Items.Clear();
+            IEditable[] ie = null;
+
+            try
+            {
+                switch (currentLD)
+                {
+                    case ListDisplay.Maps:
+                        ie = Scanner.ScanForMaps();
+                        break;
+                    case ListDisplay.Modsets:
+                        ie = Scanner.ScanForModsets();
+                        break;
+                }
+            }
+            catch (Exception)
+            {
+                SharedData.DisplayMessage("Refresh failed", "Error", MessageType.Error);
+                return;
+            }
+
+            foreach (var i in ie)
+            {
+                MainListBox.Items.Add(i);
+            }
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            IEditable editable = MainListBox.SelectedItem as IEditable;
+            editable.Delete();
+            RefreshButton_Click(null, null);
+        }
+
+        private void RenameButton_Click(object sender, RoutedEventArgs e)
+        {
+            RenameWindow rename = new RenameWindow(MainListBox.SelectedItem as IEditable);
+            rename.Show();
+            RefreshButton_Click(null, null);
+        }
+
+        private void ApplyButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (processing)
+            {
+                return;
+            }
+
+            processing = true;
+
+            try
+            {
+                processing = true;
+                Core.ApplyAction.BeginInvoke(ProcessEndCallback, null);
+
+                while (processing)
+                {
+                    if ((string)TitleLabel.Content != CurrentProgress.status)
+                    {
+                        TitleLabel.Content = CurrentProgress.status;
+                    }
+                    DispatcherHelper.DoEvents();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Unknown exception caught! ", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            finally
+            {
+                Core.CheckToInstallState();
+                processing = false;
+                TitleLabel.Content = SharedData.Title;
+            }
+        }
+        #endregion
     }
 }

@@ -276,9 +276,16 @@ namespace LauncherCore
 
         public static void LaunchGame()
         {
-            Directory.SetCurrentDirectory(Path.GetDirectoryName(SharedData.LauncherPath));
-            System.Diagnostics.Process.Start(SharedData.LauncherPath);
-            Directory.SetCurrentDirectory(SharedData.WorkingPath);
+            try
+            {
+                Directory.SetCurrentDirectory(Path.GetDirectoryName(SharedData.LauncherPath));
+                System.Diagnostics.Process.Start(SharedData.LauncherPath);
+                Directory.SetCurrentDirectory(SharedData.WorkingPath);
+            }
+            catch (Exception)
+            {
+                SharedData.DisplayMessage("An error occurred while launching! ", "Error", MessageType.Error);
+            }
         }
     }
 }

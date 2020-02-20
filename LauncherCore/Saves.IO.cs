@@ -5,46 +5,26 @@ using System.IO;
 
 namespace LauncherCore
 {
-    public class SavesHelper
+    public partial class Save
     {
-        public static Save[] GetSaves()
-        {
-            List<Save> saves = new List<Save>();
-            if (!Directory.Exists(SharedData.SavePath))
-            {
-                Directory.CreateDirectory(SharedData.SavePath);
-            }
-
-            foreach (string i in Directory.GetDirectories(SharedData.SavePath))
-            {
-                if (File.Exists(i + "\\level.dat"))
-                {
-                    try
-                    {
-                        saves.Add(new Save(i));
-                    }
-                    catch (Exception) { }
-                }
-            }
-            return saves.ToArray();
-        }
-
-        public static void ExportSave(Save save, string zipFile)
+        public override void ExportTo(string dest, bool showInfo)
         {
             CurrentProgress.status = "Preparing";
 
             string tmpDir = SharedData.WorkingPath + "\\Tmp\\";
             Directory.CreateDirectory(tmpDir);
-            Core.CopyDirectory(save.FolderPath, tmpDir + "save\\");
-            XmlHelper.WriteXmlSet(tmpDir + "Set.xml", false);
+            Core.CopyDirectory(FolderPath, tmpDir + "save\\");
+            Modset tmp = new Modset(ref SharedData.Mods);
+            tmp.ExportTo(tmpDir + "Set.xml");
+            tmp.Unload();
 
             if (Directory.Exists(SharedData.ScriptPath))
             {
                 Core.CopyDirectory(SharedData.ScriptPath, tmpDir + "scripts\\");
             }
 
-            string jmName = save.FolderName.Replace('-', '~');
-            if (save.FolderPath.Substring(0, save.FolderPath.LastIndexOf('\\') + 1) == SharedData.SavePath && Directory.Exists(SharedData.JMDataPath + jmName))
+            string jmName = FolderName.Replace('-', '~');
+            if (FolderPath.Substring(0, FolderPath.LastIndexOf('\\') + 1) == SharedData.SavePath && Directory.Exists(SharedData.JMDataPath + jmName))
             {
                 Core.CopyDirectory(SharedData.JMDataPath + jmName, tmpDir + "jm\\");
             }
@@ -52,26 +32,25 @@ namespace LauncherCore
             CurrentProgress.status = "Compressing";
 
             FastZip zip = new FastZip();
-            zip.CreateZip(zipFile, tmpDir, true, null);
+            zip.CreateZip(dest, tmpDir, true, null);
 
             CurrentProgress.status = "Cleaning up";
 
             Directory.Delete(tmpDir, true);
             CurrentProgress.Initialize();
         }
-        public static readonly Action<Save, string> ExportAction = ExportSave;
 
-        public static void ImportSave(string zipFile)
+        public void ImportFrom(string filePath) 
         {
             CurrentProgress.status = "Extracting";
 
             string tmpDir = SharedData.WorkingPath + "\\Tmp\\";
             Directory.CreateDirectory(tmpDir);
 
-            string zipName = zipFile.Substring(zipFile.LastIndexOf('\\') + 1);
+            string zipName = filePath.Substring(filePath.LastIndexOf('\\') + 1);
             zipName = zipName.Substring(0, zipName.Length - 4);
             FastZip zip = new FastZip();
-            zip.ExtractZip(zipFile, tmpDir, null);
+            zip.ExtractZip(filePath, tmpDir, null);
 
             Save save = new Save(tmpDir + "save");
             string destDir = SharedData.SavePath + save.LevelName;
@@ -101,7 +80,9 @@ namespace LauncherCore
 
             if (SharedData.DisplayMessage("Do you wish to override the current modset with the map's? ", "Question", MessageType.YesNoQuestion) == MessageResult.Yes)
             {
-                XmlHelper.ReadXmlSet(tmpDir + "Set.xml", false);
+                Modset tmp = new Modset(tmpDir + "Set.xml");
+                tmp.Apply();
+                tmp.Unload();
             }
 
             if (Directory.Exists(tmpDir + "scripts\\"))
@@ -114,11 +95,10 @@ namespace LauncherCore
                 Core.CopyDirectory(tmpDir + "jm\\", SharedData.JMDataPath + save.LevelName.Replace('-', '~'));
             }
 
-            CleanUp: CurrentProgress.status = "Cleaning up";
+        CleanUp: CurrentProgress.status = "Cleaning up";
 
             Directory.Delete(tmpDir, true);
             CurrentProgress.Initialize();
         }
-        public static readonly Action<string> ImportAction = ImportSave;
     }
 }

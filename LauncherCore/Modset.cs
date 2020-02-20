@@ -4,11 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Xml;
 
 namespace LauncherCore
 {
     public class Modset : IEditable
     {
+        public void ImportFrom(string source)
+        {
+            File.Copy(source, SharedData.WorkingPath + "\\Sets\\" + Path.GetFileName(source));
+        }
+
+        public Modset(string filePath)
+        {
+            fileName = filePath;
+            name = Path.GetFileNameWithoutExtension(filePath);
+        }
+
         public Modset(ref Dictionary<string, Mod> dict)
         {
             foreach (var i in dict)
@@ -19,14 +31,94 @@ namespace LauncherCore
                     pairs.Add(j.Key, j.Value.ToInstall);
                 }
             }
+            loaded = true;
         }
 
         public Modset(ref Dictionary<string, bool> dict)
         {
             pairs = dict;
+            loaded = true;
+        }
+
+        public void Load(bool showInfo = false)
+        {
+            XmlDocument document = new XmlDocument();
+            document.Load(fileName);
+            XmlElement root = Scanner.GetElementByTagName(ref document, "settings");
+            bool versionConforms = Scanner.GetElementByTagName(ref document, "version").GetAttribute("value") == SharedData.Version;
+            ushort skip = 0;
+
+            foreach (XmlElement i in root.ChildNodes)
+            {
+                if (i.Name != "mod")
+                {
+                    continue;
+                }
+
+                string key = i.GetAttribute("key");
+
+                if (SharedData.Mods.ContainsKey(key))
+                {
+                    pairs.Add(key, bool.Parse(i.GetAttribute("checked")));
+
+                    foreach (XmlElement j in i.ChildNodes)
+                    {
+                        string addonKey = j.GetAttribute("key");
+
+                        if (SharedData.Mods[key].Addons.ContainsKey(addonKey))
+                        {
+                            pairs.Add(addonKey, bool.Parse(j.GetAttribute("checked")));
+                        }
+                        else
+                        {
+                            if (versionConforms)
+                            {
+                                SharedData.DisplayMessage("Key not found: " + addonKey + " \nSetting file might be broken! ", "Error", MessageType.Error);
+                            }
+                            else
+                            {
+                                skip += 1;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    if (versionConforms)
+                    {
+                        SharedData.DisplayMessage("Key not found: " + key + " \nSetting file might be broken! ", "Error", MessageType.Error);
+                    }
+                    else
+                    {
+                        skip += 1;
+                    }
+                }
+            }
+
+            if (showInfo)
+            {
+                if (versionConforms)
+                {
+                    SharedData.DisplayMessage("Finished! ", "Information", MessageType.Info);
+                }
+                else
+                {
+                    SharedData.DisplayMessage("Finished! \nSkipped " + skip + " unidentified keys. ", "Information", MessageType.Info);
+                }
+            }
+        }
+
+        public void Unload()
+        {
+            if (fileName != "")
+            {
+                pairs = new Dictionary<string, bool>();
+            }
         }
 
         private Dictionary<string, bool> pairs = new Dictionary<string, bool>();
+        private bool loaded = false;
+        private string fileName = "", name = "";
 
         /// <summary>
         /// Get the to install state
@@ -37,6 +129,11 @@ namespace LauncherCore
         {
             get
             {
+                if (!loaded)
+                {
+                    Load();
+                }
+
                 return pairs[key];
             }
             set
@@ -47,6 +144,11 @@ namespace LauncherCore
 
         public void Apply()
         {
+            if (!loaded)
+            {
+                Load();
+            }
+
             foreach (var i in pairs)
             {
                 Mod target;
@@ -59,22 +161,61 @@ namespace LauncherCore
 
         public override void Delete()
         {
-            throw new NotImplementedException();
+            if (fileName != "")
+            {
+                File.Delete(fileName);
+            }
         }
 
-        public override void ExportTo(string dest)
+        public override void ExportTo(string dest, bool showInfo = false)
         {
-            throw new NotImplementedException();
+            XmlDocument document = new XmlDocument();
+            document.CreateXmlDeclaration("1.0", "utf-8", null);
+            XmlElement root = document.CreateElement("settings");
+            document.AppendChild(root);
+            XmlElement ver = document.CreateElement("version");
+            ver.SetAttribute("value", SharedData.Version);
+            root.AppendChild(ver);
+            foreach (var i in SharedData.Mods)
+            {
+                XmlElement element = document.CreateElement("mod");
+                element.IsEmpty = false;
+                element.SetAttribute("key", i.Key);
+                element.SetAttribute("checked", pairs[i.Key].ToString());
+                foreach (var j in i.Value.Addons)
+                {
+                    XmlElement xmlElement = document.CreateElement("mod");
+                    xmlElement.IsEmpty = false;
+                    xmlElement.SetAttribute("key", j.Key);
+                    xmlElement.SetAttribute("checked", pairs[j.Key].ToString());
+                    element.AppendChild(xmlElement);
+                }
+                root.AppendChild(element);
+            }
+            document.Save(dest);
+
+            if (showInfo)
+            {
+                SharedData.DisplayMessage("Finished! ", "Information", MessageType.Info);
+            }
         }
 
         public override void Rename(string newName, bool type)
         {
-            throw new NotImplementedException();
+            if (newName == ToString())
+            {
+                return;
+            }
+
+            string newPath = SharedData.WorkingPath + "\\Sets\\" + newName + ".xml";
+            File.Move(fileName, newPath);
+            name = newName;
+            fileName = newPath;
         }
 
         public override string ToString()
         {
-            throw new NotImplementedException();
+            return name;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using NBT.IO;
 using NBT.Tags;
 using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace LauncherCore
@@ -10,7 +11,7 @@ namespace LauncherCore
         private string folderName, levelName;
         private NBTFile nbtFile = new NBTFile();
 
-        public Save(string dir)
+        public Save(string dir) 
         {
             FolderPath = dir.EndsWith("\\") ? dir.Substring(0, dir.Length - 1) : dir;
             folderName = FolderPath.Substring(FolderPath.LastIndexOf('\\') + 1);
@@ -37,6 +38,11 @@ namespace LauncherCore
             get => folderName;
             set
             {
+                if (folderName == value)
+                {
+                    return;
+                }
+
                 if (Directory.Exists(SharedData.SavePath + value))
                 {
                     throw new IOException();
@@ -59,6 +65,11 @@ namespace LauncherCore
             get => levelName;
             set
             {
+                if (levelName == value)
+                {
+                    return;
+                }
+
                 (nbtFile.RootTag["Data"] as TagCompound)["LevelName"].Value = value;
                 nbtFile.Save(FolderPath + "\\level.dat");
                 levelName = value;
@@ -70,11 +81,6 @@ namespace LauncherCore
             return " " + levelName + " (" + folderName + ")";
         }
 
-        public override void ExportTo(string dest)
-        {
-            throw new NotImplementedException();
-        }
-
         public override void Rename(string newName, bool type)
         {
             if (type)
@@ -84,6 +90,14 @@ namespace LauncherCore
             else
             {
                 LevelName = newName;
+            }
+        }
+
+        public string DisplayName
+        {
+            get
+            {
+                return ToString();
             }
         }
     }

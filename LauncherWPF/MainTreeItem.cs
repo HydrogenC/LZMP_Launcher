@@ -19,7 +19,7 @@ namespace LauncherWPF
     /// <summary>
     /// MainTreeView 的交互逻辑
     /// </summary>
-    public class MainTreeItem : TreeViewItem, INotifyPropertyChanged
+    public class MainTreeItem : INotifyPropertyChanged
     {
         public MainTreeItem(string text)
         {
