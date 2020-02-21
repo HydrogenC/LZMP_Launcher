@@ -20,6 +20,7 @@ namespace LauncherUtilities
                 }
                 return MessageResult.OK;
             };
+
             Scanner.ScanConfig(SharedData.WorkingPath + "\\BasicSettings.xml");
             Console.WriteLine("Modpack version: " + SharedData.Version);
             Core.CheckInstallation();

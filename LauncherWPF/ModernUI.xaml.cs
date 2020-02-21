@@ -304,7 +304,7 @@ namespace LauncherWPF
                 target = new Modset(ref SharedData.Mods, "New Modset");
             }
 
-            RenameWindow rename = new RenameWindow(MainListBox.SelectedItem as IEditable);
+            RenameWindow rename = new RenameWindow(target);
             rename.ShowDialog();
             RefreshButton_Click(null, null);
         }
