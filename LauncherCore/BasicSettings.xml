@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings>
-  <pack title="LZMP %v Launcher" version="5.0.2A" launcher="Game\NsisoLauncher.exe"/>
+  <pack title="LZMP %v Launcher" version="5.0.3B" launcher="Game\NsisoLauncher.exe"/>
 
   <category name="Technology" >
     <mod key="aa" name="Actually Additions" >
@@ -83,10 +83,19 @@
       </mod>
     </mod>
 
+    <mod key="gc" name="Galacticraft" >
+      <file value="MicdoodleCore-1.12.2-4.0.2.244" />
+      <file value="GalacticraftCore-1.12.2-4.0.2.244" />
+      <file value="Galacticraft-Planets-1.12.2-4.0.2.244" />
+      <mod key="epl" name="ExtraPlanets">
+        <file value="ExtraPlanets-1.12.2-0.6.2" />
+      </mod>
+    </mod>
+
     <mod key="ga" name="Guide API" >
       <file value="Guide-API-1.12-2.1.8-63" />
-      <mod key="cyl" name="Cyclic (SP Only)" >
-        <file value="Cyclic-1.12.2-1.19.19" />
+      <mod key="cyl" name="Cyclic" >
+        <file value="Cyclic-1.12.2-1.19.20" />
       </mod>
       <mod key="wot" name="Woot" >
         <file value="woot-1.12.2-1.4.11" />
@@ -112,7 +121,7 @@
       </mod>
     </mod>
 
-    <mod key="ic" name="IndustrialCraft" >
+    <mod key="ic" name="IndustrialCraft 2" >
       <file value="industrialcraft-2-2.8.188-ex112" />
       <mod key="asp" name="Advanced Solar Panels" >
         <file value="Advanced+Solar+Panels-4.3.0" />
@@ -123,16 +132,12 @@
     </mod>
 
     <mod key="itd" name="Integrated Dynamics" >
-      <file value="CyclopsCore-1.12.2-1.6.0" />
+      <file value="CyclopsCore-1.12.2-1.6.1" />
       <file value="CommonCapabilities-1.12.2-2.4.5" />
-      <file value="IntegratedDynamics-1.12.2-1.1.1" />
+      <file value="IntegratedDynamics-1.12.2-1.1.2" />
       <file value="IntegratedTunnels-1.12.2-1.6.10" />
       <file value="IntegratedCrafting-1.12.2-1.0.8" />
       <file value="IntegratedTerminals-1.12.2-1.0.13" />
-    </mod>
-
-    <mod key="mo" name="Matter Overdrive" >
-      <file value="MatterOverdrive-1.12.2-0.7.1.0-universal" />
     </mod>
 
     <mod key="mps" name="Modular Powersuits" >
@@ -256,37 +261,45 @@
     <mod key="icb" name="ICBM" >
       <file value="ICBM-classic-1.12.2-4.0.0b72" />
     </mod>
-      
+
     <mod key="iv" name="Immersive Vehicles">
-      <file value="Immersive+Vehicles-1.12.2-15.10.0" />
-      <file value="MTS_Official_Pack_V13" />
-      <file value="UNU+Parts+Pack+[MTS]+1.10.2-15.9.0-3.1.0" />
+      <file value="Immersive+Vehicles-1.12.2-16.1.1" />
+      <file value="MTS_Official_Pack_V14" />
+      <file value="UNU+Parts+Pack+[MTS]+1.12.2-16.0.0-3.2.0" />
       <mod key="asv" name="ASV Pack">
         <file value="Automobilwerke_Schwikau_VEB_1967" />
       </mod>
       <mod key="gda" name="Golden Airport">
-        <file value="Golden+Airport+Pack+[Immersive-Vehicles]+0.2.2" />
+        <file value="Golden+Airport+Pack+[Immersive+Vehicles]+0.2.3" />
       </mod>
       <mod key="trn" name="Trin Civil" >
-        <file value="IV_Trin_Part_Pack_2.8.0" />
-        <file value="IV_Trin_Civil_Pack_(extended)_2.5.0" />
+        <file value="IV_Trin_Part_Pack_2.8.1" />
+        <file value="IV_Trin_Civil_Pack_(extended)_2.5.1" />
       </mod>
       <mod key="unc" name="UNU Civilian">
-        <file value="UNU+Civilian+Pack+[MTS]+1.10.2-15.9.0-3.1.1" />
+        <file value="UNU+Civilian+Pack+[MTS]+1.12.2-16.0.0-3.2.1" />
       </mod>
       <mod key="unm" name="UNU Military">
-        <file value="UNU+Military+Pack+[MTS]+1.10.2-15.9.0-3.0.0" />
+        <file value="UNU+Military+Pack+[MTS]+1.12.2-16.0.0-3.2.0" />
       </mod>
     </mod>
 
     <mod key="mwt" name="Minewatch" >
       <file value="Minewatch-1.12.X-3.13" />
     </mod>
+
+    <mod key="mw" name="Modern Warfare" >
+      <file value="mw_2.0-0.4.1_mc1.12.2" />
+    </mod>
   </category>
 
   <category name="Optimization" >
     <mod key="fmf" name="FoamFix" >
       <file value="foamfix-0.10.10-1.12.2" />
+    </mod>
+
+    <mod key="jed" name="JEID (Singleplayer Only)" >
+      <file value="JustEnoughIDs-1.0.3-52" />
     </mod>
 
     <mod key="lgg" name="Lag Goggles" >

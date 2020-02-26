@@ -126,6 +126,7 @@ namespace LauncherWPF
             Core.CheckAvailability();
 
             WriteNodes();
+            Core.CheckToInstallState();
             ToggleListDisplay(ListDisplay.Maps);
         }
 
