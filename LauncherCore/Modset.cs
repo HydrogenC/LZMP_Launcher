@@ -12,7 +12,7 @@ namespace LauncherCore
     {
         public bool HasActualFile
         {
-            get => !string.IsNullOrEmpty(fileName);
+            get => !string.IsNullOrEmpty(filePath);
         }
 
         public static void ImportFrom(string source)
@@ -24,7 +24,7 @@ namespace LauncherCore
 
         public Modset(string filePath)
         {
-            fileName = filePath;
+            this.filePath = filePath;
             name = Path.GetFileNameWithoutExtension(filePath);
         }
 
@@ -51,7 +51,7 @@ namespace LauncherCore
 
         public void Load(bool showInfo = false)
         {
-            if (string.IsNullOrEmpty(fileName))
+            if (string.IsNullOrEmpty(filePath))
             {
                 return;
             }
@@ -59,7 +59,7 @@ namespace LauncherCore
             Unload();
 
             XmlDocument document = new XmlDocument();
-            document.Load(fileName);
+            document.Load(filePath);
             XmlElement root = Scanner.GetElementByTagName(ref document, "settings");
             bool versionConforms = Scanner.GetElementByTagName(ref document, "version").GetAttribute("value") == SharedData.Version;
             ushort skip = 0;
@@ -128,7 +128,7 @@ namespace LauncherCore
 
         public void Unload()
         {
-            if (fileName != "")
+            if (filePath != "")
             {
                 pairs = new Dictionary<string, bool>();
             }
@@ -136,7 +136,7 @@ namespace LauncherCore
 
         private Dictionary<string, bool> pairs = new Dictionary<string, bool>();
         private bool loaded = false;
-        private string fileName = "", name = "";
+        private string filePath = "", name = "";
 
         /// <summary>
         /// Get the to install state
@@ -179,10 +179,10 @@ namespace LauncherCore
 
         public override void Delete()
         {
-            if (fileName != "")
+            if (filePath != "")
             {
 
-                File.Delete(fileName);
+                File.Delete(filePath);
             }
         }
 
@@ -212,6 +212,7 @@ namespace LauncherCore
                 root.AppendChild(element);
             }
             document.Save(dest);
+            filePath = dest;
         }
 
         public override void Rename(string newName, bool type)
@@ -224,7 +225,7 @@ namespace LauncherCore
             string newPath = SharedData.WorkingPath + "\\Sets\\" + newName + ".xml";
             if (HasActualFile)
             {
-                File.Move(fileName, newPath);
+                File.Move(filePath, newPath);
             }
             else
             {
@@ -232,7 +233,7 @@ namespace LauncherCore
             }
 
             name = newName;
-            fileName = newPath;
+            filePath = newPath;
         }
 
         public override string ToString()

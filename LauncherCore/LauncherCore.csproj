@@ -56,7 +56,7 @@
     <Compile Include="Mod.cs" />
     <Compile Include="Modset.cs" />
     <Compile Include="Save.cs" />
-    <Compile Include="Saves.IO.cs" />
+    <Compile Include="Save.IO.cs" />
     <Compile Include="LauncherCore.cs" />
     <Compile Include="Scanner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
