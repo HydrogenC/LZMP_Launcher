@@ -1,11 +1,5 @@
-﻿using LauncherCore;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
 
 namespace LauncherWPF
 {
@@ -94,7 +88,7 @@ namespace LauncherWPF
                 itemChecked = intend;
                 if (Parent != null)
                 {
-                    UpdateNumberOfChildrenChecked(ItemCheckedRaw.Value);
+                    Parent.UpdateNumberOfChildrenChecked(ItemCheckedRaw.Value);
                 }
                 AfterCheck();
                 OnPropertyChanged("itemChecked");
@@ -121,6 +115,10 @@ namespace LauncherWPF
             {
                 Parent.UpdateNumberOfChildrenChecked(isChecked);
             }
+
+#if DEBUG
+            System.Windows.MessageBox.Show(NumberOfChildrenChecked + " of " + TotalNumberOfChildren);
+#endif
         }
 
         public int TotalNumberOfChildren
@@ -150,14 +148,14 @@ namespace LauncherWPF
                 itemChecked = value;
                 if (Parent != null)
                 {
-                    UpdateNumberOfChildrenChecked(ItemCheckedRaw.Value);
+                    Parent.UpdateNumberOfChildrenChecked(ItemCheckedRaw.Value);
                 }
                 AfterCheck();
                 OnPropertyChanged("itemChecked");
             }
         }
 
-        public bool? ItemCheckedRaw
+        private bool? ItemCheckedRaw
         {
             get => itemChecked;
             set
@@ -170,7 +168,7 @@ namespace LauncherWPF
                 itemChecked = value;
                 if (Parent != null)
                 {
-                    UpdateNumberOfChildrenChecked(ItemCheckedRaw.Value);
+                    Parent.UpdateNumberOfChildrenChecked(ItemCheckedRaw.Value);
                 }
                 OnPropertyChanged("itemChecked");
             }
@@ -188,9 +186,9 @@ namespace LauncherWPF
             }
         }
 
-        private void UpdateParent()
+        private MainTreeItem GetCategory()
         {
-
+            return IsCategory ? this : Parent.GetCategory();
         }
 
         private void AfterCheck()
@@ -217,27 +215,26 @@ namespace LauncherWPF
                 }
             }
 
-            if (Parent.IsCategory)
-            {
-                if (Parent.NumberOfChildrenChecked == Parent.TotalNumberOfChildren)
-                {
-                    Parent.ItemCheckedRaw = true;
-                    return;
-                }
-                if (Parent.NumberOfChildrenChecked == 0u)
-                {
-                    Parent.ItemCheckedRaw = false;
-                    return;
-                }
-                Parent.ItemCheckedRaw = null;
-            }
-            else
+            if (!Parent.IsCategory)
             {
                 if (Checked == CheckBoxState.Checked)
                 {
                     Parent.ItemChecked = true;
                 }
             }
+
+            MainTreeItem parentItem = GetCategory();
+            if (parentItem.NumberOfChildrenChecked == parentItem.TotalNumberOfChildren)
+            {
+                parentItem.ItemCheckedRaw = true;
+                return;
+            }
+            if (parentItem.NumberOfChildrenChecked == 0u)
+            {
+                parentItem.ItemCheckedRaw = false;
+                return;
+            }
+            parentItem.ItemCheckedRaw = null;
         }
     }
 }
