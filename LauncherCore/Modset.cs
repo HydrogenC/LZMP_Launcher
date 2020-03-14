@@ -218,7 +218,7 @@ namespace LauncherCore
 
         public override void Rename(string newName, bool type)
         {
-            if (newName == name)
+            if (HasActualFile && newName == name)
             {
                 return;
             }
