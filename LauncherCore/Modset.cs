@@ -38,6 +38,7 @@ namespace LauncherCore
                     pairs.Add(j.Key, j.Value.ToInstall);
                 }
             }
+
             this.name = name;
             loaded = true;
         }

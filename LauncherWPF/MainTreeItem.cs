@@ -92,7 +92,10 @@ namespace LauncherWPF
                 }
 
                 itemChecked = intend;
-                UpdateParent();
+                if (Parent != null)
+                {
+                    UpdateNumberOfChildrenChecked(ItemCheckedRaw.Value);
+                }
                 AfterCheck();
                 OnPropertyChanged("itemChecked");
             }
@@ -109,11 +112,30 @@ namespace LauncherWPF
             get => Parent != null;
         }
 
-        public uint NumberOfChildrenChecked
+        private int NumberOfChildrenChecked = 0;
+        public void UpdateNumberOfChildrenChecked(bool isChecked)
         {
-            get;
-            set;
-        } = 0u;
+            NumberOfChildrenChecked += isChecked ? 1 : -1;
+
+            if (Parent != null)
+            {
+                Parent.UpdateNumberOfChildrenChecked(isChecked);
+            }
+        }
+
+        public int TotalNumberOfChildren
+        {
+            get
+            {
+                int count = Children.Count;
+                foreach (var i in Children)
+                {
+                    count += i.TotalNumberOfChildren;
+                }
+
+                return count;
+            }
+        }
 
         public bool? ItemChecked
         {
@@ -126,13 +148,16 @@ namespace LauncherWPF
                 }
 
                 itemChecked = value;
-                UpdateParent();
+                if (Parent != null)
+                {
+                    UpdateNumberOfChildrenChecked(ItemCheckedRaw.Value);
+                }
                 AfterCheck();
                 OnPropertyChanged("itemChecked");
             }
         }
 
-        public bool? ItemCheckedNoCheck
+        public bool? ItemCheckedRaw
         {
             get => itemChecked;
             set
@@ -143,7 +168,10 @@ namespace LauncherWPF
                 }
 
                 itemChecked = value;
-                UpdateParent();
+                if (Parent != null)
+                {
+                    UpdateNumberOfChildrenChecked(ItemCheckedRaw.Value);
+                }
                 OnPropertyChanged("itemChecked");
             }
         }
@@ -152,23 +180,17 @@ namespace LauncherWPF
         {
             foreach (var i in Children)
             {
-                i.ItemCheckedNoCheck = flag;
+                i.ItemCheckedRaw = flag;
+                if (i.Children.Count != 0)
+                {
+                    i.CheckAllChildren(flag);
+                }
             }
         }
 
         private void UpdateParent()
         {
-            if (Parent != null && Parent.IsCategory)
-            {
-                if (ItemCheckedNoCheck.Value)
-                {
-                    Parent.NumberOfChildrenChecked += 1u;
-                }
-                else
-                {
-                    Parent.NumberOfChildrenChecked -= 1u;
-                }
-            }
+
         }
 
         private void AfterCheck()
@@ -197,17 +219,17 @@ namespace LauncherWPF
 
             if (Parent.IsCategory)
             {
-                if (Parent.NumberOfChildrenChecked == Parent.Children.Count)
+                if (Parent.NumberOfChildrenChecked == Parent.TotalNumberOfChildren)
                 {
-                    Parent.ItemCheckedNoCheck = true;
+                    Parent.ItemCheckedRaw = true;
                     return;
                 }
                 if (Parent.NumberOfChildrenChecked == 0u)
                 {
-                    Parent.ItemCheckedNoCheck = false;
+                    Parent.ItemCheckedRaw = false;
                     return;
                 }
-                Parent.ItemCheckedNoCheck = null;
+                Parent.ItemCheckedRaw = null;
             }
             else
             {
