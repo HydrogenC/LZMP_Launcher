@@ -95,7 +95,7 @@
     <mod key="ga" name="Guide API" >
       <file value="Guide-API-1.12-2.1.8-63" />
       <mod key="cyl" name="Cyclic" >
-        <file value="Cyclic-1.12.2-1.19.20" />
+        <file value="Cyclic-1.12.2-1.19.21" />
       </mod>
       <mod key="wot" name="Woot" >
         <file value="woot-1.12.2-1.4.11" />
@@ -294,8 +294,8 @@
       <file value="foamfix-0.10.10-1.12.2" />
     </mod>
 
-    <mod key="jed" name="JEID (Singleplayer Only)" >
-      <file value="JustEnoughIDs-1.0.3-52" />
+    <mod key="jed" name="Just Enough IDs" >
+      <file value="JustEnoughIDs-1.0.3-50" />
     </mod>
 
     <mod key="lgg" name="Lag Goggles" >
