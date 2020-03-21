@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings>
-  <pack title="LZMP %v Launcher" version="5.1.0" launcher="Game\NsisoLauncher.exe"/>
+  <pack title="LZMP %v Launcher" version="5.1.1" launcher="Game\NsisoLauncher.exe"/>
 
   <category name="Technology" >
     <mod key="aa" name="Actually Additions" >
@@ -128,7 +128,7 @@
         <file value="compactmachines3-1.12.2-3.0.18-b278" />
       </mod>
     </mod>
-    
+
     <mod key="idr" name="Industrial Renewal">
       <file value="IndustrialRenewal_1.12.2-0.16.1" />
     </mod>
@@ -208,6 +208,10 @@
       </mod>
     </mod>
 
+    <mod key="tcg" name="Techguns" >
+      <file value="techguns-1.12.2-2.0.2.0_pre3.2" />
+    </mod>
+
     <mod key="tsl" name="Tesla" >
       <file value="Tesla-1.12.2-1.0.63" />
       <mod key="idf" name="Industrial Foregoing">
@@ -283,19 +287,19 @@
     </mod>
 
     <mod key="cdl" name="CD4017BE Lib" >
-      <file value="CD4017BE_lib-1.12.2-6.4.14.1" />
+      <file value="CD4017BE_lib-1.12.2-6.4.17.1" />
       <mod key="idl" name="Inductive Logistics">
         <file value="InductiveLogistics-1.12.2-1.3.4" />
       </mod>
       <mod key="rsc" name="Redstone Control">
-        <file value="RedstoneControl-1.12.2-0.2.3" />
+        <file value="RedstoneControl-1.12.2-0.2.6.1" />
       </mod>
     </mod>
 
     <mod key="ctk" name="CraftTweaker" >
-      <file value="CraftTweaker2-1.12-4.1.19" />
+      <file value="CraftTweaker2-1.12-4.1.20" />
       <file value="MTLib-3.0.6" />
-      <file value="modtweaker-4.0.17" />
+      <file value="modtweaker-4.0.18" />
       <file value="EnderTweaker-1.12.2-1.2.0" />
       <mod key="ext" name="External Tweaker" >
         <file value="externaltweaker-1.12-0.3" />
@@ -339,7 +343,7 @@
         <file value="UNU+Military+Pack+[MTS]+1.12.2-17.0.0-3.3.0" />
       </mod>
     </mod>
-    
+
     <mod key="mr" name="Modular Routers" >
       <file value="modular-routers-1.12.2-3.2.2" />
     </mod>
@@ -383,10 +387,6 @@
     <mod key="sca" name="Scaling Health" >
       <file value="SilentLib-1.12.2-3.0.13+167" />
       <file value="ScalingHealth-1.12.2-1.3.42+147" />
-    </mod>
-
-    <mod key="tcg" name="Techguns" >
-      <file value="techguns-1.12.2-2.0.2.0_pre3.2" />
     </mod>
 
     <mod key="tic" name="Tinker's Construct" >
