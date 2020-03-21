@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings>
-  <pack title="LZMP %v Launcher" version="5.0.6" launcher="Game\NsisoLauncher.exe"/>
+  <pack title="LZMP %v Launcher" version="5.1.0" launcher="Game\NsisoLauncher.exe"/>
 
   <category name="Technology" >
     <mod key="aa" name="Actually Additions" >
@@ -52,7 +52,7 @@
     </mod>
 
     <mod key="emg" name="Emerging Tech">
-      <file value="EmergingTechnology-1.12.2-1.3.19-beta" />
+      <file value="EmergingTechnology-1.12.2-1.3.20-beta" />
     </mod>
 
     <mod key="evt" name="Environmental Tech" >
@@ -114,8 +114,8 @@
       <mod key="imp" name="Immersive Petroleum" >
         <file value="immersivepetroleum-1.12.2-1.1.9" />
       </mod>
-      <mod key="imt" name="Immersive Tech" >
-        <file value="immersivetech-1.12-1.3.10" />
+      <mod key="imt" name="Immersive Technology" >
+        <file value="MCTImmersiveTechnology-1.12.2-1.7.50" />
       </mod>
       <mod key="iw" name="Industrial Wires" >
         <file value="IndustrialWires-1.7-36" />
@@ -321,22 +321,22 @@
     <mod key="iv" name="Immersive Vehicles">
       <file value="Immersive+Vehicles-1.12.2-17.2.1" />
       <file value="MTS_Official_Pack_V15" />
-      <file value="UNU+Parts+Pack+[MTS]+1.12.2-16.0.0-3.2.0" />
+      <file value="UNU+Parts+Pack+[MTS]+1.12.2-17.0.0-3.3.0" />
       <mod key="uvr" name="Expanded UNUverse">
-        <file value="Expanded+UNUverse+Pack+[MTS]+1.12.2-16.0.0-1.0.0" />
+        <file value="Expanded+UNUverse+Pack+[MTS]+1.12.2-17.0.0-1.1.0" />
       </mod>
       <mod key="gda" name="Golden Airport">
         <file value="Golden+Airport+Pack+[Immersive+Vehicles]+0.2.5" />
       </mod>
       <mod key="trn" name="Trin Civil" >
         <file value="IV_Trin_Part_Pack_2.8.1" />
-        <file value="IV_Trin_Civil_Pack_(extended)_2.5.1" />
+        <file value="IV_Trin_Civil_Pack_(extended)_2.5.2" />
       </mod>
       <mod key="unc" name="UNU Civilian">
-        <file value="UNU+Civilian+Pack+[MTS]+1.12.2-16.0.0-3.2.1" />
+        <file value="UNU+Civilian+Pack+[MTS]+1.12.2-17.0.0-3.3.0" />
       </mod>
       <mod key="unm" name="UNU Military">
-        <file value="UNU+Military+Pack+[MTS]+1.12.2-16.0.0-3.2.0" />
+        <file value="UNU+Military+Pack+[MTS]+1.12.2-17.0.0-3.3.0" />
       </mod>
     </mod>
     
@@ -391,7 +391,7 @@
 
     <mod key="tic" name="Tinker's Construct" >
       <file value="Mantle-1.12-1.3.3.55" />
-      <file value="TConstruct-1.12.2-2.13.0.179" />
+      <file value="TConstruct-1.12.2-2.13.0.183" />
       <mod key="pti" name="Plus TiC" >
         <file value="plustic-7.1.6.1" />
       </mod>
