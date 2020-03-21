@@ -286,11 +286,6 @@
       <file value="AcademyCraft-1.1.2" />
     </mod>
 
-    <mod key="rsc" name="Redstone Control" >
-      <file value="CD4017BE_lib-1.12.2-6.4.17.1" />
-      <file value="RedstoneControl-1.12.2-0.2.6.1" />
-    </mod>
-
     <mod key="ctk" name="CraftTweaker" >
       <file value="CraftTweaker2-1.12-4.1.20" />
       <file value="MTLib-3.0.6" />
@@ -375,6 +370,11 @@
       <file value="Psi-r1.1-77" />
     </mod>
 
+    <mod key="rsc" name="Redstone Control" >
+      <file value="CD4017BE_lib-1.12.2-6.4.17.1" />
+      <file value="RedstoneControl-1.12.2-0.2.6.1" />
+    </mod>
+    
     <mod key="rel" name="Refined Relocation" >
       <file value="RefinedRelocation_1.12.2-4.2.37" />
     </mod>
