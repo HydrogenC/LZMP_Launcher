@@ -286,14 +286,9 @@
       <file value="AcademyCraft-1.1.2" />
     </mod>
 
-    <mod key="cdl" name="CD4017BE Lib" >
+    <mod key="rsc" name="Redstone Control" >
       <file value="CD4017BE_lib-1.12.2-6.4.17.1" />
-      <mod key="idl" name="Inductive Logistics">
-        <file value="InductiveLogistics-1.12.2-1.3.4" />
-      </mod>
-      <mod key="rsc" name="Redstone Control">
-        <file value="RedstoneControl-1.12.2-0.2.6.1" />
-      </mod>
+      <file value="RedstoneControl-1.12.2-0.2.6.1" />
     </mod>
 
     <mod key="ctk" name="CraftTweaker" >
