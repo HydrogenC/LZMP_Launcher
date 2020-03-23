@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings>
-  <pack title="LZMP %v Launcher" version="5.1.1" launcher="Game\NsisoLauncher.exe"/>
+  <pack title="LZMP %v Launcher" version="5.1.2" launcher="Game\NsisoLauncher.exe"/>
 
   <category name="Technology" >
     <mod key="aa" name="Actually Additions" >
@@ -9,7 +9,7 @@
 
     <mod key="alc" name="Alchemistry" >
       <file value="alib-1.0.12" />
-      <file value="alchemistry-1.0.37" />
+      <file value="alchemistry-1.12.2-41" />
     </mod>
 
     <mod key="ae" name="Applied Energetics" >
@@ -75,7 +75,7 @@
       <file value="forestry_1.12.2-5.8.2.418" />
       <file value="jeibees-0.9.0.5-mc1.12.2" />
       <mod key="bin" name="Binne's Mods">
-        <file value="binnie-mods-1.12.2-2.5.1.200" />
+        <file value="binnie-mods-1.12.2-2.5.1.201" />
       </mod>
       <mod key="gen" name="Gendustry">
         <file value="gendustry-1.6.5.8-mc1.12.2" />
@@ -115,7 +115,7 @@
         <file value="immersivepetroleum-1.12.2-1.1.9" />
       </mod>
       <mod key="imt" name="Immersive Technology" >
-        <file value="MCTImmersiveTechnology-1.12.2-1.7.50" />
+        <file value="MCTImmersiveTechnology-1.12.2-1.7.52" />
       </mod>
       <mod key="iw" name="Industrial Wires" >
         <file value="IndustrialWires-1.7-36" />
@@ -154,7 +154,7 @@
     </mod>
 
     <mod key="nc" name="NuclearCraft" >
-      <file value="NuclearCraft-2.18o-1.12.2" />
+      <file value="NuclearCraft-2.18p-1.12.2" />
     </mod>
 
     <mod key="rs" name="Refined Storage" >
@@ -313,7 +313,7 @@
     </mod>
 
     <mod key="iv" name="Immersive Vehicles">
-      <file value="Immersive+Vehicles-1.12.2-17.2.1" />
+      <file value="Immersive+Vehicles-1.12.2-17.3.0" />
       <file value="MTS_Official_Pack_V15" />
       <file value="UNU+Parts+Pack+[MTS]+1.12.2-17.0.0-3.3.0" />
       <mod key="uvr" name="Expanded UNUverse">
