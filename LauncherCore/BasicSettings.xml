@@ -23,9 +23,6 @@
       <mod key="exc" name="Extra Cells 2" >
         <file value="ExtraCells-1.12.2-2.6.5" />
       </mod>
-      <mod key="spc" name="Spatial Compat">
-        <file value="spatialservermod-1.3" />
-      </mod>
       <mod key="wct" name="Wireless Terminals" >
         <file value="p455w0rdslib-1.12.2-2.3.161" />
         <file value="AE2WTLib-1.12.2-1.0.34" />
