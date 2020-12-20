@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings>
-	<pack title="LZMP %v Launcher" version="5.2.1" launcher="Game\NsisoLauncher.exe"/>
+	<pack title="LZMP %v Launcher" version="5.3.0" launcher="Game\NsisoLauncher.exe"/>
 
 	<category name="Technology" >
 		<mod key="aa" name="Actually Additions" >
-			<file value="ActuallyAdditions-1.12.2-r151-2" />
+			<file value="ActuallyAdditions-1.12.2-r152" />
 		</mod>
 
 		<mod key="alc" name="Alchemistry" >
@@ -34,18 +34,18 @@
 		</mod>
 
 		<mod key="bc" name="Buildcraft" >
-			<file value="buildcraft-all-7.99.24.6" />
+			<file value="buildcraft-all-7.99.24.7" />
 			<mod key="irt" name="Iron Tanks">
 				<file value="irontanks-1.12.2-2.1.0-beta.18" />
 			</mod>
 			<mod key="lgs" name="Logistics Pipes">
-				<file value="logisticspipes-0.10.3.50" />
+				<file value="logisticspipes-0.10.3.40" />
 			</mod>
 		</mod>
 
 		<mod key="de" name="Draconic Evolution" >
-			<file value="BrandonsCore-1.12.2-2.4.18.210-universal" />
-			<file value="Draconic-Evolution-1.12.2-2.3.25.351-universal" />
+			<file value="BrandonsCore-1.12.2-2.4.19.214-universal" />
+			<file value="Draconic-Evolution-1.12.2-2.3.27.353-universal" />
 		</mod>
 
 		<mod key="emg" name="Emerging Tech">
@@ -65,7 +65,7 @@
 		</mod>
 
 		<mod key="net" name="Flux Networks" >
-			<file value="fluxnetworks-1.12.2-4.0.14-31" />
+			<file value="fluxnetworks-1.12.2-4.0.15-32" />
 		</mod>
 
 		<mod key="for" name="Forestry">
@@ -81,19 +81,19 @@
 		</mod>
 
 		<mod key="gc" name="Galacticraft" >
-			<file value="MicdoodleCore-1.12.2-4.0.2.280" />
-			<file value="GalacticraftCore-1.12.2-4.0.2.280" />
-			<file value="Galacticraft-Planets-1.12.2-4.0.2.280" />
+			<file value="MicdoodleCore-1.12.2-4.0.2.281" />
+			<file value="GalacticraftCore-1.12.2-4.0.2.281" />
+			<file value="Galacticraft-Planets-1.12.2-4.0.2.281" />
 			<mod key="epl" name="ExtraPlanets">
-				<file value="MJRLegendsLib-1.12.2-1.1.9" />
-				<file value="ExtraPlanets-1.12.2-0.6.5" />
+				<file value="MJRLegendsLib-1.12.2-1.2.0" />
+				<file value="ExtraPlanets-1.12.2-0.7.0" />
 			</mod>
 		</mod>
 
 		<mod key="ga" name="Guide API" >
 			<file value="Guide-API-1.12-2.1.8-63" />
 			<mod key="cyl" name="Cyclic" >
-				<file value="Cyclic-1.12.2-1.20.3" />
+				<file value="Cyclic-1.12.2-1.20.8" />
 			</mod>
 			<mod key="wot" name="Woot" >
 				<file value="woot-1.12.2-1.4.11" />
@@ -101,18 +101,18 @@
 		</mod>
 
 		<mod key="ie" name="Immersive Engineering" >
-			<file value="ImmersiveEngineering-0.12-92" />
+			<file value="ImmersiveEngineering-0.12-98" />
 			<mod key="imc" name="Immersive Cables" >
 				<file value="ImmersiveCables-1.12.2-1.3.2" />
 			</mod>
 			<mod key="ime" name="Immersive Energy" >
-				<file value="Immersive+Energy-1.12.2-0.4.6" />
+				<file value="Immersive+Energy-1.12.2-0.5.4" />
 			</mod>
 			<mod key="imp" name="Immersive Petroleum" >
 				<file value="immersivepetroleum-1.12.2-1.1.9" />
 			</mod>
 			<mod key="imt" name="Immersive Technology" >
-				<file value="MCTImmersiveTechnology-1.12.2-1.7.71" />
+				<file value="MCTImmersiveTechnology-1.12.2-1.8.91" />
 			</mod>
 			<mod key="iw" name="Industrial Wires" >
 				<file value="IndustrialWires-1.7-39" />
@@ -139,14 +139,14 @@
 		</mod>
 
 		<mod key="idr" name="Industrial Renewal">
-			<file value="IndustrialRenewal_1.12.2-0.17.6" />
+			<file value="IndustrialRenewal_1.12.2-0.21.2" />
 		</mod>
 
 		<mod key="itd" name="Integrated Dynamics" >
 			<file value="CyclopsCore-1.12.2-1.6.6" />
-			<file value="CommonCapabilities-1.12.2-2.4.7" />
-			<file value="IntegratedDynamics-1.12.2-1.1.7" />
-			<file value="IntegratedTunnels-1.12.2-1.6.12" />
+			<file value="CommonCapabilities-1.12.2-2.4.8" />
+			<file value="IntegratedDynamics-1.12.2-1.1.10" />
+			<file value="IntegratedTunnels-1.12.2-1.6.13" />
 			<file value="IntegratedCrafting-1.12.2-1.0.10" />
 			<file value="IntegratedTerminals-1.12.2-1.0.14" />
 		</mod>
@@ -163,7 +163,7 @@
 		</mod>
 
 		<mod key="nc" name="NuclearCraft" >
-			<file value="NuclearCraft-2.18v-1.12.2" />
+			<file value="NuclearCraft-2.18y-1.12.2" />
 		</mod>
 
 		<mod key="rs" name="Refined Storage" >
@@ -231,7 +231,7 @@
 		</mod>
 
 		<mod key="wpd" name="Warp Drive" >
-			<file value="WarpDrive-1.12.2-1.5.17" />
+			<file value="WarpDrive-1.12.2-1.5.19" />
 		</mod>
 
 		<mod key="wlu" name="Wireless Utilities" >
@@ -268,13 +268,13 @@
 		</mod>
 
 		<mod key="twi" name="Twilight Forest" >
-			<file value="twilightforest-1.12.2-3.10.1013-universal" />
+			<file value="twilightforest-1.12.2-3.11.1021-universal" />
 		</mod>
 	</category>
 
 	<category name="Optimization" >
 		<mod key="fmf" name="FoamFix" >
-			<file value="foamfix-0.10.10-1.12.2" />
+			<file value="foamfix-0.10.11-1.12.2" />
 		</mod>
 
 		<mod key="jed" name="Just Enough IDs" >
@@ -292,7 +292,7 @@
 
 	<category name="Miscellaneous" >
 		<mod key="aca" name="AcademyCraft (Win Only)" >
-			<file value="AcademyCraft-1.1.2" />
+			<file value="AcademyCraft-1.1.3" />
 		</mod>
 
 		<mod key="ctk" name="CraftTweaker" >
@@ -322,18 +322,18 @@
 		</mod>
 
 		<mod key="iv" name="Immersive Vehicles">
-			<file value="Immersive+Vehicles-1.12.2-18.5.0" />
-			<file value="MTS_Official_Pack_V16" />
+			<file value="Immersive+Vehicles-1.12.2-19.11.0" />
+			<file value="MTS_Official_Pack_V19" />
 			<file value="UNU+Parts+Pack+[MTS]+1.12.2-18.0.0-3.5.0" />
 			<mod key="gda" name="Golden Airport">
-				<file value="Golden+Airport+Pack+[Immersive+Vehicles]+1.2.7" />
+				<file value="Golden_Airport_Pack_Immersive_Vehicles_3.2.3" />
 			</mod>
 			<mod key="hel" name="Helicopter Pack" >
-				<file value="Helicopter_Pack-1.4.0" />
+				<file value="Helicopter_Pack-2.7.0" />
 			</mod>
 			<mod key="trn" name="Trin Civil" >
-				<file value="IV_Trin_Part_Pack_2.9.0" />
-				<file value="IV_Trin_Civil_Pack_(extended)_2.8.1" />
+				<file value="IV_Trin_Part_Pack_2.12.0" />
+				<file value="IV_Trin_Civil_Pack_V3.5.0" />
 			</mod>
 			<mod key="unc" name="UNU Civilian">
 				<file value="UNU+Civilian+Pack+[MTS]+1.12.2-18.0.0-3.5.0" />
@@ -363,7 +363,7 @@
 		<mod key="pe" name="ProjectE" >
 			<file value="ProjectE-1.12.2-PE1.4.1" />
 			<mod key="eqa" name="Equivalent Additions">
-				<file value="HammerLib-1.12.2-2.0.6.19" />
+				<file value="HammerLib-1.12.2-2.0.6.25" />
 				<file value="EquivalentAdditions-1.12.2-12.2.9" />
 			</mod>
 		</mod>
@@ -380,7 +380,7 @@
 
 		<mod key="arl" name="Psi" >
 			<file value="AutoRegLib-1.3-32" />
-			<file value="Psi-r1.1-77" />
+			<file value="Psi-r1.1-78.2" />
 		</mod>
 
 		<mod key="rsc" name="Redstone Control" >
@@ -404,7 +404,7 @@
 				<file value="TinkersComplement-1.12.2-0.4.3" />
 			</mod>
 			<mod key="tio" name="Tinker IO">
-				<file value="tinker_io-1.12.2-rw2.8.1a" />
+				<file value="tinker_io-1.12.2-rw2.8.3" />
 			</mod>
 		</mod>
 	</category>
