@@ -55,10 +55,17 @@ namespace LauncherCore
                 else
                 {
                     Directory.Move(FolderPath, SharedData.SavePath + value);
-                    if (Directory.Exists(SharedData.JMDataPath + folderName.Replace('-', '~')))
+                    if (Directory.Exists(SharedData.VoxelDataPath + folderName))
                     {
-                        Directory.Move(SharedData.JMDataPath + folderName.Replace('-', '~'), SharedData.JMDataPath + value.Replace('-', '~'));
+                        Directory.Move(SharedData.VoxelDataPath + folderName, SharedData.VoxelDataPath + value);
                     }
+
+                    string waypoints;
+                    if (File.Exists(waypoints = SharedData.GamePath + $"\\voxelmap\\{folderName}.points"))
+                    {
+                        File.Move(waypoints, SharedData.GamePath + $"\\voxelmap\\{value}.points");
+                    }
+
                     folderName = value;
                     FolderPath = FolderPath.Substring(0, FolderPath.LastIndexOf('\\') + 1) + value;
                 }

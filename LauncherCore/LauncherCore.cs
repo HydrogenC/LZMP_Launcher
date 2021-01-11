@@ -42,9 +42,9 @@ namespace LauncherCore
             get => GamePath + "\\saves\\";
         }
 
-        public static string JMDataPath
+        public static string VoxelDataPath
         {
-            get => GamePath + "\\journeymap\\data\\sp\\";
+            get => GamePath + "\\voxelmap\\cache\\";
         }
 
         public static string ResourcePath
@@ -63,7 +63,7 @@ namespace LauncherCore
         }
     }
 
-    public struct CurrentProgress
+    public static class CurrentProgress
     {
         public static void Initialize()
         {

@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Rename" Height="360" Width="360" MaxHeight="360" MinWidth="360" MinHeight="360">
     <Grid Margin="0,0,0,0">
-        <Image x:Name="Background" Margin="0,0,0,0" Panel.ZIndex="-1" Source="Images\Bg.png" Stretch="UniformToFill" ToolTip="Refresh">
+        <Image x:Name="BackgroundImage" Margin="0,0,0,0" Panel.ZIndex="-1" Source="Images\Bg.png" Stretch="UniformToFill" ToolTip="Refresh">
             <Image.Effect>
                 <BlurEffect Radius="14" KernelType="Gaussian"/>
             </Image.Effect>

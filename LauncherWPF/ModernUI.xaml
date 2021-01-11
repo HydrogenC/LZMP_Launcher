@@ -9,7 +9,7 @@
         Title="LZMP Launcher" Height="720" Width="720" WindowStyle="ThreeDBorderWindow" MinWidth="720" MinHeight="600">
     <Grid>
 
-        <Image Margin="0,0,0,0" Panel.ZIndex="-1" x:Name="Background" Source="Images\BgHD.png" Stretch="UniformToFill" ToolTip="Refresh" >
+        <Image Margin="0,0,0,0" Panel.ZIndex="-1" x:Name="BackgroundImage" Source="Images\BgHD.png" Stretch="UniformToFill" ToolTip="Refresh" >
             <Image.Effect>
                 <BlurEffect Radius="12" KernelType="Gaussian"/>
             </Image.Effect>

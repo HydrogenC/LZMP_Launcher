@@ -22,7 +22,7 @@ namespace LauncherWPF
     /// </summary>
     public partial class ModernUI : Window
     {
-        private bool allChecked = false, processing = false, setLoaded = false;
+        private bool allChecked = false, processing = false;
         public Dictionary<string, MainTreeItem> itemDict = new Dictionary<string, MainTreeItem>();
         public Dictionary<string, MainTreeItem> categoryDict = new Dictionary<string, MainTreeItem>();
         private ListDisplay currentLD;

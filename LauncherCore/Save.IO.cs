@@ -13,20 +13,25 @@ namespace LauncherCore
 
             string tmpDir = SharedData.WorkingPath + "\\Tmp\\";
             Directory.CreateDirectory(tmpDir);
-            Core.CopyDirectory(FolderPath, tmpDir + "save\\");
+            Core.CopyDirectory(FolderPath, tmpDir + "save");
             Modset tmp = new Modset(ref SharedData.Mods);
             tmp.ExportTo(tmpDir + "Set.xml");
             tmp.Unload();
 
             if (Directory.Exists(SharedData.ScriptPath))
             {
-                Core.CopyDirectory(SharedData.ScriptPath, tmpDir + "scripts\\");
+                Core.CopyDirectory(SharedData.ScriptPath, tmpDir + "scripts");
             }
 
-            string jmName = FolderName.Replace('-', '~');
-            if (FolderPath.Substring(0, FolderPath.LastIndexOf('\\') + 1) == SharedData.SavePath && Directory.Exists(SharedData.JMDataPath + jmName))
+            if (Directory.Exists(SharedData.VoxelDataPath + FolderName))
             {
-                Core.CopyDirectory(SharedData.JMDataPath + jmName, tmpDir + "jm\\");
+                Core.CopyDirectory(SharedData.VoxelDataPath + FolderName, tmpDir + "voxel");
+            }
+
+            string waypoints;
+            if (File.Exists(waypoints = SharedData.GamePath + $"\\voxelmap\\{FolderName}.points"))
+            {
+                File.Copy(waypoints, tmpDir + "waypoints.points");
             }
 
             CurrentProgress.status = "Compressing";
@@ -40,7 +45,7 @@ namespace LauncherCore
             CurrentProgress.Initialize();
         }
 
-        public static void ImportFrom(string filePath) 
+        public static void ImportFrom(string filePath)
         {
             CurrentProgress.status = "Extracting";
 
@@ -85,14 +90,19 @@ namespace LauncherCore
                 tmp.Unload();
             }
 
-            if (Directory.Exists(tmpDir + "scripts\\"))
+            if (Directory.Exists(tmpDir + "scripts"))
             {
-                Core.CopyDirectory(tmpDir + "scripts\\", SharedData.ScriptPath);
+                Core.CopyDirectory(tmpDir + "scripts", SharedData.ScriptPath);
             }
 
-            if (Directory.Exists(tmpDir + "jm\\"))
+            if (Directory.Exists(tmpDir + "voxel"))
             {
-                Core.CopyDirectory(tmpDir + "jm\\", SharedData.JMDataPath + save.LevelName.Replace('-', '~'));
+                Core.CopyDirectory(tmpDir + "voxel", SharedData.VoxelDataPath + save.LevelName);
+            }
+
+            if (File.Exists(tmpDir + "waypoints.points"))
+            {
+                File.Copy(tmpDir + "waypoints.points", SharedData.GamePath + $"\\voxelmap\\{save.LevelName}.points");
             }
 
         CleanUp: CurrentProgress.status = "Cleaning up";
