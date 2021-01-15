@@ -96,7 +96,7 @@
     </mod>
 
     <mod key="pnc" name="Pneumatic Craft" >
-      <file value="pneumaticcraft-repressurized-1.16.4-2.8.2-101" />
+      <file value="pneumaticcraft-repressurized-1.16.4-2.9.2-116" />
     </mod>
 
     <mod key="pwh" name="Powah" >
@@ -146,12 +146,6 @@
 
     <mod key="wt" name="Woot" >
       <file value="woot-1.16.4-1.0.3.0" />
-    </mod>
-
-    <mod key="wtb" name="Wtbw Machines" >
-      <file value="wtbw_core-1.16.3-2.0.2" />
-      <file value="wtbw_lib-1.16.3-2.0.1" />
-      <file value="wtbw_machines-1.16.3-2.0.1" />
     </mod>
 
     <mod key="xn" name="XNet" >
