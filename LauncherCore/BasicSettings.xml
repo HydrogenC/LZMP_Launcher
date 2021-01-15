@@ -1,216 +1,226 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings>
-	<pack title="LZMP %v Launcher" version="6.0.2" launcher="Game\NsisoLauncher.exe"/>
+  <pack title="LZMP %v Launcher" version="6.0.4" launcher="Game\NsisoLauncher.exe"/>
 
-	<category name="Technology" >
+  <category name="Technology" >
 
-		<mod key="alc" name="Alchemistry" >
-			<file value="alib-1.16.3-3" />
-			<file value="chemlib-1.16.3-1" />
-			<file value="alchemistry-1.16.3-2" />
-			<file value="techemistry-1.16.3-4" />
-		</mod>
+    <mod key="alc" name="Alchemistry" >
+      <file value="alib-1.16.4-1" />
+      <file value="chemlib-1.16.4-1" />
+      <file value="alchemistry-1.16.4-1" />
+      <file value="techemistry-1.16.3-4" />
+    </mod>
 
-		<mod key="ae" name="Applied Energetics" >
-			<file value="appliedenergistics2-8.2.0-beta.2" />
-		</mod>
+    <mod key="ae" name="Applied Energetics" >
+      <file value="appliedenergistics2-8.2.0-beta.2" />
+      <mod key="aee" name="AE2 Extras">
+        <file value="ae2extras-1.2-1.16.4" />
+      </mod>
+    </mod>
 
-		<mod key="bp" name="Blue Power" >
-			<file value="bluepower-1.16.4-0.5.231-alpha-universal" />
-		</mod>
+    <mod key="bp" name="Blue Power" >
+      <file value="bluepower-1.16.4-0.5.231-alpha-universal" />
+    </mod>
 
-		<mod key="btn" name="Botania">
-			<file value="Botania-1.16.4-410" />
-			<file value="botanicalmachinery-1.16.4-0.3.1" />
-			<file value="managear-1.16.3-2.2.3" />
-		</mod>
+    <mod key="btn" name="Botania">
+      <file value="Botania-1.16.4-410" />
+      <file value="botanicalmachinery-1.16.4-0.3.1" />
+      <file value="managear-1.16.3-2.2.3" />
+    </mod>
 
-		<mod key="cpm" name="Compact Machines">
-			<file value="compactmachines-4.0.0-alpha.6" />
-		</mod>
+    <mod key="cpm" name="Compact Machines">
+      <file value="compactmachines-4.0.0-alpha.6" />
+    </mod>
 
-		<mod key="cyc" name="Cyclic">
-			<file value="Cyclic-1.16.4-1.0.2" />
-		</mod>
+    <mod key="cyc" name="Cyclic">
+      <file value="Cyclic-1.16.4-1.1.1" />
+    </mod>
 
-		<mod key="ele" name="Electrodynamics" >
-			<file value="Electrodynamics-1.16.4-0.2.0-1" />
-			<file value="Nuclear+Science-1.16.4-0.1.3-0" />
-			<file value="Assembly+Line-1.16.4-0.0.4-0" />
-		</mod>
+    <mod key="ele" name="Electrodynamics" >
+      <file value="Electrodynamics-1.16.4-0.2.0-8" />
+      <file value="Nuclear+Science-1.16.4-0.1.5-8" />
+      <file value="Assembly+Line-1.16.4-0.0.4-0" />
+    </mod>
 
-		<mod key="evt" name="Environmental Tech" >
-			<file value="valkyrielib-1.16.4-3.0.6.1" />
-			<file value="envirocore-1.16.4-3.0.6.0" />
-			<file value="envirotech-1.16.4-3.0.6.1" />
-		</mod>
+    <mod key="evt" name="Environmental Tech" >
+      <file value="valkyrielib-1.16.4-3.0.6.1" />
+      <file value="envirocore-1.16.4-3.0.6.0" />
+      <file value="envirotech-1.16.4-3.0.6.1" />
+    </mod>
 
-		<mod key="exn" name="Ex Nihilo" >
-			<file value="exnihilosequentia-1.16-1.4.0.0" />
-		</mod>
+    <mod key="exn" name="Ex Nihilo" >
+      <file value="exnihilosequentia-1.16-2.0.0.1" />
+      <mod key="exa" name="Ex Nihilo AE">
+        <file value="exnihiloae-1.16-1.0.0.1" />
+      </mod>
+    </mod>
 
-		<mod key="net" name="Flux Networks" >
-			<file value="FluxNetworks-1.16.4-6.1.5.10" />
-		</mod>
+    <mod key="net" name="Flux Networks" >
+      <file value="FluxNetworks-1.16.4-6.1.5.10" />
+    </mod>
 
-		<mod key="ftp" name="Futurepack" >
-			<file value="Futurepack-1.16.4-21.0.1" />
-		</mod>
+    <mod key="ftp" name="Futurepack" >
+      <file value="Futurepack-1.16.4-21.0.1" />
+    </mod>
 
-		<mod key="ic" name="Industrial Reborn" >
-			<file value="Industrial-Reborn-1.16.3-0.9.1" />
-		</mod>
+    <mod key="ic" name="Industrial Reborn" >
+      <file value="Industrial-Reborn-1.16.3-0.9.1" />
+    </mod>
 
-		<mod key="itd" name="Integrated Dynamics" >
-			<file value="CyclopsCore-1.16.4-1.9.5" />
-			<file value="CommonCapabilities-1.16.4-2.5.5" />
-			<file value="IntegratedDynamics-1.16.4-1.2.0" />
-			<file value="IntegratedTunnels-1.16.4-1.6.15" />
-			<file value="IntegratedCrafting-1.16.4-1.0.11" />
-			<file value="IntegratedTerminals-1.16.4-1.1.1" />
-			<file value="integratednbt-1.16.4-1.4.0" />
-		</mod>
+    <mod key="itd" name="Integrated Dynamics" >
+      <file value="CyclopsCore-1.16.4-1.9.5" />
+      <file value="CommonCapabilities-1.16.4-2.5.5" />
+      <file value="IntegratedDynamics-1.16.4-1.2.0" />
+      <file value="IntegratedTunnels-1.16.4-1.6.15" />
+      <file value="IntegratedCrafting-1.16.4-1.0.11" />
+      <file value="IntegratedTerminals-1.16.4-1.1.1" />
+      <file value="integratednbt-1.16.4-1.4.0" />
+    </mod>
 
-		<mod key="mf" name="Mine Factory" >
-			<file value="mine_factory-1.16.3-0.1.6" />
-		</mod>
+    <mod key="mf" name="Mine Factory" >
+      <file value="mine_factory-1.16.3-0.1.6" />
+    </mod>
 
-		<mod key="mdr" name="Modular Routers" >
-			<file value="modular-routers-1.16.4-7.3.0-47" />
-		</mod>
+    <mod key="mdr" name="Modular Routers" >
+      <file value="modular-routers-1.16.4-7.3.0-47" />
+    </mod>
 
-		<mod key="ma" name="Mystical Agriculture" >
-			<file value="Cucumber-1.16.4-4.1.5" />
-			<file value="MysticalAgriculture-1.16.4-4.1.4" />
-			<file value="MysticalAgradditions-1.16.4-4.1.3" />
-		</mod>
+    <mod key="ma" name="Mystical Agriculture" >
+      <file value="Cucumber-1.16.4-4.1.5" />
+      <file value="MysticalAgriculture-1.16.4-4.1.4" />
+      <file value="MysticalAgradditions-1.16.4-4.1.3" />
+    </mod>
 
-		<mod key="plt" name="Plant Tech" >
-			<file value="planttech2-0.02.24" />
-		</mod>
+    <mod key="plt" name="Plant Tech" >
+      <file value="planttech2-0.02.24" />
+    </mod>
 
-		<mod key="pnc" name="Pneumatic Craft" >
-			<file value="pneumaticcraft-repressurized-1.16.4-2.8.2-101" />
-		</mod>
+    <mod key="pnc" name="Pneumatic Craft" >
+      <file value="pneumaticcraft-repressurized-1.16.4-2.8.2-101" />
+    </mod>
 
-		<mod key="pwh" name="Powah" >
-			<file value="Lollipop-1.16.4-3.2.3" />
-			<file value="Powah-1.16.4-2.3.7" />
-		</mod>
+    <mod key="pwh" name="Powah" >
+      <file value="Lollipop-1.16.4-3.2.4" />
+      <file value="Powah-1.16.4-2.3.8" />
+    </mod>
 
-		<mod key="rak" name="Rankine" >
-			<file value="rankine-1.16.4-1.1.4" />
-		</mod>
+    <mod key="rak" name="Rankine" >
+      <file value="rankine-1.16.4-1.1.4" />
+    </mod>
 
-		<mod key="rr" name="Refined Relocation" >
-			<file value="RefinedRelocation_1.16.3-8.2.1" />
-		</mod>
+    <mod key="rr" name="Refined Relocation" >
+      <file value="RefinedRelocation_1.16.3-8.2.1" />
+    </mod>
 
-		<mod key="rs" name="Refined Storage" >
-			<file value="refinedstorage-1.9.11" />
-			<file value="refinedstorageaddons-0.7.2" />
-			<mod key="exd" name="Extra Disks" >
-				<file value="extradisks-1.16.4-1.4" />
-			</mod>
-			<mod key="rsq" name="RS Questify" >
-				<file value="rsrequestify-1.16.3-2.0.1" />
-			</mod>
-			<mod key="str" name="Storage Tech" >
-				<file value="storagetech-1.16.4-R1.3" />
-			</mod>
-		</mod>
+    <mod key="rs" name="Refined Storage" >
+      <file value="refinedstorage-1.9.11" />
+      <file value="refinedstorageaddons-0.7.2" />
+      <mod key="exd" name="Extra Disks" >
+        <file value="extradisks-1.16.4-1.4" />
+      </mod>
+      <mod key="rsq" name="RS Questify" >
+        <file value="rsrequestify-1.16.3-2.0.1" />
+      </mod>
+      <mod key="str" name="Storage Tech" >
+        <file value="storagetech-1.16.4-R1.3" />
+      </mod>
+    </mod>
 
-		<mod key="rft" name="RFTools" >
-			<file value="rftoolsbase-1.16-2.0.9" />
-			<file value="rftoolsbuilder-1.16-3.0.13" />
-			<file value="rftoolscontrol-1.16-4.0.6" />
-			<file value="rftoolspower-1.16-3.0.8" />
-			<file value="rftoolsstorage-1.16-2.0.8" />
-			<file value="rftoolsutility-1.16-3.0.20" />
-		</mod>
+    <mod key="rft" name="RFTools" >
+      <file value="rftoolsbase-1.16-2.0.9" />
+      <file value="rftoolsbuilder-1.16-3.0.13" />
+      <file value="rftoolscontrol-1.16-4.0.6" />
+      <file value="rftoolspower-1.16-3.0.8" />
+      <file value="rftoolsstorage-1.16-2.0.8" />
+      <file value="rftoolsutility-1.16-3.0.20" />
+    </mod>
 
-		<mod key="sbt" name="Space bosstools" >
-			<file value="obfuscate-0.5.1-1.16.3" />
-			<file value="Space-Bosstools-1.16.4-3.8" />
-		</mod>
+    <mod key="sbt" name="Space bosstools" >
+      <file value="obfuscate-0.5.1-1.16.3" />
+      <file value="Space-Bosstools-1.16.4-3.9" />
+    </mod>
 
-		<mod key="smd" name="Super Multi-Drills" >
-			<file value="SuperMultiDrills-1.16.3-2.2.0+5" />
-		</mod>
+    <mod key="smd" name="Super Multi-Drills" >
+      <file value="SuperMultiDrills-1.16.3-2.2.2+7" />
+    </mod>
 
-		<mod key="wt" name="Woot" >
-			<file value="woot-1.16.4-1.0.3.0" />
-		</mod>
+    <mod key="wt" name="Woot" >
+      <file value="woot-1.16.4-1.0.3.0" />
+    </mod>
 
-		<mod key="wtb" name="Wtbw Machines" >
-			<file value="wtbw_core-1.16.3-2.0.2" />
-			<file value="wtbw_lib-1.16.3-2.0.1" />
-			<file value="wtbw_machines-1.16.3-2.0.1" />
-		</mod>
+    <mod key="wtb" name="Wtbw Machines" >
+      <file value="wtbw_core-1.16.3-2.0.2" />
+      <file value="wtbw_lib-1.16.3-2.0.1" />
+      <file value="wtbw_machines-1.16.3-2.0.1" />
+    </mod>
 
-		<mod key="xn" name="XNet" >
-			<file value="xnet-1.16-3.0.11" />
-			<file value="XNetGases-1.16.4-2.2.3" />
-		</mod>
-	</category>
+    <mod key="xn" name="XNet" >
+      <file value="xnet-1.16-3.0.11" />
+      <file value="XNetGases-1.16.4-2.2.3" />
+    </mod>
+  </category>
 
-	<category name="Decoration" >
-		<mod key="aqa" name="Aquaculture" >
-			<file value="Aquaculture-1.16.4-2.1.12" />
-		</mod>
+  <category name="Decoration" >
+    <mod key="aqa" name="Aquaculture" >
+      <file value="Aquaculture-1.16.4-2.1.12" />
+    </mod>
 
-		<mod key="bop" name="Biomes O Plenty" >
-			<file value="BiomesOPlenty-1.16.4-13.0.0.427-universal" />
-		</mod>
+    <mod key="bop" name="Biomes O Plenty" >
+      <file value="BiomesOPlenty-1.16.4-13.0.0.428-universal" />
+    </mod>
 
-		<mod key="dys" name="Dynamic Surroundings" >
-			<file value="DynamicSurroundings-1.16.4-4.0.3.3" />
-		</mod>
+    <mod key="dys" name="Dynamic Surroundings" >
+      <file value="DynamicSurroundings-1.16.4-4.0.3.4" />
+    </mod>
 
-		<mod key="edc" name="Engineers Decor" >
-			<file value="engineersdecor-1.16.4-1.1.5" />
-		</mod>
+    <mod key="edc" name="Engineers Decor" >
+      <file value="engineersdecor-1.16.4-1.1.5" />
+    </mod>
 
-		<mod key="mcd" name="Macaw's Blocks" >
-			<file value="mcw-doors-1.0.1fix-mc1.16.4" />
-			<file value="mcw-trapdors-1.0.0-mc1.16.4" />
-			<file value="mcw-windows-1.0.2-mc1.16.4" />
-			<file value="mcws-roofs-2.0.0-mc1.16.4" />
-			<file value="mcw-furniture-2.0.0-mc1.16.4" />
-			<file value="mcw-bridges-1.0.4-mc1.16.4" />
-		</mod>
+    <mod key="mcd" name="Macaw's Blocks" >
+      <file value="mcw-doors-1.0.1fix-mc1.16.4" />
+      <file value="mcw-trapdors-1.0.0-mc1.16.4" />
+      <file value="mcw-windows-1.0.2-mc1.16.4" />
+      <file value="mcws-roofs-2.0.0-mc1.16.4" />
+      <file value="mcw-furniture-2.0.0-mc1.16.4" />
+      <file value="mcw-bridges-1.0.4-mc1.16.4" />
+    </mod>
 
-		<mod key="fur" name="MrCrayfish's Furniture" >
-			<file value="furniture-7.0.0-pre19-1.16.3" />
-		</mod>
-	</category>
+    <mod key="fur" name="MrCrayfish's Furniture" >
+      <file value="furniture-7.0.0-pre19-1.16.3" />
+    </mod>
 
-	<category name="Miscellaneous" >
-		<mod key="ct" name="Craft Tweaker" >
-			<file value="JEITweaker-1.16.4-1.0.1.5" />
-			<file value="CraftTweaker-1.16.2-7.0.0.27" />
-		</mod>
+    <mod key="twi" name="Twilight Forest" >
+      <file value="twilightforest-1.16.4-4.0.248-universal" />
+    </mod>
+  </category>
 
-		<mod key="fq" name="FTB Quests" >
-			<file value="item-filters-1604.2.2.19" />
-			<file value="ftb-quests-1604.1.1.21" />
-		</mod>
+  <category name="Miscellaneous" >
+    <mod key="ct" name="Craft Tweaker" >
+      <file value="JEITweaker-1.16.4-1.0.1.5" />
+      <file value="CraftTweaker-1.16.4-7.1.0.84" />
+    </mod>
 
-		<mod key="arl" name="Psi" >
-			<file value="Psi+1.16-89" />
-			<file value="psipherals-1.4.0" />
-		</mod>
+    <mod key="fq" name="FTB Quests" >
+      <file value="item-filters-1604.2.2.19" />
+      <file value="ftb-quests-1604.1.1.21" />
+    </mod>
 
-		<mod key="nc" name="Nuclear Craft" >
-			<file value="nuclear_craft-1.16.4-0.6.2" />
-		</mod>
+    <mod key="arl" name="Psi" >
+      <file value="Psi+1.16-89" />
+      <file value="psipherals-1.4.0" />
+    </mod>
 
-		<mod key="sp" name="Simple Planes" >
-			<file value="simpleplanes-1.16.3-3.2.0.3" />
-		</mod>
+    <mod key="nc" name="Nuclear Craft" >
+      <file value="nuclear_craft-1.16.4-0.6.3" />
+    </mod>
 
-		<mod key="tmf" name="Tiny Mob Farm" >
-			<file value="TinyMobFarm-1.16.2-1.1.1" />
-		</mod>
-	</category>
+    <mod key="sp" name="Simple Planes" >
+      <file value="simpleplanes-1.16.3-3.2.0.3" />
+    </mod>
+
+    <mod key="tmf" name="Tiny Mob Farm" >
+      <file value="TinyMobFarm-1.16.2-1.1.1" />
+    </mod>
+  </category>
 </settings>
