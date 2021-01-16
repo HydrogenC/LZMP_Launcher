@@ -33,12 +33,12 @@
     </mod>
 
     <mod key="cyc" name="Cyclic">
-      <file value="Cyclic-1.16.4-1.1.1" />
+      <file value="Cyclic-1.16.4-1.1.3" />
     </mod>
 
     <mod key="ele" name="Electrodynamics" >
-      <file value="Electrodynamics-1.16.4-0.2.0-8" />
-      <file value="Nuclear+Science-1.16.4-0.1.5-8" />
+      <file value="Electrodynamics-1.16.4-0.2.1-3" />
+      <file value="Nuclear+Science-1.16.4-0.1.6-0" />
       <file value="Assembly+Line-1.16.4-0.0.4-0" />
     </mod>
 
@@ -60,7 +60,7 @@
     </mod>
 
     <mod key="ftp" name="Futurepack" >
-      <file value="Futurepack-1.16.4-21.0.1" />
+      <file value="futurepack-1.16.4-21.0.6" />
     </mod>
 
     <mod key="ic" name="Industrial Reborn" >
@@ -136,8 +136,8 @@
     </mod>
 
     <mod key="sbt" name="Space bosstools" >
-      <file value="obfuscate-0.5.1-1.16.3" />
-      <file value="Space-Bosstools-1.16.4-3.9" />
+      <file value="obfuscate-0.6.0-1.16.3" />
+      <file value="Space-Bosstools-1.16.4-3.9b" />
     </mod>
 
     <mod key="smd" name="Super Multi-Drills" >
@@ -214,7 +214,7 @@
     </mod>
 
     <mod key="tmf" name="Tiny Mob Farm" >
-      <file value="TinyMobFarm-1.16.2-1.1.1" />
+      <file value="TinyMobFarm-1.16.4-1.1.1" />
     </mod>
   </category>
 </settings>
