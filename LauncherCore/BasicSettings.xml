@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings>
-  <pack title="LZMP %v Launcher" version="6.1.1" launcher="Game\NsisoLauncher.exe"/>
+  <pack title="LZMP %v Launcher" version="6.1.2" launcher="Game\NsisoLauncher.exe"/>
 
   <category name="Technology" >
 
@@ -48,13 +48,14 @@
     </mod>
 
     <mod key="evt" name="Environmental Tech" >
-      <file value="valkyrielib-1.16.4-3.0.6.1" />
-      <file value="envirocore-1.16.4-3.0.6.0" />
-      <file value="envirotech-1.16.4-3.0.6.1" />
+      <file value="valkyrielib-1.16.5-3.0.7.0" />
+      <file value="envirocore-1.16.5-3.0.7.0" />
+      <file value="envirotech-1.16.5-3.0.7.0" />
     </mod>
 
     <mod key="exn" name="Ex Nihilo" >
       <file value="exnihilosequentia-1.16-2.0.1.0" />
+      <file value="exnihilomekanism-1.16-1.0.0.0" />
       <mod key="exa" name="Ex Nihilo AE">
         <file value="exnihiloae-1.16-1.0.0.2" />
       </mod>
@@ -73,9 +74,9 @@
     </mod>
 
     <mod key="itd" name="Integrated Dynamics" >
-      <file value="CyclopsCore-1.16.4-1.11.0" />
+      <file value="CyclopsCore-1.16.4-1.11.1" />
       <file value="CommonCapabilities-1.16.4-2.5.5" />
-      <file value="IntegratedDynamics-1.16.4-1.4.0" />
+      <file value="IntegratedDynamics-1.16.4-1.4.1" />
       <file value="IntegratedTunnels-1.16.4-1.6.15" />
       <file value="IntegratedCrafting-1.16.4-1.0.11" />
       <file value="IntegratedTerminals-1.16.4-1.1.1" />
@@ -84,6 +85,10 @@
 
     <mod key="mf" name="Mine Factory" >
       <file value="mine_factory-1.16.3-0.1.6" />
+    </mod>
+    
+    <mod key="mg" name="Mining Gadgets" >
+      <file value="mininggadgets-1.7.1"/>
     </mod>
 
     <mod key="mdr" name="Modular Routers" >
@@ -104,7 +109,7 @@
     </mod>
 
     <mod key="pnc" name="Pneumatic Craft" >
-      <file value="pneumaticcraft-repressurized-1.16.4-2.9.3-120" />
+      <file value="pneumaticcraft-repressurized-1.16.5-2.9.5-128" />
     </mod>
 
     <mod key="pwh" name="Powah" >
@@ -177,7 +182,7 @@
     </mod>
 
     <mod key="dys" name="Dynamic Surroundings" >
-      <file value="DynamicSurroundings-1.16.4-4.0.3.5" />
+      <file value="DynamicSurroundings-1.16.4-4.0.3.6" />
     </mod>
 
     <mod key="edc" name="Engineers Mods" >
@@ -205,8 +210,8 @@
 
   <category name="Miscellaneous" >
     <mod key="ct" name="Craft Tweaker" >
-      <file value="JEITweaker-1.16.4-1.0.1.5" />
-      <file value="CraftTweaker-1.16.5-7.1.0.106" />
+      <file value="JEITweaker-1.16.5-1.0.1.11" />
+      <file value="CraftTweaker-1.16.5-7.1.0.109" />
     </mod>
 
     <mod key="eds" name="Ender Storage">
@@ -214,7 +219,7 @@
     </mod>
 
     <mod key="fq" name="FTB Quests" >
-      <file value="item-filters-1605.2.3.20-forge" />
+      <file value="item-filters-1605.2.3.27-forge" />
       <file value="ftb-quests-1604.1.1.21" />
     </mod>
 
@@ -230,6 +235,10 @@
 
     <mod key="sp" name="Simple Planes" >
       <file value="simpleplanes-1.16.3-3.2.0.3" />
+    </mod>
+
+    <mod key="stl" name="Starlight" >
+      <file value="starlight-forge-0.0.3" />
     </mod>
 
     <mod key="tmf" name="Tiny Mob Farm" >
