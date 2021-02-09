@@ -19,6 +19,7 @@
                     <xs:element maxOccurs="unbounded" name="file">
                       <xs:complexType>
                         <xs:attribute name="value" type="xs:string" use="required" />
+                        <xs:attribute name="cfg" type="xs:string" />
                       </xs:complexType>
                     </xs:element>
                     <xs:element minOccurs="0" maxOccurs="unbounded" name="mod">
@@ -27,6 +28,7 @@
                           <xs:element name="file">
                             <xs:complexType>
                               <xs:attribute name="value" type="xs:string" use="required" />
+                              <xs:attribute name="cfg" type="xs:string" />
                             </xs:complexType>
                           </xs:element>
                         </xs:sequence>

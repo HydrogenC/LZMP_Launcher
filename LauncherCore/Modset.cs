@@ -8,7 +8,7 @@ using System.Xml;
 
 namespace LauncherCore
 {
-    public class Modset : IEditable
+    public class Modset : EditableObject
     {
         public bool HasActualFile
         {

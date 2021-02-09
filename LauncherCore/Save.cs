@@ -6,7 +6,7 @@ using System.IO;
 
 namespace LauncherCore
 {
-    public partial class Save : IEditable
+    public partial class Save : EditableObject
     {
         private string folderName, levelName;
         private NBTFile nbtFile = new NBTFile();

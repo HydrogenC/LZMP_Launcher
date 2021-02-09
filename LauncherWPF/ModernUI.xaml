@@ -35,7 +35,7 @@
         </Grid>
         <ListBox x:Name="MainListBox" HorizontalAlignment="Right" Margin="0,218,11,162.5" Width="320" Background="#665A5A5A" Foreground="White" BorderBrush="#FF828790" MouseDoubleClick="MainListBox_MouseDoubleClick" ToolTip="Double click to load a modset. ">
             <ListBox.ItemTemplate>
-                <HierarchicalDataTemplate DataType="{x:Type core:IEditable}">
+                <HierarchicalDataTemplate DataType="{x:Type core:EditableObject}">
                     <ListBoxItem Content="{Binding Path=DisplayName, Mode=OneWay}" FontSize="12" Foreground="White" />
                 </HierarchicalDataTemplate>
             </ListBox.ItemTemplate>

@@ -1,6 +1,6 @@
 ﻿namespace LauncherCore
 {
-    public class IEditable
+    public class EditableObject
     {
         public virtual string IOFilter
         {

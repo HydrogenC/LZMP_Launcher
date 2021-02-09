@@ -236,7 +236,7 @@ namespace LauncherWPF
         private void RefreshButton_Click(object sender, RoutedEventArgs e)
         {
             MainListBox.Items.Clear();
-            IEditable[] ie = null;
+            EditableObject[] ie = null;
 
             try
             {
@@ -264,7 +264,7 @@ namespace LauncherWPF
 
         private bool NullShield()
         {
-            if (MainListBox.SelectedItem == null || (!(MainListBox.SelectedItem is IEditable)))
+            if (MainListBox.SelectedItem == null || (!(MainListBox.SelectedItem is EditableObject)))
             {
                 SharedData.DisplayMessage("You should select an item in the list to operate. ", "Info", MessageType.Info);
                 return false;
@@ -286,7 +286,7 @@ namespace LauncherWPF
 
             if (SharedData.DisplayMessage("Are you sure to delete, you cannot revert this! ", "Warning", MessageType.YesNoQuestion) == MessageResult.Yes)
             {
-                IEditable editable = MainListBox.SelectedItem as IEditable;
+                EditableObject editable = MainListBox.SelectedItem as EditableObject;
                 editable.Delete();
                 RefreshButton_Click(null, null);
             }
@@ -299,7 +299,7 @@ namespace LauncherWPF
                 return;
             }
 
-            IEditable target = MainListBox.SelectedItem as IEditable;
+            EditableObject target = MainListBox.SelectedItem as EditableObject;
             if (currentLD == ListDisplay.Modsets && MainListBox.SelectedIndex == 0)
             {
                 target = new Modset(ref SharedData.Mods, "New Modset");
@@ -317,7 +317,7 @@ namespace LauncherWPF
                 return;
             }
 
-            IEditable editable = MainListBox.SelectedItem as IEditable;
+            EditableObject editable = MainListBox.SelectedItem as EditableObject;
             OpenFileDialog openFile = new OpenFileDialog()
             {
                 Filter = currentLD == ListDisplay.Maps ? (new Save()).IOFilter : (new Modset()).IOFilter
@@ -370,7 +370,7 @@ namespace LauncherWPF
                 return;
             }
 
-            IEditable editable = MainListBox.SelectedItem as IEditable;
+            EditableObject editable = MainListBox.SelectedItem as EditableObject;
             if (currentLD == ListDisplay.Modsets && MainListBox.SelectedIndex == 0)
             {
                 editable = new Modset(ref SharedData.Mods, "New Modset");

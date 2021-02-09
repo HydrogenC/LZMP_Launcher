@@ -26,10 +26,44 @@ namespace LauncherUtilities
             Core.CheckInstallation();
             Core.CheckAvailability();
 
-            Console.WriteLine("Press any key to clean up resources...");
-            Console.ReadKey();
-            Console.WriteLine("Cleaning up...");
-            Core.CleanUp();
+            Console.WriteLine("1. Clean up resources");
+            Console.WriteLine("2. Open curseforge pages of the mods");
+            switch (Console.ReadKey().Key)
+            {
+                case ConsoleKey.D1:
+                    Console.WriteLine();
+                    Console.WriteLine("Cleaning up...");
+                    Core.CleanUp();
+                    break;
+                case ConsoleKey.D2:
+                    Console.WriteLine('\n');
+                    var links = Scanner.ScanCurseforgeLinks(SharedData.WorkingPath + "\\BasicSettings.xml");
+                    int index = 1;
+                    foreach (var i in links)
+                    {
+                        Console.WriteLine("{0}. {1}", index, i.Item1);
+                        index++;
+                    }
+                    Console.WriteLine("Which link to start from? ");
+                    int.TryParse(Console.ReadLine(), out index);
+                    if (index > 0)
+                    {
+                        index--;
+                    }
+                    for (int i = index; i < links.Length; i++)
+                    {
+                        Console.WriteLine("Press any key to continue...");
+                        Console.ReadKey();
+                        Console.WriteLine("Current file: {0}", links[i].Item1);
+                        if (i != links.Length - 1)
+                        {
+                            Console.WriteLine("Pending file: {0}", links[i+1].Item1);
+                        }
+                        System.Diagnostics.Process.Start("explorer.exe", $"https://www.curseforge.com/minecraft/mc-mods/{links[i].Item2}");
+                    }
+                    break;
+            }
+
             Console.WriteLine("Complete! ");
             Console.ReadLine();
         }

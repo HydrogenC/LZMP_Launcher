@@ -8,12 +8,12 @@ using System.Xml;
 
 namespace LauncherCore
 {
-    public class Scanner
+    public static class Scanner
     {
 
-        public static IEditable[] ScanForMaps()
+        public static EditableObject[] ScanForMaps()
         {
-            List<IEditable> saves = new List<IEditable>();
+            List<EditableObject> saves = new List<EditableObject>();
             if (!Directory.Exists(SharedData.SavePath))
             {
                 Directory.CreateDirectory(SharedData.SavePath);
@@ -33,14 +33,14 @@ namespace LauncherCore
             return saves.ToArray();
         }
 
-        public static IEditable[] ScanForModsets()
+        public static EditableObject[] ScanForModsets()
         {
             if (!Directory.Exists(SharedData.WorkingPath + "\\Sets"))
             {
                 Directory.CreateDirectory(SharedData.WorkingPath + "\\Sets");
             }
 
-            List<IEditable> modsets = new List<IEditable>();
+            List<EditableObject> modsets = new List<EditableObject>();
             modsets.Add(new Modset(ref SharedData.Mods, "(Current)"));
             foreach (string i in Directory.EnumerateFiles(SharedData.WorkingPath + "\\Sets"))
             {
@@ -54,6 +54,18 @@ namespace LauncherCore
                 }
             }
             return modsets.ToArray();
+        }
+
+        public static (string, string)[] ScanCurseforgeLinks(string xmlFile)
+        {
+            List<(string, string)> lst = new List<(string, string)>();
+            XmlDocument xml = new XmlDocument();
+            xml.Load(xmlFile);
+            foreach (XmlElement i in xml.GetElementsByTagName("file"))
+            {
+                lst.Add((i.GetAttribute("value"), i.GetAttribute("cfg")));
+            }
+            return lst.ToArray();
         }
 
         private static Mod ReadMod(XmlElement element)
@@ -84,9 +96,10 @@ namespace LauncherCore
 
             XmlDocument xml = new XmlDocument();
             xml.Load(xmlFile);
-            SharedData.LauncherPath = SharedData.WorkingPath + "\\" + GetElementByTagName(ref xml, "pack").GetAttribute("launcher");
-            SharedData.Version = GetElementByTagName(ref xml, "pack").GetAttribute("version");
-            SharedData.Title = GetElementByTagName(ref xml, "pack").GetAttribute("title").Replace("%v", SharedData.Version);
+            XmlElement packElement = GetElementByTagName(ref xml, "pack");
+            SharedData.LauncherPath = SharedData.WorkingPath + "\\" + packElement.GetAttribute("launcher");
+            SharedData.Version = packElement.GetAttribute("version");
+            SharedData.Title = packElement.GetAttribute("title").Replace("%v", SharedData.Version);
 
             foreach (XmlElement element in xml.GetElementsByTagName("category"))
             {

@@ -20,17 +20,17 @@ namespace LauncherWPF
     /// </summary>
     public partial class RenameWindow : Window
     {
-        private IEditable editable;
+        private EditableObject editable;
 
-        public RenameWindow(IEditable save)
+        public RenameWindow(EditableObject save)
         {
             InitializeComponent();
             editable = save;
             MapTitleLabel.Content = save.ToString();
-            if (editable is Save)
+            if (editable is Save s)
             {
-                LevelBox.Text = (editable as Save).LevelName;
-                FolderBox.Text = (editable as Save).FolderName;
+                LevelBox.Text = s.LevelName;
+                FolderBox.Text = s.FolderName;
                 return;
             }
 
