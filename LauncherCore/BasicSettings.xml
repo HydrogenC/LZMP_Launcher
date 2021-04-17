@@ -1,14 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings >
-  <pack title="LZMP %v Launcher" version="6.3.0" launcher="Game\NsisoLauncher.exe"/>
+  <pack title="LZMP %v Launcher" version="6.3.1" launcher="Game\NsisoLauncher.exe"/>
 
   <category name="Technology" >
 
+    <mod key="aem" name="Additional Enchanted Miner" >
+      <file value="ScalableCatsForce-2.13.4-build-2-with-library" cfg="scalable-cats-force" />
+      <file value="AdditionalEnchantedMiner-1.16.5-16.1.6" cfg="additional-enchanted-miner" />
+    </mod>
+      
     <mod key="alc" name="Alchemistry" >
       <file value="alib-1.16.4-1" cfg="a-lib" />
       <file value="chemlib-1.16.4-1" cfg="chemlib" />
       <file value="alchemistry-1.16.4-5" cfg="alchemistry" />
-      <file value="techemistry-1.16.3-4" cfg="techemistry" />
+      <mod key="tch" name="Techemistry" >
+        <file value="techemistry-1.16.3-4" cfg="techemistry" />
+      </mod>
     </mod>
 
     <mod key="ae" name="Applied Energetics" >
@@ -36,6 +43,10 @@
     <mod key="cpm" name="Compact Machines">
       <file value="compactmachines-4.0.0-beta.2" cfg="compact-machines" />
     </mod>
+    
+    <mod key="cre" name="Create" >
+      <file value="create-mc1.16.5_v0.3.1c" cfg="create" />
+    </mod>
 
     <mod key="cyc" name="Cyclic">
       <file value="Cyclic-1.16.5-1.2.6" cfg="cyclic" />
@@ -60,6 +71,7 @@
       <file value="exnihilosequentia-1.16-2.0.2.3" cfg="ex-nihilo-sequentia" />
       <file value="exnihilomekanism-1.16-1.0.0.1" cfg="ex-nihilo-sequentia-mekanism-addon" />
       <file value="exnihilothermal-1.16-1.0.0.0" cfg="ex-nihilo-sequentia-thermal-addon" />
+      <file value="exnihiloauto-1.16-1.0.3.0" cfg="exnihilo-automation" />
       <mod key="exa" name="Ex Nihilo AE">
         <file value="exnihiloae-1.16-1.0.0.2" cfg="ex-nihilo-sequentia-ae2-addon" />
       </mod>
@@ -73,10 +85,6 @@
       <file value="Futurepack-1.16.4-31.1.8226" cfg="futurepack" />
     </mod>
 
-    <mod key="ic" name="Industrial Reborn" >
-      <file value="Industrial-Reborn-1.16.3-0.9.1" cfg="industrial-reborn" />
-    </mod>
-
     <mod key="itd" name="Integrated Dynamics" >
       <file value="CyclopsCore-1.16.5-1.11.5" cfg="cyclops-core" />
       <file value="CommonCapabilities-1.16.5-2.6.0" cfg="common-capabilities" />
@@ -85,10 +93,6 @@
       <file value="IntegratedCrafting-1.16.5-1.0.13" cfg="integrated-crafting" />
       <file value="IntegratedTerminals-1.16.5-1.2.2" cfg="integrated-terminals" />
       <file value="integratednbt-1.16.4-1.4.2" cfg="integrated-nbt" />
-    </mod>
-
-    <mod key="mg" name="Mining Gadgets" >
-      <file value="mininggadgets-1.7.1" cfg="mining-gadgets" />
     </mod>
 
     <mod key="mdr" name="Modular Routers" >
@@ -210,7 +214,11 @@
 
   <category name="Miscellaneous" >
     <mod key="ava" name="Ava" >
-      <file value="ava-1.6.8" cfg="a-v-a-in-minecraft" />
+      <file value="ava-1.6.9" cfg="a-v-a-in-minecraft" />
+    </mod>
+    
+    <mod key="bpm" name="Blueprints">
+      <file value="bpm-1.0.2.71" cfg="bpm"/>
     </mod>
 
     <mod key="ct" name="Craft Tweaker" >
