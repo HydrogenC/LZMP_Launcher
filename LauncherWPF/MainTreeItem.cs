@@ -115,10 +115,6 @@ namespace LauncherWPF
             {
                 Parent.UpdateNumberOfChildrenChecked(isChecked);
             }
-
-#if DEBUG
-            System.Windows.MessageBox.Show(NumberOfChildrenChecked + " of " + TotalNumberOfChildren);
-#endif
         }
 
         public int TotalNumberOfChildren
@@ -198,14 +194,13 @@ namespace LauncherWPF
                 if (Checked == CheckBoxState.Checked)
                 {
                     CheckAllChildren(true);
-                    return;
                 }
 
                 if (Checked == CheckBoxState.NotChecked)
                 {
                     CheckAllChildren(false);
-                    return;
                 }
+                return;
             }
             else
             {
