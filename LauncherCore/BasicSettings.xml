@@ -101,8 +101,8 @@
     </mod>
 
     <mod key="itd" name="Integrated Dynamics" >
-      <file value="CyclopsCore-1.16.5-1.11.5" cfg="cyclops-core" />
-      <file value="CommonCapabilities-1.16.5-2.6.0" cfg="common-capabilities" />
+      <file value="CyclopsCore-1.16.5-1.11.7" cfg="cyclops-core" />
+      <file value="CommonCapabilities-1.16.5-2.7.0" cfg="common-capabilities" />
       <file value="IntegratedDynamics-1.16.5-1.8.5" cfg="integrated-dynamics" />
       <file value="IntegratedTunnels-1.16.5-1.8.3" cfg="integrated-tunnels" />
       <file value="IntegratedCrafting-1.16.5-1.0.15" cfg="integrated-crafting" />
@@ -121,6 +121,10 @@
       <mod key="mad" name="Mystical Adaptations" >
         <file value="MysticalAdaptations-1.16.4-1.1.1" cfg="mystical-adaptations" />
       </mod>
+    </mod>
+
+    <mod key="omg" name="Omega Craft" >
+      <file value="Omega+Craft+4.3.5" cfg="omega-craft-mod" />
     </mod>
 
     <mod key="plt" name="Plant Tech" >
