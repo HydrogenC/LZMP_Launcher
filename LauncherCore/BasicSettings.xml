@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings >
-  <pack title="LZMP %v Launcher" version="6.4.0" launcher="Game\NsisoLauncher.exe"/>
+  <pack title="LZMP %v Launcher" version="6.4.1" launcher="Game\NsisoLauncher.exe"/>
 
   <category name="Technology" >
 
@@ -251,10 +251,6 @@
   </category>
 
   <category name="Miscellaneous" >
-    <mod key="ava" name="Ava" >
-      <file value="ava-1.7.6" cfg="a-v-a-in-minecraft" />
-    </mod>
-
     <mod key="bpm" name="Blueprints">
       <file value="bpm-1.0.2.71" cfg="bpm"/>
     </mod>
@@ -262,6 +258,13 @@
     <mod key="ct" name="Craft Tweaker" >
       <file value="JEITweaker-1.16.5-1.0.1.33" cfg="jeitweaker" />
       <file value="CraftTweaker-1.16.5-7.1.0.320" cfg="crafttweaker" />
+    </mod>
+
+    <mod key="cdc" name="Crafting Dead" >
+      <file value="crafting-dead-core-1.16.5-1.7.1-alpha" cfg="crafting-dead" />
+      <mod key="cds" name="Crafting Dead Survival" >
+        <file value="crafting-dead-survival-1.16.5-1.1.3-alpha" cfg="crafting-dead-survival" />
+      </mod>
     </mod>
 
     <mod key="ezv" name="Eazy Villagers" >
