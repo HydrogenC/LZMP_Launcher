@@ -1,119 +1,158 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings >
-  <pack title="LZMP %v Launcher" version="6.3.1" launcher="Game\NsisoLauncher.exe"/>
+  <pack title="LZMP %v Launcher" version="6.5.0" launcher="Game\NsisoLauncher.exe"/>
 
   <category name="Technology" >
-
-    <mod key="aem" name="Additional Enchanted Miner" >
-      <file value="ScalableCatsForce-2.13.4-build-2-with-library" cfg="scalable-cats-force" />
-      <file value="AdditionalEnchantedMiner-1.16.5-16.1.6" cfg="additional-enchanted-miner" />
-    </mod>
-      
     <mod key="alc" name="Alchemistry" >
       <file value="alib-1.16.4-1" cfg="a-lib" />
       <file value="chemlib-1.16.4-1" cfg="chemlib" />
-      <file value="alchemistry-1.16.4-5" cfg="alchemistry" />
-      <mod key="tch" name="Techemistry" >
-        <file value="techemistry-1.16.3-4" cfg="techemistry" />
-      </mod>
+      <file value="alchemistry-1.16.5-1" cfg="alchemistry" />
     </mod>
 
     <mod key="ae" name="Applied Energetics" >
-      <file value="appliedenergistics2-8.2.0" cfg="applied-energistics-2" />
+      <file value="appliedenergistics2-8.4.0" cfg="applied-energistics-2" />
       <mod key="aee" name="AE2 Extras">
-        <file value="ae2extras-1.3-1.16.5" cfg="ae2-extras" />
+        <file value="ae2extras-1.3.1-1.16.5" cfg="ae2-extras" />
+      </mod>
+      <mod key="lae" name="Lazier AE2">
+        <file value="lazierae2-1.16.5-1.1.4" cfg="lazierae2" />
+      </mod>
+      <mod key="wte" name="Wireless Terminals">
+        <file value="ae2wtlib-0.3.2-1.16.5" cfg="applied-energistics-2-wireless-terminals-forge" />
+      </mod>
+    </mod>
+
+    <mod key="scf" name="BDLib">
+      <file value="ScalableCatsForce-2.13.5-build-2-with-library" cfg="scalable-cats-force" />
+      <file value="bdlib-1.17.1.11-mc1.16.5" cfg="bdlib" />
+      <mod key="aem" name="Additional Enchanted Miner" >
+        <file value="AdditionalEnchantedMiner-1.16.5-16.1.9" cfg="additional-enchanted-miner" />
+      </mod>
+      <mod key="adv" name="Advanced Generators">
+        <file value="advgenerators-0.10.1.11-mc1.16.5" cfg="advanced-generators" />
+      </mod>
+      <mod key="pxy" name="Proxy" >
+        <file value="proxy-0.10.0.2-mc1.16.5" cfg="proxy" />
+      </mod>
+      <mod key="tcb" name="Technobauble" >
+        <file value="technobauble-0.2.0.5-mc1.16.5" cfg="technobauble" />
       </mod>
     </mod>
 
     <mod key="bgr" name="Bigger Reactors" >
-      <file value="phosphophyllite-1.16.4-0.4.5" cfg="phosphophyllite"/>
-      <file value="biggerreactors-1.16.4-0.4.3" cfg="biggerreactors" />
+      <file value="phosphophyllite-1.16.5-0.5.1" cfg="phosphophyllite"/>
+      <file value="biggerreactors-1.16.5-0.5.1" cfg="biggerreactors" />
     </mod>
 
     <mod key="bp" name="Blue Power" >
-      <file value="bluepower-1.16.4-0.5.241-alpha-universal" cfg="blue-power" />
+      <file value="bluepower-1.16.5-0.5.262-alpha-universal" cfg="blue-power" />
     </mod>
 
     <mod key="btn" name="Botania">
-      <file value="Botania-1.16.4-414" cfg="botania" />
-      <file value="botanicalmachinery-1.16.4-0.3.5" cfg="botanical-machinery" />
+      <file value="Botania-1.16.5-419" cfg="botania" />
+      <file value="botanicalmachinery-1.16.4-0.4.1" cfg="botanical-machinery" />
       <file value="managear-1.16.3-2.2.3" cfg="mana-gear" />
     </mod>
 
     <mod key="cpm" name="Compact Machines">
       <file value="compactmachines-4.0.0-beta.2" cfg="compact-machines" />
     </mod>
-    
-    <mod key="cre" name="Create" >
-      <file value="create-mc1.16.5_v0.3.1c" cfg="create" />
+
+    <mod key="cvm" name="Compact Void Miners">
+      <file value="CompactVoidMiners-B1.16.5-1.17" cfg="compact-void-miners" />
     </mod>
 
-    <mod key="cyc" name="Cyclic">
-      <file value="Cyclic-1.16.5-1.2.6" cfg="cyclic" />
+    <mod key="cyc" name="Cyclic" >
+      <file value="Cyclic-1.16.5-1.4.2" cfg="cyclic" />
+    </mod>
+
+    <mod key="dcn" name="Draconic Evolution">
+      <file value="BrandonsCore-1.16.5-3.0.10.237-universal" cfg="brandons-core" />
+      <file value="Draconic-Evolution-1.16.5-3.0.15.415-universal" cfg="draconic-evolution" />
     </mod>
 
     <mod key="ele" name="Electrodynamics" >
-      <file value="Electrodynamics-1.16.5-0.3.1-12" cfg="electrodynamics" />
-      <file value="Nuclear+Science-1.16.5-0.2.0-7" cfg="nuclear-science" />
-      <file value="Assembly+Line-1.16.5-0.1.0-5" cfg="assembly-lines" />
-      <mod key="icbm" name="Ballistix" >
-        <file value="Ballistix-1.16.5-0.1.4-0" cfg="ballistix" />
+      <file value="Electrodynamics-1.16.5-0.4.0-1" cfg="electrodynamics" />
+      <file value="Nuclear+Science-1.16.5-0.3.0-0" cfg="nuclear-science" />
+      <file value="Assembly+Line-1.16.5-0.2.0-0" cfg="assembly-lines" />
+      <mod key="bls" name="Ballistix" >
+        <file value="Ballistix-1.16.5-0.2.0-1" cfg="ballistix" />
       </mod>
     </mod>
 
     <mod key="evt" name="Environmental Tech" >
-      <file value="valkyrielib-1.16.5-3.0.8.0" cfg="valkyrielib" />
-      <file value="envirocore-1.16.5-3.0.8.0" cfg="environmental-core" />
-      <file value="envirotech-1.16.5-3.0.8.0" cfg="environmental-tech" />
+      <file value="valkyrielib-1.16.5-3.0.9.2" cfg="valkyrielib" />
+      <file value="envirocore-1.16.5-3.0.9.2" cfg="environmental-core" />
+      <file value="envirotech-1.16.5-3.0.9.4" cfg="environmental-tech" />
     </mod>
 
     <mod key="exn" name="Ex Nihilo" >
-      <file value="exnihilosequentia-1.16-2.0.2.3" cfg="ex-nihilo-sequentia" />
+      <file value="exnihilosequentia-1.16-20210826035238" cfg="ex-nihilo-sequentia" />
       <file value="exnihilomekanism-1.16-1.0.0.1" cfg="ex-nihilo-sequentia-mekanism-addon" />
       <file value="exnihilothermal-1.16-1.0.0.0" cfg="ex-nihilo-sequentia-thermal-addon" />
-      <file value="exnihiloauto-1.16-1.0.3.0" cfg="exnihilo-automation" />
+      <file value="exnihiloauto-1.16-1.2.0.1" cfg="exnihilo-automation" />
+      <mod key="exc" name="Ex Compressum">
+        <file value="ExCompressum_1.16.5-4.0.4" cfg="ex-compressum" />
+      </mod>
       <mod key="exa" name="Ex Nihilo AE">
         <file value="exnihiloae-1.16-1.0.0.2" cfg="ex-nihilo-sequentia-ae2-addon" />
       </mod>
     </mod>
 
     <mod key="net" name="Flux Networks" >
-      <file value="FluxNetworks-1.16.5-6.1.6.11" cfg="flux-networks" />
+      <file value="FluxNetworks-1.16.5-6.1.7.12" cfg="flux-networks" />
     </mod>
 
     <mod key="ftp" name="Futurepack" >
-      <file value="Futurepack-1.16.4-31.1.8226" cfg="futurepack" />
+      <file value="Futurepack-1.16.5-31.2.6976" cfg="futurepack" />
     </mod>
 
     <mod key="itd" name="Integrated Dynamics" >
-      <file value="CyclopsCore-1.16.5-1.11.5" cfg="cyclops-core" />
-      <file value="CommonCapabilities-1.16.5-2.6.0" cfg="common-capabilities" />
-      <file value="IntegratedDynamics-1.16.5-1.7.2" cfg="integrated-dynamics" />
-      <file value="IntegratedTunnels-1.16.5-1.7.1" cfg="integrated-tunnels" />
-      <file value="IntegratedCrafting-1.16.5-1.0.13" cfg="integrated-crafting" />
-      <file value="IntegratedTerminals-1.16.5-1.2.2" cfg="integrated-terminals" />
+      <file value="CyclopsCore-1.16.5-1.11.10" cfg="cyclops-core" />
+      <file value="CommonCapabilities-1.16.5-2.7.1" cfg="common-capabilities" />
+      <file value="IntegratedDynamics-1.16.5-1.10.1" cfg="integrated-dynamics" />
+      <file value="IntegratedTunnels-1.16.5-1.8.6" cfg="integrated-tunnels" />
+      <file value="IntegratedCrafting-1.16.5-1.0.17" cfg="integrated-crafting" />
+      <file value="IntegratedTerminals-1.16.5-1.2.5" cfg="integrated-terminals" />
       <file value="integratednbt-1.16.4-1.4.2" cfg="integrated-nbt" />
     </mod>
 
-    <mod key="mdr" name="Modular Routers" >
-      <file value="modular-routers-1.16.5-7.4.0-55" cfg="modular-routers" />
-    </mod>
-
-    <mod key="ma" name="Mystical Agriculture" >
-      <file value="Cucumber-1.16.4-4.1.9" cfg="cucumber" />
-      <file value="MysticalAgriculture-1.16.4-4.1.7" cfg="mystical-agriculture" />
-      <file value="MysticalAgradditions-1.16.4-4.1.5" cfg="mystical-agradditions" />
-      <mod key="mad" name="Mystical Adaptations" >
-        <file value="MysticalAdaptations-1.16.4-1.1.1" cfg="mystical-adaptations" />
+    <mod key="ize" name="InzheFoP Core" >
+      <file value="inzheFoPCore-v.1.2.0" cfg="inzhefop-core" />
+      <mod key="mkm" name="Mekanism Matter" >
+        <file value="MekanismMatter-1.20.1-Beta-1.16.5" cfg="mekanism-matter" />
+      </mod>
+      <mod key="uls" name="Ultimate Solar Panel" >
+        <file value="UltimateSolarPanel-1.16.5-1.4" cfg="ultimate-solar-panels" />
       </mod>
     </mod>
 
+    <mod key="mdr" name="Modular Routers" >
+      <file value="modular-routers-1.16.5-7.5.1-69" cfg="modular-routers" />
+    </mod>
+
+    <mod key="ma" name="Mystical Agriculture" >
+      <file value="Cucumber-1.16.4-4.1.10" cfg="cucumber" />
+      <file value="MysticalAgriculture-1.16.5-4.2.3" cfg="mystical-agriculture" />
+      <file value="MysticalAgradditions-1.16.5-4.2.1" cfg="mystical-agradditions" />
+      <mod key="ida" name="Industrial Agriculture" >
+        <file value="Industrial_AgricultureCore-1.16.5-1.8.13" cfg="industrial-agriculture" />
+      </mod>
+      <mod key="mad" name="Mystical Adaptations" >
+        <file value="MysticalAdaptations-1.16.5-1.2.1" cfg="mystical-adaptations" />
+      </mod>
+    </mod>
+
+    <mod key="omg" name="Omega Craft" >
+      <file value="Omega+Craft+4.3.5" cfg="omega-craft-mod" />
+    </mod>
+
     <mod key="plt" name="Plant Tech" >
-      <file value="planttech2-0.02.28" cfg="planttech-2" />
+      <file value="planttech2-0.02.32" cfg="planttech-2" />
     </mod>
 
     <mod key="pnc" name="Pneumatic Craft" >
-      <file value="pneumaticcraft-repressurized-1.16.5-2.11.4-170" cfg="pneumaticcraft-repressurized" />
+      <file value="pneumaticcraft-repressurized-1.16.5-2.14.1-245" cfg="pneumaticcraft-repressurized" />
     </mod>
 
     <mod key="pwh" name="Powah" >
@@ -122,21 +161,27 @@
     </mod>
 
     <mod key="rak" name="Rankine" >
-      <file value="rankine-1.16.5-1.2.2-hotfix1" cfg="project-rankine" />
+      <file value="rankine-1.16.5-1.2.3-hotfix2" cfg="project-rankine" />
     </mod>
 
     <mod key="rr" name="Refined Relocation" >
-      <file value="RefinedRelocation_1.16.3-8.2.2" cfg="refined-relocation-2" />
+      <file value="RefinedRelocation_1.16.5-8.2.3" cfg="refined-relocation-2" />
     </mod>
 
     <mod key="rs" name="Refined Storage" >
-      <file value="refinedstorage-1.9.12" cfg="refined-storage" />
-      <file value="refinedstorageaddons-0.7.2" cfg="refined-storage-addons" />
+      <file value="refinedstorage-1.9.15" cfg="refined-storage" />
+      <file value="refinedstorageaddons-0.7.3" cfg="refined-storage-addons" />
+      <mod key="cat" name="Cable Tiers" >
+        <file value="cabletiers-1.16.5-0.52" cfg="cable-tiers" />
+      </mod>
+      <mod key="cwt" name="Creative Wireless Transmitter" >
+        <file value="creativewirelesstransmitter-1.16x-1.11" cfg="creative-wireless-transmitter" />
+      </mod>
       <mod key="exd" name="Extra Disks" >
-        <file value="extradisks-1.16.4-1.5.0" cfg="extra-disks" />
+        <file value="extradisks-1.16.4-1.5.1" cfg="extra-disks" />
       </mod>
       <mod key="rsq" name="RS Questify" >
-        <file value="rsrequestify-1.16.3-2.0.1" cfg="rs-requestify" />
+        <file value="rsrequestify-1.16.5-2.1.3" cfg="rs-requestify" />
       </mod>
       <mod key="str" name="Storage Tech" >
         <file value="storagetech-1.16.4-R1.3" cfg="storage-tech" />
@@ -144,124 +189,160 @@
     </mod>
 
     <mod key="rft" name="RFTools" >
-      <file value="rftoolsbase-1.16-2.0.10" cfg="rftools-base" />
-      <file value="rftoolsbuilder-1.16-3.0.16" cfg="rftools-builder" />
-      <file value="rftoolscontrol-1.16-4.0.8" cfg="rftools-control" />
-      <file value="rftoolspower-1.16-3.0.8" cfg="rftools-power" />
-      <file value="rftoolsstorage-1.16-2.0.11" cfg="rftools-storage" />
-      <file value="rftoolsutility-1.16-3.0.25" cfg="rftools-utility" />
-      <file value="rftoolsdim-1.16-7.0.7-beta" cfg="rftools-dimensions" />
+      <file value="rftoolsbase-1.16-2.0.11" cfg="rftools-base" />
+      <file value="rftoolsbuilder-1.16-3.1.2" cfg="rftools-builder" />
+      <file value="rftoolscontrol-1.16-4.0.11" cfg="rftools-control" />
+      <file value="rftoolspower-1.16-3.0.9" cfg="rftools-power" />
+      <file value="rftoolsstorage-1.16-2.0.13" cfg="rftools-storage" />
+      <file value="rftoolsutility-1.16-3.1.2" cfg="rftools-utility" />
+      <file value="rftoolsdim-1.16-7.0.14-beta" cfg="rftools-dimensions" />
     </mod>
 
-    <mod key="sbt" name="Space bosstools" >
-      <file value="obfuscate-0.6.0-1.16.3" cfg="obfuscate" />
-      <file value="Space-Bosstools-1.16.5-4.9c" cfg="space-bosstools" />
+    <mod key="obf" name="Obfuscate">
+      <file value="obfuscate-0.6.2-1.16.3" cfg="obfuscate" />
+      <mod key="cgm" name="Crayfish Gun Mod" >
+        <file value="cgm-1.0.1-1.16.3" cfg="mrcrayfishs-gun-mod" />
+      </mod>
+      <mod key="cvm" name="Crayfish Vehicle Mod" >
+        <file value="vehicle-mod-0.45.2-1.16.3" cfg="mrcrayfishs-vehicle-mod" />
+      </mod>
+      <mod key="sbt" name="Space bosstools" >
+        <file value="Space-Bosstools-1.16.5-5.4" cfg="space-bosstools" />
+      </mod>
     </mod>
+
 
     <mod key="smd" name="Super Multi-Drills" >
-      <file value="SuperMultiDrills-1.16.3-2.2.2+7" cfg="super-multi-drills" />
-    </mod>
-
-    <mod key="uls" name="Ultimate Solar Panel" >
-      <file value="inzheFoPCore-v.1.1.0" cfg="inzhefop-core" />
-      <file value="UltimateSolarPanel-1.16.4-1.3.1" cfg="ultimate-solar-panels" />
+      <file value="super-multi-drills-1.16.5-2.2.4" cfg="super-multi-drills" />
     </mod>
 
     <mod key="wt" name="Woot" >
-      <file value="woot-1.16.5-1.0.5.0" cfg="woot" />
+      <file value="woot-1.16.5-1.0.8.0" cfg="woot" />
     </mod>
 
     <mod key="xn" name="XNet" >
-      <file value="xnet-1.16-3.0.11" cfg="xnet" />
-      <file value="XNetGases-1.16.5-2.2.6" cfg="xnet-gases" />
+      <file value="xnet-1.16-3.0.13" cfg="xnet" />
+      <file value="XNetGases-1.16.5-2.3.7" cfg="xnet-gases" />
     </mod>
   </category>
 
   <category name="Decoration and Adventure" >
-    <mod key="aoa" name="AoA" >
-      <file value="AoA3-3.5-1.16.5-Beta-4" cfg="advent-of-ascension-nevermine" />
-    </mod>
-
-    <mod key="aqa" name="Aquaculture" >
-      <file value="Aquaculture-1.16.5-2.1.16" cfg="aquaculture" />
-    </mod>
-
     <mod key="bop" name="Biomes O Plenty" >
-      <file value="BiomesOPlenty-1.16.4-13.0.0.432-universal" cfg="biomes-o-plenty" />
+      <file value="BiomesOPlenty-1.16.5-13.1.0.477-universal" cfg="biomes-o-plenty" />
     </mod>
 
     <mod key="dys" name="Dynamic Surroundings" >
-      <file value="DynamicSurroundings-1.16.4-4.0.4.1" cfg="dynamic-surroundings" />
+      <file value="DynamicSurroundings-1.16.4-4.0.4.2" cfg="dynamic-surroundings" />
     </mod>
 
     <mod key="edc" name="Engineers Mods" >
-      <file value="engineersdecor-1.16.4-1.1.11" cfg="engineers-decor" />
-      <file value="engineerstools-1.16.4-1.1.4" cfg="engineers-tools" />
+      <file value="engineersdecor-1.16.4-1.1.14" cfg="engineers-decor" />
+      <file value="engineerstools-1.16.4-1.1.5" cfg="engineers-tools" />
     </mod>
 
     <mod key="fur" name="MrCrayfish's Furniture" >
-      <file value="furniture-7.0.0-pre19-1.16.3" cfg="mrcrayfish-furniture-mod" />
+      <file value="cfm-7.0.0pre22-1.16.3" cfg="mrcrayfish-furniture-mod" />
+    </mod>
+
+    <mod key="sss" name="Serene Seasons" >
+      <file value="SereneSeasons-1.16.5-4.0.1.121-universal" cfg="serene-seasons" />
     </mod>
 
     <mod key="twi" name="Twilight Forest" >
-      <file value="twilightforest-1.16.5-4.0.426-universal" cfg="the-twilight-forest" />
+      <file value="twilightforest-1.16.5-4.0.546-universal" cfg="the-twilight-forest" />
+    </mod>
+  </category>
+
+  <category name="Food" >
+    <mod key="cpt" name="Croptopia" >
+      <file value="Croptopia-1.16.4-FORGE-1.4.2" cfg="croptopia-fabric" />
     </mod>
 
-    <mod key="wot" name="WOTW" >
-      <file value="WOTWMod+Update+1.2.4+-+1.16.5" cfg="wotw-mod" />
+    <mod key="fmd" name="Farmers Delight" >
+      <file value="FarmersDelight-1.16.5-0.4.6" cfg="farmers-delight" />
+      <mod key="imc" name="Immersive Cooking">
+        <file value="immersivecooking-1.0.1" cfg="immersive-cooking" />
+      </mod>
+    </mod>
+
+    <mod key="pam" name="Pam's HarvestCraft" >
+      <file value="pamhc2foodcore-1.16.3-1.0.2" cfg="pams-harvestcraft-2-food-core" />
+      <file value="pamhc2crops-1.16.3-1.0.2" cfg="pams-harvestcraft-2-crops" />
+      <file value="pamhc2trees-1.16.3-1.0.1" cfg="pams-harvestcraft-2-trees" />
+      <file value="pamhc2foodextended-1.16.3-1.0.4" cfg="pams-harvestcraft-2-food-extended" />
+    </mod>
+
+    <mod key="sol" name="Spice of Life" >
+      <file value="SoL-Carrot-1.16.5-1.10.1" cfg="spice-of-life-carrot-edition" />
     </mod>
   </category>
 
   <category name="Miscellaneous" >
-    <mod key="ava" name="Ava" >
-      <file value="ava-1.6.9" cfg="a-v-a-in-minecraft" />
-    </mod>
-    
     <mod key="bpm" name="Blueprints">
-      <file value="bpm-1.0.2.71" cfg="bpm"/>
+      <file value="bpm-1.0.2.71" cfg="bpm" />
     </mod>
 
     <mod key="ct" name="Craft Tweaker" >
-      <file value="JEITweaker-1.16.5-1.0.1.15" cfg="jeitweaker" />
-      <file value="CraftTweaker-1.16.5-7.1.0.203" cfg="crafttweaker" />
+      <file value="JEITweaker-1.16.5-1.0.1.35" cfg="jeitweaker" />
+      <file value="CraftTweaker-1.16.5-7.1.2.445" cfg="crafttweaker" />
+      <mod key="aet" name="AE Tweaker" >
+        <file value="AppliedEnergisticsTweaker-1.0.0.15" cfg="appliedenergisticstweaker" />
+      </mod>
+    </mod>
+
+    <mod key="cdc" name="Crafting Dead" >
+      <file value="crafting-dead-core-1.16.5-1.7.5-alpha" cfg="crafting-dead" />
+      <mod key="cds" name="Crafting Dead Survival" >
+        <file value="crafting-dead-survival-1.16.5-1.1.8-alpha" cfg="crafting-dead-survival" />
+      </mod>
     </mod>
 
     <mod key="eds" name="Ender Storage">
-      <file value="EnderStorage-1.16.4-2.7.1.166-universal" cfg="ender-storage-1-8" />
+      <file value="EnderStorage-1.16.5-2.8.0.168-universal" cfg="ender-storage-1-8" />
+    </mod>
+
+    <mod key="frt" name="Ferrite Core">
+      <file value="ferritecore-2.0.7-forge" cfg="ferritecore" />
     </mod>
 
     <mod key="fq" name="FTB Quests" >
-      <file value="item-filters-1605.2.4-build.30-forge" cfg="item-filters" />
-      <file value="ftb-quests-1605.2.1-build.39-forge" cfg="ftb-quests" />
+      <file value="item-filters-forge-1605.2.5-build.9" cfg="item-filters" />
+      <file value="ftb-quests-forge-1605.3.5-build.64" cfg="ftb-quests" />
     </mod>
 
     <mod key="pe" name="ProjectE" >
       <file value="ProjectE-1.16.5-PE1.0.1B" cfg="projecte" />
-      <file value="ProjectExtended-1.16.5-1.2.0" cfg="projectextended" />
+      <mod key="pex" name="Project Extended">
+        <file value="ProjectExtended-1.16.5-1.2.0" cfg="projectextended" />
+      </mod>
+      <mod key="pei" name="ProjectE Integration">
+        <file value="projecte-integration-1.16.5-4.1.2" cfg="projecte-integration" />
+      </mod>
     </mod>
 
     <mod key="arl" name="Psi" >
-      <file value="AutoRegLib-1.6-47" cfg="autoreglib" />
-      <file value="Psi+1.16-93" cfg="psi" />
-      <file value="psipherals-1.4.0" cfg="psionic-peripherals" />
+      <file value="AutoRegLib-1.6-49" cfg="autoreglib" />
+      <file value="Psi+1.16-95" cfg="psi" />
       <mod key="mgp" name="Magical Psi" >
-        <file value="magipsi-1.16.4-2.0.0.0" cfg="magical-psi-redux" />
+        <file value="magipsi-1.16.5-2.0.0.1" cfg="magical-psi-redux" />
+      </mod>
+      <mod key="pph" name="Psionic Peripherals" >
+        <file value="psipherals-1.4.1" cfg="psionic-peripherals" />
       </mod>
     </mod>
 
     <mod key="sp" name="Simple Planes" >
-      <file value="simpleplanes-1.16.4-4.1.2" cfg="simple-planes" />
+      <file value="simpleplanes-1.16.5-4.6.0" cfg="simple-planes" />
     </mod>
 
     <mod key="stl" name="Starlight" >
-      <file value="starlight-forge-1.0.0-RC1-1.16.5" cfg="" />
+      <file value="starlight-forge-1.0.0-RC2-1.16.5" cfg="" />
     </mod>
 
-    <mod key="tic" name="Tinkers Construct">
-      <file value="Mantle-1.16.5-1.6.92" cfg="mantle" />
-      <file value="TConstruct-1.16.5-3.0.2.96" cfg="tinkers-construct" />
+    <mod key="trf" name="TerraForged" >
+      <file value="TerraForged-1.16.5-0.2.15" cfg="terraforged" />
     </mod>
-
+      
     <mod key="tmf" name="Tiny Mob Farm" >
       <file value="TinyMobFarm-1.16.3-1.1.1" cfg="tiny-mob-farm" />
     </mod>

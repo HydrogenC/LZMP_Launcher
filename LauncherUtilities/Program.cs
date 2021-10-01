@@ -1,6 +1,7 @@
 ﻿using LauncherCore;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -57,10 +58,12 @@ namespace LauncherUtilities
                         Console.WriteLine("Current file: {0}", links[i].Item1);
                         if (i != links.Length - 1)
                         {
-                            Console.WriteLine("Pending file: {0}", links[i+1].Item1);
+                            Console.WriteLine("Pending file: {0}", links[i + 1].Item1);
                         }
-                        System.Diagnostics.Process.Start("explorer.exe", $"https://www.curseforge.com/minecraft/mc-mods/{links[i].Item2}");
+                        Process.Start("explorer.exe", $"https://www.curseforge.com/minecraft/mc-mods/{links[i].Item2}");
                     }
+                    break;
+                default:
                     break;
             }
 

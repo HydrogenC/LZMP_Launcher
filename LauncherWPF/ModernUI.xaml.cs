@@ -25,7 +25,7 @@ namespace LauncherWPF
         private bool allChecked = false, processing = false;
         public Dictionary<string, MainTreeItem> itemDict = new Dictionary<string, MainTreeItem>();
         public Dictionary<string, MainTreeItem> categoryDict = new Dictionary<string, MainTreeItem>();
-        private ListDisplay currentLD;
+        private ListDisplay currentListDisplay;
 
         enum ListDisplay
         {
@@ -33,9 +33,14 @@ namespace LauncherWPF
             Modsets
         }
 
+        string FormatUnknownException(Exception e)
+        {
+            return $"Unknown {e.GetType().Name} caught: \n{e.Message}\n{e.StackTrace}";
+        }
+
         private void ToggleListDisplay(ListDisplay display)
         {
-            currentLD = display;
+            currentListDisplay = display;
             switch (display)
             {
                 case ListDisplay.Maps:
@@ -134,11 +139,6 @@ namespace LauncherWPF
         {
             Core.ApplyChanges();
             Core.LaunchGame();
-        }
-
-        private void ProcessEndCallback(IAsyncResult ar)
-        {
-            processing = false;
         }
 
         private void CheckIfAllChecked()
@@ -240,7 +240,7 @@ namespace LauncherWPF
 
             try
             {
-                switch (currentLD)
+                switch (currentListDisplay)
                 {
                     case ListDisplay.Maps:
                         ie = Scanner.ScanForMaps();
@@ -279,7 +279,7 @@ namespace LauncherWPF
                 return;
             }
 
-            if (currentLD == ListDisplay.Modsets && MainListBox.SelectedIndex == 0)
+            if (currentListDisplay == ListDisplay.Modsets && MainListBox.SelectedIndex == 0)
             {
                 return;
             }
@@ -300,7 +300,7 @@ namespace LauncherWPF
             }
 
             EditableObject target = MainListBox.SelectedItem as EditableObject;
-            if (currentLD == ListDisplay.Modsets && MainListBox.SelectedIndex == 0)
+            if (currentListDisplay == ListDisplay.Modsets && MainListBox.SelectedIndex == 0)
             {
                 target = new Modset(ref SharedData.Mods, "New Modset");
             }
@@ -320,28 +320,24 @@ namespace LauncherWPF
             EditableObject editable = MainListBox.SelectedItem as EditableObject;
             OpenFileDialog openFile = new OpenFileDialog()
             {
-                Filter = currentLD == ListDisplay.Maps ? (new Save()).IOFilter : (new Modset()).IOFilter
+                Filter = currentListDisplay == ListDisplay.Maps ? (new Save()).IOFilter : (new Modset()).IOFilter
             };
 
             if (openFile.ShowDialog().Value == true)
             {
                 processing = true;
-                Action<string> action = null;
-                switch (currentLD)
+                Action action = currentListDisplay switch
                 {
-                    case ListDisplay.Maps:
-                        action = new Action<string>(Save.ImportFrom);
-                        break;
-                    case ListDisplay.Modsets:
-                        action = new Action<string>(Modset.ImportFrom);
-                        break;
-                }
+                    ListDisplay.Maps => () => Save.ImportFrom(openFile.FileName),
+                    ListDisplay.Modsets => () => Modset.ImportFrom(openFile.FileName),
+                    _ => null
+                };
 
                 try
                 {
-                    action.BeginInvoke(openFile.FileName, ProcessEndCallback, null);
+                    Task tsk = Task.Run(action);
                     CurrentProgress.status = SharedData.Title;
-                    while (processing)
+                    while (!tsk.IsCompleted)
                     {
                         if ((string)TitleLabel.Content != CurrentProgress.status)
                         {
@@ -350,9 +346,9 @@ namespace LauncherWPF
                         DispatcherHelper.DoEvents();
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Unknown exception caught! ", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(FormatUnknownException(ex), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 finally
                 {
@@ -371,7 +367,7 @@ namespace LauncherWPF
             }
 
             EditableObject editable = MainListBox.SelectedItem as EditableObject;
-            if (currentLD == ListDisplay.Modsets && MainListBox.SelectedIndex == 0)
+            if (currentListDisplay == ListDisplay.Modsets && MainListBox.SelectedIndex == 0)
             {
                 editable = new Modset(ref SharedData.Mods, "New Modset");
             }
@@ -388,9 +384,9 @@ namespace LauncherWPF
 
                 try
                 {
-                    action.BeginInvoke(saveFile.FileName, ProcessEndCallback, null);
+                    Task tsk = Task.Run(() => editable.ExportTo(saveFile.FileName));
                     CurrentProgress.status = SharedData.Title;
-                    while (processing)
+                    while (!tsk.IsCompleted)
                     {
                         if ((string)TitleLabel.Content != CurrentProgress.status)
                         {
@@ -399,9 +395,9 @@ namespace LauncherWPF
                         DispatcherHelper.DoEvents();
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Unknown exception caught! ", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(FormatUnknownException(ex), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 finally
                 {
@@ -437,9 +433,8 @@ namespace LauncherWPF
             try
             {
                 processing = true;
-                Core.ApplyAction.BeginInvoke(ProcessEndCallback, null);
-
-                while (processing)
+                Task tsk = Task.Run(Core.ApplyAction);
+                while (!tsk.IsCompleted)
                 {
                     if ((string)TitleLabel.Content != CurrentProgress.status)
                     {
@@ -448,9 +443,9 @@ namespace LauncherWPF
                     DispatcherHelper.DoEvents();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Unknown exception caught! ", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(FormatUnknownException(ex), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             finally
             {
