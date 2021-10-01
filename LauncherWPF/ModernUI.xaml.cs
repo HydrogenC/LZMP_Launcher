@@ -250,9 +250,9 @@ namespace LauncherWPF
                         break;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                SharedData.DisplayMessage("Refresh failed", "Error", MessageType.Error);
+                SharedData.DisplayMessage("Refresh failed: \n" + ex.Message, "Error", MessageType.Error);
                 return;
             }
 
