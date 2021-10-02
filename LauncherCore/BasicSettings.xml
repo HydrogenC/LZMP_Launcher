@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings >
-  <pack title="LZMP %v Launcher" version="6.5.0" launcher="Game\NsisoLauncher.exe"/>
+  <pack title="LZMP %v Launcher" version="6.5.1" launcher="Game\NsisoLauncher.exe"/>
 
   <category name="Technology" >
     <mod key="alc" name="Alchemistry" >
@@ -254,15 +254,16 @@
   </category>
 
   <category name="Food" >
+    <mod key="aps" name="Apple Skin" >
+      <file value="appleskin-forge-mc1.16.x-2.1.0" cfg="appleskin" />
+    </mod>
+
     <mod key="cpt" name="Croptopia" >
       <file value="Croptopia-1.16.4-FORGE-1.4.2" cfg="croptopia-fabric" />
     </mod>
 
     <mod key="fmd" name="Farmers Delight" >
       <file value="FarmersDelight-1.16.5-0.4.6" cfg="farmers-delight" />
-      <mod key="imc" name="Immersive Cooking">
-        <file value="immersivecooking-1.0.1" cfg="immersive-cooking" />
-      </mod>
     </mod>
 
     <mod key="pam" name="Pam's HarvestCraft" >
