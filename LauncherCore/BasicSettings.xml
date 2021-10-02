@@ -240,6 +240,10 @@
       <file value="engineerstools-1.16.4-1.1.5" cfg="engineers-tools" />
     </mod>
 
+    <mod key="imp" name="Immersive Posts" >
+      <file value="immersiveposts-1.16.5-4.2.2" cfg="immersiveposts" />
+    </mod>
+
     <mod key="fur" name="MrCrayfish's Furniture" >
       <file value="cfm-7.0.0pre22-1.16.3" cfg="mrcrayfish-furniture-mod" />
     </mod>
