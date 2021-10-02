@@ -262,6 +262,10 @@
       <file value="appleskin-forge-mc1.16.x-2.1.0" cfg="appleskin" />
     </mod>
 
+    <mod key="cfb" name="Cooking for Blockheads" >
+      <file value="CookingForBlockheads_1.16.5-9.3.4" cfg="cooking-for-blockheads" />
+    </mod>
+    
     <mod key="cpt" name="Croptopia" >
       <file value="Croptopia-1.16.4-FORGE-1.4.2" cfg="croptopia-fabric" />
     </mod>
