@@ -286,6 +286,24 @@
     </mod>
   </category>
 
+  <category name="Optimization" >
+    <mod key="frt" name="Ferrite Core">
+      <file value="ferritecore-2.0.7-forge" cfg="ferritecore" />
+    </mod>
+
+    <mod key="jek" name="Just Enough Keys">
+      <file value="ferritecore-2.0.7-forge" cfg="just-enough-keys" />
+    </mod>
+
+    <mod key="nec" name="Not Enough Crashes">
+      <file value="notenoughcrashes-3.2.0-forge" cfg="not-enough-crashes-forge" />
+    </mod>
+
+    <mod key="stl" name="Starlight" >
+      <file value="starlight-forge-1.0.0-RC2-1.16.5" cfg="" />
+    </mod>
+  </category>
+
   <category name="Miscellaneous" >
     <mod key="bpm" name="Blueprints">
       <file value="bpm-1.0.2.71" cfg="bpm" />
@@ -308,10 +326,6 @@
 
     <mod key="eds" name="Ender Storage">
       <file value="EnderStorage-1.16.5-2.8.0.168-universal" cfg="ender-storage-1-8" />
-    </mod>
-
-    <mod key="frt" name="Ferrite Core">
-      <file value="ferritecore-2.0.7-forge" cfg="ferritecore" />
     </mod>
 
     <mod key="fq" name="FTB Quests" >
@@ -342,10 +356,6 @@
 
     <mod key="sp" name="Simple Planes" >
       <file value="simpleplanes-1.16.5-4.6.0" cfg="simple-planes" />
-    </mod>
-
-    <mod key="stl" name="Starlight" >
-      <file value="starlight-forge-1.0.0-RC2-1.16.5" cfg="" />
     </mod>
 
     <mod key="trf" name="TerraForged" >
