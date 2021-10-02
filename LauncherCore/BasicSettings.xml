@@ -292,7 +292,7 @@
     </mod>
 
     <mod key="jek" name="Just Enough Keys">
-      <file value="ferritecore-2.0.7-forge" cfg="just-enough-keys" />
+      <file value="justenoughkeys-forge-0.3.0" cfg="just-enough-keys" />
     </mod>
 
     <mod key="nec" name="Not Enough Crashes">
