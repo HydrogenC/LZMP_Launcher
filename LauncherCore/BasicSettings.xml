@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings >
-	<pack title="LZMP %v Launcher" version="6.5.3" launcher="Game\HMCL-3.5.3.exe"/>
+	<pack title="LZMP %v Launcher" version="6.5.5" launcher="Game\HMCL-3.5.3.exe"/>
 
 	<category name="Technology" >
 		<mod key="alc" name="Alchemistry" >
@@ -68,7 +68,7 @@
 
 		<mod key="dcn" name="Draconic Evolution">
 			<file value="BrandonsCore-1.16.5-3.0.13.244-universal" cfg="brandons-core" />
-			<file value="Draconic-Evolution-1.16.5-3.0.21.443-universal" cfg="draconic-evolution" />
+			<file value="Draconic-Evolution-1.16.5-3.0.21.444-universal" cfg="draconic-evolution" />
 		</mod>
 
 		<mod key="evt" name="Environmental Tech" >
@@ -204,21 +204,11 @@
 			<file value="rftoolsutility-1.16-3.1.11" cfg="rftools-utility" />
 			<file value="rftoolsdim-1.16-7.0.20-beta" cfg="rftools-dimensions" />
 		</mod>
-
-		<mod key="obf" name="Obfuscate">
-			<file value="obfuscate-0.6.2-1.16.3" cfg="obfuscate" />
-			<mod key="cgm" name="Crayfish Gun Mod" >
-				<file value="cgm-1.1.0-1.16.5" cfg="mrcrayfishs-gun-mod" />
-			</mod>
-			<mod key="cyv" name="Crayfish Vehicle Mod" >
-				<file value="vehicle-mod-0.45.2-1.16.3" cfg="mrcrayfishs-vehicle-mod" />
-			</mod>
-			<mod key="sbt" name="Space bosstools" >
-				<file value="Space-BossTools-1.16.5-5.5e" cfg="space-bosstools" />
-				<file value="Space-BossTools_Giselle_Addon-1.16.5-1.15" cfg="space-bosstools-giselle-addon" />
-			</mod>
+		
+		<mod key="sbt" name="Space bosstools" >
+			<file value="Space-BossTools-1.16.5-5.5e" cfg="space-bosstools" />
+			<file value="Space-BossTools_Giselle_Addon-1.16.5-1.15" cfg="space-bosstools-giselle-addon" />
 		</mod>
-
 
 		<mod key="smd" name="Super Multi-Drills" >
 			<file value="super-multi-drills-1.16.5-2.2.4" cfg="super-multi-drills" />
@@ -322,6 +312,20 @@
 			<mod key="cds" name="Crafting Dead Survival" >
 				<file value="crafting-dead-survival-1.16.5-1.1.8-alpha" cfg="crafting-dead-survival" />
 			</mod>
+		</mod>
+
+		<mod key="cgm" name="Crayfish Gun Mod" >
+			<file value="cgm-1.1.0-1.16.5" cfg="mrcrayfishs-gun-mod" />
+			<mod key="adg" name="Additional Guns" >
+				<file value="additional-guns-0.5.0-1.16.5" cfg="additional-guns" />
+			</mod>
+			<mod key="tmg" name="Timeless and Classics Gun" >
+				<file value="timeless_and_classics-gun_mod-0.1.4.1-1.16.5" cfg="timeless-and-classic-guns" />
+			</mod>
+		</mod>
+		
+		<mod key="cyv" name="Crayfish Vehicle Mod" >
+			<file value="vehicle-mod-0.45.2-1.16.3" cfg="mrcrayfishs-vehicle-mod" />
 		</mod>
 
 		<mod key="eds" name="Ender Storage">

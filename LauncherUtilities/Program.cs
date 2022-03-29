@@ -11,6 +11,12 @@ namespace LauncherUtilities
     {
         static void Main(string[] args)
         {
+            string[] clientOnlyMods =
+            {
+                "entityculling-forge-mc1.16.5-1.5.1",
+                "OptiFine_1.16.5_HD_U_G8"
+            };
+
             SharedData.DisplayMessage = (string content, string caption, MessageType type) =>
             {
                 Console.WriteLine("[{0}] {1}", caption, content);
@@ -29,6 +35,7 @@ namespace LauncherUtilities
 
             Console.WriteLine("1. Clean up resources");
             Console.WriteLine("2. Open curseforge pages of the mods");
+            Console.WriteLine("3. Deploy server");
             switch (Console.ReadKey().Key)
             {
                 case ConsoleKey.D1:
@@ -61,6 +68,22 @@ namespace LauncherUtilities
                             Console.WriteLine("Pending file: {0}", links[i + 1].Item1);
                         }
                         Process.Start("explorer.exe", $"https://www.curseforge.com/minecraft/mc-mods/{links[i].Item2}");
+                    }
+                    break;
+                case ConsoleKey.D3:
+                    string serverModPath = SharedData.WorkingPath + "\\Server\\server\\mods";
+                    if (Directory.Exists(serverModPath))
+                    {
+                        Directory.Delete(serverModPath, true);
+                    }
+                    Core.CopyDirectory(SharedData.ModPath, serverModPath);
+
+                    foreach (var i in Directory.EnumerateFiles(serverModPath))
+                    {
+                        if (Array.Find(clientOnlyMods, (e) => e == Path.GetFileNameWithoutExtension(i)) != null)
+                        {
+                            File.Delete(i);
+                        }
                     }
                     break;
                 default:
