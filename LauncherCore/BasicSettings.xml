@@ -316,12 +316,6 @@
 
 		<mod key="cgm" name="Crayfish Gun Mod" >
 			<file value="cgm-1.1.0-1.16.5" cfg="mrcrayfishs-gun-mod" />
-			<mod key="adg" name="Additional Guns" >
-				<file value="additional-guns-0.5.0-1.16.5" cfg="additional-guns" />
-			</mod>
-			<mod key="tmg" name="Timeless and Classics Gun" >
-				<file value="timeless_and_classics-gun_mod-0.1.4.1-1.16.5" cfg="timeless-and-classic-guns" />
-			</mod>
 		</mod>
 		
 		<mod key="cyv" name="Crayfish Vehicle Mod" >
@@ -357,6 +351,10 @@
 
 		<mod key="trf" name="TerraForged" >
 			<file value="TerraForged-1.16.5-0.2.15" cfg="terraforged" />
+		</mod>
+
+		<mod key="tmg" name="Timeless and Classics Gun" >
+			<file value="timeless_and_classics-gun_mod-0.1.4.1-1.16.5" cfg="timeless-and-classic-guns" />
 		</mod>
 
 		<mod key="tic" name="Tinker's Construct" >
