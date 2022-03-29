@@ -68,7 +68,7 @@
 
 		<mod key="dcn" name="Draconic Evolution">
 			<file value="BrandonsCore-1.16.5-3.0.13.244-universal" cfg="brandons-core" />
-			<file value="Draconic-Evolution-1.16.5-3.0.21.444-universal" cfg="draconic-evolution" />
+			<file value="Draconic-Evolution-1.16.5-3.0.22.444-universal" cfg="draconic-evolution" />
 		</mod>
 
 		<mod key="evt" name="Environmental Tech" >
