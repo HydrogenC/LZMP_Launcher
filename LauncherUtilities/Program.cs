@@ -14,7 +14,6 @@ namespace LauncherUtilities
             string[] clientOnlyMods =
             {
                 "entityculling-forge-mc1.16.5-1.5.1",
-                "OptiFine_1.16.5_HD_U_G8"
             };
 
             SharedData.DisplayMessage = (string content, string caption, MessageType type) =>
