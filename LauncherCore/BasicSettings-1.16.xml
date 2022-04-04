@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings >
-	<pack title="LZMP %v Launcher" version="6.6.1" launcher="Game\HMCL-3.5.3.exe"/>
+	<pack title="LZMP %v Launcher" version="6.6.2" launcher="Game\HMCL-3.5.3.exe"/>
 
 	<category name="Technology" >
 		<mod key="alc" name="Alchemistry" >
@@ -75,6 +75,10 @@
 			<file value="Draconic-Evolution-1.16.5-3.0.22.444-universal" cfg="draconic-evolution" />
 		</mod>
 
+		<mod key="enc" name="Energy Control" >
+			<file value="EnergyControl-forge-1.16.5-0.2.6" cfg="energy-control" />
+		</mod>
+			
 		<mod key="evt" name="Environmental Tech" >
 			<file value="valkyrielib-1.16.5-3.0.9.5" cfg="valkyrielib" />
 			<file value="envirocore-1.16.5-3.0.9.3" cfg="environmental-core" />
@@ -152,10 +156,6 @@
 			<mod key="mad" name="Mystical Adaptations" >
 				<file value="MysticalAdaptations-1.16.5-1.2.1" cfg="mystical-adaptations" />
 			</mod>
-		</mod>
-
-		<mod key="omg" name="Omega Craft" >
-			<file value="Omega+Craft+4.3.5" cfg="omega-craft-mod" />
 		</mod>
 
 		<mod key="plt" name="Plant Tech" >
