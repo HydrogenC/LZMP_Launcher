@@ -196,12 +196,12 @@
 		</mod>
 
 		<mod key="rft" name="RFTools" >
-			<file value="rftoolsbase-1.16-2.1.2" cfg="rftools-base" />
+			<file value="rftoolsbase-1.16-2.1.3" cfg="rftools-base" />
 			<file value="rftoolsbuilder-1.16-3.1.7" cfg="rftools-builder" />
-			<file value="rftoolscontrol-1.16-4.0.14" cfg="rftools-control" />
+			<file value="rftoolscontrol-1.16-4.0.15" cfg="rftools-control" />
 			<file value="rftoolspower-1.16-3.0.13" cfg="rftools-power" />
 			<file value="rftoolsstorage-1.16-2.0.18" cfg="rftools-storage" />
-			<file value="rftoolsutility-1.16-3.1.11" cfg="rftools-utility" />
+			<file value="rftoolsutility-1.16-3.1.12" cfg="rftools-utility" />
 			<file value="rftoolsdim-1.16-7.0.20-beta" cfg="rftools-dimensions" />
 		</mod>
 
