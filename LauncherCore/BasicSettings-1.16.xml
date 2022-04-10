@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings >
-	<pack title="LZMP %v Launcher" version="6.6.2" launcher="Game\HMCL-3.5.3.exe"/>
+	<pack title="LZMP %v Launcher" version="6.6.3" launcher="Game\HMCL-3.5.3.exe"/>
 
 	<category name="Technology" >
 		<mod key="alc" name="Alchemistry" >
@@ -65,7 +65,7 @@
 		<mod key="cyc" name="Cyclic" >
 			<file value="Cyclic-1.16.5-1.5.13" cfg="cyclic" />
 		</mod>
-		
+
 		<mod key="dep" name="Deep Resonance" >
 			<file value="deepresonance-1.16-2.0.3-beta" cfg="deep-resonance" />
 		</mod>
@@ -78,7 +78,7 @@
 		<mod key="enc" name="Energy Control" >
 			<file value="EnergyControl-forge-1.16.5-0.2.6" cfg="energy-control" />
 		</mod>
-			
+
 		<mod key="evt" name="Environmental Tech" >
 			<file value="valkyrielib-1.16.5-3.0.9.5" cfg="valkyrielib" />
 			<file value="envirocore-1.16.5-3.0.9.3" cfg="environmental-core" />
@@ -95,6 +95,9 @@
 			</mod>
 			<mod key="exa" name="Ex Nihilo AE">
 				<file value="exnihiloae-1.16-1.0.0.2" cfg="ex-nihilo-sequentia-ae2-addon" />
+			</mod>
+			<mod key="exa" name="Ex Nihilo Tinkers">
+				<file value="exnihilotinkers-1.16-1.0.0.0" cfg="ex-nihilo-sequentia-tinkers-addon" />
 			</mod>
 		</mod>
 
@@ -152,9 +155,6 @@
 			</mod>
 			<mod key="iapp" name="IAP Powah" >
 				<file value="Industrial+Agriculture[Powah]-1.16.3-1.7.1" cfg="iap-powah" />
-			</mod>
-			<mod key="mad" name="Mystical Adaptations" >
-				<file value="MysticalAdaptations-1.16.5-1.2.1" cfg="mystical-adaptations" />
 			</mod>
 		</mod>
 
