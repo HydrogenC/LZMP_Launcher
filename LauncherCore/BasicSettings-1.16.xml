@@ -96,7 +96,7 @@
 			<mod key="exa" name="Ex Nihilo AE">
 				<file value="exnihiloae-1.16-1.0.0.2" cfg="ex-nihilo-sequentia-ae2-addon" />
 			</mod>
-			<mod key="exa" name="Ex Nihilo Tinkers">
+			<mod key="ext" name="Ex Nihilo Tinkers">
 				<file value="exnihilotinkers-1.16-1.0.0.0" cfg="ex-nihilo-sequentia-tinkers-addon" />
 			</mod>
 		</mod>
