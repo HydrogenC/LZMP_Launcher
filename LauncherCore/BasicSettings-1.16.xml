@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings >
-	<pack title="LZMP %v Launcher" version="6.6.3" launcher="Game\HMCL-3.5.3.exe"/>
+	<pack title="LZMP %v Launcher" version="6.6.4" launcher="Game\HMCL-3.5.3.exe"/>
 
 	<category name="Technology" >
 		<mod key="alc" name="Alchemistry" >
@@ -52,6 +52,15 @@
 			<file value="Botania-1.16.5-420.2" cfg="botania" />
 			<file value="botanicalmachinery-1.16.4-0.4.6" cfg="botanical-machinery" />
 			<file value="managear-1.16.3-2.2.3" cfg="mana-gear" />
+		</mod>
+
+		<mod key="crt" name="Create" >
+			<file value="flywheel-1.16-0.2.5" cfg="flywheel" />
+			<file value="create-mc1.16.5_v0.3.2g" cfg="create" />
+			<file value="createaddition-1.16.5-20220129a" cfg="createaddition" />
+			<mod key="stp" name="Steam Powered">
+				<file value="steampowered-1.16.5-1.1.14" cfg="steam-powered-create" />
+			</mod>
 		</mod>
 
 		<mod key="cpm" name="Compact Machines">
@@ -294,7 +303,7 @@
 		</mod>
 
 		<mod key="stl" name="Starlight" >
-			<file value="starlight-forge-1.0.0-RC2-1.16.5" cfg="" />
+			<file value="starlight-1.2" cfg="starlight-x-create" />
 		</mod>
 	</category>
 
