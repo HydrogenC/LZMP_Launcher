@@ -14,6 +14,10 @@
     <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="BasicSettings-1.18.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BasicSettings-1.18.xml" />
     <Content Include="BasicSettings-1.16.xml" />
   </ItemGroup>
   <ItemGroup>

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings >
-	<pack title="LZMP %v Launcher" version="6.6.4" launcher="Game\HMCL-3.5.3.exe"/>
+	<pack title="LZMP %v Launcher" version="6.6.5" launcher="Game\HMCL-3.5.3.exe"/>
 
 	<category name="Technology" >
 		<mod key="alc" name="Alchemistry" >
@@ -15,7 +15,7 @@
 				<file value="ae2extras-1.3.1-1.16.5" cfg="ae2-extras" />
 			</mod>
 			<mod key="lae" name="Lazier AE2">
-				<file value="lazierae2-1.16.5-1.1.4" cfg="lazierae2" />
+				<file value="lazierae2-1.16.5-2.0.2" cfg="lazierae2" />
 			</mod>
 			<mod key="wte" name="Wireless Terminals">
 				<file value="ae2wtlib-0.3.3-1.16.5" cfg="applied-energistics-2-wireless-terminals-forge" />
@@ -72,7 +72,7 @@
 		</mod>
 
 		<mod key="cyc" name="Cyclic" >
-			<file value="Cyclic-1.16.5-1.5.13" cfg="cyclic" />
+			<file value="Cyclic-1.16.5-1.5.15" cfg="cyclic" />
 		</mod>
 
 		<mod key="dep" name="Deep Resonance" >
@@ -131,6 +131,12 @@
 			<file value="IntegratedCrafting-1.16.5-1.0.20" cfg="integrated-crafting" />
 			<file value="IntegratedTerminals-1.16.5-1.2.12" cfg="integrated-terminals" />
 			<file value="integratednbt-1.16.4-1.4.2" cfg="integrated-nbt" />
+			<mod key="itp" name="Integrated Proxy" >
+				<file value="integrated_proxy-1.16-1.0.19" cfg="integrated-proxy" />
+			</mod>
+			<mod key="ita" name="Integrated Additions" >
+				<file value="integratedadditions-1.1.4" cfg="integrated-additions" />
+			</mod>
 		</mod>
 
 		<mod key="ize" name="InzheFoP Core" >
@@ -172,7 +178,7 @@
 		</mod>
 
 		<mod key="pnc" name="Pneumatic Craft" >
-			<file value="pneumaticcraft-repressurized-1.16.5-2.15.3-308" cfg="pneumaticcraft-repressurized" />
+			<file value="pneumaticcraft-repressurized-1.16.5-2.15.6-315" cfg="pneumaticcraft-repressurized" />
 		</mod>
 
 		<mod key="pwh" name="Powah" >
@@ -324,7 +330,7 @@
 		</mod>
 
 		<mod key="cgm" name="Crayfish Gun Mod" >
-			<file value="cgm-1.1.0-1.16.5" cfg="mrcrayfishs-gun-mod" />
+			<file value="cgm-1.2.4-1.16.5" cfg="mrcrayfishs-gun-mod" />
 		</mod>
 
 		<mod key="cyv" name="Crayfish Vehicle Mod" >
