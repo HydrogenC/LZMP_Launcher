@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings >
-	<pack title="LZMP %v Launcher" version="6.6.5" launcher="Game\HMCL-3.5.3.exe"/>
+	<pack title="LZMP %v Launcher" version="6.6.6" launcher="Game\HMCL-3.5.3.exe"/>
 
 	<category name="Technology" >
 		<mod key="alc" name="Alchemistry" >
@@ -139,14 +139,9 @@
 			</mod>
 		</mod>
 
-		<mod key="ize" name="InzheFoP Core" >
-			<file value="inzheFoPCore-v.1.2.0" cfg="inzhefop-core" />
-			<mod key="mkm" name="Mekanism Matter" >
-				<file value="MekanismMatter-1.20.1-Beta-1.16.5" cfg="mekanism-matter" />
-			</mod>
-			<mod key="uls" name="Ultimate Solar Panel" >
-				<file value="UltimateSolarPanel-1.16.5-1.4" cfg="ultimate-solar-panels" />
-			</mod>
+		<mod key="mps" name="Modular Powersuits" >
+			<file value="Numina-1.16.5-2.2.24" cfg="numina" />
+			<file value="ModularPowersuits-1.16.5-2.2.24" cfg="modular-powersuits" />
 		</mod>
 
 		<mod key="mdr" name="Modular Routers" >
@@ -296,6 +291,10 @@
 	</category>
 
 	<category name="Optimization" >
+		<mod key="atf" name="Attribute Fix" >
+			<file value="AttributeFix-1.16.5-10.1.4" cfg="attributefix" />
+		</mod>
+		
 		<mod key="frt" name="Ferrite Core" >
 			<file value="ferritecore-2.1.0-forge" cfg="ferritecore" />
 		</mod>
