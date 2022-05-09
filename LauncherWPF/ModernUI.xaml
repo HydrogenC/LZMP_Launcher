@@ -7,8 +7,22 @@
         xmlns:core="clr-namespace:LauncherCore;assembly=LauncherCore"
         mc:Ignorable="d"
         Title="LZMP Launcher" Height="720" Width="720" WindowStyle="ThreeDBorderWindow" MinWidth="720" MinHeight="600">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="26" />
+            <Setter Property="Background" Value="#8EE32121" />
+            <Setter Property="BorderBrush" Value="#99FFFFFF" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontFamily" Value="Segoe UI" />
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="8" />
+                </Style>
+            </Style.Resources>
+        </Style>
+    </Window.Resources>
+    
     <Grid>
-
         <Image Margin="0,0,0,0" Panel.ZIndex="-1" x:Name="BackgroundImage" Source="Images\BgHD.png" Stretch="UniformToFill" ToolTip="Refresh" >
             <Image.Effect>
                 <BlurEffect Radius="12" KernelType="Gaussian"/>
@@ -23,15 +37,15 @@
             </TreeView.ItemTemplate>
         </TreeView>
         <Grid x:Name="TreeControllerGrid" VerticalAlignment="Bottom" Margin="10,0,349,9.5" Height="50">
-            <Button x:Name="CheckButton" Content="Check All" FontSize="26" Margin="0" Background="#8EE32121" BorderBrush="#99FFFFFF" Foreground="White" HorizontalAlignment="Left" RenderTransformOrigin="0.5,0.5" Width="172" VerticalAlignment="Top" Height="50" FontFamily="Segoe UI" Click="CheckButton_Click"/>
-            <Button x:Name="ApplyButton" Content="Apply" FontSize="26" Background="#8EE32121" BorderBrush="#99FFFFFF" Foreground="White" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Width="172" Height="50" FontFamily="Segoe UI" Click="ApplyButton_Click"/>
+            <Button x:Name="CheckButton" Content="Check All" Margin="0" HorizontalAlignment="Left" RenderTransformOrigin="0.5,0.5" Width="172" Height="50" Click="CheckButton_Click" />
+            <Button x:Name="ApplyButton" Content="Apply" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Width="172" Height="50" Click="ApplyButton_Click" />
         </Grid>
 
-        <Button x:Name="LaunchButton" Content="Launch Game" FontSize="26" Margin="0,85,10,0" Background="#8EE32121" BorderBrush="#99FFFFFF" Foreground="White" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Width="320" VerticalAlignment="Top" Height="50" FontFamily="Segoe UI" Click="LaunchButton_Click"/>
+        <Button x:Name="LaunchButton" Content="Launch Game" Margin="0,85,10,0" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Width="320" VerticalAlignment="Top" Height="50" Click="LaunchButton_Click" />
         <Grid x:Name="SelectorGrid" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,150,10,0" Height="50" Width="320">
-            <Button x:Name="MapsButton" Content="Maps" FontSize="26" Margin="0,0,185,0" Background="#8EE32121" BorderBrush="{x:Null}" Foreground="White" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Width="135" VerticalAlignment="Top" Height="50" FontFamily="Segoe UI" Click="MapsButton_Click"/>
-            <Button x:Name="ModsetsButton" Content="Modsets" FontSize="26" Margin="0,0,50,0" Background="#8EE32121" BorderBrush="{x:Null}" Foreground="White" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Width="135" Height="50" FontFamily="Segoe UI" Click="ModsetsButton_Click"/>
-            <Button x:Name="RefreshButton" Content="R" FontSize="26" Background="#8EE32121" BorderBrush="{x:Null}" Foreground="White" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Width="50" Height="50" FontFamily="Segoe UI" Click="RefreshButton_Click" ToolTip="Refresh the list. "/>
+            <Button x:Name="MapsButton" Content="Maps" Margin="0,0,185,0" BorderBrush="{x:Null}" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Width="135" VerticalAlignment="Top" Height="50" Click="MapsButton_Click"/>
+            <Button x:Name="ModsetsButton" Content="Modsets" Margin="0,0,50,0" BorderBrush="{x:Null}" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Width="135" Height="50" Click="ModsetsButton_Click"/>
+            <Button x:Name="RefreshButton" Content="R" BorderBrush="{x:Null}" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Width="50" Height="50" Click="RefreshButton_Click" ToolTip="Refresh the list. "/>
         </Grid>
         <ListBox x:Name="MainListBox" HorizontalAlignment="Right" Margin="0,218,11,162.5" Width="320" Background="#665A5A5A" Foreground="White" BorderBrush="#FF828790" MouseDoubleClick="MainListBox_MouseDoubleClick" ToolTip="Double click to load a modset. ">
             <ListBox.ItemTemplate>
@@ -41,10 +55,10 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <Grid x:Name="ListController" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,10,9.5" Height="122" Width="320">
-            <Button x:Name="DeleteButton" Content="Delete" FontSize="26" Margin="0,0,168,0" Background="#8EE32121" BorderBrush="#99FFFFFF" Foreground="White" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Width="152" VerticalAlignment="Top" Height="50" FontFamily="Segoe UI" Click="DeleteButton_Click"/>
-            <Button x:Name="RenameButton" Content="Rename" FontSize="26" Background="#8EE32121" BorderBrush="#99FFFFFF" Foreground="White" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Width="152" Height="50" FontFamily="Segoe UI" Click="RenameButton_Click" Margin="0,0,0,72"/>
-            <Button x:Name="ImportButton" Content="Import" FontSize="26" Margin="0,72,168,0" Background="#8EE32121" BorderBrush="#99FFFFFF" Foreground="White" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Width="152" VerticalAlignment="Bottom" Height="50" FontFamily="Segoe UI" Click="ImportButton_Click"/>
-            <Button x:Name="ExportButton" Content="Export" FontSize="26" Background="#8EE32121" BorderBrush="#99FFFFFF" Foreground="White" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Width="152" Height="50" FontFamily="Segoe UI" Click="ExportButton_Click" Margin="0,72,0,0" VerticalAlignment="Bottom"/>
+            <Button x:Name="DeleteButton" Content="Delete" Margin="0,0,168,0" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Width="152" VerticalAlignment="Top" Height="50" Click="DeleteButton_Click"/>
+            <Button x:Name="RenameButton" Content="Rename" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Width="152" Height="50" Click="RenameButton_Click" Margin="0,0,0,72"/>
+            <Button x:Name="ImportButton" Content="Import" Margin="0,72,168,0" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Width="152" VerticalAlignment="Bottom" Height="50" Click="ImportButton_Click"/>
+            <Button x:Name="ExportButton" Content="Export" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Width="152" Height="50" Click="ExportButton_Click" Margin="0,72,0,0" VerticalAlignment="Bottom"/>
         </Grid>
     </Grid>
 </Window>

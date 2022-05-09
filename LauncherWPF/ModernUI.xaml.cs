@@ -27,6 +27,9 @@ namespace LauncherWPF
         public Dictionary<string, MainTreeItem> categoryDict = new Dictionary<string, MainTreeItem>();
         private ListDisplay currentListDisplay;
 
+        public static SolidColorBrush unselectedForeground = new SolidColorBrush(Colors.White);
+        public static SolidColorBrush selectedForeground = new SolidColorBrush(Color.FromRgb(0xE3, 0x21, 0x21));
+
         enum ListDisplay
         {
             Maps,
@@ -44,14 +47,14 @@ namespace LauncherWPF
             switch (display)
             {
                 case ListDisplay.Maps:
-                    MapsButton.Foreground = new SolidColorBrush(Colors.Black);
-                    ModsetsButton.Foreground = new SolidColorBrush(Colors.White);
+                    MapsButton.Foreground = selectedForeground;
+                    ModsetsButton.Foreground = unselectedForeground;
                     ModsetsButton.IsEnabled = true;
                     MapsButton.IsEnabled = false;
                     break;
                 case ListDisplay.Modsets:
-                    ModsetsButton.Foreground = new SolidColorBrush(Colors.Black);
-                    MapsButton.Foreground = new SolidColorBrush(Colors.White);
+                    ModsetsButton.Foreground = selectedForeground;
+                    MapsButton.Foreground = unselectedForeground;
                     MapsButton.IsEnabled = true;
                     ModsetsButton.IsEnabled = false;
                     break;
