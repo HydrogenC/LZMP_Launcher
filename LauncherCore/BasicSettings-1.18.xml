@@ -50,6 +50,15 @@
 			<file value="compactmachines-4.2.0" cfg="compact-machines" />
 		</mod>
 
+		<mod key="crt" name="Create" >
+			<file value="flywheel-forge-1.18-0.6.2" cfg="flywheel" />
+			<file value="create-mc1.18.2_v0.4.1" cfg="create" />
+			<file value="createaddition-1.18.2-20220424a" cfg="createaddition" />
+			<mod key="stp" name="Steam Powered">
+				<file value="steampowered-1.18.2-2.0.2-alpha" cfg="steam-powered-create" />
+			</mod>
+		</mod>
+
 		<mod key="cyc" name="Cyclic" >
 			<file value="Cyclic-1.18.2-1.7.0" cfg="cyclic" />
 		</mod>
