@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings >
-	<pack title="LZMP %v Launcher" version="7.0.0 Beta" launcher="Game\HMCL-3.5.3.exe"/>
+	<pack title="LZMP %v Launcher" version="7.0.1 Beta" launcher="Game\HMCL-3.5.3.exe"/>
 
 	<category name="Technology" >
 		<mod key="alc" name="Alchemistry" >
@@ -10,14 +10,14 @@
 		</mod>
 
 		<mod key="ae" name="Applied Energetics" >
-			<file value="appliedenergistics2-11.0.0-alpha.6" cfg="applied-energistics-2" />
+			<file value="appliedenergistics2-11.1.1" cfg="applied-energistics-2" />
 		</mod>
 
 		<mod key="scf" name="BDLib">
 			<file value="ScalableCatsForce-2.13.8-build-4-with-library" cfg="scalable-cats-force" />
 			<file value="bdlib-1.19.3.7-mc1.18.2" cfg="bdlib" />
 			<mod key="aem" name="Additional Enchanted Miner" >
-				<file value="AdditionalEnchantedMiner-1.18.2-18.11" cfg="additional-enchanted-miner" />
+				<file value="AdditionalEnchantedMiner-1.18.2-18.12" cfg="additional-enchanted-miner" />
 			</mod>
 			<mod key="adv" name="Advanced Generators">
 				<file value="advgenerators-1.1.0.5-mc1.18.2" cfg="advanced-generators" />
@@ -31,40 +31,40 @@
 		</mod>
 
 		<mod key="bye" name="Beyond Earth" >
-			<file value="Beyond-Earth-1.18.2-6.1" cfg="space-bosstools" />
-			<file value="Beyond-Earth-Giselle-Addon-1.18.2-2.8" cfg="space-bosstools-giselle-addon" />
+			<file value="Beyond-Earth-1.18.2-6.2" cfg="space-bosstools" />
+			<file value="Beyond-Earth-Giselle-Addon-1.18.2-2.10" cfg="space-bosstools-giselle-addon" />
 		</mod>
 
 		<mod key="bgr" name="Bigger Reactors" >
-			<file value="phosphophyllite-1.18.2-0.6.0-beta.1.1" cfg="phosphophyllite"/>
-			<file value="quartz-1.18.2-0.0.0-beta.1.1" cfg="quartz"/>
-			<file value="biggerreactors-1.18.2-0.6.0-beta.1" cfg="biggerreactors" />
+			<file value="phosphophyllite-1.18.2-0.6.0-beta.1.2" cfg="phosphophyllite"/>
+			<file value="quartz-1.18.2-0.0.0-beta.1.3" cfg="quartz"/>
+			<file value="biggerreactors-1.18.2-0.6.0-beta.1.1" cfg="biggerreactors" />
 		</mod>
 
 		<mod key="btn" name="Botania">
-			<file value="Botania-1.18.2-431" cfg="botania" />
-			<file value="BotanicalMachinery-1.18.2-1.0.0" cfg="botanical-machinery" />
+			<file value="Botania-1.18.2-433" cfg="botania" />
+			<file value="BotanicalMachinery-1.18.2-1.0.1" cfg="botanical-machinery" />
 		</mod>
 
 		<mod key="cpm" name="Compact Machines">
-			<file value="compactmachines-4.2.0" cfg="compact-machines" />
+			<file value="compactmachines-4.3.0" cfg="compact-machines" />
 		</mod>
 
 		<mod key="crt" name="Create" >
 			<file value="flywheel-forge-1.18-0.6.2" cfg="flywheel" />
 			<file value="create-mc1.18.2_v0.4.1" cfg="create" />
-			<file value="createaddition-1.18.2-20220424a" cfg="createaddition" />
+			<file value="createaddition-1.18.2-20220517a" cfg="createaddition" />
 			<mod key="stp" name="Steam Powered">
-				<file value="steampowered-1.18.2-2.0.2-alpha" cfg="steam-powered-create" />
+				<file value="steampowered-1.18.2-2.0.3-alpha" cfg="steam-powered-create" />
 			</mod>
 		</mod>
 
 		<mod key="cyc" name="Cyclic" >
-			<file value="Cyclic-1.18.2-1.7.0" cfg="cyclic" />
+			<file value="Cyclic-1.18.2-1.7.1" cfg="cyclic" />
 		</mod>
 
 		<mod key="dep" name="Deep Resonance" >
-			<file value="deepresonance-3.0.4-beta" cfg="deep-resonance" />
+			<file value="deepresonance-3.0.6" cfg="deep-resonance" />
 		</mod>
 
 		<mod key="enc" name="Energy Control" >
@@ -72,7 +72,7 @@
 		</mod>
 
 		<mod key="ftp" name="Futurepack" >
-			<file value="Futurepack-1.18.2-33.0.7268" cfg="futurepack" />
+			<file value="Futurepack-1.18.2-33.0.7327" cfg="futurepack" />
 		</mod>
 
 		<mod key="mdr" name="Modular Routers" >
@@ -80,13 +80,13 @@
 		</mod>
 
 		<mod key="ma" name="Mystical Agriculture" >
-			<file value="Cucumber-1.18.2-5.1.0" cfg="cucumber" />
+			<file value="Cucumber-1.18.2-5.1.1" cfg="cucumber" />
 			<file value="MysticalAgriculture-1.18.2-5.1.0" cfg="mystical-agriculture" />
 			<file value="MysticalAgradditions-1.18.2-5.1.1" cfg="mystical-agradditions" />
 		</mod>
 
 		<mod key="pnc" name="Pneumatic Craft" >
-			<file value="pneumaticcraft-repressurized-1.18.2-3.2.2-79" cfg="pneumaticcraft-repressurized" />
+			<file value="pneumaticcraft-repressurized-1.18.2-3.2.4-93" cfg="pneumaticcraft-repressurized" />
 		</mod>
 
 		<mod key="rs" name="Refined Storage" >
@@ -98,13 +98,13 @@
 		</mod>
 
 		<mod key="rft" name="RFTools" >
-			<file value="rftoolsbase-1.18-3.0.7" cfg="rftools-base" />
-			<file value="rftoolsbuilder-1.18-4.0.9" cfg="rftools-builder" />
-			<file value="rftoolscontrol-1.18-5.0.5" cfg="rftools-control" />
+			<file value="rftoolsbase-1.18-3.0.8" cfg="rftools-base" />
+			<file value="rftoolsbuilder-1.18-4.0.12" cfg="rftools-builder" />
+			<file value="rftoolscontrol-1.18-5.0.6" cfg="rftools-control" />
 			<file value="rftoolspower-1.18-4.0.5" cfg="rftools-power" />
 			<file value="rftoolsstorage-1.18-3.0.8" cfg="rftools-storage" />
-			<file value="rftoolsutility-1.18-4.0.14" cfg="rftools-utility" />
-			<file value="rftoolsdim-1.18-8.0.4" cfg="rftools-dimensions" />
+			<file value="rftoolsutility-1.18-4.0.16" cfg="rftools-utility" />
+			<file value="rftoolsdim-1.18-8.0.6" cfg="rftools-dimensions" />
 		</mod>
 
 		<mod key="xn" name="XNet" >
@@ -114,7 +114,7 @@
 
 	<category name="Decoration and Adventure" >
 		<mod key="bop" name="Biomes O Plenty" >
-			<file value="TerraBlender-forge-1.18.2-1.1.0.99" cfg="terrablender" />
+			<file value="TerraBlender-forge-1.18.2-1.1.0.102" cfg="terrablender" />
 			<file value="BiomesOPlenty-1.18.2-16.0.0.109-universal" cfg="biomes-o-plenty" />
 		</mod>
 
@@ -147,7 +147,7 @@
 		</mod>
 
 		<mod key="fmd" name="Farmers Delight" >
-			<file value="FarmersDelight-1.18.2-1.1.0" cfg="farmers-delight" />
+			<file value="FarmersDelight-1.18.2-1.1.1" cfg="farmers-delight" />
 		</mod>
 
 		<mod key="pam" name="Pam's HarvestCraft" >
@@ -173,7 +173,7 @@
 	<category name="Miscellaneous" >
 		<mod key="ct" name="Craft Tweaker" >
 			<file value="JEITweaker-1.18.2-3.0.0.8" cfg="jeitweaker" />
-			<file value="CraftTweaker-forge-1.18.2-9.1.130" cfg="crafttweaker" />
+			<file value="CraftTweaker-forge-1.18.2-9.1.150" cfg="crafttweaker" />
 		</mod>
 
 		<mod key="cdc" name="Crafting Dead" >
@@ -189,12 +189,12 @@
 		</mod>
 
 		<mod key="fq" name="FTB Quests" >
-			<file value="item-filters-forge-1802.2.7-build.25" cfg="item-filters" />
+			<file value="item-filters-forge-1802.2.7-build.27" cfg="item-filters" />
 			<file value="ftb-quests-forge-1802.3.8-build.101" cfg="ftb-quests" />
 		</mod>
 
 		<mod key="eds" name="Gobber">
-			<file value="Gobber2-Forge-1.18.2-2.6.25" cfg="gobber" />
+			<file value="Gobber2-Forge-1.18.2-2.6.26" cfg="gobber" />
 		</mod>
 
 		<mod key="pe" name="ProjectE" >
@@ -202,7 +202,7 @@
 		</mod>
 
 		<mod key="sp" name="Simple Planes" >
-			<file value="simpleplanes-1.18.2-4.13.2" cfg="simple-planes" />
+			<file value="simpleplanes-1.18.2-4.13.3" cfg="simple-planes" />
 		</mod>
 	</category>
 </settings>
