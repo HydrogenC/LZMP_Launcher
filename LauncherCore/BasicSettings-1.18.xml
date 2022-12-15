@@ -10,7 +10,7 @@
 		</mod>
 
 		<mod key="ae" name="Applied Energetics" >
-			<file value="appliedenergistics2-forge-12.9.1" cfg="applied-energistics-2" />
+			<file value="appliedenergistics2-forge-11.7.0" cfg="applied-energistics-2" />
 			<file value="Applied-Mekanistics-1.2.2" cfg="applied-mekanistics" />
 			<mod key="aet" name="AE2 Things">
 				<file value="AE2-Things-1.0.4" cfg="ae2-things-forge" />
@@ -34,9 +34,6 @@
 			</mod>
 			<mod key="pxy" name="Proxy" >
 				<file value="proxy-1.1.0.2-mc1.18.2" cfg="proxy" />
-			</mod>
-			<mod key="tcb" name="Technobauble" >
-				<file value="technobauble-0.4.0.2-mc1.18.2" cfg="technobauble" />
 			</mod>
 		</mod>
 
@@ -196,7 +193,6 @@
 		</mod>
 
 		<mod key="cfb" name="Cooking for Blockheads" >
-			<file value="balm-3.2.1+0" cfg="balm" />
 			<file value="cookingforblockheads-forge-1.18.2-12.2.0" cfg="cooking-for-blockheads" />
 		</mod>
 
