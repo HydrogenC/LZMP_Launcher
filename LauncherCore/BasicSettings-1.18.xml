@@ -212,16 +212,6 @@
 		</mod>
 	</category>
 
-	<category name="Optimization" >
-		<mod key="nec" name="Not Enough Crashes">
-			<file value="notenoughcrashes-4.2.0+1.18.2-forge" cfg="not-enough-crashes-forge" />
-		</mod>
-
-		<mod key="stl" name="Starlight" >
-			<file value="starlight-1.0.2+forge.546ae87" cfg="starlight-forge" />
-		</mod>
-	</category>
-
 	<category name="Miscellaneous" >
 		<mod key="ct" name="Craft Tweaker" >
 			<file value="JEITweaker-1.18.2-3.0.0.9" cfg="jeitweaker" />
@@ -249,6 +239,10 @@
 			<file value="Gobber2-Forge-1.18.2-2.6.37" cfg="gobber" />
 		</mod>
 
+		<mod key="nec" name="Not Enough Crashes">
+			<file value="notenoughcrashes-4.2.0+1.18.2-forge" cfg="not-enough-crashes-forge" />
+		</mod>
+
 		<mod key="pe" name="ProjectE" >
 			<file value="ProjectE-1.18.2-PE1.0.1" cfg="projecte" />
 		</mod>
@@ -259,6 +253,10 @@
 
 		<mod key="sp" name="Simple Planes" >
 			<file value="simpleplanes-1.18.2-4.15.0" cfg="simple-planes" />
+		</mod>
+
+		<mod key="stl" name="Starlight" >
+			<file value="starlight-1.0.2+forge.546ae87" cfg="starlight-forge" />
 		</mod>
 
 		<mod key="tic" name="Tinker's Construct" >
