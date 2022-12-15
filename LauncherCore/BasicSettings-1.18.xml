@@ -159,11 +159,10 @@
 			<file value="rftoolsstorage-1.18-3.0.12" cfg="rftools-storage" />
 			<file value="rftoolsutility-1.18-4.0.20" cfg="rftools-utility" />
 			<file value="rftoolsdim-1.18-8.0.9" cfg="rftools-dimensions" />
-		</mod>
-
-		<mod key="xn" name="XNet" >
-			<file value="xnet-1.18-4.0.7" cfg="xnet" />
-			<file value="XNetGases-1.18.2-3.0.1" cfg="xnet-gases" />
+			<mod key="xn" name="XNet" >
+				<file value="xnet-1.18-4.0.7" cfg="xnet" />
+				<file value="XNetGases-1.18.2-3.0.1" cfg="xnet-gases" />
+			</mod>
 		</mod>
 	</category>
 
