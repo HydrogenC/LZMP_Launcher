@@ -183,7 +183,7 @@
 		</mod>
 
 		<mod key="twi" name="Twilight Forest" >
-			<file value="twilightforest-1.16.5-4.0.870-universal" cfg="the-twilight-forest" />
+			<file value="twilightforest-1.18.2-4.1.1423-universal" cfg="the-twilight-forest" />
 		</mod>
 	</category>
 
