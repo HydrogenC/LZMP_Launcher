@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings >
-	<pack title="LZMP %v Launcher" version="7.0.2" launcher="Game\HMCL-3.5.3.exe"/>
+	<pack title="LZMP %v Launcher" version="8.0.0 Beta" launcher="Game\HMCL-3.5.3.exe"/>
 
 	<category name="Technology" >
 		<mod key="alc" name="Alchemistry" >
-			<file value="alchemylib-1.18.2-1.0.20" cfg="a-lib" />
-			<file value="chemlib-1.18.2-2.0.16" cfg="chemlib" />
-			<file value="alchemistry-1.18.2-2.2.1" cfg="alchemistry" />
+			<file value="alib-1.18.2-2" cfg="alchemylib" />
+			<file value="chemlib-1.18.2-2.0.13" cfg="chemlib" />
+			<file value="alchemistry-1.18.2-2.2.0" cfg="alchemistry" />
 		</mod>
 
 		<mod key="ae" name="Applied Energetics" >
@@ -39,7 +39,7 @@
 
 		<mod key="bye" name="Beyond Earth" >
 			<file value="Beyond-Earth-1.18.2-6.2" cfg="space-bosstools" />
-			<file value="Beyond-Earth-Giselle-Addon-1.18.2-2.20" cfg="space-bosstools-giselle-addon" />
+			<file value="Beyond-Earth-Giselle-Addon-1.18.2-2.18" cfg="space-bosstools-giselle-addon" />
 		</mod>
 
 		<mod key="bgr" name="Bigger Reactors" >
@@ -61,9 +61,9 @@
 		<mod key="crt" name="Create" >
 			<file value="flywheel-forge-1.18.2-0.6.8" cfg="flywheel" />
 			<file value="create-1.18.2-0.5.0.g" cfg="create" />
-			<file value="createaddition-1.18.2-20221219a" cfg="createaddition" />
+			<file value="createaddition-1.18.2-20221215a" cfg="createaddition" />
 			<mod key="cpc" name="Compressed Creativity">
-				<file value="compressedcreativity-1.18.2-0.1.5" cfg="compressedcreativity" />
+				<file value="compressedcreativity-1.18.2-0.1.3" cfg="compressedcreativity" />
 			</mod>
 		</mod>
 
@@ -109,7 +109,7 @@
 		<mod key="itd" name="Integrated Dynamics" >
 			<file value="CyclopsCore-1.18.2-1.16.1" cfg="cyclops-core" />
 			<file value="CommonCapabilities-1.18.2-2.8.2" cfg="common-capabilities" />
-			<file value="IntegratedDynamics-1.18.2-1.12.4" cfg="integrated-dynamics" />
+			<file value="IntegratedDynamics-1.18.2-1.12.2" cfg="integrated-dynamics" />
 			<file value="IntegratedTunnels-1.18.2-1.8.17" cfg="integrated-tunnels" />
 			<file value="IntegratedCrafting-1.18.2-1.0.25" cfg="integrated-crafting" />
 			<file value="IntegratedTerminals-1.18.2-1.4.3" cfg="integrated-terminals" />
@@ -127,15 +127,15 @@
 		</mod>
 
 		<mod key="pnc" name="Pneumatic Craft" >
-			<file value="pneumaticcraft-repressurized-1.18.2-3.5.0-17" cfg="pneumaticcraft-repressurized" />
+			<file value="pneumaticcraft-repressurized-1.18.2-3.4.4-14" cfg="pneumaticcraft-repressurized" />
 		</mod>
 
 		<mod key="pwh" name="Powah" >
-			<file value="Powah-3.0.7" cfg="powah-rearchitected" />
+			<file value="Powah-3.0.6" cfg="powah-rearchitected" />
 		</mod>
 
 		<mod key="rs" name="Refined Storage" >
-			<file value="refinedstorage-1.10.4" cfg="refined-storage" />
+			<file value="refinedstorage-1.10.3" cfg="refined-storage" />
 			<file value="refinedstorageaddons-0.8.2" cfg="refined-storage-addons" />
 			<mod key="cbt" name="Cable Tiers" >
 				<file value="cabletiers-1.18.2-0.547" cfg="cable-tiers" />
@@ -150,11 +150,11 @@
 
 		<mod key="rft" name="RFTools" >
 			<file value="rftoolsbase-1.18-3.0.11" cfg="rftools-base" />
-			<file value="rftoolsbuilder-1.18-4.1.1" cfg="rftools-builder" />
+			<file value="rftoolsbuilder-1.18-4.0.16" cfg="rftools-builder" />
 			<file value="rftoolscontrol-1.18-5.0.8" cfg="rftools-control" />
 			<file value="rftoolspower-1.18-4.0.9" cfg="rftools-power" />
 			<file value="rftoolsstorage-1.18-3.0.12" cfg="rftools-storage" />
-			<file value="rftoolsutility-1.18-4.0.21" cfg="rftools-utility" />
+			<file value="rftoolsutility-1.18-4.0.20" cfg="rftools-utility" />
 			<file value="rftoolsdim-1.18-8.0.9" cfg="rftools-dimensions" />
 			<mod key="xn" name="XNet" >
 				<file value="xnet-1.18-4.0.7" cfg="xnet" />
@@ -211,24 +211,24 @@
 	<category name="Miscellaneous" >
 		<mod key="ct" name="Craft Tweaker" >
 			<file value="JEITweaker-1.18.2-3.0.0.9" cfg="jeitweaker" />
-			<file value="CraftTweaker-forge-1.18.2-9.1.198" cfg="crafttweaker" />
+			<file value="CraftTweaker-forge-1.18.2-9.1.197" cfg="crafttweaker" />
 		</mod>
 
 		<mod key="cdc" name="Crafting Dead" >
-			<file value="crafting-dead-core-1.18.2-1.7.6.378" cfg="crafting-dead" />
+			<file value="crafting-dead-core-1.18.2-1.7.6.364" cfg="crafting-dead" />
 			<mod key="cds" name="Crafting Dead Survival" >
-				<file value="crafting-dead-survival-1.18.2-1.1.9.378" cfg="crafting-dead-survival" />
+				<file value="crafting-dead-survival-1.18.2-1.1.9.364" cfg="crafting-dead-survival" />
 			</mod>
 		</mod>
 
 		<mod key="cgm" name="Crayfish Gun Mod" >
-			<file value="framework-0.4.2-1.18.2" cfg="framework" />
+			<file value="framework-0.2.4-1.18.2" cfg="framework" />
 			<file value="cgm-1.2.7-1.18.2" cfg="mrcrayfishs-gun-mod" />
 		</mod>
 
 		<mod key="fq" name="FTB Quests" >
 			<file value="item-filters-forge-1802.2.8-build.47" cfg="item-filters" />
-			<file value="ftb-quests-forge-1802.3.12-build.157" cfg="ftb-quests" />
+			<file value="ftb-quests-forge-1802.3.10-build.138" cfg="ftb-quests" />
 		</mod>
 
 		<mod key="eds" name="Gobber">
@@ -244,7 +244,7 @@
 		</mod>
 
 		<mod key="sec" name="Security Craft" >
-			<file value="[1.18.2]+SecurityCraft+v1.9.5" cfg="security-craft" />
+			<file value="[1.18.2]+SecurityCraft+v1.9.4" cfg="security-craft" />
 		</mod>
 
 		<mod key="sp" name="Simple Planes" >
@@ -257,7 +257,7 @@
 
 		<mod key="tic" name="Tinker's Construct" >
 			<file value="Mantle-1.18.2-1.9.31" cfg="mantle" />
-			<file value="TConstruct-1.18.2-3.5.3.63" cfg="tinkers-construct" />
+			<file value="TConstruct-1.18.2-3.5.2.40" cfg="tinkers-construct" />
 		</mod>
 	</category>
 </settings>

@@ -15,8 +15,10 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="BasicSettings-1.18.xml" />
+    <None Remove="BasicSettings-1.19.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BasicSettings-1.19.xml" />
     <Content Include="BasicSettings-1.18.xml" />
     <Content Include="BasicSettings-1.16.xml" />
   </ItemGroup>
