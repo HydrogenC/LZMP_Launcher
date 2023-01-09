@@ -209,6 +209,10 @@
 	</category>
 
 	<category name="Miscellaneous" >
+		<mod key="cnt" name="Connectivity" >
+			<file value="connectivity-1.18.2-3.2" cfg="connectivity" />
+		</mod>
+
 		<mod key="ct" name="Craft Tweaker" >
 			<file value="JEITweaker-1.18.2-3.0.0.9" cfg="jeitweaker" />
 			<file value="CraftTweaker-forge-1.18.2-9.1.198" cfg="crafttweaker" />
@@ -229,10 +233,6 @@
 		<mod key="fq" name="FTB Quests" >
 			<file value="item-filters-forge-1802.2.8-build.47" cfg="item-filters" />
 			<file value="ftb-quests-forge-1802.3.12-build.157" cfg="ftb-quests" />
-		</mod>
-
-		<mod key="eds" name="Gobber">
-			<file value="Gobber2-Forge-1.18.2-2.6.37" cfg="gobber" />
 		</mod>
 
 		<mod key="nec" name="Not Enough Crashes">
