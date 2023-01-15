@@ -1,263 +1,263 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings >
-	<pack title="LZMP %v Launcher" version="7.0.2" launcher="Game\HMCL-3.5.3.exe"/>
+	<pack title="LZMP %v Launcher" version="7.0.3" launcher="Game\HMCL-3.5.3.exe"/>
 
 	<category name="Technology" >
 		<mod key="alc" name="Alchemistry" >
-			<file value="alchemylib-1.18.2-1.0.20" cfg="a-lib" />
-			<file value="chemlib-1.18.2-2.0.16" cfg="chemlib" />
-			<file value="alchemistry-1.18.2-2.2.1" cfg="alchemistry" />
+			<file value="alchemylib-1.18.2-1.0.20" cfg="alchemylib" id="293426" />
+			<file value="chemlib-1.18.2-2.0.16" cfg="chemlib" id="340666" />
+			<file value="alchemistry-1.18.2-2.2.1" cfg="alchemistry" id="293425" />
 		</mod>
 
 		<mod key="ae" name="Applied Energetics" >
-			<file value="appliedenergistics2-forge-11.7.0" cfg="applied-energistics-2" />
-			<file value="Applied-Mekanistics-1.2.2" cfg="applied-mekanistics" />
+			<file value="appliedenergistics2-forge-11.7.0" cfg="applied-energistics-2" id="223794" />
+			<file value="Applied-Mekanistics-1.2.2" cfg="applied-mekanistics" id="574300" />
 			<mod key="aet" name="AE2 Things">
-				<file value="AE2-Things-1.0.4" cfg="ae2-things-forge" />
+				<file value="AE2-Things-1.0.4" cfg="ae2-things-forge" id="609977" />
 			</mod>
 			<mod key="aew" name="AE2 Wireless Terminal">
-				<file value="AE2WTLib-11.6.3" cfg="applied-energistics-2-wireless-terminals" />
+				<file value="AE2WTLib-11.6.3" cfg="applied-energistics-2-wireless-terminals" id="459929" />
 			</mod>
 			<mod key="lae" name="Lazier AE2">
-				<file value="lazierae2-1.18.2-3.1.5" cfg="lazierae2" />
+				<file value="lazierae2-1.18.2-3.1.5" cfg="lazierae2" id="489843" />
 			</mod>
 		</mod>
 
 		<mod key="scf" name="BDLib">
-			<file value="ScalableCatsForce-2.13.10-build-12-with-library" cfg="scalable-cats-force" />
-			<file value="bdlib-1.19.3.7-mc1.18.2" cfg="bdlib" />
+			<file value="ScalableCatsForce-2.13.10-build-12-with-library" cfg="scalable-cats-force" id="320926" />
+			<file value="bdlib-1.19.3.7-mc1.18.2" cfg="bdlib" id="320926" />
 			<mod key="aem" name="Additional Enchanted Miner" >
-				<file value="AdditionalEnchantedMiner-1.18.2-18.16" cfg="additional-enchanted-miner" />
+				<file value="AdditionalEnchantedMiner-1.18.2-18.16" cfg="additional-enchanted-miner" id="282837" />
 			</mod>
 			<mod key="adv" name="Advanced Generators">
-				<file value="advgenerators-1.1.0.6-mc1.18.2" cfg="advanced-generators" />
+				<file value="advgenerators-1.1.0.6-mc1.18.2" cfg="advanced-generators" id="223622" />
 			</mod>
 			<mod key="pxy" name="Proxy" >
-				<file value="proxy-1.1.0.2-mc1.18.2" cfg="proxy" />
+				<file value="proxy-1.1.0.2-mc1.18.2" cfg="proxy" id="275548" />
 			</mod>
 		</mod>
 
 		<mod key="bye" name="Beyond Earth" >
-			<file value="Beyond-Earth-1.18.2-6.2" cfg="space-bosstools" />
-			<file value="Beyond-Earth-Giselle-Addon-1.18.2-2.20" cfg="space-bosstools-giselle-addon" />
+			<file value="Beyond-Earth-1.18.2-6.2" cfg="beyond-earth" id="377448" />
+			<file value="Beyond-Earth-Giselle-Addon-1.18.2-2.20" cfg="space-bosstools-giselle-addon" id="546554" />
 		</mod>
 
 		<mod key="bgr" name="Bigger Reactors" >
-			<file value="phosphophyllite-1.18.2-0.6.0-beta.1.5" cfg="phosphophyllite"/>
-			<file value="quartz-1.18.2-0.0.0-beta.1.3" cfg="quartz"/>
-			<file value="biggerreactors-1.18.2-0.6.0-beta.1.3" cfg="biggerreactors" />
+			<file value="phosphophyllite-1.18.2-0.6.0-beta.1.5" cfg="phosphophyllite" id="412551" />
+			<file value="quartz-1.18.2-0.0.0-beta.1.3" cfg="quartz" id="552262" />
+			<file value="biggerreactors-1.18.2-0.6.0-beta.1.3" cfg="biggerreactors" id="407780" />
 		</mod>
 
 		<mod key="btn" name="Botania">
-			<file value="Botania-1.18.2-435" cfg="botania" />
-			<file value="BotanicalMachinery-1.18.2-1.0.2" cfg="botanical-machinery" />
-			<file value="managear-1.18.2-2.2.4" cfg="mana-gear" />
+			<file value="Botania-1.18.2-435" cfg="botania" id="225643" />
+			<file value="BotanicalMachinery-1.18.2-1.0.2" cfg="botanical-machinery" id="395617" />
+			<file value="managear-1.18.2-2.2.4" cfg="mana-gear" id="374087" />
 		</mod>
 
 		<mod key="cpm" name="Compact Machines">
-			<file value="compactmachines-4.5.0" cfg="compact-machines" />
+			<file value="compactmachines-4.5.0" cfg="compact-machines" id="224218" />
 		</mod>
 
 		<mod key="crt" name="Create" >
-			<file value="flywheel-forge-1.18.2-0.6.8" cfg="flywheel" />
-			<file value="create-1.18.2-0.5.0.g" cfg="create" />
-			<file value="createaddition-1.18.2-20221219a" cfg="createaddition" />
-			<mod key="cpc" name="Compressed Creativity">
-				<file value="compressedcreativity-1.18.2-0.1.5" cfg="compressedcreativity" />
+			<file value="flywheel-forge-1.18.2-0.6.8" cfg="flywheel" id="486392" />
+			<file value="create-1.18.2-0.5.0.g" cfg="create" id="328085" />
+			<file value="createaddition-1.18.2-20221219a" cfg="createaddition" id="373450" />
+			<mod key="cpc" name="Compressed Creativity" >
+				<file value="compressedcreativity-1.18.2-0.1.5" cfg="compressedcreativity" id="549381" />
 			</mod>
 		</mod>
 
 		<mod key="cyc" name="Cyclic" >
-			<file value="Cyclic-1.18.2-1.7.13" cfg="cyclic" />
+			<file value="Cyclic-1.18.2-1.7.13" cfg="cyclic" id="239286" />
 		</mod>
 
 		<mod key="dep" name="Deep Resonance" >
-			<file value="deepresonance-1.18-3.0.17" cfg="deep-resonance" />
+			<file value="deepresonance-1.18-3.0.17" cfg="deep-resonance" id="233398" />
 		</mod>
 
 		<mod key="enc" name="Energy Control" >
-			<file value="EnergyControl-forge-1.18.2-0.2.6" cfg="energy-control" />
+			<file value="EnergyControl-forge-1.18.2-0.2.6" cfg="energy-control" id="373450" />
 		</mod>
 
 		<mod key="exn" name="Ex Nihilo" >
-			<file value="ExNihiloSequentia-1.18.2-20221113-044349" cfg="ex-nihilo-sequentia" />
-			<file value="ExNihiloMekanism-1.18.2-20220608-005057" cfg="ex-nihilo-sequentia-mekanism-addon" />
-			<file value="ExNihiloThermal-1.18.2-20220608-014416" cfg="ex-nihilo-sequentia-thermal-addon" />
-			<file value="exmachinis-1.18.2-1.0.3" cfg="ex-machinis" />
-			<mod key="exc" name="Ex Compressum">
-				<file value="excompressum-forge-1.18.2-5.0.3" cfg="ex-compressum" />
+			<file value="ExNihiloSequentia-1.18.2-20221113-044349" cfg="ex-nihilo-sequentia" id="400012" />
+			<file value="ExNihiloMekanism-1.18.2-20220608-005057" cfg="ex-nihilo-sequentia-mekanism-addon" id="430787" />
+			<file value="ExNihiloThermal-1.18.2-20220608-014416" cfg="ex-nihilo-sequentia-thermal-addon" id="445226" />
+			<file value="exmachinis-1.18.2-1.0.3" cfg="ex-machinis" id="631523" />
+			<mod key="exc" name="Ex Compressum" >
+				<file value="excompressum-forge-1.18.2-5.0.3" cfg="ex-compressum" id="241967" />
 			</mod>
-			<mod key="exna" name="Ex Naturae">
-				<file value="ExNaturae-1.18.2-2.0.0" cfg="ex-naturae" />
+			<mod key="exna" name="Ex Naturae" >
+				<file value="ExNaturae-1.18.2-2.0.0" cfg="ex-naturae" id="482122" />
 			</mod>
-			<mod key="exa" name="Ex Nihilo AE">
-				<file value="ExNihiloAE-1.18.2-20220607-014628" cfg="ex-nihilo-sequentia-ae2-addon" />
+			<mod key="exa" name="Ex Nihilo AE" >
+				<file value="ExNihiloAE-1.18.2-20220607-014628" cfg="ex-nihilo-sequentia-ae2-addon" id="428204" />
 			</mod>
-			<mod key="ext" name="Ex Nihilo Tinkers">
-				<file value="ExNihiloTinkers-1.18.2-20220711-043110" cfg="ex-nihilo-sequentia-tinkers-addon" />
+			<mod key="ext" name="Ex Nihilo Tinkers" >
+				<file value="ExNihiloTinkers-1.18.2-20220711-043110" cfg="ex-nihilo-sequentia-tinkers-addon" id="480856" />
 			</mod>
 		</mod>
 
 		<mod key="ftp" name="Futurepack" >
-			<file value="Futurepack-1.18.2-33.0.7482" cfg="futurepack" />
+			<file value="Futurepack-1.18.2-33.0.7482" cfg="futurepack" id="237333" />
 		</mod>
 
 		<mod key="ftic" name="FTB Industrial Contraptions" >
-			<file value="ftb-industrial-contraptions-1802.1.6-build.220" cfg="ftb-industrial-contraptions-forge" />
+			<file value="ftb-industrial-contraptions-1802.1.6-build.220" cfg="ftb-industrial-contraptions-forge" id="539097" />
 		</mod>
 
 		<mod key="itd" name="Integrated Dynamics" >
-			<file value="CyclopsCore-1.18.2-1.16.1" cfg="cyclops-core" />
-			<file value="CommonCapabilities-1.18.2-2.8.2" cfg="common-capabilities" />
-			<file value="IntegratedDynamics-1.18.2-1.12.4" cfg="integrated-dynamics" />
-			<file value="IntegratedTunnels-1.18.2-1.8.17" cfg="integrated-tunnels" />
-			<file value="IntegratedCrafting-1.18.2-1.0.25" cfg="integrated-crafting" />
-			<file value="IntegratedTerminals-1.18.2-1.4.3" cfg="integrated-terminals" />
-			<file value="integratednbt-1.18.2-1.5.1" cfg="integrated-nbt" />
+			<file value="CyclopsCore-1.18.2-1.16.1" cfg="cyclops-core" id="232758" />
+			<file value="CommonCapabilities-1.18.2-2.8.2" cfg="common-capabilities" id="247007" />
+			<file value="IntegratedDynamics-1.18.2-1.12.4" cfg="integrated-dynamics" id="236307" />
+			<file value="IntegratedTunnels-1.18.2-1.8.17" cfg="integrated-tunnels" id="251389" />
+			<file value="IntegratedCrafting-1.18.2-1.0.25" cfg="integrated-crafting" id="287357" />
+			<file value="IntegratedTerminals-1.18.2-1.4.3" cfg="integrated-terminals" id="295910" />
+			<file value="integratednbt-1.18.2-1.5.1" cfg="integrated-nbt" id="380998" />
 		</mod>
 
 		<mod key="mdr" name="Modular Routers" >
-			<file value="modular-routers-1.18.2-9.1.1-93" cfg="modular-routers" />
+			<file value="modular-routers-1.18.2-9.1.1-93" cfg="modular-routers" id="250294" />
 		</mod>
 
 		<mod key="ma" name="Mystical Agriculture" >
-			<file value="Cucumber-1.18.2-5.1.3" cfg="cucumber" />
-			<file value="MysticalAgriculture-1.18.2-5.1.2" cfg="mystical-agriculture" />
-			<file value="MysticalAgradditions-1.18.2-5.1.2" cfg="mystical-agradditions" />
+			<file value="Cucumber-1.18.2-5.1.3" cfg="cucumber" id="272335" />
+			<file value="MysticalAgriculture-1.18.2-5.1.2" cfg="mystical-agriculture" id="246640" />
+			<file value="MysticalAgradditions-1.18.2-5.1.2" cfg="mystical-agradditions" id="256247" />
 		</mod>
 
 		<mod key="pnc" name="Pneumatic Craft" >
-			<file value="pneumaticcraft-repressurized-1.18.2-3.5.0-17" cfg="pneumaticcraft-repressurized" />
+			<file value="pneumaticcraft-repressurized-1.18.2-3.5.0-17" cfg="pneumaticcraft-repressurized" id="281849" />
 		</mod>
 
 		<mod key="pwh" name="Powah" >
-			<file value="Powah-3.0.7" cfg="powah-rearchitected" />
+			<file value="Powah-3.0.7" cfg="powah-rearchitected" id="633483" />
 		</mod>
 
 		<mod key="rs" name="Refined Storage" >
-			<file value="refinedstorage-1.10.4" cfg="refined-storage" />
-			<file value="refinedstorageaddons-0.8.2" cfg="refined-storage-addons" />
+			<file value="refinedstorage-1.10.4" cfg="refined-storage" id="243076" />
+			<file value="refinedstorageaddons-0.8.2" cfg="refined-storage-addons" id="272302" />
 			<mod key="cbt" name="Cable Tiers" >
-				<file value="cabletiers-1.18.2-0.547" cfg="cable-tiers" />
+				<file value="cabletiers-1.18.2-0.547" cfg="cable-tiers" id="454382" />
 			</mod>
 			<mod key="exd" name="Extra Disks" >
-				<file value="ExtraDisks-1.18.2-2.1.0" cfg="extra-disks" />
+				<file value="ExtraDisks-1.18.2-2.1.0" cfg="extra-disks" id="351491" />
 			</mod>
 			<mod key="rsq" name="RS Questify" >
-				<file value="rsrequestify-2.2.0" cfg="rs-requestify" />
+				<file value="rsrequestify-2.2.0" cfg="rs-requestify" id="307788" />
 			</mod>
 		</mod>
 
 		<mod key="rft" name="RFTools" >
-			<file value="rftoolsbase-1.18-3.0.11" cfg="rftools-base" />
-			<file value="rftoolsbuilder-1.18-4.1.1" cfg="rftools-builder" />
-			<file value="rftoolscontrol-1.18-5.0.8" cfg="rftools-control" />
-			<file value="rftoolspower-1.18-4.0.9" cfg="rftools-power" />
-			<file value="rftoolsstorage-1.18-3.0.12" cfg="rftools-storage" />
-			<file value="rftoolsutility-1.18-4.0.21" cfg="rftools-utility" />
-			<file value="rftoolsdim-1.18-8.0.9" cfg="rftools-dimensions" />
+			<file value="rftoolsbase-1.18-3.0.11" cfg="rftools-base" id="326041" />
+			<file value="rftoolsbuilder-1.18-4.1.1" cfg="rftools-builder" id="347706" />
+			<file value="rftoolscontrol-1.18-5.0.8" cfg="rftools-control" id="250763" />
+			<file value="rftoolspower-1.18-4.0.9" cfg="rftools-power" id="290209" />
+			<file value="rftoolsstorage-1.18-3.0.12" cfg="rftools-storage" id="350006" />
+			<file value="rftoolsutility-1.18-4.0.21" cfg="rftools-utility" id="342466" />
+			<file value="rftoolsdim-1.18-8.0.9" cfg="rftools-dimensions" id="240950" />
 			<mod key="xn" name="XNet" >
-				<file value="xnet-1.18-4.0.7" cfg="xnet" />
-				<file value="XNetGases-1.18.2-3.0.1" cfg="xnet-gases" />
+				<file value="xnet-1.18-4.0.7" cfg="xnet" id="260912" />
+				<file value="XNetGases-1.18.2-3.0.1" cfg="xnet-gases" id="383182" />
 			</mod>
 		</mod>
 	</category>
 
 	<category name="Decoration and Adventure" >
 		<mod key="bop" name="Biomes O Plenty" >
-			<file value="TerraBlender-forge-1.18.2-1.2.0.126" cfg="terrablender" />
-			<file value="BiomesOPlenty-1.18.2-16.0.0.109-universal" cfg="biomes-o-plenty" />
+			<file value="TerraBlender-forge-1.18.2-1.2.0.126" cfg="terrablender" id="563928" />
+			<file value="BiomesOPlenty-1.18.2-16.0.0.109-universal" cfg="biomes-o-plenty" id="220318" />
 		</mod>
 
 		<mod key="edc" name="Engineers Mods" >
-			<file value="engineersdecor-1.18.2-1.1.28" cfg="engineers-decor" />
-			<file value="wilescollection-1.18.2-1.1.1-b7" cfg="wiles-collection" />
+			<file value="engineersdecor-1.18.2-1.1.28" cfg="engineers-decor" id="313866" />
+			<file value="wilescollection-1.18.2-1.1.1-b7" cfg="wiles-collection" id="485960" />
 		</mod>
 
 		<mod key="fur" name="MrCrayfish's Furniture" >
-			<file value="cfm-7.0.0-pre29-1.18.2" cfg="mrcrayfish-furniture-mod" />
+			<file value="cfm-7.0.0-pre29-1.18.2" cfg="mrcrayfish-furniture-mod" id="55438" />
 		</mod>
 
 		<mod key="sss" name="Serene Seasons" >
-			<file value="Serene+Seasons-1.18.2-7.0.0.13" cfg="serene-seasons" />
+			<file value="Serene+Seasons-1.18.2-7.0.0.13" cfg="serene-seasons" id="291874" />
 		</mod>
 
 		<mod key="twi" name="Twilight Forest" >
-			<file value="twilightforest-1.18.2-4.1.1423-universal" cfg="the-twilight-forest" />
+			<file value="twilightforest-1.18.2-4.1.1423-universal" cfg="the-twilight-forest" id="227639" />
 		</mod>
 	</category>
 
 	<category name="Food" >
 		<mod key="aps" name="Apple Skin" >
-			<file value="appleskin-forge-mc1.18.2-2.4.1" cfg="appleskin" />
+			<file value="appleskin-forge-mc1.18.2-2.4.1" cfg="appleskin" id="248787" />
 		</mod>
 
 		<mod key="cfb" name="Cooking for Blockheads" >
-			<file value="cookingforblockheads-forge-1.18.2-12.2.0" cfg="cooking-for-blockheads" />
+			<file value="cookingforblockheads-forge-1.18.2-12.2.0" cfg="cooking-for-blockheads" id="231484" />
 		</mod>
 
 		<mod key="fmd" name="Farmers Delight" >
-			<file value="FarmersDelight-1.18.2-1.2.0" cfg="farmers-delight" />
+			<file value="FarmersDelight-1.18.2-1.2.0" cfg="farmers-delight" id="398521" />
 		</mod>
 
 		<mod key="pam" name="Pam's HarvestCraft" >
-			<file value="pamhc2foodcore-1.18.2-1.0.3" cfg="pams-harvestcraft-2-food-core" />
-			<file value="pamhc2crops-1.18.2-1.0.5" cfg="pams-harvestcraft-2-crops" />
-			<file value="pamhc2trees-1.18.2-1.0.3" cfg="pams-harvestcraft-2-trees" />
-			<file value="pamhc2foodextended-1.18.2-1.0.5" cfg="pams-harvestcraft-2-food-extended" />
+			<file value="pamhc2foodcore-1.18.2-1.0.3" cfg="pams-harvestcraft-2-food-core" id="372534" />
+			<file value="pamhc2crops-1.18.2-1.0.5" cfg="pams-harvestcraft-2-crops" id="361385" />
+			<file value="pamhc2trees-1.18.2-1.0.3" cfg="pams-harvestcraft-2-trees" id="365460" />
+			<file value="pamhc2foodextended-1.18.2-1.0.5" cfg="pams-harvestcraft-2-food-extended" id="402231" />
 		</mod>
 	</category>
 
 	<category name="Miscellaneous" >
 		<mod key="cnt" name="Connectivity" >
-			<file value="connectivity-1.18.2-3.2" cfg="connectivity" />
+			<file value="connectivity-1.18.2-3.2" cfg="connectivity" id="470193" />
 		</mod>
 
 		<mod key="ct" name="Craft Tweaker" >
-			<file value="JEITweaker-1.18.2-3.0.0.9" cfg="jeitweaker" />
-			<file value="CraftTweaker-forge-1.18.2-9.1.198" cfg="crafttweaker" />
+			<file value="JEITweaker-1.18.2-3.0.0.9" cfg="jeitweaker" id="368718" />
+			<file value="CraftTweaker-forge-1.18.2-9.1.198" cfg="crafttweaker" id="239197" />
 		</mod>
 
 		<mod key="cdc" name="Crafting Dead" >
-			<file value="crafting-dead-core-1.18.2-1.7.6.378" cfg="crafting-dead" />
+			<file value="crafting-dead-core-1.18.2-1.7.6.378" cfg="crafting-dead" id="417550" />
 			<mod key="cds" name="Crafting Dead Survival" >
-				<file value="crafting-dead-survival-1.18.2-1.1.9.378" cfg="crafting-dead-survival" />
+				<file value="crafting-dead-survival-1.18.2-1.1.9.378" cfg="crafting-dead-survival" id="471033" />
 			</mod>
 		</mod>
 
 		<mod key="cgm" name="Crayfish Gun Mod" >
-			<file value="framework-0.4.2-1.18.2" cfg="framework" />
-			<file value="cgm-1.2.7-1.18.2" cfg="mrcrayfishs-gun-mod" />
+			<file value="framework-0.4.2-1.18.2" cfg="framework" id="549225" />
+			<file value="cgm-1.2.7-1.18.2" cfg="mrcrayfishs-gun-mod" id="289479" />
 		</mod>
 
 		<mod key="fq" name="FTB Quests" >
-			<file value="item-filters-forge-1802.2.8-build.47" cfg="item-filters" />
-			<file value="ftb-quests-forge-1802.3.12-build.157" cfg="ftb-quests" />
+			<file value="item-filters-forge-1802.2.8-build.47" cfg="item-filters" id="309674" />
+			<file value="ftb-quests-forge-1802.3.12-build.157" cfg="ftb-quests" id="289412" />
 		</mod>
 
 		<mod key="nec" name="Not Enough Crashes">
-			<file value="notenoughcrashes-4.2.0+1.18.2-forge" cfg="not-enough-crashes-forge" />
+			<file value="notenoughcrashes-4.2.0+1.18.2-forge" cfg="not-enough-crashes-forge" id="442354" />
 		</mod>
 
 		<mod key="pe" name="ProjectE" >
-			<file value="ProjectE-1.18.2-PE1.0.1" cfg="projecte" />
+			<file value="ProjectE-1.18.2-PE1.0.1" cfg="projecte" id="226410" />
 		</mod>
 
 		<mod key="sec" name="Security Craft" >
-			<file value="[1.18.2]+SecurityCraft+v1.9.5" cfg="security-craft" />
+			<file value="[1.18.2]+SecurityCraft+v1.9.5" cfg="security-craft" id="64760" />
 		</mod>
 
 		<mod key="sp" name="Simple Planes" >
-			<file value="simpleplanes-1.18.2-4.15.0" cfg="simple-planes" />
+			<file value="simpleplanes-1.18.2-4.15.0" cfg="simple-planes" id="442354" />
 		</mod>
 
 		<mod key="stl" name="Starlight" >
-			<file value="starlight-1.0.2+forge.546ae87" cfg="starlight-forge" />
+			<file value="starlight-1.0.2+forge.546ae87" cfg="starlight-forge" id="526854" />
 		</mod>
 
 		<mod key="tic" name="Tinker's Construct" >
-			<file value="Mantle-1.18.2-1.9.31" cfg="mantle" />
-			<file value="TConstruct-1.18.2-3.5.3.63" cfg="tinkers-construct" />
+			<file value="Mantle-1.18.2-1.9.31" cfg="mantle" id="74924" />
+			<file value="TConstruct-1.18.2-3.5.3.63" cfg="tinkers-construct" id="74072" />
 		</mod>
 	</category>
 </settings>

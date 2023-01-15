@@ -1,51 +1,53 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:element name="settings">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element name="pack">
-          <xs:complexType>
-            <xs:attribute name="title" type="xs:string" use="required" />
-            <xs:attribute name="version" type="xs:string" use="required" />
-            <xs:attribute name="launcher" type="xs:string" use="required" />
-          </xs:complexType>
-        </xs:element>
-        <xs:element maxOccurs="unbounded" name="category">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element maxOccurs="unbounded" name="mod">
-                <xs:complexType>
-                  <xs:sequence>
-                    <xs:element maxOccurs="unbounded" name="file">
-                      <xs:complexType>
-                        <xs:attribute name="value" type="xs:string" use="required" />
-                        <xs:attribute name="cfg" type="xs:string" />
-                      </xs:complexType>
-                    </xs:element>
-                    <xs:element minOccurs="0" maxOccurs="unbounded" name="mod">
-                      <xs:complexType>
-                        <xs:sequence>
-                          <xs:element name="file">
-                            <xs:complexType>
-                              <xs:attribute name="value" type="xs:string" use="required" />
-                              <xs:attribute name="cfg" type="xs:string" />
-                            </xs:complexType>
-                          </xs:element>
-                        </xs:sequence>
-                        <xs:attribute name="key" type="xs:string" use="required" />
-                        <xs:attribute name="name" type="xs:string" use="required" />
-                      </xs:complexType>
-                    </xs:element>
-                  </xs:sequence>
-                  <xs:attribute name="key" type="xs:string" use="required" />
-                  <xs:attribute name="name" type="xs:string" use="required" />
-                </xs:complexType>
-              </xs:element>
-            </xs:sequence>
-            <xs:attribute name="name" type="xs:string" use="required" />
-          </xs:complexType>
-        </xs:element>
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
+	<xs:element name="settings">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="pack">
+					<xs:complexType>
+						<xs:attribute name="title" type="xs:string" use="required" />
+						<xs:attribute name="version" type="xs:string" use="required" />
+						<xs:attribute name="launcher" type="xs:string" use="required" />
+					</xs:complexType>
+				</xs:element>
+				<xs:element maxOccurs="unbounded" name="category">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element maxOccurs="unbounded" name="mod">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element maxOccurs="unbounded" name="file">
+											<xs:complexType>
+												<xs:attribute name="value" type="xs:string" use="required" />
+												<xs:attribute name="cfg" type="xs:string" />
+												<xs:attribute name="id" type="xs:string" />
+											</xs:complexType>
+										</xs:element>
+										<xs:element minOccurs="0" maxOccurs="unbounded" name="mod">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element maxOccurs="unbounded" name="file">
+														<xs:complexType>
+															<xs:attribute name="value" type="xs:string" use="required" />
+															<xs:attribute name="cfg" type="xs:string" />
+															<xs:attribute name="id" type="xs:string" />
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+												<xs:attribute name="key" type="xs:string" use="required" />
+												<xs:attribute name="name" type="xs:string" use="required" />
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="key" type="xs:string" use="required" />
+									<xs:attribute name="name" type="xs:string" use="required" />
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="name" type="xs:string" use="required" />
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
 </xs:schema>
