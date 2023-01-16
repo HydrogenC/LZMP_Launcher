@@ -66,7 +66,7 @@ namespace LauncherCore
                 }
                 catch (Exception e)
                 {
-                    SharedData.DisplayMessage("An error occured while installing: " + Name + "\nDetails: \n" + e.ToString(), "Error", MessageType.Error);
+                    SharedData.LogMessage("An error occured while installing: " + Name + "\nDetails: \n" + e.ToString(), "Error", MessageType.Error);
                     return;
                 }
             }
@@ -82,7 +82,7 @@ namespace LauncherCore
                 }
                 catch (Exception e)
                 {
-                    SharedData.DisplayMessage("An error occured while uninstalling: " + Name + "\nDetails: \n" + e.ToString(), "Error", MessageType.Error);
+                    SharedData.LogMessage("An error occured while uninstalling: " + Name + "\nDetails: \n" + e.ToString(), "Error", MessageType.Error);
                     return;
                 }
             }

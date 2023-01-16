@@ -65,7 +65,7 @@ namespace LauncherWPF
         public ModernUI()
         {
             InitializeComponent();
-            SharedData.DisplayMessage = (string content, string caption, MessageType type) =>
+            SharedData.LogMessage = (string content, string caption, MessageType type) =>
             {
                 MessageBoxButton btn = MessageBoxButton.OK;
                 MessageBoxImage icn = MessageBoxImage.None;
@@ -255,7 +255,7 @@ namespace LauncherWPF
             }
             catch (Exception ex)
             {
-                SharedData.DisplayMessage("Refresh failed: \n" + ex.Message, "Error", MessageType.Error);
+                SharedData.LogMessage("Refresh failed: \n" + ex.Message, "Error", MessageType.Error);
                 return;
             }
 
@@ -269,7 +269,7 @@ namespace LauncherWPF
         {
             if (MainListBox.SelectedItem == null || (!(MainListBox.SelectedItem is EditableObject)))
             {
-                SharedData.DisplayMessage("You should select an item in the list to operate. ", "Info", MessageType.Info);
+                SharedData.LogMessage("You should select an item in the list to operate. ", "Info", MessageType.Info);
                 return false;
             }
             return true;
@@ -287,7 +287,7 @@ namespace LauncherWPF
                 return;
             }
 
-            if (SharedData.DisplayMessage("Are you sure to delete, you cannot revert this! ", "Warning", MessageType.YesNoQuestion) == MessageResult.Yes)
+            if (SharedData.LogMessage("Are you sure to delete, you cannot revert this! ", "Warning", MessageType.YesNoQuestion) == MessageResult.Yes)
             {
                 EditableObject editable = MainListBox.SelectedItem as EditableObject;
                 editable.Delete();

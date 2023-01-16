@@ -64,7 +64,7 @@ namespace LauncherCore
             {
                 if (File.Exists(destDir + "\\level.dat"))
                 {
-                    MessageResult result = SharedData.DisplayMessage("Destination directory already exists, do you wish to override it? Choose OK to override it, choose Cancel to cancel the current operation. ", "Prompt", MessageType.OKCancelQuestion);
+                    MessageResult result = SharedData.LogMessage("Destination directory already exists, do you wish to override it? Choose OK to override it, choose Cancel to cancel the current operation. ", "Prompt", MessageType.OKCancelQuestion);
                     switch (result)
                     {
                         case MessageResult.Cancel:
@@ -83,7 +83,7 @@ namespace LauncherCore
             CurrentProgress.status = "Importing Map";
             Core.CopyDirectory(tmpDir + "save", destDir);
 
-            if (SharedData.DisplayMessage("Do you wish to override the current modset with the map's? ", "Question", MessageType.YesNoQuestion) == MessageResult.Yes)
+            if (SharedData.LogMessage("Do you wish to override the current modset with the map's? ", "Question", MessageType.YesNoQuestion) == MessageResult.Yes)
             {
                 Modset tmp = new Modset(tmpDir + "Set.xml");
                 tmp.Apply();

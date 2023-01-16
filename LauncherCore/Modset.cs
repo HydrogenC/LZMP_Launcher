@@ -90,7 +90,7 @@ namespace LauncherCore
                         {
                             if (versionConforms)
                             {
-                                SharedData.DisplayMessage("Key not found: " + addonKey + " \nSetting file might be broken! ", "Error", MessageType.Error);
+                                SharedData.LogMessage("Key not found: " + addonKey + " \nSetting file might be broken! ", "Error", MessageType.Error);
                             }
                             else
                             {
@@ -103,7 +103,7 @@ namespace LauncherCore
                 {
                     if (versionConforms)
                     {
-                        SharedData.DisplayMessage("Key not found: " + key + " \nSetting file might be broken! ", "Error", MessageType.Error);
+                        SharedData.LogMessage("Key not found: " + key + " \nSetting file might be broken! ", "Error", MessageType.Error);
                     }
                     else
                     {
@@ -116,11 +116,11 @@ namespace LauncherCore
             {
                 if (versionConforms)
                 {
-                    SharedData.DisplayMessage("Finished! ", "Information", MessageType.Info);
+                    SharedData.LogMessage("Finished! ", "Information", MessageType.Info);
                 }
                 else
                 {
-                    SharedData.DisplayMessage("Finished! \nSkipped " + skip + " unidentified keys. ", "Information", MessageType.Info);
+                    SharedData.LogMessage("Finished! \nSkipped " + skip + " unidentified keys. ", "Information", MessageType.Info);
                 }
             }
 

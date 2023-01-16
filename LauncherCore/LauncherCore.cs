@@ -26,9 +26,9 @@ namespace LauncherCore
 
     public struct SharedData
     {
-        public static string Version, Title, LauncherPath;
+        public static string Version, Title, LauncherPath, MinecraftVersion;
         public static Dictionary<string, Mod> Mods = new Dictionary<string, Mod>();
-        public static Func<string, string, MessageType, MessageResult> DisplayMessage;
+        public static Func<string, string, MessageType, MessageResult> LogMessage;
 
         public static string WorkingPath = Directory.GetCurrentDirectory();
 
@@ -171,8 +171,8 @@ namespace LauncherCore
                     if (j.Value.Files.Contains(Path.GetFileNameWithoutExtension(i)))
                     {
                         used = true;
-                        break;
                     }
+
                     if (used)
                     {
                         break;
@@ -188,14 +188,14 @@ namespace LauncherCore
                     }
                     catch (Exception)
                     {
-                        SharedData.DisplayMessage("An error occured while cleaning! ", "Error", MessageType.Error);
+                        SharedData.LogMessage("An error occured while cleaning! ", "Error", MessageType.Error);
                     }
                 }
             }
 
             if (!string.IsNullOrEmpty(msg))
             {
-                SharedData.DisplayMessage("Deleted unused files: " + msg, "Info", MessageType.Info);
+                SharedData.LogMessage("Deleted unused files: " + msg, "Info", MessageType.Info);
             }
         }
 
@@ -270,7 +270,7 @@ namespace LauncherCore
             }
             if (!string.IsNullOrEmpty(msg))
             {
-                SharedData.DisplayMessage("Source files of these mods cannot be found: " + msg, "Warning", MessageType.Warning);
+                SharedData.LogMessage("Source files of these mods cannot be found: " + msg, "Warning", MessageType.Warning);
             }
         }
 
@@ -284,7 +284,7 @@ namespace LauncherCore
             }
             catch (Exception)
             {
-                SharedData.DisplayMessage("An error occurred while launching, the launcher could have been missing! ", "Error", MessageType.Error);
+                SharedData.LogMessage("An error occurred while launching, the launcher could have been missing! ", "Error", MessageType.Error);
             }
         }
     }

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings >
-	<pack title="LZMP %v Launcher" version="7.0.3" launcher="Game\HMCL-3.5.3.exe"/>
+	<pack title="LZMP %v Launcher" mcversion="1.18.2" version="7.0.3" launcher="Game\HMCL-3.5.3.exe"/>
 
 	<category name="Technology" >
 		<mod key="alc" name="Alchemistry" >
@@ -23,9 +23,9 @@
 			</mod>
 		</mod>
 
-		<mod key="scf" name="BDLib">
+		<mod key="scf" name="BDLib" >
 			<file value="ScalableCatsForce-2.13.10-build-12-with-library" cfg="scalable-cats-force" id="320926" />
-			<file value="bdlib-1.19.3.7-mc1.18.2" cfg="bdlib" id="320926" />
+			<file value="bdlib-1.19.3.7-mc1.18.2" cfg="bdlib" id="70496" />
 			<mod key="aem" name="Additional Enchanted Miner" >
 				<file value="AdditionalEnchantedMiner-1.18.2-18.16" cfg="additional-enchanted-miner" id="282837" />
 			</mod>
@@ -59,9 +59,9 @@
 		</mod>
 
 		<mod key="crt" name="Create" >
-			<file value="flywheel-forge-1.18.2-0.6.8" cfg="flywheel" id="486392" />
-			<file value="create-1.18.2-0.5.0.g" cfg="create" id="328085" />
-			<file value="createaddition-1.18.2-20221219a" cfg="createaddition" id="373450" />
+			<file value="flywheel-forge-1.18.2-0.6.8.a" cfg="flywheel" id="486392" />
+			<file value="create-1.18.2-0.5.0.h" cfg="create" id="328085" />
+			<file value="createaddition-1.18.2-20221219a" cfg="createaddition" id="439890" />
 			<mod key="cpc" name="Compressed Creativity" >
 				<file value="compressedcreativity-1.18.2-0.1.5" cfg="compressedcreativity" id="549381" />
 			</mod>
@@ -83,7 +83,7 @@
 			<file value="ExNihiloSequentia-1.18.2-20221113-044349" cfg="ex-nihilo-sequentia" id="400012" />
 			<file value="ExNihiloMekanism-1.18.2-20220608-005057" cfg="ex-nihilo-sequentia-mekanism-addon" id="430787" />
 			<file value="ExNihiloThermal-1.18.2-20220608-014416" cfg="ex-nihilo-sequentia-thermal-addon" id="445226" />
-			<file value="exmachinis-1.18.2-1.0.3" cfg="ex-machinis" id="631523" />
+			<file value="exmachinis-1.18.2-1.1.0" cfg="ex-machinis" id="631523" />
 			<mod key="exc" name="Ex Compressum" >
 				<file value="excompressum-forge-1.18.2-5.0.3" cfg="ex-compressum" id="241967" />
 			</mod>
@@ -166,7 +166,7 @@
 	<category name="Decoration and Adventure" >
 		<mod key="bop" name="Biomes O Plenty" >
 			<file value="TerraBlender-forge-1.18.2-1.2.0.126" cfg="terrablender" id="563928" />
-			<file value="BiomesOPlenty-1.18.2-16.0.0.109-universal" cfg="biomes-o-plenty" id="220318" />
+			<file value="BiomesOPlenty-1.18.2-16.0.0.134" cfg="biomes-o-plenty" id="220318" />
 		</mod>
 
 		<mod key="edc" name="Engineers Mods" >
@@ -179,11 +179,11 @@
 		</mod>
 
 		<mod key="sss" name="Serene Seasons" >
-			<file value="Serene+Seasons-1.18.2-7.0.0.13" cfg="serene-seasons" id="291874" />
+			<file value="SereneSeasons-1.18.2-7.0.0.15" cfg="serene-seasons" id="291874" />
 		</mod>
 
 		<mod key="twi" name="Twilight Forest" >
-			<file value="twilightforest-1.18.2-4.1.1423-universal" cfg="the-twilight-forest" id="227639" />
+			<file value="twilightforest-1.18.2-4.1.1494-universal" cfg="the-twilight-forest" id="227639" />
 		</mod>
 	</category>
 
@@ -227,7 +227,7 @@
 
 		<mod key="cgm" name="Crayfish Gun Mod" >
 			<file value="framework-0.4.2-1.18.2" cfg="framework" id="549225" />
-			<file value="cgm-1.2.7-1.18.2" cfg="mrcrayfishs-gun-mod" id="289479" />
+			<file value="cgm-1.3.2-1.18.2" cfg="mrcrayfishs-gun-mod" id="289479" />
 		</mod>
 
 		<mod key="fq" name="FTB Quests" >
@@ -248,7 +248,7 @@
 		</mod>
 
 		<mod key="sp" name="Simple Planes" >
-			<file value="simpleplanes-1.18.2-4.15.0" cfg="simple-planes" id="442354" />
+			<file value="simpleplanes-1.18.2-5.1.2" cfg="simple-planes" id="388908" />
 		</mod>
 
 		<mod key="stl" name="Starlight" >
@@ -257,7 +257,7 @@
 
 		<mod key="tic" name="Tinker's Construct" >
 			<file value="Mantle-1.18.2-1.9.31" cfg="mantle" id="74924" />
-			<file value="TConstruct-1.18.2-3.5.3.63" cfg="tinkers-construct" id="74072" />
+			<file value="TConstruct-1.18.2-3.6.0.73" cfg="tinkers-construct" id="74072" />
 		</mod>
 	</category>
 </settings>

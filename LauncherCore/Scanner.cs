@@ -56,14 +56,19 @@ namespace LauncherCore
             return modsets.ToArray();
         }
 
-        public static (string, string)[] ScanCurseforgeLinks(string xmlFile)
+        public static FileEntryData[] GetFileEntries(string xmlFile)
         {
-            List<(string, string)> lst = new List<(string, string)>();
-            XmlDocument xml = new XmlDocument();
+            List<FileEntryData> lst = new();
+            XmlDocument xml = new();
             xml.Load(xmlFile);
             foreach (XmlElement i in xml.GetElementsByTagName("file"))
             {
-                lst.Add((i.GetAttribute("value"), i.GetAttribute("cfg")));
+                lst.Add(new FileEntryData
+                {
+                    FileName = i.GetAttribute("value"),
+                    CurseforgeKey = i.GetAttribute("cfg"),
+                    CurseforgeId = i.GetAttribute("id"),
+                });
             }
             return lst.ToArray();
         }
@@ -90,7 +95,7 @@ namespace LauncherCore
         {
             if (!File.Exists(xmlFile))
             {
-                SharedData.DisplayMessage("Settings file not found! ", "Error", MessageType.Error);
+                SharedData.LogMessage("Settings file not found! ", "Error", MessageType.Error);
                 return;
             }
 
@@ -99,6 +104,7 @@ namespace LauncherCore
             XmlElement packElement = GetElementByTagName(ref xml, "pack");
             SharedData.LauncherPath = SharedData.WorkingPath + "\\" + packElement.GetAttribute("launcher");
             SharedData.Version = packElement.GetAttribute("version");
+            SharedData.MinecraftVersion = packElement.GetAttribute("mcversion");
             SharedData.Title = packElement.GetAttribute("title").Replace("%v", SharedData.Version);
 
             foreach (XmlElement element in xml.GetElementsByTagName("category"))
