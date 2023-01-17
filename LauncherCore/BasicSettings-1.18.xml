@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings >
-	<pack title="LZMP %v Launcher" mcversion="1.18.2" version="7.0.3" launcher="Game\HMCL-3.5.3.exe"/>
+	<pack title="LZMP %v Launcher" mcversion="1.18.2" version="7.0.4" launcher="Game\HMCL-3.5.3.exe"/>
 
 	<category name="Technology" >
 		<mod key="alc" name="Alchemistry" >
@@ -64,6 +64,9 @@
 			<file value="createaddition-1.18.2-20221219a" cfg="createaddition" id="439890" />
 			<mod key="cpc" name="Compressed Creativity" >
 				<file value="compressedcreativity-1.18.2-0.1.5" cfg="compressedcreativity" id="549381" />
+			</mod>
+			<mod key="coc" name="Create Ore Excavation" >
+				<file value="createoreexcavation-0.3.2" cfg="create-ore-excavation" id="649832" />
 			</mod>
 		</mod>
 
@@ -209,6 +212,16 @@
 	</category>
 
 	<category name="Miscellaneous" >
+		<mod key="ars" name="Ars Nouveau" >
+			<file value="ars_nouveau-1.18.2-2.8.0" cfg="ars-nouveau" id="401955" />
+			<mod key="arsc" name="Ars Creo" >
+				<file value="ars_creo-1.18.2-2.1.4" cfg="ars-creo" id="575698" />
+			</mod>
+			<mod key="arso" name="Ars Omega" >
+				<file value="arsomega-2.7.1" cfg="ars-omega" id="597007" />
+			</mod>
+		</mod>
+		
 		<mod key="cnt" name="Connectivity" >
 			<file value="connectivity-1.18.2-3.2" cfg="connectivity" id="470193" />
 		</mod>
