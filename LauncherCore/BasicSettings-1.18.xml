@@ -151,14 +151,16 @@
 			</mod>
 		</mod>
 
-		<mod key="rft" name="RFTools" >
+		<mod key="rft" name="RFTools Base" >
 			<file value="rftoolsbase-1.18-3.0.11" cfg="rftools-base" id="326041" />
-			<file value="rftoolsbuilder-1.18-4.1.1" cfg="rftools-builder" id="347706" />
-			<file value="rftoolscontrol-1.18-5.0.8" cfg="rftools-control" id="250763" />
-			<file value="rftoolspower-1.18-4.0.9" cfg="rftools-power" id="290209" />
-			<file value="rftoolsstorage-1.18-3.0.12" cfg="rftools-storage" id="350006" />
-			<file value="rftoolsutility-1.18-4.0.21" cfg="rftools-utility" id="342466" />
-			<file value="rftoolsdim-1.18-8.0.9" cfg="rftools-dimensions" id="240950" />
+			<mod key="rftm" name="RFTools Modules" >
+				<file value="rftoolsbuilder-1.18-4.1.1" cfg="rftools-builder" id="347706" />
+				<file value="rftoolscontrol-1.18-5.0.8" cfg="rftools-control" id="250763" />
+				<file value="rftoolspower-1.18-4.0.9" cfg="rftools-power" id="290209" />
+				<file value="rftoolsstorage-1.18-3.0.12" cfg="rftools-storage" id="350006" />
+				<file value="rftoolsutility-1.18-4.0.21" cfg="rftools-utility" id="342466" />
+				<file value="rftoolsdim-1.18-8.0.9" cfg="rftools-dimensions" id="240950" />
+			</mod>
 			<mod key="xn" name="XNet" >
 				<file value="xnet-1.18-4.0.7" cfg="xnet" id="260912" />
 				<file value="XNetGases-1.18.2-3.0.1" cfg="xnet-gases" id="383182" />
@@ -172,9 +174,8 @@
 			<file value="BiomesOPlenty-1.18.2-16.0.0.134" cfg="biomes-o-plenty" id="220318" />
 		</mod>
 
-		<mod key="edc" name="Engineers Mods" >
+		<mod key="edc" name="Engineers Decoration" >
 			<file value="engineersdecor-1.18.2-1.1.28" cfg="engineers-decor" id="313866" />
-			<file value="wilescollection-1.18.2-1.1.1-b7" cfg="wiles-collection" id="485960" />
 		</mod>
 
 		<mod key="fur" name="MrCrayfish's Furniture" >
@@ -209,6 +210,10 @@
 			<file value="pamhc2trees-1.18.2-1.0.3" cfg="pams-harvestcraft-2-trees" id="365460" />
 			<file value="pamhc2foodextended-1.18.2-1.0.5" cfg="pams-harvestcraft-2-food-extended" id="402231" />
 		</mod>
+
+		<mod key="sol" name="Spice of Life" >
+			<file value="solsweetpotato-1.18.2-2.0.0" cfg="spice-of-life-sweet-potato-edition" id="643106" />
+		</mod>
 	</category>
 
 	<category name="Miscellaneous" >
@@ -221,7 +226,7 @@
 				<file value="arsomega-2.7.1" cfg="ars-omega" id="597007" />
 			</mod>
 		</mod>
-		
+
 		<mod key="cnt" name="Connectivity" >
 			<file value="connectivity-1.18.2-3.2" cfg="connectivity" id="470193" />
 		</mod>
@@ -240,7 +245,17 @@
 
 		<mod key="cgm" name="Crayfish Gun Mod" >
 			<file value="framework-0.4.2-1.18.2" cfg="framework" id="549225" />
-			<file value="cgm-1.3.2-1.18.2" cfg="mrcrayfishs-gun-mod" id="289479" />
+			<file value="cgm-1.3.3-1.18.2" cfg="mrcrayfishs-gun-mod" id="289479" />
+			<mod key="addg" name="Additional Guns" >
+				<file value="additional-guns-0.8.1-1.18.2" cfg="additional-guns" id="501214" />
+				<file value="projectarsenal-0.2.1-1.18.2" cfg="project-arsenal" id="683122" />
+			</mod>
+			<mod key="apex" name="Apex Guns" >
+				<file value="ApexGunAddon-1.18.2-0.0.1" cfg="apex-guns" id="654129" />
+			</mod>
+			<mod key="smg" name="Stabx Modern Guns" >
+				<file value="Stabx_Modern_Guns_3.2_1.18.2" cfg="stabx-modern-guns" id="690674" />
+			</mod>
 		</mod>
 
 		<mod key="fq" name="FTB Quests" >
