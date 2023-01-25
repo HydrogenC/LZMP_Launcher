@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings >
-	<pack title="LZMP %v Launcher" mcversion="1.18.2" version="7.0.4" launcher="Game\HMCL-3.5.3.exe"/>
+	<pack title="LZMP %v Launcher" mcversion="1.18.2" version="7.0.5" launcher="Game\HMCL-3.5.3.exe"/>
 
 	<category name="Technology" >
 		<mod key="alc" name="Alchemistry" >
@@ -110,9 +110,9 @@
 		</mod>
 
 		<mod key="itd" name="Integrated Dynamics" >
-			<file value="CyclopsCore-1.18.2-1.16.1" cfg="cyclops-core" id="232758" />
+			<file value="CyclopsCore-1.18.2-1.16.2" cfg="cyclops-core" id="232758" />
 			<file value="CommonCapabilities-1.18.2-2.8.2" cfg="common-capabilities" id="247007" />
-			<file value="IntegratedDynamics-1.18.2-1.12.4" cfg="integrated-dynamics" id="236307" />
+			<file value="IntegratedDynamics-1.18.2-1.12.5" cfg="integrated-dynamics" id="236307" />
 			<file value="IntegratedTunnels-1.18.2-1.8.17" cfg="integrated-tunnels" id="251389" />
 			<file value="IntegratedCrafting-1.18.2-1.0.25" cfg="integrated-crafting" id="287357" />
 			<file value="IntegratedTerminals-1.18.2-1.4.3" cfg="integrated-terminals" id="295910" />
@@ -125,8 +125,8 @@
 
 		<mod key="ma" name="Mystical Agriculture" >
 			<file value="Cucumber-1.18.2-5.1.3" cfg="cucumber" id="272335" />
-			<file value="MysticalAgriculture-1.18.2-5.1.2" cfg="mystical-agriculture" id="246640" />
-			<file value="MysticalAgradditions-1.18.2-5.1.2" cfg="mystical-agradditions" id="256247" />
+			<file value="MysticalAgriculture-1.18.2-5.1.3" cfg="mystical-agriculture" id="246640" />
+			<file value="MysticalAgradditions-1.18.2-5.1.3" cfg="mystical-agradditions" id="256247" />
 		</mod>
 
 		<mod key="pnc" name="Pneumatic Craft" >
@@ -155,7 +155,7 @@
 			<file value="rftoolsbase-1.18-3.0.11" cfg="rftools-base" id="326041" />
 			<mod key="rftm" name="RFTools Modules" >
 				<file value="rftoolsbuilder-1.18-4.1.1" cfg="rftools-builder" id="347706" />
-				<file value="rftoolscontrol-1.18-5.0.8" cfg="rftools-control" id="250763" />
+				<file value="rftoolscontrol-1.18-5.0.9" cfg="rftools-control" id="250763" />
 				<file value="rftoolspower-1.18-4.0.9" cfg="rftools-power" id="290209" />
 				<file value="rftoolsstorage-1.18-3.0.12" cfg="rftools-storage" id="350006" />
 				<file value="rftoolsutility-1.18-4.0.21" cfg="rftools-utility" id="342466" />
@@ -207,7 +207,7 @@
 		<mod key="pam" name="Pam's HarvestCraft" >
 			<file value="pamhc2foodcore-1.18.2-1.0.3" cfg="pams-harvestcraft-2-food-core" id="372534" />
 			<file value="pamhc2crops-1.18.2-1.0.5" cfg="pams-harvestcraft-2-crops" id="361385" />
-			<file value="pamhc2trees-1.18.2-1.0.3" cfg="pams-harvestcraft-2-trees" id="365460" />
+			<file value="pamhc2trees-1.18.2-1.0.4" cfg="pams-harvestcraft-2-trees" id="365460" />
 			<file value="pamhc2foodextended-1.18.2-1.0.5" cfg="pams-harvestcraft-2-food-extended" id="402231" />
 		</mod>
 
@@ -233,13 +233,13 @@
 
 		<mod key="ct" name="Craft Tweaker" >
 			<file value="JEITweaker-1.18.2-3.0.0.9" cfg="jeitweaker" id="368718" />
-			<file value="CraftTweaker-forge-1.18.2-9.1.198" cfg="crafttweaker" id="239197" />
+			<file value="CraftTweaker-forge-1.18.2-9.1.200" cfg="crafttweaker" id="239197" />
 		</mod>
 
 		<mod key="cdc" name="Crafting Dead" >
-			<file value="crafting-dead-core-1.18.2-1.7.6.378" cfg="crafting-dead" id="417550" />
+			<file value="crafting-dead-core-1.18.2-1.7.6.380" cfg="crafting-dead" id="417550" />
 			<mod key="cds" name="Crafting Dead Survival" >
-				<file value="crafting-dead-survival-1.18.2-1.1.9.378" cfg="crafting-dead-survival" id="471033" />
+				<file value="crafting-dead-survival-1.18.2-1.1.9.380" cfg="crafting-dead-survival" id="471033" />
 			</mod>
 		</mod>
 
@@ -247,7 +247,7 @@
 			<file value="framework-0.4.2-1.18.2" cfg="framework" id="549225" />
 			<file value="cgm-1.3.3-1.18.2" cfg="mrcrayfishs-gun-mod" id="289479" />
 			<mod key="addg" name="Additional Guns" >
-				<file value="additional-guns-0.8.1-1.18.2" cfg="additional-guns" id="501214" />
+				<file value="additional-guns-0.8.2-1.18.2" cfg="additional-guns" id="501214" />
 				<file value="projectarsenal-0.2.1-1.18.2" cfg="project-arsenal" id="683122" />
 			</mod>
 			<mod key="apex" name="Apex Guns" >
@@ -260,7 +260,7 @@
 
 		<mod key="fq" name="FTB Quests" >
 			<file value="item-filters-forge-1802.2.8-build.47" cfg="item-filters" id="309674" />
-			<file value="ftb-quests-forge-1802.3.12-build.157" cfg="ftb-quests" id="289412" />
+			<file value="ftb-quests-forge-1802.3.13-build.175" cfg="ftb-quests" id="289412" />
 		</mod>
 
 		<mod key="nec" name="Not Enough Crashes">
@@ -276,7 +276,7 @@
 		</mod>
 
 		<mod key="sp" name="Simple Planes" >
-			<file value="simpleplanes-1.18.2-5.1.2" cfg="simple-planes" id="388908" />
+			<file value="simpleplanes-1.18.2-5.2.1" cfg="simple-planes" id="388908" />
 		</mod>
 
 		<mod key="stl" name="Starlight" >
@@ -284,8 +284,8 @@
 		</mod>
 
 		<mod key="tic" name="Tinker's Construct" >
-			<file value="Mantle-1.18.2-1.9.31" cfg="mantle" id="74924" />
-			<file value="TConstruct-1.18.2-3.6.0.73" cfg="tinkers-construct" id="74072" />
+			<file value="Mantle-1.18.2-1.9.43" cfg="mantle" id="74924" />
+			<file value="TConstruct-1.18.2-3.6.2.92" cfg="tinkers-construct" id="74072" />
 		</mod>
 	</category>
 </settings>
