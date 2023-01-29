@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings >
-	<pack title="LZMP %v Launcher" mcversion="1.18.2" version="7.0.5" launcher="Game\HMCL-3.5.3.exe"/>
+	<pack title="LZMP %v Launcher" mcversion="1.18.2" version="7.0.6" launcher="Game\HMCL-3.5.3.exe"/>
 
 	<category name="Technology" >
 		<mod key="alc" name="Alchemistry" >
@@ -12,14 +12,21 @@
 		<mod key="ae" name="Applied Energetics" >
 			<file value="appliedenergistics2-forge-11.7.0" cfg="applied-energistics-2" id="223794" />
 			<file value="Applied-Mekanistics-1.2.2" cfg="applied-mekanistics" id="574300" />
+			<file value="AEInfinityBooster-1.18.2-1.1.0+9" cfg="aeinfinitybooster" id="559313" />
 			<mod key="aet" name="AE2 Things">
-				<file value="AE2-Things-1.0.4" cfg="ae2-things-forge" id="609977" />
+				<file value="AE2-Things-1.0.5" cfg="ae2-things-forge" id="609977" />
 			</mod>
 			<mod key="aew" name="AE2 Wireless Terminal">
 				<file value="AE2WTLib-11.6.3" cfg="applied-energistics-2-wireless-terminals" id="459929" />
 			</mod>
+			<mod key="apb" name="Applied Botanics">
+				<file value="Applied-Botanics-1.4.1" cfg="applied-botanics-addon" id="610632" />
+			</mod>
 			<mod key="lae" name="Lazier AE2">
 				<file value="lazierae2-1.18.2-3.1.5" cfg="lazierae2" id="489843" />
+			</mod>
+			<mod key="meg" name="MEGA Cells">
+				<file value="MEGACells-1.4.2-1.18.2" cfg="mega-cells" id="622112" />
 			</mod>
 		</mod>
 
@@ -107,6 +114,7 @@
 
 		<mod key="ftic" name="FTB Industrial Contraptions" >
 			<file value="ftb-industrial-contraptions-1802.1.6-build.220" cfg="ftb-industrial-contraptions-forge" id="539097" />
+			<file value="fetransformer-1.18.2-1.1.2" cfg="fe-transformer" id="628720" />
 		</mod>
 
 		<mod key="itd" name="Integrated Dynamics" >
@@ -140,11 +148,15 @@
 		<mod key="rs" name="Refined Storage" >
 			<file value="refinedstorage-1.10.4" cfg="refined-storage" id="243076" />
 			<file value="refinedstorageaddons-0.8.2" cfg="refined-storage-addons" id="272302" />
+			<file value="RSInfinityBooster-1.18.2-2.1+20" cfg="rsinfinitybooster" id="446870" />
 			<mod key="cbt" name="Cable Tiers" >
 				<file value="cabletiers-1.18.2-0.547" cfg="cable-tiers" id="454382" />
 			</mod>
 			<mod key="exd" name="Extra Disks" >
 				<file value="ExtraDisks-1.18.2-2.1.0" cfg="extra-disks" id="351491" />
+			</mod>
+			<mod key="exs" name="Extra Storage" >
+				<file value="ExtraStorage-1.18.2-2.2.1" cfg="extrastorage" id="410168" />
 			</mod>
 			<mod key="rsq" name="RS Questify" >
 				<file value="rsrequestify-2.2.0" cfg="rs-requestify" id="307788" />
@@ -212,7 +224,7 @@
 		</mod>
 
 		<mod key="sol" name="Spice of Life" >
-			<file value="solsweetpotato-1.18.2-2.0.0" cfg="spice-of-life-sweet-potato-edition" id="643106" />
+			<file value="solsweetpotato-1.18.2-2.2.0" cfg="spice-of-life-sweet-potato-edition" id="643106" />
 		</mod>
 	</category>
 
@@ -254,7 +266,7 @@
 				<file value="ApexGunAddon-1.18.2-0.0.1" cfg="apex-guns" id="654129" />
 			</mod>
 			<mod key="smg" name="Stabx Modern Guns" >
-				<file value="Stabx_Modern_Guns_3.2_1.18.2" cfg="stabx-modern-guns" id="690674" />
+				<file value="Stabx_Modern_Guns_4.0_1.18.2" cfg="stabx-modern-guns" id="690674" />
 			</mod>
 		</mod>
 
