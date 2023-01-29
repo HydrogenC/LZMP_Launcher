@@ -20,7 +20,7 @@
 				<file value="AE2WTLib-11.6.3" cfg="applied-energistics-2-wireless-terminals" id="459929" />
 			</mod>
 			<mod key="apb" name="Applied Botanics">
-				<file value="Applied-Botanics-1.4.1" cfg="applied-botanics-addon" id="610632" />
+				<file value="Applied-Botanics-1.0.1" cfg="applied-botanics-addon" id="610632" />
 			</mod>
 			<mod key="lae" name="Lazier AE2">
 				<file value="lazierae2-1.18.2-3.1.5" cfg="lazierae2" id="489843" />
