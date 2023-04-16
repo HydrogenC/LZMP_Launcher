@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings >
-	<pack title="LZMP %v Launcher" mcversion="1.18.2" version="7.0.6" launcher="Game\HMCL-3.5.3.exe"/>
+	<pack title="LZMP %v Launcher" mcversion="1.18.2" version="7.1.0" launcher="Game\HMCL-3.5.4.exe"/>
 
 	<category name="Technology" >
 		<mod key="alc" name="Alchemistry" >
@@ -84,6 +84,11 @@
 		<mod key="dep" name="Deep Resonance" >
 			<file value="deepresonance-1.18-3.0.17" cfg="deep-resonance" id="233398" />
 		</mod>
+		
+		<mod key="dcn" name="Draconic Evolution">
+			<file value="BrandonsCore-1.18.2-3.1.9.280-universal" cfg="brandons-core" id="231382" />
+			<file value="Draconic-Evolution-1.18.2-3.0.29.524-universal" cfg="draconic-evolution" id="223565" />
+		</mod>
 
 		<mod key="enc" name="Energy Control" >
 			<file value="EnergyControl-forge-1.18.2-0.2.6" cfg="energy-control" id="373450" />
@@ -108,13 +113,13 @@
 			</mod>
 		</mod>
 
-		<mod key="ftp" name="Futurepack" >
-			<file value="Futurepack-1.18.2-33.0.7482" cfg="futurepack" id="237333" />
-		</mod>
-
 		<mod key="ftic" name="FTB Industrial Contraptions" >
 			<file value="ftb-industrial-contraptions-1802.1.6-build.220" cfg="ftb-industrial-contraptions-forge" id="539097" />
 			<file value="fetransformer-1.18.2-1.1.2" cfg="fe-transformer" id="628720" />
+		</mod>
+		
+		<mod key="ftp" name="Futurepack" >
+			<file value="Futurepack-1.18.2-33.0.7482" cfg="futurepack" id="237333" />
 		</mod>
 
 		<mod key="itd" name="Integrated Dynamics" >
@@ -270,9 +275,19 @@
 			</mod>
 		</mod>
 
+		<mod key="epf" name="Epic Fight" >
+			<file value="EpicFight-18.3.7" cfg="epic-fight-mod" id="405076" />
+			<file value="fightnbtintegration-1.18.2-1.0.4" cfg="epic-fight-nbt-integration" id="513222" />
+		</mod>
+
 		<mod key="fq" name="FTB Quests" >
 			<file value="item-filters-forge-1802.2.8-build.47" cfg="item-filters" id="309674" />
 			<file value="ftb-quests-forge-1802.3.13-build.175" cfg="ftb-quests" id="289412" />
+		</mod>
+		
+		<mod key="ktr" name="K-Turrets" >
+			<file value="Satako-5.0.8-1.18.2" cfg="satako-library" id="282037" />
+			<file value="K-Turrets-1.1.12-1.18.2" cfg="k-turrets" id="536437" />
 		</mod>
 
 		<mod key="nec" name="Not Enough Crashes">
@@ -295,9 +310,16 @@
 			<file value="starlight-1.0.2+forge.546ae87" cfg="starlight-forge" id="526854" />
 		</mod>
 
+		<mod key="tet" name="Tetra" >
+			<file value="mutil-1.18.2-4.5.0" cfg="mutil" id="351914" />
+			<file value="tetra-1.18.2-4.10.1" cfg="tetra" id="289712" />
+			<file value="tetranomicon-1.4-1.18.2" cfg="tetranomicon" id="445385" />
+		</mod>
+
 		<mod key="tic" name="Tinker's Construct" >
 			<file value="Mantle-1.18.2-1.9.43" cfg="mantle" id="74924" />
 			<file value="TConstruct-1.18.2-3.6.2.92" cfg="tinkers-construct" id="74072" />
+			<file value="tconplanner-1.18.2-1.2.0" cfg="tinkers-planner" id="519973" />
 		</mod>
 	</category>
 </settings>
