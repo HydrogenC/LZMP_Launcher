@@ -277,7 +277,6 @@
 
 		<mod key="epf" name="Epic Fight" >
 			<file value="EpicFight-18.3.7" cfg="epic-fight-mod" id="405076" />
-			<file value="fightnbtintegration-1.18.2-1.0.4" cfg="epic-fight-nbt-integration" id="513222" />
 		</mod>
 
 		<mod key="fq" name="FTB Quests" >
@@ -308,12 +307,6 @@
 
 		<mod key="stl" name="Starlight" >
 			<file value="starlight-1.0.2+forge.546ae87" cfg="starlight-forge" id="526854" />
-		</mod>
-
-		<mod key="tet" name="Tetra" >
-			<file value="mutil-1.18.2-4.5.0" cfg="mutil" id="351914" />
-			<file value="tetra-1.18.2-4.10.1" cfg="tetra" id="289712" />
-			<file value="tetranomicon-1.4-1.18.2" cfg="tetranomicon" id="445385" />
 		</mod>
 
 		<mod key="tic" name="Tinker's Construct" >

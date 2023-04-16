@@ -353,7 +353,6 @@
 
 		<mod key="epf" name="Epic Fight" >
 			<file value="EpicFight-16.6.4" cfg="epic-fight-mod" id="405076" />
-			<file value="fightnbtintegration-1.16.5-1.4.3" cfg="epic-fight-nbt-integration" id="513222" />
 		</mod>
 
 		<mod key="fq" name="FTB Quests" >
@@ -382,12 +381,6 @@
 
 		<mod key="sp" name="Simple Planes" >
 			<file value="simpleplanes-1.16.5-4.6.0" cfg="simple-planes" id="388908" />
-		</mod>
-
-		<mod key="tet" name="Tetra" >
-			<file value="mgui-1.16.5-3.3.0" cfg="mutil" id="351914" />
-			<file value="tetra-1.16.5-3.20.0" cfg="tetra" id="289712" />
-			<file value="tetranomicon-1.4-1.16.5" cfg="tetranomicon" id="445385" />
 		</mod>
 
 		<mod key="tmg" name="Timeless and Classics Gun" >
