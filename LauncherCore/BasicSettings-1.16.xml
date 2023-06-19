@@ -385,10 +385,6 @@
 			<file value="simpleplanes-1.16.5-4.6.0" cfg="simple-planes" id="388908" />
 		</mod>
 
-		<mod key="tmg" name="Timeless and Classics Gun" >
-			<file value="tac-r-0.3.5.3-1.16.5" cfg="timeless-and-classic-guns" id="491264" />
-		</mod>
-
 		<mod key="tic" name="Tinker's Construct" >
 			<file value="Mantle-1.16.5-1.6.157" cfg="mantle" id="74924" />
 			<file value="TConstruct-1.16.5-3.3.4.335" cfg="tinkers-construct" id="74072" />
