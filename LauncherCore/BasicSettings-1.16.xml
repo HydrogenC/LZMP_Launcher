@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings >
-	<pack title="LZMP %v Launcher" mcversion="1.16.5" version="6.7.0" launcher="Game\HMCL-3.5.4.exe"/>
+	<pack title="LZMP %v Launcher" mcversion="1.16.5" version="6.7.1" launcher="Game\HMCL-3.5.4.exe"/>
 
 	<category name="Technology" >
 		<mod key="alc" name="Alchemistry" >
@@ -301,6 +301,10 @@
 			<file value="notenoughcrashes-4.1.4+1.16.5-forge" cfg="not-enough-crashes-forge" id="442354" />
 		</mod>
 
+		<mod key="opo" name="Opotato" >
+			<file value ="opotato-1.16.5-1.14.0" cfg="opotato" id="834716" />
+		</mod>
+
 		<mod key="stl" name="Starlight" >
 			<file value="starlight-1.2" cfg="starlight-x-create" id="560058" />
 		</mod>
@@ -342,8 +346,11 @@
 			<mod key="apex" name="Apex Guns" >
 				<file value="ApexGunAddon-1.16.5-0.0.1" cfg="apex-guns" id="654129" />
 			</mod>
+			<mod key="nzg" name="NineZero's Gun Expansion" >
+				<file value="nzgExpansion-1.2.0-1.16.5" cfg="ninezeros-gun-expansion" id="819550" />
+			</mod>
 			<mod key="smg" name="Stabx Modern Guns" >
-				<file value="Stabx_Modern_Guns_5.0_1.16.5" cfg="stabx-modern-guns" id="690674" />
+				<file value="Stabx_Modern_Guns_v5.4_1.16.5" cfg="stabx-modern-guns" id="690674" />
 			</mod>
 		</mod>
 
@@ -351,18 +358,13 @@
 			<file value="vehicle-mod-0.45.2-1.16.3" cfg="mrcrayfishs-vehicle-mod" id="286660" />
 		</mod>
 
-		<mod key="epf" name="Epic Fight" >
+		<mod key="epf" name="Epic Fight (Require Opotato)" >
 			<file value="EpicFight-16.6.4" cfg="epic-fight-mod" id="405076" />
 		</mod>
 
 		<mod key="fq" name="FTB Quests" >
 			<file value="item-filters-forge-1605.2.5-build.9" cfg="item-filters" id="309674" />
 			<file value="ftb-quests-forge-1605.3.7-build.165" cfg="ftb-quests" id="289412" />
-		</mod>
-
-		<mod key="ktr" name="K-Turrets" >
-			<file value="Satako-4.2.12-1.16.5" cfg="satako-library" id="282037" />
-			<file value="K-Turrets-0.1.7-1.16.5" cfg="k-turrets" id="536437" />
 		</mod>
 
 		<mod key="pe" name="ProjectE" >
