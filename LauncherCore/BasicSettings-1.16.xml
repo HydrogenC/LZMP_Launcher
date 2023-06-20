@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings >
-	<pack title="LZMP %v Launcher" mcversion="1.16.5" version="6.7.1" launcher="Game\HMCL-3.5.4.exe"/>
+	<pack title="LZMP %v Launcher" mcversion="1.16.5" version="6.7.2" launcher="Game\HMCL-3.5.4.exe"/>
 
 	<category name="Technology" >
 		<mod key="alc" name="Alchemistry" >
